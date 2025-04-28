@@ -3,40 +3,21 @@ import type { Project } from '~/types/data'
 export const PROJECTS: Project[] = [
   {
     type: 'work',
-    title: 'Weaverse Hydrogen Customizer',
-    description: `The first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.`,
-    imgSrc: '/static/images/weaverse-logo.png',
-    url: 'https://www.weaverse.io?ref=leohuynh.dev',
-    builtWith: ['Shopify', 'Remix', 'TailwindCSS', 'Prisma', 'OpenAI'],
+    title: 'Ensino de  Programação',
+    description: `Projeto para ensino para quem esta inciando no mundo da programação.`,
+    imgSrc: '/static/images/logo.png',
+    url: 'https://github.com/Pquar/PROJETOS-COM-HTML_CSS_JAVASCRIPT',
+    builtWith: ['CSS' ,'Javascript', 'Bootstrap', 'Html'],
     links: [
-      { title: 'Website', url: 'https://www.weaverse.io?ref=leohuynh.dev' },
-      { title: 'GitHub Org', url: 'https://github.com/weaverse' },
+      { title: 'GitHub', url: 'https://github.com/Pquar/PROJETOS-COM-HTML_CSS_JAVASCRIPT' },
     ],
-  },
-  {
-    type: 'work',
-    title: 'Weaverse SDKs',
-    description:
-      'Open-source toolkits for seamless integration and development of Shopify Hydrogen themes and headless commerce solutions.',
-    imgSrc: '/static/images/weaverse-logo.png',
-    repo: 'weaverse/weaverse',
-    builtWith: ['Turborepo', 'Hydrogen', 'React', 'Typescript'],
-  },
-  {
-    type: 'work',
-    title: 'Pilot - Shopify Hydrogen theme',
-    description:
-      'A fully-featured Shopify Hydrogen theme crafted to help you launch modern, high-performing headless storefronts in minutes.',
-    imgSrc: '/static/images/theme-100.png',
-    repo: 'weaverse/pilot',
-    url: 'https://pilot.weaverse.io/',
-    builtWith: ['Hydrogen', 'Remix', 'TailwindCSS', 'HeadlessUI'],
   },
   {
     type: 'self',
     title: 'gacha-clonm.com',
     imgSrc: '/static/images/writer-96.png',
-    repo: 'pquar/leohuynh.dev',
+    url: 'https://gacha-clonm.com',
+    repo: '#',
     builtWith: ['NextJS', 'TailwindCSS', 'Typescript'],
   },
 ]

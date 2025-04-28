@@ -8,6 +8,8 @@ import { Intro } from './intro'
 import { LatestPosts } from './latest-posts'
 import { BlogLinks } from './links'
 import { TypedBios } from './typed-bios'
+import { Linkedin } from 'lucide-react'
+import { SITE_METADATA } from '~/data/site-metadata'
 
 export function Home({
   posts,
@@ -27,8 +29,8 @@ export function Home({
             <TypedBios />
             <div className="mb-6 mt-4 md:mb-8">
               <p>
-                Estudo programação há {year - 2020} anos e atuo como desenvolvedor há{' '}
-                {year - 2022} anos.
+                Estudo programação há {year - 2020} anos e atuo como desenvolvedor há {year - 2022}{' '}
+                anos.
               </p>
               <br />
               <p>
@@ -38,6 +40,15 @@ export function Home({
               </p>
             </div>
             <BlogLinks />
+            <a
+              href={SITE_METADATA.linkedin}
+              target="_blank"
+              className="flex gap-3 pt-2 text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
+              rel="noopener noreferrer"
+            >
+              <Linkedin strokeWidth={1.5} />
+              <span className="">Linkedin</span>
+            </a>
             <p className="my-6 flex md:my-8">
               <span className="mr-2">Seja bem-vindo!</span>
               <Twemoji emoji="rocket" />

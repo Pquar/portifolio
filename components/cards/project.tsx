@@ -33,7 +33,7 @@ export function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
           <h2 className="text-[22px] font-bold leading-[30px]">
             {href ? (
               <Link href={href} aria-label={`Link to ${title}`}>
-                <GrowingUnderline data-umami-event="project-title-link">{title}</GrowingUnderline>
+                <GrowingUnderline>{title}</GrowingUnderline>
               </Link>
             ) : (
               title
@@ -68,9 +68,7 @@ export function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
               {links?.map(({ title, url }, idx) => (
                 <Fragment key={url}>
                   <Link href={url} className="flex items-center gap-1.5">
-                    <GrowingUnderline className="font-medium" data-umami-event="project-link">
-                      {title}
-                    </GrowingUnderline>
+                    <GrowingUnderline>{title}</GrowingUnderline>
                   </Link>
                   {idx !== links.length - 1 && (
                     <span className="hidden text-gray-400 dark:text-gray-500 md:inline">|</span>
@@ -82,16 +80,15 @@ export function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
         )}
         <div className="space-y-1.5">
           <div className="text-xs text-gray-600 dark:text-gray-400">Stack</div>
-          <div className="flex h-6 flex-wrap items-center gap-1.5">
-            {builtWith?.map((tool) => {
-              return (
+          <div className="flex flex-wrap items-center gap-2">
+            {builtWith?.map((tool) => (
+              <div key={tool} className="flex items-center justify-center">
                 <Brand
-                  key={tool}
                   name={tool as keyof typeof BrandsMap}
-                  iconClassName={clsx(tool === 'Pygame' ? 'h-4' : 'h-4 w-4')}
+                  iconClassName="h-5 w-5"
                 />
-              )
-            })}
+              </div>
+            ))}
           </div>
         </div>
         {lang && (

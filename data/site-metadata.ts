@@ -1,5 +1,7 @@
 export const SITE_METADATA = {
   city: 'Balneário Camboriú',
+  instagram: 'https://instagram.com/proquar',
+  x: "https://x.com/fkquar",
   title: `Cleiton Moura dev blog – stories, insights, and ideias`,
   author: 'Cleiton Moura',
   headerTitle: `Clon dev blog`,

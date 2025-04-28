@@ -1,7 +1,6 @@
 import { clsx } from 'clsx'
-import { Facebook, Github, Linkedin, Mail, Youtube } from 'lucide-react'
+import { Github, Instagram, Linkedin, Mail } from 'lucide-react'
 import { SITE_METADATA } from '~/data/site-metadata'
-import X from '~/icons/x.svg'
 
 export function SocialAccounts({ className }: { className?: string }) {
   return (
@@ -15,16 +14,6 @@ export function SocialAccounts({ className }: { className?: string }) {
       >
         <span className="sr-only">Github</span>
         <Github strokeWidth={1.5} />
-      </a>
-      <a
-        href={SITE_METADATA.x}
-        target="_blank"
-        data-umami-event="contact-twitter"
-        className="text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-        rel="noopener noreferrer"
-      >
-        <span className="sr-only">X</span>
-        <X className="h-5 w-5" fill="#fff" viewBox="0 0 1200 1227" />
       </a>
       <a
         href={SITE_METADATA.linkedin}
@@ -47,24 +36,14 @@ export function SocialAccounts({ className }: { className?: string }) {
         <Mail strokeWidth={1.5} />
       </a>
       <a
-        href={SITE_METADATA.facebook}
-        target="_self"
-        data-umami-event="contact-facebook"
-        className="text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-        rel="noopener noreferrer"
-      >
-        <span className="sr-only">Facebook</span>
-        <Facebook strokeWidth={1.5} />
-      </a>
-      <a
-        href={SITE_METADATA.youtube}
+        href={SITE_METADATA.instagram}
         target="_self"
         data-umami-event="contact-youtube"
         className="text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
         rel="noopener noreferrer"
       >
         <span className="sr-only">Youtube</span>
-        <Youtube strokeWidth={1.5} />
+        <Instagram strokeWidth={1.5} />
       </a>
     </div>
   )
