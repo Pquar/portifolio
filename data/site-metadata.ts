@@ -1,4 +1,5 @@
 export const SITE_METADATA = {
+  city: 'Balneário Camboriú',
   title: `Cleiton Moura dev blog – stories, insights, and ideias`,
   author: 'Cleiton Moura',
   headerTitle: `Clon dev blog`,
@@ -7,7 +8,7 @@ export const SITE_METADATA = {
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.clon.com',
   siteRepo: 'https://github.com/pquar/portifolio',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.jpg`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.jpeg`,
   email: 'clon.moura@gmail.com',
   github: 'https://github.com/pquar',

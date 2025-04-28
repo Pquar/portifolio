@@ -3,7 +3,7 @@
 import { clsx } from 'clsx'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Image } from '~/components/ui/image'
-import { SpotifyNowPlaying } from '~/components/ui/now-playing'
+//import { SpotifyNowPlaying } from '~/components/ui/now-playing'
 import { SITE_METADATA } from '~/data/site-metadata'
 import { ProfileCardInfo } from './profile-info'
 
@@ -49,40 +49,31 @@ export function ProfileCard() {
   }, [onMouseLeave, onMouseMove])
 
   return (
-    <div
-      className="z-10 mb-8 scale-100 transition-all duration-200 ease-out hover:z-50 md:mb-0 md:hover:scale-[1.15]"
-      style={{ perspective: '600px' }}
-      ref={ref}
-    >
+    <>
       <div
-        style={style}
-        className={clsx(
-          'flex flex-col overflow-hidden transition-all duration-200 ease-out md:rounded-lg',
-          'bg-white shadow-demure dark:bg-dark dark:shadow-mondegreen',
-          'outline outline-1 outline-gray-100 dark:outline-gray-600'
-        )}
+        className="relative z-10 mb-8 flex scale-100 items-center justify-center transition-all duration-200 ease-out hover:z-50 md:mb-0 md:hover:scale-[1.15]"
+        style={{ perspective: '300px' }}
+        ref={ref}
       >
-        <Image
-          src={SITE_METADATA.siteLogo}
-          alt={SITE_METADATA.title}
-          width={550}
-          height={350}
-          style={{
-            objectPosition: '50% 15%',
-            aspectRatio: '383/240',
-          }}
-          loading="eager"
-        />
-        <SpotifyNowPlaying
-          className={clsx([
-            'bg-gray-900 px-3 py-1.5 xl:px-5',
-            '[--song-color:theme(colors.gray.200)]',
-            '[--artist-color:theme(colors.gray.400)]',
-          ])}
-        />
-        <ProfileCardInfo />
-        <span className="h-1.5 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-1"></div>
+        <div
+          style={style}
+          className={clsx(
+            'flex flex-col overflow-hidden rounded-full bg-white shadow-demure outline outline-1 outline-gray-100 dark:bg-dark dark:shadow-mondegreen dark:outline-gray-600'
+          )}
+        >
+          <Image
+            src={SITE_METADATA.siteLogo}
+            alt={SITE_METADATA.title}
+            width={256}
+            height={256}
+            loading="eager"
+            className="rounded-full"
+          />
+        </div>
       </div>
-    </div>
+
+      <ProfileCardInfo />
+    </>
   )
 }

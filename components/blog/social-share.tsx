@@ -8,7 +8,6 @@ import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 're
 import { SITE_METADATA } from '~/data/site-metadata'
 import XIcon from '~/icons/x.svg'
 import { DiscussOnX } from './discuss-on-x'
-import { EditOnGithub } from './edit-on-github'
 
 type SocialButtonsProps = {
   postUrl: string
@@ -97,7 +96,6 @@ export function SocialShare({ postUrl, filePath, title, className }: SocialButto
           </div>
           <div className="flex flex-col gap-3 px-4 py-3">
             <DiscussOnX postUrl={postUrl} />
-            <EditOnGithub filePath={filePath} />
           </div>
         </MenuItems>
       </Transition>

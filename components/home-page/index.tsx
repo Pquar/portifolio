@@ -16,6 +16,7 @@ export function Home({
   posts: CoreContent<Blog>[]
   snippets: CoreContent<Snippet>[]
 }) {
+  const year = new Date().getFullYear()
   return (
     <Container as="div" className="pt-4 lg:pt-12">
       <div className="py-6 md:pb-8 xl:grid xl:grid-cols-3">
@@ -25,15 +26,21 @@ export function Home({
             <Intro />
             <TypedBios />
             <div className="mb-6 mt-4 md:mb-8">
-              <p>I started learning to code in 2016 and have been hooked ever since.</p>
-              <p>I landed my first job as a Python coding mentor in 2017.</p>
-              <p>I have a passion for JS/TS, web dev, and eCommerce.</p>
-              <p>I started this blog to document and share my knowledge & experience.</p>
+              <p>
+                Estudo programação há {year - 2020} anos e atuo como desenvolvedor há{' '}
+                {year - 2022} anos.
+              </p>
+              <br />
+              <p>
+                Aqui no blog, vou compartilhar conhecimentos, dicas práticas de desenvolvimento,
+                experiências do mercado de tecnologia, projetos de estudo e conteúdos para quem quer
+                crescer na área de TI.
+              </p>
             </div>
             <BlogLinks />
             <p className="my-6 flex md:my-8">
-              <span className="mr-2">Happy reading</span>
-              <Twemoji emoji="clinking-beer-mugs" />
+              <span className="mr-2">Seja bem-vindo!</span>
+              <Twemoji emoji="rocket" />
             </p>
           </div>
         </div>
@@ -42,11 +49,6 @@ export function Home({
         </div>
       </div>
       <LatestPosts posts={posts} snippets={snippets} />
-      {/* {SITE_METADATA.newsletter?.provider && (
-        <div className="flex items-center justify-center py-4 lg:py-10">
-          <NewsletterForm />
-        </div>
-      )} */}
     </Container>
   )
 }

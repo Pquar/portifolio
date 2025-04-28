@@ -36,7 +36,9 @@ export function LogoAndRepo() {
               {repo.lastCommit.abbreviatedOid}
             </GrowingUnderline>
           </Link>
-          <CommitStatus status={repo.lastCommit.status.state} />
+          {repo.lastCommit.status &&
+            <CommitStatus status={repo.lastCommit.status.state} />
+          }
         </>
       )}
     </div>

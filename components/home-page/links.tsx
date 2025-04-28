@@ -5,38 +5,34 @@ import { SITE_METADATA } from '~/data/site-metadata'
 
 const LINKS = [
   {
-    title: `What have I built?`,
+    title: `Projetos`,
     href: `/projects`,
     emoji: 'man-technologist',
-    event: 'home-link-projects',
   },
   {
-    title: `My writings`,
+    title: `Blog`,
     href: `/blog`,
     emoji: 'memo',
-    event: 'home-link-blog',
   },
   {
-    title: `Snippets collection`,
+    title: `Dicas rápidas`,
     href: `/snippets`,
     emoji: 'dna',
-    event: 'home-link-snippets',
   },
   {
-    title: `About me & this blog`,
+    title: `Sobre min`,
     href: `/about`,
     emoji: 'smiling-face-with-sunglasses',
-    event: 'home-link-about',
   },
 ]
 
 export function BlogLinks() {
   return (
     <div className="flex flex-col gap-2.5 md:gap-3">
-      {LINKS.map(({ title, href, emoji, event }) => (
+      {LINKS.map(({ title, href, emoji }) => (
         <Link key={title} href={href} className="flex items-center gap-1.5">
           <Twemoji emoji={emoji} />
-          <GrowingUnderline data-umami-event={event} className="leading-6">
+          <GrowingUnderline className="leading-6">
             {title}
           </GrowingUnderline>
         </Link>

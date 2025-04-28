@@ -85,6 +85,15 @@ module.exports = () => {
       ],
       unoptimized,
     },
+    async redirects() {
+      return [
+        {
+          source: '/aula',
+          destination: '/blog/aula',
+          permanent: true, // ou false se for redirecionamento temporário
+        },
+      ]
+    },
     async headers() {
       return [
         {

@@ -25,8 +25,8 @@ export function FooterNav() {
         </ul>
       </div>
       <div className="space-y-1 md:space-y-4">
-        <div className="flex h-11 items-center font-semibold">
-          <span>Personal stuff</span>
+        <div className="flex h-11 items-center font-semibold md:justify-end">
+          <span>Pessoal</span>
         </div>
         <ul className="flex flex-wrap gap-4 md:flex-col md:gap-3">
           {FOOTER_PERSONAL_STUFF.map((link, idx) => (
