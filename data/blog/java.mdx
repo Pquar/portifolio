@@ -1,0 +1,1888 @@
+---
+title: "Java"
+date: "2024-05-14"
+lastmod: "2024-05-14"
+tags: ["shopify", "shopify-unite", "migration", "file-api", "graphql", "nodejs"]
+summary: "draft"
+images: ["/static/images/banners/praveen-thirumurugan-KPAQpJYzH0Y-unsplash.jpg"]
+authors: ["default"]
+---
+
+## Conteúdo do Módulo
+
+### Hello, World! com Java
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+
+        byte variavelByte = 120; // até 127
+        // short -32768 a 32767
+        // char 0 a 65535
+        // int -2 bilhões a +2 bilhões
+        // long -9 trilhões a 9 trilhões
+
+        System.out.println(variavelByte);
+    }
+}
+```
+
+### Classes não executáveis
+
+```java
+package Animais;
+
+public class Cao {
+    public String nome;
+    public String cor;
+    public int altura;
+    public double peso;
+    public int tamanhoRabo;
+    public String estadoEspirito;
+
+    public void comer() {}
+
+    public void latir() {
+        System.out.println("AU AU");
+    }
+
+    public String pegar() {
+        return "Bolinha";
+    }
+
+    public String interagir(String acao) {
+        if (acao.equals("carinho")) {
+            this.estadoEspirito = "feliz";
+        } else if (acao.equals("nao tem comida")) {
+            this.estadoEspirito = "triste";
+        } else {
+            this.estadoEspirito = "neutro";
+        }
+        return this.estadoEspirito;
+    }
+}
+```
+
+```java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        Cao cachorro1 = new Cao();
+        cachorro1.nome = "dog";
+        cachorro1.cor = "vermelho";
+        cachorro1.altura = 25;
+
+        cachorro1.latir();
+        System.out.println(cachorro1.pegar());
+        System.out.println(cachorro1.interagir("carinho"));
+    }
+}
+```
+
+### Métodos com switch
+
+```java
+package Animais;
+
+public class Cao {
+    public String nome;
+    public String cor;
+    public int altura;
+    public double peso;
+    public int tamanhoRabo;
+    public String estadoEspirito;
+
+    public void comer() {}
+
+    public void latir() {
+        System.out.println("AU AU");
+    }
+
+    public String pegar() {
+        return "Bolinha";
+    }
+
+    public String interagir(String acao) {
+        switch (acao) {
+            case "carinho":
+                this.estadoEspirito = "feliz";
+                break;
+            case "nao tem comida":
+                this.estadoEspirito = "triste";
+                break;
+            default:
+                this.estadoEspirito = "neutro";
+                break;
+        }
+        return this.estadoEspirito;
+    }
+}
+```
+
+```java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        Cao cachorro1 = new Cao();
+        System.out.println(cachorro1.interagir("carinho"));
+    }
+}
+```
+
+### Encapsulamento
+
+Tirar o acesso do objeto, modificadores de acesso.
+
+| Visibilidade | Public | protected | default | private |
+| --- | --- | --- | --- | --- |
+| Mesma Classe | x | x | x | x |
+| Classe no mesmo pacote | x | x | x |  |
+| Classe filha do mesmo pacote | x | x | x |  |
+| Classe filha em pacote diferente | x | x |  |  |
+| Classe em pacote diferente | x |  |  |  |
+
+```java
+package Animais;
+
+public class Cao {
+    private String nome;
+    private String cor;
+    private int altura;
+    private double peso;
+    private int tamanhoRabo;
+    private String estadoEspirito;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+}
+```
+
+```java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        Cao cachorro1 = new Cao();
+        cachorro1.setNome("dog");
+        System.out.println(cachorro1.getNome());
+    }
+}
+```
+
+### Construtores
+
+```java
+package Animais;
+
+public class Cao {
+    //Atributos
+    private String nome;
+    private String cor;
+    private int altura;
+    private double peso;
+    private int tamanhoRabo;
+    private String estadoEspirito;
+    //Construtor adicionados 
+    public Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito) {
+        this.nome = nome;
+        this.cor = cor;
+        this.altura = altura;
+        this.peso = peso;
+        this.tamanhoRabo = tamanhoRabo;
+        this.estadoEspirito = estadoEspirito;
+    }
+    // Construtor padrão
+    public Cao() {}
+    //métodos
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+}
+```
+
+```java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        Cao cachorro2 = new Cao("nome", "amarelo", 1, 30, 2, "feliz");
+        System.out.println(cachorro2.getNome());
+    }
+}
+```
+
+### Modelagem orientada a objetos
+
+```java
+package Animais;
+
+public class Cao {
+    private static int numeroCachorros;
+    private String nome;
+    private String cor;
+    private int altura;
+    private double peso;
+    private int tamanhoRabo;
+    private String estadoEspirito;
+
+    public Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito) {
+        this.nome = nome;
+        this.cor = cor;
+        this.altura = altura;
+        this.peso = peso;
+        this.tamanhoRabo = tamanhoRabo;
+        this.estadoEspirito = estadoEspirito;
+        numeroCachorros++;
+    }
+
+    public Cao() {}
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public static int getNumeroCachorros() {
+        return numeroCachorros;
+    }
+
+    public static void setNumeroCachorros(int numero) {
+        numeroCachorros = numero;
+    }
+}
+```
+
+```java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        Cao cachorro1 = new Cao("Rex", "preto", 30, 10.5, 5, "feliz");
+        Cao cachorro2 = new Cao("Toby", "branco", 28, 9.8, 4, "neutro");
+
+        System.out.println(Cao.getNumeroCachorros());
+    }
+}
+```
+
+### Garbage Collector
+
+```java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        Cao cachorro2 = new Cao("nome", "amarelo", 1, 30, 2, "feliz");
+        Cao cachorro3 = new Cao("nome", "amarelo", 1, 30, 2, "feliz");
+
+        System.out.println(cachorro2.toString());
+        System.out.println(cachorro3.toString());
+
+        cachorro2 = cachorro3;
+
+        System.out.println(cachorro2.toString());
+        System.out.println(cachorro3.toString());
+    }
+}
+```
+
+6 **Heranças**
+
+```java
+package Animais;
+public class main{
+	public class Animal{
+
+			//Atributos
+			protected String nome;
+			protected String cor;
+			protected int altura;
+			protected double peso;
+			protected String estadoEspirito;
+			
+
+		 //metodos	
+			protected String getNome(){
+					return nome;
+			}
+
+			protected void setNome(String nome){
+					this.nome= nome;
+			}
+
+			
+	}
+}
+
+```
+
+```java
+package Animais;
+public class main{
+	public class Cao{
+
+			//Atributos
+			static int numeroCachorros;
+			
+			private int tamanhoRabo;
+			
+			//Contrustor adicionados 
+			Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
+					this.nome= nome;
+					this.cor= cor;
+					this.altura= altura;
+					this.peso = peso;
+					this.tamanhoRabo = tamanhoRabo;
+					this.estadoEspirito = estadoEspirito;
+			numeroCachorros ++;
+		}
+    // Contrutor padrao
+			public Cao(){}
+
+		 //metodos	
+		
+
+			public int getnumeroCachorros(){
+					return numeroCachorros;
+			}
+
+			public void setnumeroCachorros(int numeroCachorros){
+					this.numeroCachorros= numeroCachorros;
+			}
+
+			
+}
+}
+
+```
+
+```java
+package Animais;
+public class main{
+	public class Gato{
+
+			//Atributos
+			static int numeroGatos;
+
+			
+			//Contrustor adicionados 
+			Gato(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
+					this.nome= nome;
+					this.cor= cor;
+					this.altura= altura;
+					this.peso = peso;
+					this.tamanhoRabo = tamanhoRabo;
+					this.estadoEspirito = estadoEspirito;
+			numeroGatos ++;
+		}
+
+		 //metodos
+		public void comer(){
+		}
+
+			public int getnumeroGatos(){
+					return numeroGatos;
+			}
+
+			public void setnumeroGatos(int numeroGatos){
+					this.numeroGatos= numeroGatos;
+			}
+
+			
+}
+}
+
+```
+
+```java
+package Animais;
+public class main{
+	public class Passaro extends Animal{
+
+			//Atributos
+			static int numeroPassaro;
+			
+			
+			//Contrustor adicionados 
+			Passaro(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
+					this.nome= nome;
+					this.cor= cor;
+					this.altura= altura;
+					this.peso = peso;
+					this.tamanhoRabo = tamanhoRabo;
+					this.estadoEspirito = estadoEspirito;
+			numeroPassaro ++;
+		}
+
+		 //metodos
+		public void comer(){
+		}
+
+			public int getnumeroPassaro(){
+					return numeroPassaro;
+			}
+
+			public void setnumeroCachorros(int numeroPassaro){
+					this.numeroPassaro= numeroPassaro;
+			}
+
+			
+}
+}
+
+```
+
+# Construtores
+
+metodo construtor 
+
+deve ser igual ao nome da classe
+
+o construtor não prisa ter todos os atributos
+
+```csharp
+ public Pessoa (String cpf, String name){
+        this.cpf=cpf;
+        this.nome=name;
+    }
+```
+
+```csharp
+public class Pessoa {
+    private String nome;
+    private String cpf;
+    private String endereco;
+
+    public Pessoa (String cpf, String name){
+        this.cpf=cpf;
+        this.nome=name;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+}
+```
+
+```csharp
+Classe novoObjeto = new Classe();
+
+```
+
+```csharp
+
+public class Main {
+    public static void main(String[] args) {
+        Pessoa clon = new Pessoa("123","clon");
+        clon.setEndereco("rua");
+        System.out.println(clon.getNome()+" - " +clon.getEndereco() );
+
+    }
+    }
+```
+
+# Enum
+
+tipo especial de classe onde os objetos são previamente criados, imutáveis e disponíveis por toda aplicação.
+
+Exemplo: ao carregar a aplicação teremos objetos pré-estabelecida, que não mudaram muito os valores. (estados, cidades, grau de escolaridade, estado civil).
+
+lista de constantes != enum
+
+lista de constantes = variaveis.
+
+enum = conjunto de objetos.
+
+```csharp
+public enum EstadosBr {
+    SAO_PAULO("SP", "SAO PAULO"),
+    SANTA_CATARINA("SC","SANTA CATARINA"),
+    RONDONIA("RO", "RONDONIA");
+
+    private String nome;
+    private String sigla;
+
+    private EstadosBr(String sigla, String nome){
+        this.sigla=sigla;
+        this.nome=nome;
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla.toUpperCase();
+    }
+}
+```
+
+```csharp
+public class Main {
+    public static void main(String[] args) {
+
+        for(EstadosBr e: EstadosBr.values()){
+            System.out.println(e.getNome());
+        }
+            EstadosBr eb = EstadosBr.SANTA_CATARINA;
+
+        System.out.println(eb.getSigla());
+
+    }
+    }
+```
+
+Dependência
+
+composição
+
+agregação
+
+multiplicidade
+
+visibilidade → +public, #protected, -private
+
+# Programção orientada a objetos
+
+Paradigma de programação baseado no conceito de “objetos”.
+
+> Trata-se de contextualizar objetos do mundo real para programação ex: Aluno, Veiculo, Transferência…
+> 
+
+# Pilares de POO
+
+**Encapsulamento:** Nem tudo precisa estar visivel
+
+```java
+public class Pessoa {
+    private String nome;
+    private String cpf;
+    private String endereco;
+    
+    private int piscadas;
+    public Pessoa (String cpf, String name){
+        this.cpf=cpf;
+        this.nome=name;
+    }
+
+    public void piscar(){
+        confereOlho();
+        fazerForca();
+        piscando(piscadas);
+        System.out.println("piscou");
+    }
+
+		//encapsulamento escondendo função
+    private void piscando(int piscadas){
+        this.piscadas++;
+    }
+		//encapsulamento escondendo função
+    private void confereOlho(){
+        System.out.println("olho seco!");
+    }
+    //encapsulamento escondendo função
+    private void fazerForca(){
+        System.out.println("piscando");
+    }
+
+    public int getPiscadas() {
+        return piscadas;
+    }
+
+    public void setPiscadas(int piscadas) {
+        this.piscadas = piscadas;
+    }
+}
+```
+
+**Herança:** Características comuns podem ser elevados e compartilhados atraves de um hierarquia de objetos, (generalização).
+
+> Não e permitido Herança múltipla
+> 
+
+```java
+public class Padeiro extends Pessoa {
+
+    private int paoFrances;
+    
+    //construtor - So e necessario pois a classe pessoa tem um contrutor 
+    public Padeiro(String cpf, String name) {
+        super(cpf, name);
+    }
+
+    public void pao(){
+        this.paoFrances++;
+        System.out.println("fazendo pao: "+ paoFrances);
+    }
+
+}
+```
+
+**Abstração:** Logica de um ou vários comportamento em um objeto: exemplo: o Veiculo **acelera.**
+
+> Todos precisão ter determinador comportamento, mas não preciso saber como funcionam.
+> 
+
+```java
+public abstract class PessoaAbs {
+				//abstração, sem corpo {}
+        public abstract void comer();
+
+        public abstract void dormir();
+
+}
+```
+
+```java
+ppublic class Padeiro extends PessoaAbs {
+
+    private int paoFrances;
+
+    //construtor - So e necessario pois a classe pessoa tem um contrutor
+
+		
+		//abstração
+    @Override
+    public void comer() {
+        System.out.println("fome");
+    }
+		
+		//abstração
+    @Override
+    public void dormir() {
+        System.out.println("sono");
+    }
+
+    public void pao(){
+        this.paoFrances++;
+        System.out.println("fazendo pao: "+ paoFrances);
+    }
+
+}
+
+```
+
+**Polimorfismo:** Inúmeras maneiras de se realizar uma mesma ação.
+
+> Refere à capacidade de objetos de classes diferentes responderem a uma mesma mensagem ou chamada de método de maneira específica para cada classe. Em outras palavras, o polimorfismo permite que objetos de diferentes classes possam ser tratados de forma uniforme, mesmo que suas implementações concretas sejam diferentes.
+> 
+
+### **Capacidade de tratar objetos criados por classes específicas como objetos de uma classe genérica;
+Capacidade de um objeto poder ser referenciado de várias formas;**
+
+```java
+pclass Animal {
+    public void fazerSom() {
+        System.out.println("Animal fazendo som indefinido");
+    }
+}
+
+class Cachorro extends Animal {
+    @Override
+    public void fazerSom() {
+        System.out.println("Cachorro latindo: Au Au!");
+    }
+}
+
+class Gato extends Animal {
+    @Override
+    public void fazerSom() {
+        System.out.println("Gato miando: Miau Miau!");
+    }
+}
+
+public class ExemploPolimorfismo {
+    public static void main(String[] args) {
+        Animal animal1 = new Cachorro();
+        Animal animal2 = new Gato();
+
+        animal1.fazerSom(); // Chamará o método fazerSom() de Cachorro
+        animal2.fazerSom(); // Chamará o método fazerSom() de Gato
+    }
+}
+```
+
+# Interface
+
+> Não sendo permitido Herança múltipla, podemos usar interfaces multiplas.
+> 
+
+```java
+public interface Copiadora {
+    public void copia();
+
+}
+
+public interface Digitalizar {
+    public void digitaliza();
+}
+
+```
+
+```java
+public class Xerox implements Copiadora{
+    @Override
+    public void copia() {
+        System.out.println("copiando");
+    }
+}
+
+public class Scanner implements Digitalizar{
+    @Override
+    public void digitaliza() {
+        System.out.println("digitaliza");
+    }
+}
+
+public class EmpressoFazTudo implements Copiadora, Digitalizar{
+    @Override
+    public void digitaliza() {
+        System.out.println("faz tudo, digitaliza");
+    }
+
+    @Override
+    public void copia() {
+        System.out.println("faz tudo, copia");
+    }
+}
+```
+
+herança e acoplamento
+
+# Collection Framework API
+
+https://github.com/cami-la/collections-java-api-2023
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e6290395-898f-4ee3-a462-1d850a8c48a5/Untitled.png)
+
+- Uma coleção (collection) é uma estrutura de dados que serve para agrupar muitos elementos em uma única unidade, estes elementos precisão ser Objetos.
+
+- Uma Collection pode ter coleções homogêneas e heterogêneas, normalmente utilizamos coleções homogêneas de um tipo especifico.
+- O núcleo principal das coleções é formado pelas interfaces da figura a abaixo, essas interfaces permitem manipular a coleção independente do nível de detalhe que elas representam.
+- Temos quatro grandes tipos de coleções: `List` (lista), `Set` (conjunto), `Queue` (fila) e `Map` (mapa), a partir dessas interfaces, temos muitas subclasses concretas que implementam varias formas diferentes de se trabalhar com cada coleção.
+
+# Comparable X Comparator
+
+## Comparable
+
+- `Comparable` fornece uma única sequência de ordenação. Em outras palavras, podemos ordenar a coleção com base em um único elemento, como id, nome e preço.
+- `Comparable` afeta a classe original, ou seja, a classe atual é modificada.
+- `Comparable` fornece o método `compareTo()` para ordenar elementos.
+- `Comparable` está presente no pacote `java.lang`.
+- Podemos ordenar os elementos da lista do tipo `Comparable` usando o método `Collections.sort(List)`.
+
+## Comparator
+
+- O `Comparator` fornece o método `compare()` para ordenar elementos.
+- O `Comparator` fornece múltiplas sequências de ordenação. Em outras palavras, podemos ordenar a coleção com base em múltiplos elementos, como id, nome, preço, etc.
+- O `Comparator` não afeta a classe original, ou seja, a classe atual não é modificada.
+- Um `Comparator` está presente no pacote `java.util`.
+- Podemos ordenar os elementos da lista do tipo `Comparator` usando o método `Collections.sort(List, Comparator)`.
+
+## Collections
+
+- A classe `Collections` é uma classe utilitária do Java para operações comuns em coleções.
+- Ela fornece métodos para ordenação, busca, manipulação e sincronização de coleções.
+- O método `sort()` é usado para ordenar uma lista em ordem ascendente.
+- O método `sort()` em conjunto com `Collections.reverseOrder()` permite ordenar em ordem descendente.
+- Lista: a medida que os elemento são adicionado e a ordem que vai ficar, para mudar a ordem usar o comparable ou caomparator.
+    
+    (arrayList, LinkedList, Vector(threadSafe), stack).
+    
+    Dinamico``<se adpta a quantidades de elementos>``.
+    
+    sort →ordenação
+    
+    shuffle → embaralhamento
+    
+    reverse → Reverção
+    
+    binarySearch → busca binaria
+    
+    # STREAM
+    
+    INTERFACE - CONSUMER ``<T>``, um operação que aceita um argumento do tipo T e não retorna nenhum resultado, realizar ação,  efeitos colaterais nos elementos do Stream sem modicar ou retornar um valor.
+    
+    ```java
+    List <Integer> numeros = Arrays.asList(1,2,3,4,5);
+    
+    Consumer<Integer> nomeComsumer;
+    
+    numeros.stream().forEach(n->{
+    	if(n%2==0){
+    		System.out.println(n)
+    }
+    });
+    ```
+    
+    INTERFACE - Supplier``<T>``, Representa um operação que não aceita nenhum argumento e retorna um resultado do tipo T, Criar ou fornecer novos objetos de um determinado tipo.
+    
+     
+    
+    ```java
+    Supplier<String> nomeSupplier = () -> "Ola!";
+            List<String> letras = Stream.generate(
+                    () -> {
+                                return "Ola3";
+                            }
+                            //ou () -> "ola3"
+                    )
+                    .limit(3)
+                    .collect(Collectors.toList());
+    
+            //methodo Reference ::
+            System.out.println(nomeSupplier);
+            letras.forEach(System.out::println);
+    ```
+    
+    INTERFACE - Function``<T,R>``, Aceita um argumento do tipo T e retorna um resultado do tipo R. Ultizamos para transformar ou mapear os elementos do Stream em outros valores ou tipos.
+    
+    ```java
+    List<Integer> numeros = Arrays.asList(1,2,3,4,5);
+    
+        //Function com expressao lambda
+        Function<Integer, Integer> dobra = numero -> numero*2;
+    
+        List<Integer> numerosDobrados = numeros.stream()
+                .map(n->n*2)
+                .collect(Collectors.toList());
+        //numerosDobrados.forEach(n-> System.out.println(n));
+        numerosDobrados.forEach(System.out::println);
+    ```
+    
+    INTERFACE - Predicate``<T>``, Recebe um argumento de um tipo e retorna um booleano, usado para filtrar os elementos do Stream com base em condições.
+    
+    ```java
+    public static void main(String[] args) {
+        List<String> palavras = Arrays.asList("abc","et","cab","ze");
+        
+        
+        //
+        Predicate<String> maisDeDoisCataracters = palavra-> palavra.length()>2;
+        
+        //
+        palavras.stream()
+                .filter(
+                        new Predicate<String>() {
+                            @Override
+                            public boolean test(String p) {
+                                return p.length()>2;
+                            }
+                            //ou p -> p.length()>2
+                        }
+                )
+                .forEach(System.out::println);
+        }
+    ```
+    
+    INTERFACE - Binary Operator``<T>``, Operação combinada de dois elementos do tipo T e retorna um resultado do mesmo tipo T, usado para operações de redução em pares de elementos, como somar numeros ou combinar objetos.
+    
+    ```java
+    public static void main(String[] args) {
+        List<String> palavras = Arrays.asList("abc","et","cab","ze");
+        
+        
+        //
+        Predicate<String> maisDeDoisCataracters = palavra-> palavra.length()>2;
+        
+        //
+        palavras.stream()
+                .filter(
+                        new Predicate<String>() {
+                            @Override
+                            public boolean test(String p) {
+                                return p.length()>2;
+                            }
+                            //ou p -> p.length()>2
+                        }
+                )
+                .forEach(System.out::println);
+        }
+    ```
+    
+    INTERFACE -Opitional, NullPointerException()NPE), referecia exepcion, fornece um abordagem mais seguras e expressivas para tratar casos de valores nulo, ENCAPSULAR um valor dentro de um objeto Optional, o valor pode ou não ser nulo.
+    
+
+# Maven
+
+Facilita o build, automaticas testes, compilar as classes.
+
+Fornecer informações de qualidade
+
+Facilita a compreensão do desenvolver
+
+Endereça como o software foi construido e suas dependencias atraves do POM(Project Object Model)
+
+## Instalação Maven Windowns
+
+[Maven – Download Apache Maven](https://maven.apache.org/download.cgi)
+
+Download → Binary zip archive → desempacotar arquivo → adicionar o pasta /bin do maven nas variaveis de ambiente.
+
+Testar: `mvn --version`
+
+## Criando Projeto
+
+```bash
+mvn --version
+javac -version
+mvn archetype:generate -DgroupId=one.digitalinnovation -DartifactId=quick-start-maven -Darchetype-quickstart -DinteractiveMode=false
+```
+
+Maven Archetype List → Estruturas de projetos prontas para o maven
+
+## Dia-Dia
+
+`mvn compile` //compila as classes || compile
+`mvn test` //Executa todos os teste que existem || testar
+
+`mvn package` Cria o .jar da aplicação || empacotar
+
+`mvn clean` //Apaga a pasta  Target || limpa diretório de trabalho
+
+## POM
+
+Project Object Model
+
+Unidade Fudamental de trabalho
+
+Formato XML
+
+Detalha o projeto
+
+Detalha como construir o proejto
+
+Maven semrep procura pelo pom.xml para realizar sua execução.
+
+POM→ Nome do projeto; Dependencias; Modulos; Configurações de build; Detalhes do projeto(nome, descrição, licença, url); Configuração de ambiente(repositórios, tracking, profiles)
+
+SUPER POM → Modelo basico do pom, o maven faz que o pom extends deste super pom as configurações padrões oque nos fazer e rescrever por cima o que queremos.
+
+```xml
+<project>
+	<modelVersion>1.0.0</modelVersion>
+	<groudId>com.mycompany.app</groupId>
+	<artifactId>my-app</artifactId>
+	<version>1</version>
+</project>
+```
+
+## Repositorios Remoto
+
+o POM por padrão(SUPER POM) usa como repositorio remoto o Maven-Central.
+
+Podemos mudar o Arquivo global settings.xml as configurações.
+
+```xml
+<project>
+	<repositoreis>
+		<repository>
+			<id>my-repo</id>
+			<name>custom name</name>
+			<url> http:url.repo.dk </url>
+		</repository>
+		<repository>
+			<id>my-repo</id>
+			<name>custom name</name>
+			<url> http:url.repo.dk </url>
+		</repository>
+	</repositoreis>	
+	
+</project>
+```
+
+# Repositorios Local
+
+Repositorio na maquina utilizado pelo Maven para buscar os artefatos, Estrategeia de Caching, localização
+
+O mavem faz download das dependencias de repositorios remotos e salva no repositorio local.
+
+## Adicionar Depedenciasa
+
+```xml
+<dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+<!-- Nova Dependicia -->
+		<dependency>
+		  <groupId>org.hibernate.validator</groupId>
+	    <artifactId>hibernate-validator</artifactId>
+	    <version>8.0.1.Final</version>
+		</dependency>
+  </dependencies>
+```
+
+`groudId` → id da organização, seguindo as regas de nomes de pacote Java
+
+`artifactId` → Nome do projeto
+
+ `version` → Numero da versão
+
+Adicionando nova dependencia
+
+Apos adicionar e so compilar o projeto para baixar as dependencias
+
+`mvn compile`
+
+## Tipos de Dependencias
+
+Publicar componentes com Maven
+
+`mvn install`
+
+O seu projeto se torna uma dependencia, 
+
+Para adicionar essa dependencia ao uma novo projeto e so fazer o mesmo projeto
+
+```xml
+<dependency>
+	<groupId>junit</groupId>
+	<artifactId>junit</artifactId>
+	<version>3.8.1</version>
+</dependency>
+```
+
+Dependência diretas →  Declaradas no pom.xml
+
+Dependência Transitivar → Dependencias obrigatorias das dependencias declaras no pom.xml
+
+### ClassPath
+
+Runtime
+
+Test
+
+compile
+
+Escopo `default`→ Padrão; Disponivel em todos os classPaths; Transitivo.
+
+Escopo `provided` → Dependencia sera fornecida em tempo de execução por uma implementação na JDK ou via container exemplos: Servlet API, Java EE APIs; Adicionando no classPath usado para compilação(compile) e teste(test), mas não em runtime; não e transitiva
+
+```xml
+<dependency>
+ <groupId>junit</groupId>
+ <artifactId>junit</artifactId>
+ <version>3.8.1</version>
+ <scope>provided</scope>
+</dependency>
+```
+
+Escopo `runtime` → dependencia necessaria para execução e não para compilação; Maven inclui no classPath dos escopos de runtime e test;
+
+```xml
+<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>runtime</scope>
+    </dependency>
+```
+
+Escopo `test` → Disponivel somente para compilação e execução de testes; não transitivo
+
+```xml
+<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+```
+
+Escopo `system` → Similar ao escopo provided exceto por necessario prover o JAR explicitamente; Adicionando no classPath usado para compilação(compile) e teste(test), mas não tem runtime; não e transitiva.
+
+```xml
+<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>system</scope>
+			<systemPath>${project.basedir}/libs/custom-dependency-1.3.2.jar</systemPath>
+    </dependency>
+```
+
+Escopo ``import`` → Disponivel apenas com uma dependecia do tipo e pom e com tag ``<dependencyManagement>``; Indica um processo de reutilizar dependências de um projeto
+
+```xml
+<dependencyManagement>
+	<dependencies>	
+		<dependency>
+	    <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+	</dependencies>
+</dependencyManagement>
+```
+
+## Classpath
+
+Mostra os escopos
+
+`mvn dependency:build-classpath -DincludeScope=compile`
+
+`mvn dependency:build-classpath -DincludeScope=test`
+
+`mvn dependency:build-classpath -DincludeScope=runtime`
+
+## Dependencias Opcionais
+
+Ultilizand quando uma depedencia não e necessaria para os projetos que irão reutilizar seu componente.
+
+```xml
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>8.0.1.Final</version>
+		<optional>true</optional>
+</dependency>
+```
+
+```xml
+<dependency>
+	<exclusions>
+			<exclusion>    
+				<groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+			</exclusion>
+		</exclusions>
+</dependency>
+```
+
+## Maven Build Lifecycle
+
+Conceito de clico de vida de construção.
+
+Conceitos e comandos da ferramenta
+
+Composto por 3 ciclos de vida
+
+Cada ciclo possui fases(Maven Phases)
+
+Cada fase possui objetivos(Maven Goals)
+
+Default → Clean → Site
+
+Default → Principal ciclo; Responsavel pelo deploy local; Composto por 23 fases(validate;compile;test-compile;test;integration-test;package;install;deploy)
+
+Clean → Ciclo intermediario; Responsavel pela limpeza do projeto; Composto por 3 fases(pre-clean;clean;post-clean)
+
+Site LifeCycle → Ciclo final; Responsavel pela criação do site de documentação do projeto; Composto por 4 fases(pre-site;site;post-site;site-deploy)
+
+## Projetos multi-modulos
+
+Projeto Raiz
+
+```xml
+<project>
+	<modelVersion>1.0.0</modelVersion>
+	<groudId>com.mycompany.app</groupId>
+	<artifactId>my-app</artifactId>
+	<version>1</version>
+	<packaging>pom</packaging>
+</project>
+```
+
+```bash
+mvn archetype:generate -DgroupId=one.digital.innovation -DartifactId=core -Darchetype=maven-quick-start -DinteractiveMode=false
+mvn archetype:generate -DgroupId=one.digital.innovation -DartifactId=service -Darchetype=maven-quick-start -DinteractiveMode=false
+mvn archetype:generate -DgroupId=one.digital.innovation -DartifactId=controller -Darchetype=maven-quick-start -DinteractiveMode=false
+```
+
+```xml
+<modules>
+	<module>core</module>
+	<module>service</module>
+	<module>controller</module>
+</modules>
+```
+
+## Plugins
+
+Maoria das funcionalidades são providas por plugins
+
+Estilo arquitural para extensibilidade (criar seu proprio plugin)
+
+Escrito prioritariamente em Java e disponibilizados comumente como JARs
+
+- Eclipse → integração ao IDE Eclipse
+- jacoco → Cobertura de codigo
+- ear → Customizar um empacotamento no formato ear
+- war → Empocotamento
+- compile → Compilar o projeto.
+- clean → Limpar
+- checkstyle → Verificar os estilos e configurar configurações padronizadas
+- javadoc → Gerar documentação.
+
+`mvn puglin-name:goal-name`
+
+Goal → tarefas espeficas
+
+`mvn dependency:help`
+
+```xml
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.0</version>
+			<configuration>
+				<release>11</release>
+			</configuration>
+		</plugin>
+	</puglins>
+</build>
+```
+
+Gerando Javadoc no projeto
+
+```xml
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins/groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>3.3.1</version>
+		</plugin>
+	</puglins>
+</build>
+```
+
+`mvn javadoc:javadoc` gerar A documentação do projeto
+
+# Testes Com JUnit
+
+Testes unitários
+
+São chamados de teste de unidade;
+
+Testar a menor unidade de codigo possivel;
+
+Unidade: função, metodo, classes;
+
+Testar uma aplicação na sua menor parte;
+
+Geralmente escrito em tempo de desenvolvimento (on going)
+
+**Por que escrever Testes?**
+
+Situação no desenvolvimento de software que mostram a importancia de teste unitarios
+
+Compreender o codigo fonte
+
+Corrigir bugs com segurança
+
+Refatorar codigo sem introduzir bugs
+
+Entregar com segurança um nova feature
+
+Piramide de Testes
+
+Teste Unitarios como metrica de Qualidade(confiabilidade)
+
+Cobertura de testes
+
+Automação na execução de testes
+
+Cultura de agilidade
+
+JUNIT 5 → JUnit plataform(Executa os teste, motor), JUnit Jupiter(classes e interfaces, anotecions), JUnit Vintage(motor de integeração para versões antigas).
+
+## Configurando JUnit
+
+para instalar va em (https://mvnrepository.com/), e pesquisa oor JUnit, e baixe o JUnit engine
+
+```xml
+// https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+```
+
+```xml
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
+
+public class PessoaTeste {
+    @Test
+    void deveCalcularIdade(){
+        Pessoa ana = new Pessoa("ana", LocalDateTime.of(2000,1,1,15,0,0));
+        Assertions.assertEquals(23,ana.getIdade());
+    }
+    @Test
+    void deveRetornarSeEhMaiorDeIdade(){
+        Pessoa ana = new Pessoa("ana", LocalDateTime.of(2000,1,1,15,0,0));
+        Assertions.assertTrue(ana.maiorDeIdade());
+     
+        Pessoa bob = new Pessoa("bob", LocalDateTime.of(2023,1,1,1,1,1));
+        Assertions.assertFalse(bob.maiorDeIdade());
+    }
+}
+```
+
+## After e before
+
+```java
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.*;
+
+import java.time.LocalDateTime;
+
+public class ConsultaDadosDePessoasTest {
+
+    @BeforeAll
+    static void configuraConexao(){
+        BancoDeDados.iniciarConexao();
+    }
+    @BeforeEach
+    void insereDadosParaTest(){
+        BancoDeDados.insereDados(new Pessoa("enel", LocalDateTime.of(2000,1,1,1,1,1)));
+    }
+    @AfterEach
+    void removeDadosDoTest(){
+        BancoDeDados.removeDados(new Pessoa("enel", LocalDateTime.of(2000,1,1,1,1,1)));;
+    }
+    @Test
+    void validarDadosDeRetorno(){
+        Assertions.assertTrue(true);
+    }
+    @Test
+    void validarDadosRetornoMais(){
+        Assertions.assertTrue(true);
+    }
+    @AfterAll
+    static void finalizarConexao(){
+        BancoDeDados.finalizarConexao();
+    }
+}
+```
+
+## Assumptions
+
+```java
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.Test;
+import org.w3c.dom.ls.LSOutput;
+
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.*;
+
+public class CondicionaisTest {
+    public class AssumptionsTest {
+        @Test
+        //se o usuario for root desative o test
+        //@DisabledIfEnvironmentVariable(named = "USER", matches = "root")
+
+        //Roda so no linux
+        //@EnabledOnOs(OS.LINUX)
+
+        //Roda so no Mac e Linux
+        //@EnabledOnOs({OS.MAC OS.LINUX})
+
+        //Versao do java para rodar
+       // @EnabledOnJre(JRE.JAVA_18)
+
+        //Range de versoes do java
+       // @EnabledForJreRange(min = JRE.JAVA_11, max = JRE.JAVA_18)
+        
+        //So faz os teste se o usuario for proqu
+        //@EnabledIfEnvironmentVariable(named = "USER", matches = "proqu")
+        void validarAlgoSomenteNoUsuarioAna(){
+            Assumptions.assumeFalse("ana".equals("ana"));
+            Assertions.assertEquals(10,5+5);
+        }
+		}
+}
+```
+
+## Exceptions
+
+```java
+//pass
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class ExceptionsTeste {
+
+    @Test
+    void validarCenarioDeExececaoNaTransferencia(){
+    Conta contaOrigen = new Conta(1234,0);
+    Conta contaDestino = new Conta(7987,100);
+
+    TransferenciaEntreContas transferenciaEntreContas = new TransferenciaEntreContas();
+
+    Assertions.assertThrows(IllegalArgumentException.class, ()->
+        transferenciaEntreContas.transfere(contaOrigen, contaDestino, -1));
+    }
+}
+
+//fail
+
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class ExceptionsTeste {
+
+    @Test
+    void validarCenarioDeExececaoNaTransferencia(){
+    Conta contaOrigen = new Conta(1234,0);
+    Conta contaDestino = new Conta(7987,100);
+
+    TransferenciaEntreContas transferenciaEntreContas = new TransferenciaEntreContas();
+
+    Assertions.assertDoesNotThrow(()->
+        transferenciaEntreContas.transfere(contaOrigen, contaDestino, -1));
+    }
+}
+```
+
+```java
+package one.digitalinnovation;
+
+import java.util.function.Consumer;
+
+public class TransferenciaEntreContas {
+    public void transfere(Conta contaOrigem, Conta contaDestino, int valor){
+        if(valor <= 0){
+            throw new IllegalArgumentException("valor deve ser maior que zero");
+        }
+
+    }
+}
+package one.digitalinnovation;
+
+public class Conta {
+    private int numeroConta;
+    private int saldo;
+
+    public Conta(int numeroConta, int saldo) {
+        this.numeroConta = numeroConta;
+        this.saldo = saldo;
+    }
+
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public void setNumeroConta(int numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+}
+```
+
+## Order Test
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+```java
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.*;
+//Roda os testes pelo numero de ordem
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class EscolhendoAOrdemTeste {
+    @Order(4)
+    @Test
+    void validaFluxoA(){
+        Assertions.assertTrue(true);
+    }
+    @Order(3)
+    @Test
+    void validaFluxoB(){
+        Assertions.assertTrue(true);
+    }
+    @Order(2)
+    @Test
+    void validaFluxoC(){
+        Assertions.assertTrue(true);
+    }
+    @Order(1)
+    @Test
+    void validaFluxoD(){
+        Assertions.assertTrue(true);
+    }
+}
+```
+
+```java
+
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.*;
+//Tests Randomicamente
+@TestMethodOrder(MethodOrderer.Random.class)
+public class EscolhendoAOrdemTeste {
+
+    @Test
+    void validaFluxoA(){
+        Assertions.assertTrue(true);
+    }
+
+    @Test
+    void validaFluxoB(){
+        Assertions.assertTrue(true);
+    }
+
+    @Test
+    void validaFluxoC(){
+        Assertions.assertTrue(true);
+    }
+
+    @Test
+    void validaFluxoD(){
+        Assertions.assertTrue(true);
+    }
+}
+```
+
+```java
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.*;
+//Roda Pela ordem alfabetica
+@TestMethodOrder(MethodOrderer.MethodName.class)
+public class EscolhendoAOrdemTeste {
+    
+    @Test
+    void validaFluxoA(){
+        Assertions.assertTrue(true);
+    }
+    
+    @Test
+    void validaFluxoB(){
+        Assertions.assertTrue(true);
+    }
+    
+    @Test
+    void validaFluxoC(){
+        Assertions.assertTrue(true);
+    }
+    
+    @Test
+    void validaFluxoD(){
+        Assertions.assertTrue(true);
+    }
+}
+```
+
+```java
+package one.digitalinnovation;
+
+import org.junit.jupiter.api.*;
+//Roda apartir de uma anotation de display name o qual tambem aparecera no teste (Respeita a ordem Alfabetica)
+@TestMethodOrder(MethodOrderer.DisplayName.class)
+public class EscolhendoAOrdemTeste {
+    @DisplayName("A")
+    @Test
+    void validaFluxoA(){
+        Assertions.assertTrue(true);
+    }
+    @DisplayName("B")
+    @Test
+    void validaFluxoB(){
+        Assertions.assertTrue(true);
+    }
+    @DisplayName("C")
+    @Test
+    void validaFluxoC(){
+        Assertions.assertTrue(true);
+    }
+    @DisplayName("D")
+    @Test
+    void validaFluxoD(){
+        Assertions.assertTrue(true);
+    }
+}
+```
+
+# Boas Praticas
+
+- Preocupe-se com o nome
+- Facilidade  de leitura
+- Escrever o codigo de teste o mais próximo possivel do codigo de execução(escrever o mais cedo possivel)
+- TDD →
+- 1. escrever um teste que falhe 2. Faça o codigo funcionar 3.Elimine redundancia
+- Padronização(Nomenclatura, metodos …)
+- Economize tempo Automatizando - Ferramentas de cobertura de codigo (jococo), Automatize a execuçaõ dos seus testes.
+
+# SpringBoot - Framework
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/28a3e4c6-7d19-413d-a19a-7eb0a040ad40/Untitled.png)
+
+Inversão  de controle: Ioc()inversion of Control, e o redirecionamento do fluxo de execução de um codigo retirando parcialmente o controle sobre ele e delegando-o para um container.(minizando o acoplamento do codigo).
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/08b4e7f9-d887-4109-ad58-6c69325c5e98/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/bc2e4d79-5d7a-4e5e-a0f6-2b0fc8bb5acb/Untitled.png)
+
+Injeção de dependencias: padrão de desenvolvimento com a finalidade de manter baixo o nivel de acoplamento entre modulos de um sistema.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/d1702e71-adfb-43a8-b0ba-01e2f88dcbd3/Untitled.png)
+
+Beans: Objeto que instanciado(criado), montado e gerenciado por um container atraves do principio da inversao de controle.
+
+São instancia de classes em java respeitando o padrão singleton.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/6c8afd55-1b9e-4ce7-a060-0c8003d3f2ea/Untitled.png)
+
+Singeton escopo com um unico objeto sendo compartilhado por toda a aplicação.(Container do Spring Ioc define apenas uma instancia do objeto)
+
+Prototype: Escopo e criado um nova instancia a cada requisão com uma nova referencia.(criado um novo objeto a cada solição ao container)
+
+Http - Request: Um bean sera criado para cada requisição HTTP
+
+Http - Session: Um bean sera criado para a sessão de usuario.
+
+Http - Global: Apllication Scope um bean para o ciclo de vida do contexto da aplicação, objetos compartilhados por toda a aplicação.
+
+Autowired: Anotação(indecição), onde devera ocorrer uma injeção automatica de dependecias.
+
+byName: Buscado um metodo set que corresponde ao nome do bean
+
+byTime: Cosiderado o tipo da classe para inclusão do bean.
+
+byConstrutor: Usamos o contrutor para incluir a dependencia.
+
+Springboot → foca na configuração automatica.
+
+Springboot Framework → baseado no padrão de injeção de dependencias. 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/1a2ae8e5-13c7-4464-bf27-669495549e81/Untitled.png)
+
+Starters → Descritores de dependencias.(coesão, versões compativei, Otimização do tempo, Configuração Simples, Foco no negocio)
+
+Spring-boot-starter-*
+
+data-jpa: integração ao banco de dados via JPA - Hibernate.
+
+data-mongodb: integração com banco de dados MongoDb.
+
+web: inclusão do container Tomcat  para aplicações REST.
+
+web-services: Webservices baseados na arquitetura SOAP.
+
+batch: Implementação de JOBs de processos.
+
+test: Disponibilização de recursos para testes unitarios como JUnit.
+
+openfeign: Client HTPPbaseado em interfaces.
+
+actuator: Gerenciamento de monitoramento da aplicação.
+
+# Inicializando Springboot
+
+https://start.spring.io/
+
+Beans vs Componentes
+
+Componentes → Temos acesso ao codigo fonte.
+
+Beans → Bibliotecas**.
+
+Scopes - singleton ou prototype
+
+Properties Values: application.properties
+
+```java
+nome=clon
+email=clon@gmail.com
+telefones=1231412,1230123
+```
+
+```java
+@Value("${name:NoReplay-Clon}")
+private String nome;
+@Value("${email}")
+private String email;
+@Value("${telefones}")
+private List<Long> telefones=new ArrayList<>(Arrays.asList());
+```
+
+configuration Properties:
+
+```java
+remetente.nome=clon
+remetente.email=clon@gmail.com
+remetente.telefones=1231412,1230123
+```
+
+```java
+@Configuration
+@ConfigurationProperties(prefix="rementente")
+public class rementente {
+private String nome;
+private String email;
+private List<Long> telefones;
+...
+```
+
+JPA → Java Pesistence API, uma especificação baseada em interfaces, que atraves de um framework realiza operações de persistencias de objetos em java.(Hibernate, eclipseLink, OracleTopLink)
+
+ORM → Object-Relational Mapping, mapeamento objeto-relacional, aproxima o paradigma da orientação a objetos ao contexto de banco de dados relacional.(seu uso e realizado ataves do mapeamento de  objeto para uma tabela por uma biblioteca ou framework).
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/a9e910c3-d047-4b4f-8efe-41680ace37a4/Untitled.png)
+
+ 
+
+Mapeamento→ Aspectos das anotações de mapeamento do JPA.
+
+- Identificação
+- Definição
+- Relacionamento
+- Herança
+- Persistência
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/72dba1a5-1338-4dbe-ad7b-7519076670c4/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/d66790af-6ec7-49a0-a202-792fc98e059d/Untitled.png)
+
+# Spring Data JPA
+
+Interfaces
+
+- CrudRepository
+- JPARepository
+- PagingAndSortingRepository
+
+Anotações
+
+- @ Query
+- @ Param
+
+https://start.spring.io/
+
+add dependencies→**PostgreSQL Driver, Spring Data JPA.**
+
+```java
+#Opcional
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+
+#Obrigatorio de acordo com os seu banco de dados
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/spring_db
+spring.datasource.username=postgres
+spring.datasource.password=root
+```
+
+Repository Pattern
+
+Repository e um padrao de projeto similar ao DAO(Data Acess Object) no sentido de que seu objetivo e abstrair o acesso a dados de forma generica a partir do seu modelo.
+
+Spring Data Jpa
+
+Facilita a implementação com o padrão Repository atraves de AOP(Aspect Oriented Programming - programação orientada a aspectos), apenas estendendo uma interface.
+
+Consulta Customizadas
+
+- QueryMethod → jpql
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/90d786a7-ee4d-42d1-8dc6-eb28dec9a637/Untitled.png)
+
+- QueryOverride
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/028ca46e-a1b6-473d-9398-9282acb790ec/Untitled.png)
+
+# Web Rest Api
+
+projeto web
+
+springboot web(mvc ou rest api)
+
+REST APIs→ recebe um tomcat na porta 8080; Para incializar, para iniciar o Spring boot basta usar o start Spring start web,
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/3bddeae4-608b-4e4d-bf0d-799f00674636/Untitled.png)
+
+Configurar controllers
+
+Documentar a api com swagger
+
+Tratamento de e execeções com handlers
+
+# Rest Controller
+
+[Primeiro Controller](https://glysns.gitbook.io/spring-framework/spring-web/primeiro-controller)
+
+# Spring security
+
+[Introdução](https://glysns.gitbook.io/spring-framework/spring-security/untitled)
+
+# Padrões de projeto
+
+Singleton →
+
+Strategy → 
+
+Facade → Prover uma interface que reduza a complexidade nas integrações com subsistemas.

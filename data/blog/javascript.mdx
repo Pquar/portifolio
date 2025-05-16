@@ -1,0 +1,254 @@
+---
+title: 'Javascript'
+date: '2025-05-30'
+lastmod: '2024-05-30'
+tags: ['javascript', 'aula', 'introdução']
+draft: false
+summary: 'Introdução ao Javascript'
+images: ['/static/images/banners/praveen-thirumurugan-KPAQpJYzH0Y-unsplash.jpg']
+authors: ['default']
+---
+
+### **Conteúdo do Módulo**
+
+#### **Setup: Instalação, Entrada e Saída de Dados**
+
+```js
+console.clear()
+```
+
+**Variáveis**
+
+`NUMBER`
+
+`STRING`
+
+`BOOLEAN ****`
+
+### **Operadores Aritméticos**
+
+| Adição | + |
+| --- | --- |
+| Subtração | - |
+| Multiplicação | * |
+| Divisão | / |
+| Exponenciação | ** |
+| Resto da divisão | % |
+| mais operações | Math(biblioteca) |
+
+> Biblioteca Math (nativa)
+> 
+
+```jsx
+Math.PI
+Math.cos(30) 
+```
+
+### **Operadores Booleanos**
+
+| Igual | ``==``|
+| --- | --- |
+| Igual e do mesmo tipo | ``===`` |
+| Diferente de | ``!=`` |
+| Diferente de & tipo | ``!==``|
+| Maior que | ``>`` |
+| Maior ou igual | ``>=`` |
+| Menor que | ``<`` |
+| Menor ou igual | ``<=`` |
+
+### Conjunção Logicas
+
+| AND | E | && |
+| --- | --- | --- |
+| OR | OU | || |
+| NOT | NÃO | ! |
+
+### **Coerção de Tipos**
+
+conversão dos tipos de números
+
+### Estruturas Condicionais
+
+```jsx
+//Se for atendido a minha condição vai ser executada o seguinte bloco de codigo
+if(30>10){
+	//execução do bloco
+}
+
+if(10==9){
+	//execução do bloco IF
+}else{
+		//execução do bloco else
+}
+
+if(10==9){
+	//execução do bloco IF
+}else if(9==8){
+		//execução do bloco else if
+}else{
+	//execução do bloco else
+}
+```
+
+### **Estruturas de Repetição | Laços Condicionais**
+
+```jsx
+let variavel = 0
+//While Enquanto a condição for verdadeira vai ser executada o bloco de codigo.
+while(variavel<10){
+		variavel++
+}
+```
+
+Para praticar pode usar a seguinte biblioteca.
+`npm install readline-sync`
+Para “utilizar a biblioteca” utilize os seguinte trechos de código no seu arquivo javascript.
+
+`const input = require(”readline-sync”)
+
+const entrada = input.question(”texto”) ****`
+
+### **Laços Numéricos**
+
+| Atribuir e diminuir | -= |
+| --- | --- |
+| Atribuir e somar | += |
+| Incremento | ++ |
+| Decremento | - - |
+| Atribuir positivo e transformar em positivo(jogo de sinal) | + |
+| Atribuir negativo e transformar em negativo(jogo de sinal) | - |
+
+> obs: `++ --` a ordem vai alterar se vai ser atribuído antes ou depois. (`++i != i++`)
+> 
+
+```jsx
+for(let i=0; i >10 ; i++){ 
+		//codigo sera executado 10vezes
+ }
+let variavel = texto;
+for(let j=0; j>variavel.length; j++){
+			//codigo sera executado dependendo do tamanho da variavel
+}
+
+```
+
+exemplos:
+
+[Decrement (--) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Decrement)
+
+[Increment (++) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment)
+
+[Unary negation (-) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_negation)
+
+[Unary plus (+) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_plus)
+
+### Arrays
+
+```jsx
+//Criar um Array= Lista
+let minhaArray = [];
+
+//Enviando elemento para o Array
+minhaArray.push(1)
+minhaArray.push(2)
+
+// Percorendo o array
+//for of - pegando os elementos a cada intereção
+for(let elemento of arr) {
+		minhaArray[elemento]
+}
+//for in - percore os indices do elementos= 0,1,2,3
+
+for(let elemento in minhaArray){
+			minhaArray[elemento]
+}
+//
+```
+
+```jsx
+//Transformar em texto
+STRING()
+//Transformar em numero
+NUMBER()
+
+CONST ARR = [ 1 , 2, 3]
+
+arr.slice(0,2) //não inclui o 3 pois e onde termina
+
+arr.slice(0)
+
+arr.push(4, 5, 6) //Enviar no final
+arr.unshift(0) //enviar para o começo
+arr.pop() // remove o ultimo elemento do array
+arr.shift() // remove o primeiro elemento
+
+const arr2 = [10, 20, 30]
+
+arr.concat(arr2)
+arr.indexOf(3) // retorna o numero do onde o elemento pode ser incontrado(indice), pela primira vez
+arr.lastIndexOf(3) // retorna o indice da ultima vez que o elemento apareceu.
+arr.includes(10) // retorn se tem um elementro em true ou false
+arr.reverse() //inverse o array
+```
+
+# Function
+
+```jsx
+//Definindo uma função
+function nomeFuncao() {
+		console.log('voce esta dentro da funcao')
+}
+
+//chama a fução
+nomeFuncao()
+
+//Definindo uma função com parametro
+function nomeFuncaoParametro(nome) {
+		console.log(nome +' esta dentro da funcao')
+}
+function parametros(nome, idade, altura='1.7') {
+		console.log(nome + idade +  altura' esta dentro da funcao')
+}
+
+//chama a fução
+nomeFuncaoParametro('nome')
+nomeFuncaoParametro() // undefined
+
+//retorno de função 
+
+function soma(numero1, numero2) {
+			return numero1 + numero1 // a função acaba quando chega no return
+}
+const result = soma(1,2)
+console.log(result)
+```
+
+# Objetos
+
+```jsx
+let pessoa = {
+		nome: 'nome pessoa',
+		'idade-da-pessoa': 23, 
+}
+
+pessoa.nome
+pessoa.['nome']
+pessoa.["idade-da-pessoa"]
+
+//adicionar
+pessoa.altura = 1.7
+
+console.log(pessoa.altura)
+
+//remover
+
+delete pessoa.altura
+
+//percorer o objeto
+//for in
+
+for (let chave in pessoa){
+		console.log(chave)
+}
+```
+

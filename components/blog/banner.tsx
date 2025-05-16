@@ -10,15 +10,6 @@ export function Banner({ banner, className }: { banner: string; className?: stri
   let handle = path.split('/').pop() || ''
   return (
     <div className={clsx('relative', className)}>
-      <Credit
-        author={author}
-        id={filename.split('.')[0]}
-        className={clsx([
-          'absolute right-4 top-4 z-10',
-          'hidden rounded-xl px-3 py-0.5 lg:block',
-          'bg-gray-50 text-gray-700 dark:bg-gray-800 dark:text-gray-200',
-        ])}
-      />
       <Zoom>
         <Image
           src={banner}

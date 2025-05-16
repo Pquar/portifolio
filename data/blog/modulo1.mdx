@@ -1,0 +1,206 @@
+---
+title: 'Introdução ao Desenvolvimento Web'
+date: '2024-05-15'
+lastmod: '2024-05-15'
+tags: ['DNS', 'client', 'web']
+summary: 'Introdução ao Desenvolvimento Web - O programador Full Stack'
+images: ['/static/images/banners/full-stack.png']
+authors: ['default']
+---
+
+# Introdução ao Desenvolvimento Web
+
+[![Modelo client-server](/static/images/modulo/client-server.png)](https://deer.dev/blog/cliente-servidor)
+
+Já se perguntou como o seu navegador consegue exibir aquela página de notícias em questão de segundos, ou como você consegue fazer uma compra online com tanta facilidade? Por trás de cada interação na internet, existe um sistema complexo a Web. Ela opera em um modelo conhecido como cliente-servidor. O cliente, que geralmente é o seu navegador, envia requisições para o servidor, que processa essas solicitações e retorna os recursos desejados, como páginas HTML, imagens e scripts. No universo do **Desenvolvimento Full Stack**, você aprenderá a construir tanto a parte do cliente (frontend) quanto a do servidor (backend), orquestrando essa comunicação
+
+## Como Funciona a Web: Cliente, Servidor e DNS
+
+Para que uma página web chegue ao seu navegador, uma série de etapas cruciais acontece em milissegundos. Veja o fluxo de uma requisição web:
+
+[![Modelo dns](/static/images/modulo/dns.png)](https://deer.dev/blog/cliente-servidor)
+
+1. Resolução de DNS: O navegador consulta o DNS (Sistema de Nomes de Domínio) para traduzir o nome do site (como exemplo.com) em um endereço IP, que é o identificador numérico do servidor onde o site está hospedado.
+2. Estabelecimento de conexão: Utilizando protocolos como TCP/IP, o navegador estabelece uma conexão com o servidor de destino.
+3. Envio da requisição HTTP: O navegador envia uma requisição HTTP (ou HTTPS) solicitando o recurso desejado (por exemplo, a página inicial).
+4. Resposta do servidor: O servidor processa a requisição e envia uma resposta HTTP contendo o recurso solicitado, como o código HTML da página.
+5. Renderização da página: O navegador interpreta a resposta recebida (HTML, CSS, JavaScript) e renderiza a página para o usuário.
+
+
+## IP e TCP/IP: A Base da Comunicação na Internet
+Para que dispositivos na internet se comuniquem, eles precisam falar a mesma "língua", e é aí que entram os protocolos Existem vários para cada caso especifico porem vamos so falar de alguns neste capítulo.
+
+🧭 **Endereço IP**
+
+O IP (Internet Protocol) é o responsável por identificar de forma única cada dispositivo conectado a uma rede. Existem dois tipos principais de endereços IP:
+
+IPv4: Utiliza endereços de 32 bits, como **192.168.0.1**. São os mais comuns atualmente, mas estão se esgotando.
+
+IPv6: Utiliza endereços de 128 bits, como **2001:0db8:85a3:0000:0000:8a2e:0370:7334**. Foi criado para suprir a demanda por mais endereços.
+
+🔗 **Protocolo TCP/IP**
+
+O TCP/IP é um conjunto de protocolos que permite a comunicação entre dispositivos em redes. Ele é composto por dois protocolos principais:
+
+TCP (Transmission Control Protocol): Garante a entrega confiável dos dados, controlando a ordem e verificando erros para que a informação chegue intacta.
+
+IP (Internet Protocol): Responsável pelo endereçamento e roteamento dos pacotes de dados, garantindo que eles cheguem ao destino correto.
+
+O modelo TCP/IP é dividido em quatro camadas, cada uma com sua responsabilidade específica:
+
+Camada de Aplicação: Protocolos de alto nível que as aplicações utilizam, como HTTP (para navegação web), FTP (para transferência de arquivos) e SMTP (para e-mail).
+
+Camada de Transporte: Garante a comunicação de ponta a ponta. Inclui protocolos como TCP e UDP.
+
+Camada de Internet: Responsável pelo endereçamento e roteamento dos pacotes na rede. Contém o protocolo IP e protocolos auxiliares como ICMP.
+
+Camada de Acesso à Rede: Define como os dados são transmitidos fisicamente através da rede, incluindo tecnologias como Ethernet e Wi-Fi.
+
+
+Ao rodar uma aplicação web localmente em sua máquina, você não precisa do endereço IP dela. Em vez disso, utilizamos um atalho prático: o alias localhost, combinado com uma porta TCP.
+
+A porta serve como um canal específico para a comunicação da sua aplicação. Por exemplo, ao usar localhost:3000, você está dizendo ao navegador para se comunicar com a aplicação que está "ouvindo" na porta 3000 do seu próprio computador.
+
+Normalmente, em desenvolvimento, utilizamos portas como 3000, 8000 ou outras acima de 1023. Isso acontece porque as portas de 0 a 1023 são consideradas "portas privilegiadas" ou "well-known ports" e são reservadas para serviços e sistemas padrão do computador. Por exemplo:
+
+Porta 80: Utilizada para requisições HTTP (web padrão).      
+Porta 443: Utilizada para requisições HTTPS (web segura).   
+Porta 25: Utilizada para envio de e-mails (SMTP).
+
+Utilizar portas mais altas ajuda a evitar conflitos com esses serviços essenciais e garante que sua aplicação local possa funcionar sem interrupções.
+
+
+## HTTP/HTTPS, Códigos de Status e Ciclo de Vida da Requisição
+
+**HTTP (Hypertext Transfer Protocol)**: É o protocolo fundamental utilizado para transferência de dados na web. Ele define como os clientes (navegadores) e servidores se comunicam.
+
+**HTTPS (HTTP Secure)**: É a versão segura do HTTP. Ele utiliza criptografia TLS/SSL para proteger os dados transmitidos, garantindo que as informações (como senhas e dados de cartão de crédito) sejam confidenciais e íntegras.
+
+**Códigos de Status HTTP**
+
+Ao enviar uma requisição HTTP, o servidor sempre retorna um código de status HTTP junto com a resposta. Esses códigos indicam o resultado da requisição. Alguns dos mais comuns são:
+
+* `200 OK`: A requisição foi bem-sucedida. O recurso solicitado foi encontrado e retornado.
+* `301 Moved Permanently`: O recurso solicitado foi movido permanentemente para uma nova URL.
+* `404 Not Found`: O servidor não conseguiu encontrar o recurso solicitado.
+* `500 Internal Server Error`: O servidor encontrou uma condição inesperada que o impediu de atender à requisição.
+
+Respostas Informativas (100 – 199)      
+Respostas bem-sucedidas (200 – 299)     
+Mensagens de redirecionamento (300 – 399)       
+Respostas de erro do cliente (400 – 499)        
+Respostas de erro do servidor (500 – 599)       
+
+[Códigos de status de respostas HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Statusm)
+## Ciclo de Vida de uma Requisição HTTP
+Entender o ciclo de vida de uma requisição HTTP é crucial:
+
+1. **Cliente envia requisição**: O navegador (ou outro cliente, como um aplicativo mobile) envia uma requisição HTTP ao servidor, especificando o método (GET, POST, etc.) e o recurso desejado.
+2. **Servidor processa requisição**: O servidor recebe a requisição, a interpreta, executa a lógica necessária (por exemplo, busca dados em um banco de dados) e prepara uma resposta.
+3. **Servidor envia resposta**: A resposta é enviada de volta ao cliente, contendo um código de status HTTP e, se aplicável, o recurso solicitado (como o conteúdo HTML da página).
+4. **Cliente processa resposta**: O navegador interpreta a resposta do servidor, renderiza o conteúdo (se for uma página web) e exibe para o usuário.
+
+É importante notar que, além dos métodos GET (para buscar dados) e POST (para enviar dados, frequentemente criando novos recursos), existem outros métodos HTTP como PUT (para atualizar ou substituir um recurso), DELETE (para remover um recurso), PATCH (para aplicar modificações parciais a um recurso), HEAD e OPTIONS. Cada um tem uma finalidade específica na interação cliente-servido
+
+Normalmente vamos utilizar ferramentas para fazer essas Requisições como **Postman** para testar APIs.
+
+## Exemplo de Resolução de DNS
+
+![Exemplo de Resolução de DNS](/static/images/modulo/dns-ex.png)
+[Créditos](https://medium.com/@habbema/domain-name-system-b35994260c03)
+
+Etapas da resolução de DNS (detalhada):
+
+- O usuário digita www.exemplo.com no navegador.      
+- O navegador verifica seu cache local de DNS e o cache do sistema operacional.       
+- Se não encontrar, o navegador consulta o servidor DNS recursivo configurado (geralmente fornecido pelo seu provedor de internet).       
+- Se o servidor DNS recursivo não souber o IP, ele consulta servidores DNS hierarquicamente superiores (servidores raiz, TLD - Top Level Domain, autoritativo) até encontrar o endereço IP correspondente ao domínio.     
+- O endereço IP é retornado ao navegador, que então estabelece a conexão com o servidor de destino utilizando o IP.       
+
+TTL (Time To Live): Tempo de Vida. É um valor numérico que define por quanto tempo um servidor DNS ou um navegador pode armazenar em cache um registro DNS antes de precisar solicitar uma versão atualizada. Um TTL mais baixo significa atualizações mais rápidas, mas mais consultas.
+Registros DNS (DNS Records): São instruções armazenadas em servidores DNS que fornecem informações sobre um domínio, indicando como o DNS deve responder a consultas sobre ele. Existem vários tipos, cada um com uma finalidade específica.
+
+Formato RR (Resource Record): É a estrutura básica de um registro DNS. Cada registro segue um formato padrão de quatro campos principais:
+
+1. Nome: O nome do domínio ou subdomínio ao qual o registro se refere (ex: www.exemplo.com).
+2. Valor: Os dados associados ao nome, como um endereço IP, outro nome de domínio, ou um servidor de e-mail.
+3. Tipo: O tipo de registro DNS (ex: A, NS, CNAME, MX, TXT).
+4. Sobrevida (TTL): O tempo, em segundos, que o registro pode ser armazenado em cache.
+
+Tipo A (Address Record): O tipo de registro DNS mais fundamental. Ele mapeia um nome de domínio (ex: exemplo.com) diretamente para um endereço IPv4 (ex: 192.0.2.1).
+
+Tipo NS (Name Server Record): Identifica os servidores de nomes autoritativos para um domínio. Esses servidores são responsáveis por fornecer as informações DNS para aquele domínio.
+
+Tipo CNAME (Canonical Name Record): Cria um alias para um nome de domínio. Ele aponta um subdomínio ou domínio para outro nome de domínio canônico (ex: blog.exemplo.com pode ser um CNAME para meu-servidor-de-blogs.com).
+
+Tipo MX (Mail Exchange Record): Especifica os servidores de e-mail responsáveis por receber mensagens para um determinado domínio e sua prioridade.
+
+Tipo TXT (Text Record): Permite que os administradores de domínio armazenem texto arbitrário em um registro DNS. É frequentemente utilizado para verificação de domínio, prevenção de spam (como registros SPF e DKIM) e outras informações gerais.
+
+
+## Ferramentas Essenciais: Navegador, VSCode e Terminal
+Para começar a desenvolver, algumas ferramentas são indispensáveis no dia a dia de um programador full stack:
+
+🧭 **Navegador**        
+Os navegadores modernos, como Google Chrome, Mozilla Firefox e Microsoft Edge, não são apenas para navegar; eles possuem ferramentas de desenvolvimento integradas (geralmente acessíveis com F12 ou "Inspecionar") que permitem:
+
+Inspecionar e modificar o DOM (estrutura HTML da página).
+Depurar JavaScript para encontrar e corrigir erros.
+Monitorar requisições de rede (HTTP/HTTPS) para ver o que está sendo enviado e recebido.
+Analisar a performance da página e otimizá-la.
+
+
+🖥️ **Visual Studio Code (VSCode)**      
+O VSCode é um editor de código-fonte leve e poderoso, desenvolvido pela Microsoft, que se tornou um padrão na comunidade. Ele oferece suporte a:
+
+Realce de sintaxe para diversas linguagens de programação.(colorir)     
+Extensões para frameworks e bibliotecas populares (React, Angular, Node.js, etc.).      
+Integração nativa com sistemas de controle de versão, como Git.     
+Terminal integrado, permitindo executar comandos sem sair do editor.        
+
+> Observação: podemos utilizar maquinas virtuais gratuitas ja com essas ferramentas instaladas como Github Codespace        
+
+### Terminal
+O terminal (ou linha de comando, ou prompt de comando) é uma interface de texto que permite interagir diretamente com o sistema operacional. É uma ferramenta fundamental para desenvolvedores, utilizada para:
+
+Navegar entre diretórios e manipular arquivos.
+Executar scripts e comandos de build.
+Instalar e gerenciar pacotes de software e bibliotecas.
+Controlar versões de código com o Git.
+Comandos básicos para começar:
+
+cd: Navegar entre diretórios (ex: cd meu-projeto).
+ls (Linux/macOS) ou dir (Windows): Listar arquivos e pastas no diretório atual.
+mkdir: Criar novos diretórios (ex: mkdir nova-pasta).
+git: Iniciar e utilizar o sistema de controle de versão Git.
+
+
+### Ferramentas Complementares para Análise e Teste
+Além das ferramentas essenciais acima, outras podem auxiliar na análise e teste de requisições e redes:
+
+Postman ou Hoppscotch: Ferramentas poderosas para testar e inspecionar APIs (Application Programming Interfaces). Elas permitem enviar requisições HTTP personalizadas e visualizar as respostas do servidor.
+
+Fiddler ou Wireshark: Ferramentas avançadas para análise de tráfego de rede. São utilizadas para inspecionar pacotes de dados que trafegam pela rede, sendo úteis para depurar problemas de conectividade e segurança.
+
+
+## Glossário
+Para consolidar o aprendizado, aqui estão os termos chave abordados neste capítulo:
+
+**IP**: Identificador numérico único de um dispositivo em uma rede.
+ 
+**DNS**: Sistema de Nomes de Domínio, converte nomes de domínio legíveis por humanos em endereços IP.
+   
+**HTTP/HTTPS**: Protocolos de comunicação cliente-servidor na web (HTTP é não seguro, HTTPS é seguro com criptografia).
+ 
+**TCP/IP**: Conjunto fundamental de protocolos que formam a base da comunicação na internet.
+
+**Porta**: Canal lógico utilizado por protocolos para estabelecer comunicação em um dispositivo.
+
+
+ 📚 Referências:       
+>  [O que é DNS? - Locaweb](https://www.locaweb.com.br/blog/temas/codigo-aberto/dns/)        
+>  [Ferramentas de desenvolvimento do navegador - MDN](https://developer.mozilla.org/pt-BR/docs/Tools)      
+>  [Guia de comandos do terminal - MDN](https://developer.mozilla.org/pt-BR/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line)      
+>  [Visual Studio Code - Documentação](https://code.visualstudio.com/docs)      
+>  [O que é TCP/IP - Hostinger](https://www.hostinger.com.br/tutoriais/tcp-ip)      
+>  [Como funciona a Web - MDN](https://developer.mozilla.org/pt-BR/docs/Learn/Getting_started_with_the_web/How_the_Web_works)
