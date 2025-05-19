@@ -1,0 +1,86 @@
+---
+title: '22 - Arquitetura de software'
+date: '2024-05-18'
+lastmod: '2024-05-18'
+tags: ['software']
+draft: true
+summary: 'SOLID, MVC e Clean Code'
+images: ['/static/images/banners/full-stack.png']
+authors: ['default']
+---
+
+# Arquitetura de software
+- SOLID, MVC e Clean Code
+- Monólito vs Microsserviços
+# Monolítico
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/ee68cbb1-7c61-4242-8da6-a1e035efa295/Untitled.png)
+
+# MicroServiço
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/9905c131-d735-45a8-a813-12540d53c8ad/Untitled.png)
+
+CQRS **significa Segregação de Responsabilidade de Comando e Consulta**
+
+# BFF
+
+Back-end For Front-end;
+
+E uma api(Rest, Rest full, WSTL, RFS);
+
+Camada que vai se comunicar com n* serviços;
+
+Coloca formatação de informação; Testes; 
+
+Se comunica por Rest Full (factory ou parse), chamada de API;endPoints;
+
+Ele consumo as APIs de serviço e devolve os dados ja tratados
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/aa0d4e23-2652-442e-85d5-a324deefb01e/Untitled.png)
+
+# DDD
+
+**Domain-Driven Design(DDD)** → Introdução feita em 2003 por Eric Evans; Facil de compreender; Dificil de Aplicar; Um guia para criar um modelagem com base no negócio.
+
+DDD → Lite (não e falado em literaturas).
+
+Context Map definido e coeso → Contexto bem definido e mapeado.
+
+DDD não e quebrar a arquitetura em camadas;
+
+[Padrões de Projeto / Design patterns](https://refactoring.guru/pt-br/design-patterns)
+
+# DDD - Score card
+
+0-5
+
+**Erros comuns** → 
+
+Permitir que o meio de persistencia influence diretamente nas entidades
+
+Não se envolver os donos do negoicos
+
+Ignorar a linguagem comun
+
+Não ter conhecimento dos limites de context
+
+Entidades Anemicas
+
+Deixar toda a logica por conta do dominio
+
+Deixar de focar o negocio e olhar para tecnologias
+
+
+# SOLID
+
+S → SINGLE RESPONSIBILITY = Componentes e classes so podem ter uma responsabilidade
+
+O → Open Close = Aberto pare ser usado mas não para mudanças
+
+L → Liskov Substitution += Herança-Polimorfismo
+
+I → Interface Segregation= So pode ser usado oque precisa ser usado, os depender de coisas que não vão usar.
+
+D → Dependency inversion = depender de abstranção não de implementaçãocan
+
+https://www.youtube.com/watch?v=Q2QdkiX6p_Y

@@ -37,10 +37,5 @@ export const SITE_METADATA = {
       // path to load documents to search
       searchDocumentsPath: `${process.env.BASE_PATH || ''}/search.json`,
     },
-  },
-  support: {
-    buyMeACoffee: 'https://www.buymeacoffee.com/leohuynh.dev',
-    paypal: 'https://paypal.me/hta218?country.x=VN&locale.x=en_US',
-    kofi: 'https://ko-fi.com/hta218',
-  },
+  }
 }

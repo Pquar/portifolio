@@ -1,0 +1,257 @@
+---
+title: '7 - Git & Github'
+date: '2024-05-18'
+lastmod: '2024-05-18'
+tags: ['git', 'github', 'version', 'code-control']
+summary: 'Tudo sobre Github'
+images: ['/static/images/banners/full-stack.png']
+authors: ['default']
+---
+
+# Padrão de Commit
+
+<figure>
+<img src="/static/images/modulo/7-git.png" alt="Modelo client-server" className="max-w-full px-12"/>
+<figcaption className='text-center'><a href="#"> Fonte:  Imagem Retirada da Internet</a></figcaption>
+</figure>
+
+exemplo:
+```bash
+git commit -m "docs: function implementations" 
+```
+# Versionamento de Código
+
+Git Atua como sistema de versionamento de código, podendo ter um arquivo vários versões diferentes ao longo do tempo e o GIT também Controlando as versões de um arquivo ao longo do tempo.
+
+1. Registra o histórico de atualizações de um arquivo;
+2. Gerencia quais Foram as alterações, data, autor, hora..;
+3. Organização, controle e segurança;
+
+# O que e o GIT
+
+Sistema de controle de Versão Distribuido, Gratuito e Open Source.
+
+Pois a funcionalidade de Ramificações(Branching) e Fusões (Merging) eficientes;
+
+## Tipos de Sistemas de Controle de Versão
+
+“**Version Control Systems**” sistema de controle de Versão  (VCS)
+
+- VCS Centralizados(CVCS) Ex: CVS, Subversion
+    
+    
+<figure>
+<img src="/static/images/modulo/git-version.png" alt="Modelo client-server" className="max-w-full px-12"/>
+<figcaption className='text-center'><a href="#"> Fonte: Imagem Retirada da Internet</a></figcaption>
+</figure>
+
+    
+- VCS Distribuído (DVCS): Ex: Git, Mercurial.
+    
+  
+<figure>
+<img src="/static/images/modulo/git-local.png" alt="Modelo client-server" className="max-w-full px-12"/>
+<figcaption className='text-center'><a href="#"> Fonte: Imagem Retirada da Internet</a></figcaption>
+</figure>
+
+    
+
+# Comandos
+
+git pull: puxa as informações do repositório remoto para o local
+
+git push: Envia as suas altereções para o repositório remoto.
+
+### 
+
+# **Instalando e configurando**
+
+Windows: Site para instalar o git, pode deixar tudo padrão e dar em next.
+
+linux: no site tem como baixar pelo terminal verificar e seguir.
+
+[Git](https://git-scm.com/)
+
+Pelo terminal da para **verificar se foi instalado** com sucesso com o comando: 
+
+`git -v`
+
+Para ver os comando de configuração
+
+`git config`
+
+Para configurar o git depois de instalamos precisamos **configurar o e-mail e nome**, vamos configurar isso globalmente para todos “repositores que iremos mexer”:
+
+`git config --global user.name "seunome"`
+
+`git config --global user.email "seunome@gmail.com"`
+
+### **Configurar o nome da Branch padrão:(** OPICIONAL **)**
+
+`git config --global init.defaultBranch main`
+
+### **Verificar todas as alterações globais**
+
+`git config --global --list`
+
+### Configurando Token ou SSH
+
+Para usar o Github precisamos configurar token ou chave SSH
+
+**Token** com o Github gere-o e salve no computador atraves do comando: (Developer Settings)
+
+`git config —-global credential.helper store`
+
+verificar se funcionou:
+
+`git config —-global credential.helper`
+
+`git config —-global --show-origin credential.helper`
+
+`cat .gitconfig`
+
+`cat .git-credentials`
+
+**SSH(**recomendado**):** (config >SSH)
+
+verificar se temos SSH:
+
+`ls -a ~/.ssh`
+
+Cria uma nova chave
+
+`ssh-keygen -t ed25519 -C "emaildogithub@gmail.com"` 
+
+so da Enter e colocar um senha!
+
+Adicionando a chave SSH Automatimente:
+
+`eval “$(shh-agent -s)”`
+
+`ssh-add ~/.ssh/id_ed25519`
+
+vai no Github e crie uma Chave SSH de Authentication key:
+
+Verficar diretorio:
+
+`cd ~/.shh`
+
+Lista dos diretorios:
+
+`ls`
+
+Pegue a chave com:
+
+`cat id_ed25519.pub`
+
+Copie o resultado na nova chave e passe para o Github.
+
+# **Repositórios do Git**
+
+2 maneiras de criar um repositório, clonando de um lugar remoto ou criando no localmente,
+
+Localmente:
+
+`git init`
+
+- Adiconar repositorio locamente para um remoto
+    
+    `git remote add origin <nome da url ou ssh do repositorio>`
+    
+
+Remotamente:
+
+`git clone <nome da url ou ssh do repositorio>`
+
+# **Gravando mudanças no repositório**
+
+`git restore <nome arquivo>`
+
+Editar o a ultima mensagem do commit
+
+`git commit —amend`
+
+`esc :`  para sair!
+
+Pega os arquivos do commit e coloca como estado de preparação.
+
+`git reset —soft <hash do commit>`
+
+Pega os arquivos anteriores e adicionam na area de trabalho.
+
+`git reset —mixed <hash do commit>`
+
+Retorna nos commit
+
+`git reset —hard`
+
+`git restore —staged <arquivos>`
+
+# **Git diff e commit**
+
+# **Git log e restore**
+
+# **Repositórios remotos**
+
+# **Git branch**
+
+# **Merging branches**
+
+# Github
+
+Github e diferente de git, github e onde armazenamos o nossos arquivos, git e o controle de versionamento.
+
+1. Primeiro Criar contra em: https://github.com/
+2. Ativar a ativação em 2FA > setting > 
+
+Readme
+
+[readme.so/pt/editor](http://readme.so/pt/editor)
+
+Abrir o editor de codigo no github .
+
+### Comentários Commits
+
+`perf:` → performance
+
+`refactor:` → Mudanças no código que não alteram a funcionalidade
+
+`docs:` → documentação, README, comentários no código
+
+`style:` → estilos
+
+`chore:` → 
+
+`test:` → Adicionar ou modificar testes
+
+`fix:` → Corrigir um bug ou problema.
+
+`feat:` → adicionando funcionalidade.
+
+github desktop
+
+git fluence
+
+My octocat
+
+Github pages
+
+MARK DOWN
+
+CONVENTIONAL COMMITS
+
+https://github.com/conventional-commits/conventionalcommits.org 
+
+github etiquetas
+
+https://docs.github.com/pt/issues/using-labels-and-milestones-to-track-work/managing-labels 
+
+licenças
+
+https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository 
+
+# Referencias
+
+[Git - Book](https://git-scm.com/book/pt-br/v2)
+
+https://community.chocolatey.org/packages/git

@@ -1,0 +1,510 @@
+---
+title: 'Unity Games'
+date: '2024-05-18'
+lastmod: '2024-05-18'
+tags: ['unity', 'games']
+summary: 'Pequena pratica com a unity'
+images: ['/static/images/banners/git-grot.jpg']
+authors: ['default']
+---
+
+# Unity
+Visão geral
+
+O que é Unity?`
+
+**Lógica de programação (Resumo)**
+**Variáveis** → São espaços na memória do computador destinado a um dado e pode ser alterado durante a execução do algoritmos, alguns tipos podem ser: inteiros; decimais; Caracteres; Lógico; GameObject (gameObject); Rigidbody (componenete Rigidbody de um Gameobject);
+
+**Classes →** Classe define o estado e o comportamento de um objeto, com o uso de atributos e métodos 
+
+**Métodos →** São funções de um bloco de código associado a um objeto, determinando o comportamento do objeto.
+
+**Objetos →** São instância de um classe, exemplo: um classe pode ter vários objetos derivados de um classe.(Classe Gato, objeto Gato-Amarelo)
+
+**Visão geral gamedev**
+
+**O que são engines?**
+
+**Lógica de programação**
+
+com C#,
+
+### **variaveis**
+
+int →
+
+float → 
+
+GameObject → player
+
+Rigidbody → chao
+
+### Condicionais
+
+Estrutura condicionais
+
+| P > Q | p e maior q |
+| --- | --- |
+| P> = Q | P e maior ou igual a Q |
+| P = Q | P e igual a Q |
+
+```csharp
+//so funcionam dentro de metodos
+public float vida;
+if(vida <=0){
+	Debug.Log("condicoo verdadeira")
+}else{
+	Debug.Log("condicoo falsa")
+}
+```
+
+```csharp
+switch(forca){
+	case 1:
+			Debug.Log("1")
+	break;
+	case 2:
+			Debug.Log("2")
+	break;
+	case 3:
+			Debug.Log("3")
+	break;
+	case 4:
+			Debug.Log("4")
+	break;
+	default:
+		Debug.Log("valor não atribuido ou diferente de 1,2,3,4")
+}
+```
+
+### Laços de repetição
+
+ctrl+k+c = comenta a linha de codigo
+
+```csharp
+for(int i=0; i <10; i++){
+	Debug.log("executou"+i)
+}
+//----------
+int contador;
+for(contador=0; contador<5; contador++){
+	Debug.Log(contador)
+}
+Debug.Log(contador)
+```
+
+```csharp
+int vida = 5;
+while(vida<10){
+	vida++;
+}
+	Debug.Log(vida)
+
+int life = 5;
+do{
+	Debug.Log("executa pelo menos uma vez")
+	life++;
+}while(life<10){
+
+}
+	Debug.Log(life)	
+
+```
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test : MonoBehaviour
+{
+    public string[] nameNPC = new string[3];
+
+    public List<string> enemyList = new List<string>();
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        nameNPC[0] = "aba";
+        nameNPC[2] = "bda";
+        nameNPC[1] = "cad";
+
+        enemyList.Add("dam");
+        enemyList.Add("fjads");
+        enemyList.Add("fsdad");
+
+        foreach(string elemento in nameNPC)
+        {
+            Debug.Log(elemento);
+        }
+        foreach (string item in enemyList)
+        {
+            Debug.Log(item);
+        }
+				
+				for (int i = 0; i < enemyList.Count; i++)
+        {
+            Debug.Log(enemyList[i]);
+        }
+        for (int j = 0; j < nameNPC.Length; j++)
+        {
+            Debug.Log(nameNPC[j]);
+        }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+```
+
+### Arrays
+
+```csharp
+public string[] enemy = new string[]{"Orc","Elf","Dwarf"};
+public GameObject[] enemys;
+
+Debug.Log(enemy[1]);
+
+```
+
+### Lista
+
+```csharp
+public List<string> typeEnemys = new List<string>();
+
+typeEnemys.Add("Orc")
+typeEnemys.Add("elf")
+typeEnemys.Add("Dwarf")
+
+//limpa a lista
+typeEnemys.Clear();
+
+//retorna verdadeiro ou falso
+typeEnemys.Contains("Orc")
+if(typeEnemys.Contains("Orc")){
+		Debug.Log("existe um Orc")
+}
+//insere um novo elemento em um posição espesifica.
+typeEnemys.Insert(0,"Wolf")
+//transformar em Array
+typeEnemys.ToArray();
+```
+
+### Metodos
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Test : MonoBehaviour
+{
+    //Quando nao e informado o tipo private, public se torna privado o metodo e a variavel
+    public string name;
+    int life;
+    int speed;
+    int powerUpper;
+
+    private void Start()
+    {
+        Attack();
+    }
+
+    public void Attack()
+    {
+        Debug.Log("hello world");
+        Destroy();
+    }
+    private string Destroy()
+    {
+        return name = "abc";
+    }
+    protected void Cat()
+    {
+
+    }
+}
+```
+
+### Classes e Construtores
+
+construtor ⇒ construir um objeto assim que e criado.
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    int life;
+    int speed;
+
+    void Attack()
+    {
+
+    }
+    void jump()
+    {
+
+    }
+
+    public class Weapon
+    {
+       public string name;
+       private string type;
+
+        public Weapon(string weaponName, string weaponType)
+        {
+            name = weaponName;
+            type = weaponType;
+        }
+
+        public string getType()
+        {
+            return type;
+        }
+        public string setType(string newType)
+        {
+            return type=newType;
+        }
+    }
+ 
+        void Start()
+        {
+        Weapon espada = new Weapon("espada de ferro","sword");
+        Debug.Log(espada.setType("ferro"));
+        Debug.Log(espada.getType());
+        }
+}
+```
+
+### Métodos e variáveis estáticas
+
+variaveis statica compartilha(valor) em toda instancia da classe
+
+```csharp
+//variavel static compartilha(valor) em toda instancia da classe
+    public static int enemyCount;
+
+    public void Enemys()
+    {
+         enemyCount++;
+    }
+```
+
+```csharp
+Enemy enemy1 = new Enemy();
+        Enemy enemy2 = new Enemy();
+        Enemy enemy3 = new Enemy();
+
+        Debug.Log(Enemy.enemyCount);
+```
+
+Instancia uma classe estatica
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Inimigos : MonoBehaviour
+{
+    public int vida;
+
+    public static Inimigos meuInimigo;
+
+    public void Start()
+    {
+        //this = a esta propria classe
+        meuInimigo = this;
+    }
+}
+```
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameControl : MonoBehaviour
+{
+    public int score;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+             Debug.Log(Inimigos.meuInimigo.vida);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+```
+
+Getcomponets
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NewBehaviourScript : MonoBehaviour
+{
+    public Rigidbody rigb;
+    public BoxCollider box;
+    public Player player;
+    // Start is called before the first frame update
+    void Start()
+    {
+        //acesso o componnent do script
+       rigb = GetComponent<Rigidbody>();
+        Debug.Log(rigb);
+        box = GetComponent<BoxCollider>();
+        //acessa os atribuos e metodos publicos
+        player = GetComponent<Player>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+```
+
+# Vector
+
+vector = estrutura para representar x,y ou x,y,z resuminindo → posição 2 eixos ou 3 eixos.
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AulaVector : MonoBehaviour
+{
+    //usado em jogo 2d
+    public Vector2 pos;
+    //usado em jogo 3d
+    public Vector3 poz;
+    // Start is called before the first frame update
+    void Start()
+    {   
+        //x,y,z
+        poz = new Vector3(1f,1f,1f);
+        //individualmente
+        poz.z = 2f;
+        //acessando o componente transform e alterando a posição
+        transform.position = poz;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+```
+
+# **Instantiate e destroy**
+
+instantiate → Constrói objeto na cena
+
+Destroy → Destroi objetos na cena.
+
+- prefab → Reutilizar objetos.
+    1. **Prefab original**: É o modelo que você cria no Unity. Ele contém todos os componentes, scripts e configurações do objeto.
+    2. **Instância do Prefab**: É uma cópia do Prefab original que você coloca no cenário do jogo. Você pode ter várias instâncias do mesmo Prefab em diferentes lugares.
+    3. **Atualização em massa**: Se você fizer alterações no Prefab original, todas as instâncias desse Prefab serão atualizadas automaticamente.
+    4. **Hierarquia de Prefabs**: Você pode criar hierarquias de Prefabs, onde um Prefab pode conter outros Prefabs. Isso permite criar estruturas complexas que podem ser reutilizadas e organizadas de maneira eficiente.
+    5. **Variáveis expostas**: Você pode expor variáveis e propriedades no Prefab para permitir ajustes específicos em cada instância.
+    6. **Desconexão**: As instâncias do Prefab podem ser desconectadas do Prefab original, permitindo ajustes individuais sem afetar o Prefab original.
+    7. **Prefab Variants**: São variações de um Prefab original que compartilham a mesma estrutura, mas podem ter diferenças específicas. Isso é útil para criar objetos similares com pequenas variações.
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class instatiateDestroy : MonoBehaviour
+{
+    public GameObject cubo;
+    // Start is called before the first frame update
+    void Start()
+    {
+       GameObject copiaCube = Instantiate(cubo, transform.position, transform.rotation);
+      
+        Destroy(copiaCube.gameObject,5f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+```
+
+Translation e toration
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class mover : MonoBehaviour
+{
+    public float speed;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //transform.Translate(new Vector3(-1f,0f,0f)*Time.deltaTime);
+        transform.Translate(Vector3.left * Time.deltaTime*speed);
+        transform.Translate(-Vector3.right * Time.deltaTime * speed);
+        transform.Rotate(0f,0f,10f, Space.Self);
+        transform.Rotate(0f,0f,10f, Space.Wold);
+
+    }
+}
+```
+
+# Terrenos
+
+importa
+
+projeto 3d
+
+window>package manage = baixar Terrain Tools > baixar os assets para o tarrain
+
+windown>rendering>lighting> desmarcar auto generate - lighting
+
+para criar um terro va em cria um novo objeto 3d e terrain.
+
+Textura
+
+exemplos: 
+
+Grass texture → importar para dentro do projeto → 
+
+textura type = default
+
+textura shape = 2d
+
+# Fisica
+
+is trigger se a colisão ⇒ “objetos ativa invisivel”

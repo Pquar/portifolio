@@ -1,5 +1,5 @@
 ---
-title: 'Introdução ao Desenvolvimento Web'
+title: '1 - Introdução ao Desenvolvimento Web'
 date: '2024-05-15'
 lastmod: '2024-05-15'
 tags: ['DNS', 'client', 'web']
@@ -10,7 +10,8 @@ authors: ['default']
 
 # Introdução ao Desenvolvimento Web
 
-[![Modelo client-server](/static/images/modulo/client-server.png)](https://deer.dev/blog/cliente-servidor)
+<img src="/static/images/modulo/client-server.png" alt="Modelo client-server" className='max-w-full px-12'/>
+
 
 Já se perguntou como o seu navegador consegue exibir aquela página de notícias em questão de segundos, ou como você consegue fazer uma compra online com tanta facilidade? Por trás de cada interação na internet, existe um sistema complexo a Web. Ela opera em um modelo conhecido como cliente-servidor. O cliente, que geralmente é o seu navegador, envia requisições para o servidor, que processa essas solicitações e retorna os recursos desejados, como páginas HTML, imagens e scripts. No universo do **Desenvolvimento Full Stack**, você aprenderá a construir tanto a parte do cliente (frontend) quanto a do servidor (backend), orquestrando essa comunicação
 
@@ -18,7 +19,7 @@ Já se perguntou como o seu navegador consegue exibir aquela página de notícia
 
 Para que uma página web chegue ao seu navegador, uma série de etapas cruciais acontece em milissegundos. Veja o fluxo de uma requisição web:
 
-[![Modelo dns](/static/images/modulo/dns.png)](https://deer.dev/blog/cliente-servidor)
+<img src="/static/images/modulo/dns.png" alt="Modelo dns" className='max-w-full px-12'/>
 
 1. Resolução de DNS: O navegador consulta o DNS (Sistema de Nomes de Domínio) para traduzir o nome do site (como exemplo.com) em um endereço IP, que é o identificador numérico do servidor onde o site está hospedado.
 2. Estabelecimento de conexão: Utilizando protocolos como TCP/IP, o navegador estabelece uma conexão com o servidor de destino.
@@ -91,7 +92,8 @@ Mensagens de redirecionamento (300 – 399)
 Respostas de erro do cliente (400 – 499)        
 Respostas de erro do servidor (500 – 599)       
 
-[Códigos de status de respostas HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Statusm)
+[Códigos de status de respostas HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status)
+
 ## Ciclo de Vida de uma Requisição HTTP
 Entender o ciclo de vida de uma requisição HTTP é crucial:
 
@@ -106,8 +108,10 @@ Normalmente vamos utilizar ferramentas para fazer essas Requisições como **Pos
 
 ## Exemplo de Resolução de DNS
 
-![Exemplo de Resolução de DNS](/static/images/modulo/dns-ex.png)
-[Créditos](https://medium.com/@habbema/domain-name-system-b35994260c03)
+<figure>
+<img src="/static/images/modulo/dns-ex.png" alt="Modelo client-server" className="max-w-full px-12"/>
+<figcaption className='text-center'><a href="https://medium.com/@habbema/domain-name-system-b35994260c03"> Fonte: Hugo Habbema</a></figcaption>
+</figure>
 
 Etapas da resolução de DNS (detalhada):
 
@@ -136,51 +140,6 @@ Tipo CNAME (Canonical Name Record): Cria um alias para um nome de domínio. Ele 
 Tipo MX (Mail Exchange Record): Especifica os servidores de e-mail responsáveis por receber mensagens para um determinado domínio e sua prioridade.
 
 Tipo TXT (Text Record): Permite que os administradores de domínio armazenem texto arbitrário em um registro DNS. É frequentemente utilizado para verificação de domínio, prevenção de spam (como registros SPF e DKIM) e outras informações gerais.
-
-
-## Ferramentas Essenciais: Navegador, VSCode e Terminal
-Para começar a desenvolver, algumas ferramentas são indispensáveis no dia a dia de um programador full stack:
-
-🧭 **Navegador**        
-Os navegadores modernos, como Google Chrome, Mozilla Firefox e Microsoft Edge, não são apenas para navegar; eles possuem ferramentas de desenvolvimento integradas (geralmente acessíveis com F12 ou "Inspecionar") que permitem:
-
-Inspecionar e modificar o DOM (estrutura HTML da página).
-Depurar JavaScript para encontrar e corrigir erros.
-Monitorar requisições de rede (HTTP/HTTPS) para ver o que está sendo enviado e recebido.
-Analisar a performance da página e otimizá-la.
-
-
-🖥️ **Visual Studio Code (VSCode)**      
-O VSCode é um editor de código-fonte leve e poderoso, desenvolvido pela Microsoft, que se tornou um padrão na comunidade. Ele oferece suporte a:
-
-Realce de sintaxe para diversas linguagens de programação.(colorir)     
-Extensões para frameworks e bibliotecas populares (React, Angular, Node.js, etc.).      
-Integração nativa com sistemas de controle de versão, como Git.     
-Terminal integrado, permitindo executar comandos sem sair do editor.        
-
-> Observação: podemos utilizar maquinas virtuais gratuitas ja com essas ferramentas instaladas como Github Codespace        
-
-### Terminal
-O terminal (ou linha de comando, ou prompt de comando) é uma interface de texto que permite interagir diretamente com o sistema operacional. É uma ferramenta fundamental para desenvolvedores, utilizada para:
-
-Navegar entre diretórios e manipular arquivos.
-Executar scripts e comandos de build.
-Instalar e gerenciar pacotes de software e bibliotecas.
-Controlar versões de código com o Git.
-Comandos básicos para começar:
-
-cd: Navegar entre diretórios (ex: cd meu-projeto).
-ls (Linux/macOS) ou dir (Windows): Listar arquivos e pastas no diretório atual.
-mkdir: Criar novos diretórios (ex: mkdir nova-pasta).
-git: Iniciar e utilizar o sistema de controle de versão Git.
-
-
-### Ferramentas Complementares para Análise e Teste
-Além das ferramentas essenciais acima, outras podem auxiliar na análise e teste de requisições e redes:
-
-Postman ou Hoppscotch: Ferramentas poderosas para testar e inspecionar APIs (Application Programming Interfaces). Elas permitem enviar requisições HTTP personalizadas e visualizar as respostas do servidor.
-
-Fiddler ou Wireshark: Ferramentas avançadas para análise de tráfego de rede. São utilizadas para inspecionar pacotes de dados que trafegam pela rede, sendo úteis para depurar problemas de conectividade e segurança.
 
 
 ## Glossário

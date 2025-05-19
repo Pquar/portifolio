@@ -2,13 +2,25 @@
 title: "Java"
 date: "2024-05-14"
 lastmod: "2024-05-14"
-tags: ["shopify", "shopify-unite", "migration", "file-api", "graphql", "nodejs"]
+tags: ["Java", "POO", "Classes"]
 summary: "draft"
-images: ["/static/images/banners/praveen-thirumurugan-KPAQpJYzH0Y-unsplash.jpg"]
+images: ["/static/images/banners/git-grot.jpg"]
 authors: ["default"]
 ---
 
 ## Conteúdo do Módulo
+
+Paradigma de programão baseado no conceito de “objetos”.
+
+> Trata-se de contextualizar objetos do mundo real para programação ex: Aluno, Veiculo, Transferência…
+> 
+
+# Pilares de POO
+
+1. **Encapsulamento:** Nem tudo precisa estar visível
+2. **Herança:** Características comuns podem ser elevados e compartilhados através de um hierarquia de objetos, (generalização).
+3. **Abstração:** Logica de um ou vários comportamento em um objeto: exemplo: o Veiculo **acelera.**
+4. **Polimorfismo:** Inúmeras maneiras de se realizar uma mesma ação.
 
 ### Hello, World! com Java
 
@@ -17,13 +29,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
 
-        byte variavelByte = 120; // até 127
+        byte variávelByte = 120; // até 127
         // short -32768 a 32767
         // char 0 a 65535
         // int -2 bilhões a +2 bilhões
         // long -9 trilhões a 9 trilhões
 
-        System.out.println(variavelByte);
+        System.out.println(variávelByte);
     }
 }
 ```
@@ -51,10 +63,10 @@ public class Cao {
         return "Bolinha";
     }
 
-    public String interagir(String acao) {
-        if (acao.equals("carinho")) {
+    public String interagir(String action) {
+        if (action.equals("carinho")) {
             this.estadoEspirito = "feliz";
-        } else if (acao.equals("nao tem comida")) {
+        } else if (action.equals("nao tem comida")) {
             this.estadoEspirito = "triste";
         } else {
             this.estadoEspirito = "neutro";
@@ -104,8 +116,8 @@ public class Cao {
         return "Bolinha";
     }
 
-    public String interagir(String acao) {
-        switch (acao) {
+    public String interagir(String action) {
+        switch (action) {
             case "carinho":
                 this.estadoEspirito = "feliz";
                 break;
@@ -316,7 +328,7 @@ public class main{
 			protected String estadoEspirito;
 			
 
-		 //metodos	
+		 //methods	
 			protected String getNome(){
 					return nome;
 			}
@@ -341,7 +353,7 @@ public class main{
 			
 			private int tamanhoRabo;
 			
-			//Contrustor adicionados 
+			//Construtor adicionados 
 			Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
 					this.nome= nome;
 					this.cor= cor;
@@ -351,17 +363,17 @@ public class main{
 					this.estadoEspirito = estadoEspirito;
 			numeroCachorros ++;
 		}
-    // Contrutor padrao
+    // Construtor padrão
 			public Cao(){}
 
-		 //metodos	
+		 //methods	
 		
 
-			public int getnumeroCachorros(){
+			public int getNumeroCachorros(){
 					return numeroCachorros;
 			}
 
-			public void setnumeroCachorros(int numeroCachorros){
+			public void setNumeroCachorros(int numeroCachorros){
 					this.numeroCachorros= numeroCachorros;
 			}
 
@@ -380,7 +392,7 @@ public class main{
 			static int numeroGatos;
 
 			
-			//Contrustor adicionados 
+			//Construtor adicionados 
 			Gato(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
 					this.nome= nome;
 					this.cor= cor;
@@ -391,15 +403,15 @@ public class main{
 			numeroGatos ++;
 		}
 
-		 //metodos
+		 //methods
 		public void comer(){
 		}
 
-			public int getnumeroGatos(){
+			public int getNumeroGatos(){
 					return numeroGatos;
 			}
 
-			public void setnumeroGatos(int numeroGatos){
+			public void setNumeroGatos(int numeroGatos){
 					this.numeroGatos= numeroGatos;
 			}
 
@@ -412,33 +424,33 @@ public class main{
 ```java
 package Animais;
 public class main{
-	public class Passaro extends Animal{
+	public class Bird extends Animal{
 
 			//Atributos
-			static int numeroPassaro;
+			static int numeroBird;
 			
 			
-			//Contrustor adicionados 
-			Passaro(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
+			//Construtor adicionados 
+			Bird(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
 					this.nome= nome;
 					this.cor= cor;
 					this.altura= altura;
 					this.peso = peso;
 					this.tamanhoRabo = tamanhoRabo;
 					this.estadoEspirito = estadoEspirito;
-			numeroPassaro ++;
+			numeroBird ++;
 		}
 
-		 //metodos
+		 //methods
 		public void comer(){
 		}
 
-			public int getnumeroPassaro(){
-					return numeroPassaro;
+			public int getNumeroBird(){
+					return numeroBird;
 			}
 
-			public void setnumeroCachorros(int numeroPassaro){
-					this.numeroPassaro= numeroPassaro;
+			public void setNumeroCachorros(int numeroBird){
+					this.numeroBird= numeroBird;
 			}
 
 			
@@ -449,11 +461,11 @@ public class main{
 
 # Construtores
 
-metodo construtor 
+Methods construtor 
 
 deve ser igual ao nome da classe
 
-o construtor não prisa ter todos os atributos
+o construtor não precisa ter todos os atributos
 
 ```csharp
  public Pessoa (String cpf, String name){
@@ -466,7 +478,7 @@ o construtor não prisa ter todos os atributos
 public class Pessoa {
     private String nome;
     private String cpf;
-    private String endereco;
+    private String Address;
 
     public Pessoa (String cpf, String name){
         this.cpf=cpf;
@@ -489,12 +501,12 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getAddress() {
+        return Address;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAddress(String Address) {
+        this.Address = Address;
     }
 }
 ```
@@ -509,8 +521,8 @@ Classe novoObjeto = new Classe();
 public class Main {
     public static void main(String[] args) {
         Pessoa clon = new Pessoa("123","clon");
-        clon.setEndereco("rua");
-        System.out.println(clon.getNome()+" - " +clon.getEndereco() );
+        clon.setAddress("rua");
+        System.out.println(clon.getNome()+" - " +clon.getAddress() );
 
     }
     }
@@ -524,7 +536,7 @@ Exemplo: ao carregar a aplicação teremos objetos pré-estabelecida, que não m
 
 lista de constantes != enum
 
-lista de constantes = variaveis.
+lista de constantes = variáveis.
 
 enum = conjunto de objetos.
 
@@ -584,7 +596,7 @@ multiplicidade
 
 visibilidade → +public, #protected, -private
 
-# Programção orientada a objetos
+# Programão orientada a objetos
 
 Paradigma de programação baseado no conceito de “objetos”.
 
@@ -593,13 +605,13 @@ Paradigma de programação baseado no conceito de “objetos”.
 
 # Pilares de POO
 
-**Encapsulamento:** Nem tudo precisa estar visivel
+**Encapsulamento:** Nem tudo precisa estar visível
 
 ```java
 public class Pessoa {
     private String nome;
     private String cpf;
-    private String endereco;
+    private String Address;
     
     private int piscadas;
     public Pessoa (String cpf, String name){
@@ -1307,7 +1319,7 @@ São chamados de teste de unidade;
 
 Testar a menor unidade de codigo possivel;
 
-Unidade: função, metodo, classes;
+Unidade: função, methods, classes;
 
 Testar uma aplicação na sua menor parte;
 
@@ -1673,7 +1685,7 @@ public class EscolhendoAOrdemTeste {
 - Escrever o codigo de teste o mais próximo possivel do codigo de execução(escrever o mais cedo possivel)
 - TDD →
 - 1. escrever um teste que falhe 2. Faça o codigo funcionar 3.Elimine redundancia
-- Padronização(Nomenclatura, metodos …)
+- Padronização(Nomenclatura, methods …)
 - Economize tempo Automatizando - Ferramentas de cobertura de codigo (jococo), Automatize a execuçaõ dos seus testes.
 
 # SpringBoot - Framework
@@ -1708,7 +1720,7 @@ Http - Global: Apllication Scope um bean para o ciclo de vida do contexto da apl
 
 Autowired: Anotação(indecição), onde devera ocorrer uma injeção automatica de dependecias.
 
-byName: Buscado um metodo set que corresponde ao nome do bean
+byName: Buscado um methods set que corresponde ao nome do bean
 
 byTime: Cosiderado o tipo da classe para inclusão do bean.
 
