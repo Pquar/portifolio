@@ -1,0 +1,251 @@
+---
+title: "Desvendando o Java: Uma Jornada pela Programação Orientada a Objetos Parte 2"
+date: "2024-05-14"
+lastmod: "2025-05-21"
+tags: ["Java", "POO", "Classes", "Objetos", "Programação", "Iniciantes", "Avançado"]
+summary: "Um guia completo e didático sobre Java e Programação Orientada a Objetos (POO), do básico ao avançado, para desenvolvedores de todos os níveis."
+images: ["/static/images/banners/git-grot.jpg"]
+authors: ["default"]
+---
+
+# Java Avançado: Abstração, Interfaces e Boas Práticas
+
+> **Este é o segundo artigo da série sobre Java e POO.**
+> Se você não leu a Parte 1, comece por lá para entender os fundamentos: [POO com Java - Parte 1](/blog/java)
+
+## Resumo do que você vai encontrar nesta Parte 2
+
+- Como usar classes abstratas para criar modelos flexíveis e reutilizáveis
+- O que são interfaces e como elas permitem múltiplos comportamentos
+- Diferenças práticas entre classes abstratas e interfaces
+- Como usar Enumerações para representar conjuntos fixos de valores
+- Como trabalhar com Collections (List, Set, Map) e Streams
+- Como criar testes automatizados com JUnit
+- Introdução ao framework Spring Boot
+- Exemplos práticos de Padrões de Projeto (Design Patterns)
+
+## Classes Abstratas: O Molde dos Moldes
+
+As classes abstratas são um conceito fundamental em Java que nos permite criar modelos incompletos que servirão como base para outras classes mais específicas. Elas representam o pilar de **Abstração** da POO.
+
+**O que é?**
+
+Uma classe abstrata é uma classe que não pode ser instanciada diretamente, mas serve como um modelo para outras classes. Ela pode conter:
+- Métodos abstratos (sem implementação)
+- Métodos concretos (com implementação)
+- Atributos
+- Construtores
+
+**Analogia:**
+
+Imagine uma planta de uma casa. A planta define a estrutura básica, mas não é uma casa real em que você pode morar. As classes abstratas são como estas plantas: fornecem um modelo, mas precisam ser "construídas" através de classes concretas para serem utilizadas.
+
+### No código:
+
+```java
+// Classe abstrata que define a estrutura básica de uma pessoa
+public abstract class PessoaAbs {
+    // Atributos
+    protected String nome;
+    protected int idade;
+    
+    // Construtor
+    public PessoaAbs(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+    
+    // Método concreto com implementação
+    public void apresentar() {
+        System.out.println("Olá, meu nome é " + nome + " e tenho " + idade + " anos.");
+    }
+    
+    // Método abstrato - sem implementação
+    // Classes filhas DEVEM implementar este método
+    public abstract void trabalhar();
+}
+```
+
+Agora podemos criar classes concretas (subclasses) que estendem esta classe abstrata:
+
+```java
+// Classe concreta que estende a classe abstrata
+public class Padeiro extends PessoaAbs {
+    private String especialidade;
+    
+    public Padeiro(String nome, int idade, String especialidade) {
+        super(nome, idade); // Chama o construtor da classe pai
+        this.especialidade = especialidade;
+    }
+    
+    // Implementação obrigatória do método abstrato
+    @Override
+    public void trabalhar() {
+        System.out.println(nome + " está assando pães. Especialidade: " + especialidade);
+    }
+    
+    // Método específico desta classe
+    public void assar() {
+        System.out.println("Assando um delicioso " + especialidade);
+    }
+}
+```
+
+### Exemplo de uso:
+
+```java
+public class TesteAbstracao {
+    public static void main(String[] args) {
+        // PessoaAbs pessoa = new PessoaAbs("João", 30); // ERRO! Não pode instanciar classe abstrata
+        
+        Padeiro padeiro = new Padeiro("Carlos", 35, "pão francês");
+        padeiro.apresentar(); // Método herdado da classe abstrata
+        padeiro.trabalhar();  // Método implementado na classe concreta
+        padeiro.assar();      // Método específico da classe Padeiro
+    }
+}
+```
+
+### Quando usar Classes Abstratas?
+
+Use classes abstratas quando:
+1. Quiser compartilhar código entre várias classes relacionadas
+2. Esperar que as classes que estendem a abstrata tenham muitos métodos ou atributos em comum
+3. Quiser declarar atributos não-estáticos ou métodos não-finais
+4. Precisar controlar a visibilidade dos membros da classe (private, protected)
+
+## Interfaces: Definindo Contratos
+
+As interfaces são outro mecanismo fundamental em Java para alcançar a abstração. Enquanto classes abstratas podem ser vistas como "moldes parciais", interfaces são "contratos puros".
+
+**O que é?**
+
+Uma interface em Java é uma coleção de métodos abstratos (sem implementação) e constantes. As classes que implementam uma interface devem fornecer implementações para todos os métodos declarados na interface.
+
+**Analogia:**
+
+Pense em uma interface como um contrato que define o que uma classe deve fazer, mas não como deve fazer. É como contratar um funcionário para um cargo específico: você define as responsabilidades que ele deve cumprir, mas não como ele deve realizá-las.
+
+### No código:
+
+```java
+// Interface que define operações de um veículo
+public interface Veiculo {
+    // Constantes (implicitamente public, static e final)
+    int VELOCIDADE_MAXIMA = 120;
+    
+    // Métodos abstratos (implicitamente public e abstract)
+    void acelerar(int velocidade);
+    void frear();
+    void trocarMarcha(int marcha);
+}
+```
+
+Implementando a interface:
+
+```java
+// Classe que implementa a interface Veiculo
+public class Carro implements Veiculo {
+    private int velocidadeAtual;
+    private int marcha;
+    
+    // Implementações dos métodos da interface
+    @Override
+    public void acelerar(int velocidade) {
+        velocidadeAtual += velocidade;
+        if (velocidadeAtual > VELOCIDADE_MAXIMA) {
+            velocidadeAtual = VELOCIDADE_MAXIMA;
+        }
+        System.out.println("Carro acelerou para " + velocidadeAtual + " km/h");
+    }
+    
+    @Override
+    public void frear() {
+        velocidadeAtual /= 2;
+        System.out.println("Carro freou para " + velocidadeAtual + " km/h");
+    }
+    
+    @Override
+    public void trocarMarcha(int marcha) {
+        this.marcha = marcha;
+        System.out.println("Carro está na marcha " + marcha);
+    }
+    
+    // Método específico desta classe
+    public void ligarFarol() {
+        System.out.println("Farol ligado");
+    }
+}
+```
+
+### Exemplo de uso:
+
+```java
+public class TesteInterface {
+    public static void main(String[] args) {
+        Carro meuCarro = new Carro();
+        meuCarro.acelerar(50);
+        meuCarro.trocarMarcha(2);
+        meuCarro.acelerar(30);
+        meuCarro.frear();
+        
+        // Também podemos usar a interface como tipo
+        Veiculo veiculo = new Carro();
+        veiculo.acelerar(60);
+        // veiculo.ligarFarol(); // ERRO! Este método não está definido na interface
+        
+        // Acesso a constante da interface
+        System.out.println("Velocidade máxima permitida: " + Veiculo.VELOCIDADE_MAXIMA);
+    }
+}
+```
+
+### Interfaces funcionais e expressões lambda
+
+Java 8 introduziu interfaces funcionais e expressões lambda, que simplificam o uso de interfaces com apenas um método abstrato:
+
+```java
+// Interface funcional (tem apenas um método abstrato)
+@FunctionalInterface
+interface Calculadora {
+    int calcular(int a, int b);
+}
+
+public class TesteLambda {
+    public static void main(String[] args) {
+        // Implementação tradicional usando classe anônima
+        Calculadora soma = new Calculadora() {
+            @Override
+            public int calcular(int a, int b) {
+                return a + b;
+            }
+        };
+        
+        // Usando expressão lambda (mais conciso)
+        Calculadora multiplicacao = (a, b) -> a * b;
+        
+        System.out.println("Soma: " + soma.calcular(5, 3));
+        System.out.println("Multiplicação: " + multiplicacao.calcular(5, 3));
+    }
+}
+```
+
+### Quando usar Interfaces?
+
+Use interfaces quando:
+1. Precisar definir um comportamento que várias classes não relacionadas devem implementar
+2. Quiser especificar o comportamento de um tipo específico sem se preocupar com quem o implementa
+3. Precisar aproveitar o recurso de múltipla implementação (uma classe pode implementar várias interfaces)
+4. Estiver projetando para mudanças frequentes onde a separação de preocupações é importante
+
+## Interfaces vs Classes Abstratas
+
+| Característica | Interface | Classe Abstrata |
+|----------------|-----------|-----------------|
+| Instanciação | Não pode ser instanciada | Não pode ser instanciada |
+| Construtores | Não possui | Possui |
+| Métodos | Todos abstratos por padrão (default methods a partir do Java 8) | Pode ter métodos abstratos e concretos |
+| Atributos | Apenas constantes (public static final) | Qualquer tipo de atributo |
+| Herança múltipla | Uma classe pode implementar várias interfaces | Uma classe só pode estender uma classe abstrata |
+| Acesso | Todos os membros são públicos | Pode ter membros private, protected, etc. |
+| Objetivo | Definir comportamentos | Prover uma base comum para subclasses |

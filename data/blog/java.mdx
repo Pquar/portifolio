@@ -1,72 +1,170 @@
 ---
-title: "Java"
+title: "Desvendando o Java: Uma Jornada pela Programação Orientada a Objetos Parte 1"
 date: "2024-05-14"
-lastmod: "2024-05-14"
-tags: ["Java", "POO", "Classes"]
-summary: "draft"
+lastmod: "2025-05-21" # Atualizado para a data atual da revisão
+tags: ["Java", "POO", "Classes", "Objetos", "Programação", "Iniciantes", "Avançado"]
+summary: "Um guia completo e didático sobre Java e Programação Orientada a Objetos (POO), do básico ao avançado, para desenvolvedores de todos os níveis."
 images: ["/static/images/banners/git-grot.jpg"]
 authors: ["default"]
 ---
 
-## Conteúdo do Módulo
+# Introdução à Programação Orientada a Objetos (POO) com Java
 
-Paradigma de programão baseado no conceito de “objetos”.
+Bem-vindo à sua jornada no mundo da Programação Orientada a Objetos (POO) com Java! Este capítulo foi desenhado para guiar você, seja um iniciante curioso ou um desenvolvedor buscando solidificar seus conhecimentos, através dos conceitos fundamentais e avançados que tornam Java uma das linguagens mais poderosas e requisitadas no mercado.
 
-> Trata-se de contextualizar objetos do mundo real para programação ex: Aluno, Veiculo, Transferência…
-> 
+A POO é um **paradigma de programação**, ou seja, uma forma de pensar e estruturar seus programas. A ideia central é simples e elegante: em vez de escrevermos uma longa sequência de comandos, organizamos nosso código em torno de **"objetos"**.
 
-# Pilares de POO
+> **Analogia:** Pense nos objetos ao seu redor: um carro, um livro, uma pessoa. Cada um deles tem **características** (cor, tamanho, nome) e **comportamentos** (um carro pode acelerar, um livro pode ser aberto, uma pessoa pode falar). A POO tenta trazer essa lógica do mundo real para o universo da programação. Assim, um "Aluno" em seu sistema pode ter nome, matrícula (características) e pode se inscrever em um curso (comportamento).
 
-1. **Encapsulamento:** Nem tudo precisa estar visível
-2. **Herança:** Características comuns podem ser elevados e compartilhados através de um hierarquia de objetos, (generalização).
-3. **Abstração:** Logica de um ou vários comportamento em um objeto: exemplo: o Veiculo **acelera.**
-4. **Polimorfismo:** Inúmeras maneiras de se realizar uma mesma ação.
+Este paradigma não só torna o código mais intuitivo, mas também mais organizado, reutilizável e fácil de manter, especialmente em projetos grandes e complexos.
 
-### Hello, World! com Java
+## Os 4 Pilares Fundamentais da POO
+
+A Programação Orientada a Objetos se sustenta sobre quatro conceitos essenciais, conhecidos como os pilares da POO. Compreendê-los é crucial para dominar Java e desenvolver software de alta qualidade.
+
+1.  **Encapsulamento:**
+    *   **O que é?** É o princípio de proteger os dados importantes de um objeto, escondendo sua complexidade interna e expondo apenas o necessário para a interação.
+    *   **Analogia:** Pense no controle remoto da sua TV. Você usa os botões (interface pública) para mudar de canal ou ajustar o volume, sem precisar conhecer os circuitos eletrônicos (detalhes internos) que fazem tudo funcionar. O encapsulamento protege esses detalhes.
+    *   **No código:** Conseguimos isso usando modificadores de acesso (como `private`) para os atributos e fornecendo métodos públicos (getters e setters) para interagir com eles de forma controlada.
+
+2.  **Herança:**
+    *   **O que é?** Permite que uma nova classe (subclasse ou classe filha) herde características (atributos) e comportamentos (métodos) de uma classe já existente (superclasse ou classe pai). Isso promove a reutilização de código e a criação de hierarquias lógicas.
+    *   **Analogia:** Um "Carro Esportivo" é um tipo de "Carro". Ele herda todas as características básicas de um carro (rodas, motor, volante), mas pode adicionar características específicas (como um aerofólio) ou modificar comportamentos (acelerar mais rápido).
+    *   **No código:** Usamos a palavra-chave `extends` para definir uma relação de herança.
+
+3.  **Abstração:**
+    *   **O que é?** Consiste em focar nos aspectos essenciais de um objeto, ignorando detalhes irrelevantes para um determinado contexto. A abstração simplifica a complexidade, mostrando apenas o que é importante para o usuário ou para outras partes do sistema.
+    *   **Analogia:** Quando você dirige um carro, interage com o volante, pedais e câmbio (abstrações). Você não precisa se preocupar com o funcionamento interno do motor ou da transmissão para dirigir. O carro abstrai essa complexidade para você.
+    *   **No código:** Classes abstratas e interfaces são ferramentas comuns para implementar a abstração, definindo "contratos" de comportamento sem especificar todos os detalhes da implementação.
+
+4.  **Polimorfismo:**
+    *   **O que é?** Significa "muitas formas". Em POO, é a capacidade de objetos de diferentes classes responderem à mesma mensagem (chamada de método) de maneiras específicas para cada classe.
+    *   **Analogia:** Considere a ação "fazer som". Um cachorro late, um gato mia, um pássaro canta. Todos estão "fazendo som", mas cada um de uma forma diferente.
+    *   **No código:** Isso é frequentemente alcançado através da sobrescrita de métodos (override) em subclasses, permitindo que um objeto da subclasse forneça uma implementação específica para um método herdado da superclasse.
+
+Dominar esses quatro pilares abrirá as portas para você escrever código Java mais eficiente, flexível e robusto. Vamos explorá-los em detalhes com exemplos práticos ao longo deste capítulo.
+
+## Mergulhando no Código: O Primeiro "Olá, Mundo!" e a Estrutura Básica
+
+Agora que entendemos os conceitos fundamentais, é hora de colocar a mão na massa! Nosso primeiro programa em Java será o tradicional "Olá, Mundo!". Este exemplo simples nos ajudará a entender a estrutura básica de um programa Java e como ele é executado.
 
 ```java
-public class Main {
+// Salve este arquivo como OlaMundo.java
+public class OlaMundo {
+
+    // Este é o método principal, o ponto de entrada do programa
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // Imprime a mensagem "Olá, Mundo!" no console
+        System.out.println("Olá, Mundo!");
 
-        byte variávelByte = 120; // até 127
-        // short -32768 a 32767
-        // char 0 a 65535
-        // int -2 bilhões a +2 bilhões
-        // long -9 trilhões a 9 trilhões
+        // Explorando variáveis e tipos de dados primitivos
+        byte variavelByte = 127; // Armazena números pequenos, de -128 a 127
+        short variavelShort = 32767; // Armazena números um pouco maiores
+        // char variavelChar = 'A'; // Armazena um único caractere Unicode (0 a 65535)
+        int variavelInt = 2000000000; // Tipo comum para números inteiros
+        long variavelLong = 9000000000000000000L; // Para números inteiros muito grandes (note o 'L' no final)
+        
+        float variavelFloat = 3.14f; // Para números de ponto flutuante de precisão simples (note o 'f' no final)
+        double variavelDouble = 3.1415926535; // Para números de ponto flutuante de precisão dupla
 
-        System.out.println(variávelByte);
+        boolean variavelBoolean = true; // Armazena valores verdadeiros (true) ou falsos (false)
+        char umUnicoCaractere = 'C'; // Armazena um único caractere
+
+        System.out.println("--- Exemplos de Variáveis Primitivas ---");
+        System.out.println("Byte: " + variavelByte);
+        System.out.println("Short: " + variavelShort);
+        System.out.println("Int: " + variavelInt);
+        System.out.println("Long: " + variavelLong);
+        System.out.println("Float: " + variavelFloat);
+        System.out.println("Double: " + variavelDouble);
+        System.out.println("Boolean: " + variavelBoolean);
+        System.out.println("Char: " + umUnicoCaractere);
     }
 }
 ```
 
-### Classes não executáveis
+**Entendendo o Código:**
+
+*   `public class OlaMundo`: Todo programa Java é construído em torno de classes. `OlaMundo` é o nome da nossa classe. O `public` significa que esta classe pode ser acessada por qualquer outra classe.
+*   `public static void main(String[] args)`: Este é o **método principal**. É o ponto de partida para a execução do seu programa. A JVM (Java Virtual Machine) procura por este método para começar.
+    *   `public`: Acessível de qualquer lugar.
+    *   `static`: Significa que o método pertence à classe `OlaMundo` e não a uma instância específica (objeto) dela. Podemos chamá-lo sem criar um objeto `OlaMundo`.
+    *   `void`: Indica que o método não retorna nenhum valor.
+    *   `main`: É o nome padrão para o método principal.
+    *   `String[] args`: Permite que você passe argumentos de linha de comando para o seu programa. São armazenados em um array de Strings.
+*   `System.out.println("Olá, Mundo!");`: Esta linha imprime o texto "Olá, Mundo!" no console.
+    *   `System`: É uma classe final que fornece acesso a recursos do sistema.
+    *   `out`: É um objeto (membro estático da classe `System`) que representa o fluxo de saída padrão (geralmente o console).
+    *   `println()`: É um método do objeto `out` que imprime o texto fornecido seguido por uma nova linha.
+
+**Tipos de Dados Primitivos em Java:**
+
+No exemplo, também introduzimos alguns dos **tipos de dados primitivos** do Java. Eles são os blocos de construção básicos para armazenar dados:
+
+*   **Tipos Inteiros:**
+    *   `byte`: Para números muito pequenos. Intervalo: -128 a 127.
+    *   `short`: Para números pequenos. Intervalo: -32.768 a 32.767.
+    *   `int`: O tipo mais comum para números inteiros. Intervalo: aproximadamente -2 bilhões a +2 bilhões.
+    *   `long`: Para números inteiros muito grandes. Intervalo: aproximadamente -9 trilhões a +9 trilhões. (Use `L` ao final do número, ex: `100L`).
+*   **Tipos de Ponto Flutuante (Decimais):**
+    *   `float`: Para números decimais com precisão simples. (Use `f` ao final do número, ex: `3.14f`).
+    *   `double`: Para números decimais com precisão dupla (mais preciso). É o tipo padrão para decimais.
+*   **Outros Tipos:**
+    *   `boolean`: Armazena valores lógicos: `true` ou `false`.
+    *   `char`: Armazena um único caractere Unicode. Intervalo: 0 a 65.535. (Use aspas simples, ex: `'A'`).
+
+> **Para Compilar e Executar (no terminal):**
+> 1.  Salve o código acima em um arquivo chamado `OlaMundo.java`.
+> 2.  Abra um terminal ou prompt de comando.
+> 3.  Navegue até o diretório onde você salvou o arquivo.
+> 4.  Compile o código: `javac OlaMundo.java` (Isso criará um arquivo `OlaMundo.class`)
+> 5.  Execute o código: `java OlaMundo`
+
+## Criando Nossas Próprias Estruturas: Classes e Objetos
+
+No exemplo "Olá, Mundo!", usamos uma classe `OlaMundo` que continha apenas o método `main` para executar nosso código. Mas o verdadeiro poder da POO reside na criação de nossas próprias classes para modelar entidades do mundo real ou conceitos do nosso sistema. Essas classes servirão como "plantas" ou "moldes" para criar **objetos**.
+
+### Classes Não Executáveis (ou Classes de Modelo)
+
+Uma classe não executável, muitas vezes chamada de classe de modelo, classe de domínio ou entidade, é aquela que não possui um método `main`. Seu propósito é definir a estrutura (atributos) e o comportamento (métodos) de um tipo de objeto.
+
+Vamos criar uma classe para representar um `Cao`:
 
 ```java
-package Animais;
+// Salve este arquivo como Cao.java (preferencialmente em uma pasta como "Animais")
+package Animais; // Opcional, mas bom para organização
 
 public class Cao {
+    // Atributos (Características do Cão)
     public String nome;
     public String cor;
-    public int altura;
-    public double peso;
-    public int tamanhoRabo;
-    public String estadoEspirito;
+    public int altura;       // em centímetros
+    public double peso;       // em quilogramas
+    public int tamanhoRabo;  // em centímetros
+    public String estadoEspirito; // Ex: feliz, triste, neutro
 
-    public void comer() {}
+    // Métodos (Comportamentos do Cão)
 
+    // Método simples sem retorno e sem parâmetros
+    public void comer() {
+        System.out.println(this.nome + " está comendo...");
+    }
+
+    // Método simples sem retorno, mas com uma ação
     public void latir() {
-        System.out.println("AU AU");
+        System.out.println("AU AU!");
     }
 
+    // Método que retorna um valor (String)
     public String pegar() {
-        return "Bolinha";
+        return "Bolinha"; // Simula o cão pegando uma bolinha
     }
 
-    public String interagir(String action) {
-        if (action.equals("carinho")) {
+    // Método que recebe um parâmetro e altera um atributo
+    public String interagir(String acao) {
+        if (acao.equals("carinho")) {
             this.estadoEspirito = "feliz";
-        } else if (action.equals("nao tem comida")) {
+        } else if (acao.equals("nao tem comida")) {
             this.estadoEspirito = "triste";
         } else {
             this.estadoEspirito = "neutro";
@@ -76,56 +174,259 @@ public class Cao {
 }
 ```
 
+**Entendendo a Classe `Cao`:**
+
+*   `package Animais;`:  Declara que esta classe pertence ao pacote `Animais`. Pacotes ajudam a organizar classes relacionadas e evitam conflitos de nomes.
+*   `public class Cao { ... }`: Define a classe `Cao`.
+*   **Atributos:** `nome`, `cor`, `altura`, `peso`, `tamanhoRabo`, `estadoEspirito` são variáveis que armazenam as características de um cão. Cada objeto `Cao` que criarmos terá seus próprios valores para esses atributos.
+*   **Métodos:** `comer()`, `latir()`, `pegar()`, `interagir(String acao)` definem o que um objeto `Cao` pode fazer.
+    *   `this.nome`: A palavra-chave `this` se refere à instância atual do objeto. Usamos `this.estadoEspirito` para diferenciar o atributo da classe de um possível parâmetro com o mesmo nome.
+
+### Utilizando a Classe `Cao`: Criando Objetos
+
+Agora que temos a "planta" (`Cao.java`), podemos criar objetos (instâncias) dessa classe. Para isso, geralmente criamos outra classe, esta sim com um método `main`, para ser o ponto de entrada do nosso programa de teste.
+
 ```java
-package Animais;
+// Salve como Main.java (na mesma pasta ou em uma que possa acessar Animais)
+package Animais; // Se Cao.java estiver em um pacote
+// ou importe a classe: import Animais.Cao;
 
 public class Main {
     public static void main(String[] args) {
-        Cao cachorro1 = new Cao();
-        cachorro1.nome = "dog";
-        cachorro1.cor = "vermelho";
-        cachorro1.altura = 25;
+        // Criando (instanciando) nosso primeiro objeto Cao
+        Cao cachorro1 = new Cao(); // 'new Cao()' chama o construtor padrão
 
-        cachorro1.latir();
-        System.out.println(cachorro1.pegar());
-        System.out.println(cachorro1.interagir("carinho"));
+        // Definindo os atributos do objeto cachorro1
+        cachorro1.nome = "Rex";
+        cachorro1.cor = "Marrom";
+        cachorro1.altura = 50; // cm
+        cachorro1.peso = 15.5; // kg
+        cachorro1.tamanhoRabo = 10; // cm
+        cachorro1.estadoEspirito = "brincalhão";
+
+        // Usando os métodos do objeto cachorro1
+        System.out.println("Nome do cachorro: " + cachorro1.nome);
+        cachorro1.latir(); // Executa o método latir()
+        
+        String objetoPego = cachorro1.pegar();
+        System.out.println(cachorro1.nome + " pegou a: " + objetoPego);
+
+        System.out.println("Estado de espírito antes da interação: " + cachorro1.estadoEspirito);
+        String novoEstado = cachorro1.interagir("carinho");
+        System.out.println("Estado de espírito após o carinho: " + novoEstado);
+
+        novoEstado = cachorro1.interagir("nao tem comida");
+        System.out.println("Estado de espírito após saber que não tem comida: " + novoEstado);
+
+        // Criando um segundo objeto Cao
+        Cao cachorro2 = new Cao();
+        cachorro2.nome = "Luna";
+        cachorro2.cor = "Preta";
+        cachorro2.altura = 40;
+        cachorro2.interagir("brincadeira"); // Interagindo com o segundo cachorro
+
+        System.out.println(cachorro2.nome + " está " + cachorro2.estadoEspirito);
     }
 }
 ```
 
-### Métodos com switch
+**Entendendo a Criação e Uso de Objetos:**
+
+*   `Cao cachorro1 = new Cao();`
+    *   `Cao cachorro1;`: Declaramos uma variável chamada `cachorro1` do tipo `Cao`. Neste momento, `cachorro1` ainda não aponta para nenhum objeto (é `null`).
+    *   `new Cao()`: Esta é a parte crucial. A palavra-chave `new` aloca memória para um novo objeto `Cao` e chama o **construtor** da classe `Cao` (falaremos mais sobre construtores em breve). Por enquanto, como não definimos nenhum construtor, Java fornece um construtor padrão invisível.
+    *   O `=` atribui a referência do novo objeto `Cao` criado à variável `cachorro1`.
+*   `cachorro1.nome = "Rex";`: Acessamos os atributos do objeto `cachorro1` usando o operador `.` (ponto) e atribuímos valores a eles.
+*   `cachorro1.latir();`: Chamamos os métodos do objeto `cachorro1` também usando o operador `.`.
+
+### Melhorando a Interação: Métodos com `switch`
+
+A estrutura `if-else if-else` que usamos no método `interagir` da classe `Cao` funciona bem. No entanto, quando temos múltiplas condições baseadas no valor de uma única variável, a instrução `switch` pode tornar o código mais legível e, em alguns casos, mais eficiente.
+
+Vamos refatorar o método `interagir` para usar `switch`:
 
 ```java
+// Dentro da classe Cao.java (substitua o método interagir anterior)
+
+public String interagir(String acao) {
+    switch (acao.toLowerCase()) { // Convertemos para minúsculas para ser case-insensitive
+        case "carinho":
+            this.estadoEspirito = "feliz e abanando o rabo";
+            break; // Importante! Sai do switch após encontrar um case correspondente.
+        case "nao tem comida":
+        case "sem comida": // Podemos ter múltiplos cases para o mesmo bloco de código
+            this.estadoEspirito = "triste e com fome";
+            break;
+        case "brincadeira":
+            this.estadoEspirito = "animado e pulando";
+            break;
+        case "bronca":
+            this.estadoEspirito = "cabisbaixo e com orelhas murchas";
+            break;
+        default: // Executado se nenhum case corresponder
+            this.estadoEspirito = "neutro e observador";
+            break;
+    }
+    return this.estadoEspirito;
+}
+```
+
+**Entendendo o `switch`:**
+
+*   `switch (variavel)`: A expressão dentro dos parênteses (`acao.toLowerCase()` no nosso caso) é avaliada.
+*   `case valor:`: Cada `case` representa um valor possível para a expressão. Se o valor da expressão corresponder ao valor do `case`, o bloco de código seguinte é executado.
+    *   `acao.toLowerCase()`: Convertemos a `acao` para letras minúsculas para que o `switch` não seja sensível a maiúsculas/minúsculas (ex: "Carinho" e "carinho" terão o mesmo efeito).
+*   `break;`: É crucial! Quando um `case` correspondente é encontrado e seu código executado, o `break` faz com que a execução saia do `switch`. Sem o `break`, a execução continuaria para os `case`s seguintes (comportamento conhecido como "fall-through"), o que geralmente não é o desejado.
+*   `default:`: É um bloco opcional que é executado se nenhum dos `case`s anteriores corresponder ao valor da expressão. É uma boa prática incluir um `default` para lidar com situações inesperadas.
+
+Com essas modificações, a classe `Cao` e a forma como interagimos com seus objetos se tornam mais robustas e organizadas. A seguir, vamos explorar o conceito de **Encapsulamento** para proteger os dados dos nossos objetos.
+
+## Protegendo Nossos Dados: Encapsulamento
+
+O encapsulamento é um dos pilares fundamentais da POO. A ideia central é **proteger os dados (atributos) de um objeto contra acesso direto e não autorizado**, ao mesmo tempo em que se fornece uma interface pública (métodos) para interagir com esses dados de forma controlada.
+
+> **Analogia:** Pense em uma caixa-forte. Você não deixa o dinheiro exposto para qualquer um pegar. Em vez disso, você o guarda dentro da caixa-forte (encapsulamento) e define quem pode acessá-lo e sob quais condições (a chave, o segredo, o gerente do banco).
+
+Em Java, o encapsulamento é alcançado principalmente através de:
+
+1.  **Modificadores de Acesso:** Palavras-chave que definem o nível de visibilidade de atributos e métodos.
+2.  **Métodos Getters e Setters:** Métodos públicos que permitem ler (get) e modificar (set) o valor de atributos privados, respectivamente.
+
+### Modificadores de Acesso em Java
+
+Java oferece quatro níveis de modificadores de acesso:
+
+| Visibilidade         | `public` | `protected` | `default` (sem modificador) | `private` |
+| :------------------- | :------: | :---------: | :-------------------------: | :-------: |
+| Mesma Classe         |    Sim   |     Sim     |             Sim             |    Sim    |
+| Mesmo Pacote         |    Sim   |     Sim     |             Sim             |   Não    |
+| Subclasse (Herança) no Mesmo Pacote |    Sim   |     Sim     |             Sim             |   Não    |
+| Subclasse (Herança) em Pacote Diferente |    Sim   |     Sim     |             Não             |   Não    |
+| Classe em Pacote Diferente |    Sim   |     Não     |             Não             |   Não    |
+
+*   `public`: O membro (atributo ou método) é acessível de qualquer outra classe, em qualquer pacote.
+*   `protected`: O membro é acessível dentro da própria classe, por classes no mesmo pacote e por subclasses (mesmo que em pacotes diferentes).
+*   `default` (quando nenhum modificador é especificado): O membro é acessível apenas por classes dentro do mesmo pacote. É também conhecido como "package-private".
+*   `private`: O membro é acessível apenas dentro da própria classe onde foi declarado. Este é o nível mais restritivo e o mais recomendado para atributos, para garantir o encapsulamento.
+
+### Aplicando Encapsulamento na Classe `Cao`
+
+Vamos modificar nossa classe `Cao` para aplicar o encapsulamento. Tornaremos os atributos `private` e forneceremos métodos `public` (getters e setters) para acessá-los.
+
+```java
+// Dentro da classe Cao.java
 package Animais;
 
 public class Cao {
-    public String nome;
-    public String cor;
-    public int altura;
-    public double peso;
-    public int tamanhoRabo;
-    public String estadoEspirito;
+    // Atributos agora são privados
+    private String nome;
+    private String cor;
+    private int altura;       // em centímetros
+    private double peso;       // em quilogramas
+    private int tamanhoRabo;  // em centímetros
+    private String estadoEspirito;
 
-    public void comer() {}
+    // Métodos Getters (para ler os valores dos atributos)
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getCor() {
+        return this.cor;
+    }
+
+    public int getAltura() {
+        return this.altura;
+    }
+
+    public double getPeso() {
+        return this.peso;
+    }
+
+    public int getTamanhoRabo() {
+        return this.tamanhoRabo;
+    }
+
+    public String getEstadoEspirito() {
+        return this.estadoEspirito;
+    }
+
+    // Métodos Setters (para modificar os valores dos atributos)
+    // Nos setters, podemos adicionar lógica de validação, se necessário.
+
+    public void setNome(String nome) {
+        if (nome != null && !nome.trim().isEmpty()) { // Exemplo de validação simples
+            this.nome = nome;
+        } else {
+            System.out.println("Nome inválido!");
+        }
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public void setAltura(int altura) {
+        if (altura > 0) { // Altura deve ser positiva
+            this.altura = altura;
+        } else {
+            System.out.println("Altura inválida!");
+        }
+    }
+
+    public void setPeso(double peso) {
+        if (peso > 0) { // Peso deve ser positivo
+            this.peso = peso;
+        } else {
+            System.out.println("Peso inválido!");
+        }
+    }
+
+    public void setTamanhoRabo(int tamanhoRabo) {
+        if (tamanhoRabo >= 0) { // Tamanho do rabo pode ser 0
+            this.tamanhoRabo = tamanhoRabo;
+        } else {
+            System.out.println("Tamanho do rabo inválido!");
+        }
+    }
+
+    // O estado de espírito ainda será modificado pelo método interagir
+    // mas podemos ter um setter se quisermos controle direto (e um getter já existe)
+    // public void setEstadoEspirito(String estadoEspirito) {
+    //     this.estadoEspirito = estadoEspirito;
+    // }
+
+    // Métodos de comportamento (já definidos anteriormente)
+    public void comer() {
+        System.out.println(this.nome + " está comendo...");
+    }
 
     public void latir() {
-        System.out.println("AU AU");
+        System.out.println("AU AU!");
     }
 
     public String pegar() {
         return "Bolinha";
     }
 
-    public String interagir(String action) {
-        switch (action) {
+    public String interagir(String acao) {
+        switch (acao.toLowerCase()) {
             case "carinho":
-                this.estadoEspirito = "feliz";
+                this.estadoEspirito = "feliz e abanando o rabo";
                 break;
             case "nao tem comida":
-                this.estadoEspirito = "triste";
+            case "sem comida":
+                this.estadoEspirito = "triste e com fome";
+                break;
+            case "brincadeira":
+                this.estadoEspirito = "animado e pulando";
+                break;
+            case "bronca":
+                this.estadoEspirito = "cabisbaixo e com orelhas murchas";
                 break;
             default:
-                this.estadoEspirito = "neutro";
+                this.estadoEspirito = "neutro e observador";
                 break;
         }
         return this.estadoEspirito;
@@ -133,33 +434,80 @@ public class Cao {
 }
 ```
 
+**Como Usar a Classe `Cao` Encapsulada:**
+
+Agora, na classe `Main` (ou qualquer outra classe), não podemos mais acessar `cachorro1.nome` diretamente. Devemos usar os getters e setters:
+
 ```java
+// Salve como Main.java
 package Animais;
 
 public class Main {
     public static void main(String[] args) {
         Cao cachorro1 = new Cao();
-        System.out.println(cachorro1.interagir("carinho"));
+
+        // Usando setters para definir os atributos
+        cachorro1.setNome("Rex");
+        cachorro1.setCor("Marrom");
+        cachorro1.setAltura(50);
+        cachorro1.setPeso(15.5);
+        cachorro1.setTamanhoRabo(10);
+        // cachorro1.estadoEspirito = "brincalhão"; // ERRO! Não é mais acessível diretamente
+
+        // Usando getters para ler os atributos
+        System.out.println("Nome do cachorro: " + cachorro1.getNome());
+        System.out.println("Cor: " + cachorro1.getCor());
+
+        cachorro1.latir();
+        System.out.println(cachorro1.getNome() + " pegou a: " + cachorro1.pegar());
+
+        System.out.println("Estado de espírito inicial: " + cachorro1.getEstadoEspirito()); // Pode ser null se não definido
+        cachorro1.interagir("carinho");
+        System.out.println("Novo estado de espírito: " + cachorro1.getEstadoEspirito());
+
+        // Testando validações (exemplos)
+        cachorro1.setNome("  "); // Tentativa de nome inválido
+        cachorro1.setAltura(-5); // Tentativa de altura inválida
+        System.out.println("Nome após tentativa inválida: " + cachorro1.getNome());
+        System.out.println("Altura após tentativa inválida: " + cachorro1.getAltura());
     }
 }
 ```
 
-### Encapsulamento
+**Benefícios do Encapsulamento:**
 
-Tirar o acesso do objeto, modificadores de acesso.
+*   **Controle:** Você tem controle total sobre como os dados são acessados e modificados. Pode adicionar validações ou lógica nos getters e setters.
+*   **Segurança:** Protege os dados de modificações acidentais ou maliciosas.
+*   **Flexibilidade e Manutenção:** Você pode mudar a implementação interna da classe (como os atributos são armazenados ou calculados) sem afetar o código que a utiliza, desde que a interface pública (getters e setters) permaneça a mesma.
+*   **Ocultação de Complexidade:** Esconde os detalhes internos da classe, tornando-a mais fácil de usar.
 
-| Visibilidade | Public | protected | default | private |
-| --- | --- | --- | --- | --- |
-| Mesma Classe | x | x | x | x |
-| Classe no mesmo pacote | x | x | x |  |
-| Classe filha do mesmo pacote | x | x | x |  |
-| Classe filha em pacote diferente | x | x |  |  |
-| Classe em pacote diferente | x |  |  |  |
+## Inicializando Objetos: Construtores
+
+Quando criamos um objeto usando a palavra-chave `new` (ex: `Cao cachorro1 = new Cao();`), um método especial chamado **construtor** é invocado. Construtores são responsáveis por inicializar o estado de um novo objeto, ou seja, definir os valores iniciais de seus atributos.
+
+**Características dos Construtores:**
+
+1.  **Nome:** Um construtor deve ter exatamente o mesmo nome da classe.
+2.  **Sem Tipo de Retorno:** Construtores não possuem tipo de retorno, nem mesmo `void`.
+3.  **Chamada Automática:** São chamados automaticamente quando um objeto é criado com `new`.
+
+### Construtor Padrão (Default Constructor)
+
+Se você não definir nenhum construtor em sua classe, o compilador Java fornecerá automaticamente um **construtor padrão** (sem argumentos). Este construtor inicializa os atributos com seus valores padrão (0 para números, `false` para booleanos, `null` para referências de objetos).
+
+Por exemplo, na nossa classe `Cao` antes de adicionarmos getters e setters, `new Cao()` chamava esse construtor padrão implícito.
+
+### Construtores Personalizados (Com Argumentos)
+
+Podemos (e frequentemente devemos) definir nossos próprios construtores para permitir que objetos sejam criados com valores iniciais específicos. Isso torna a criação de objetos mais conveniente e garante que eles sejam inicializados em um estado válido.
+
+Vamos adicionar construtores à nossa classe `Cao`:
 
 ```java
-package Animais;
+// Dentro da classe Cao.java (adicione estes construtores)
 
 public class Cao {
+    // ... (atributos de instância privados como antes: nome, cor, etc.)
     private String nome;
     private String cor;
     private int altura;
@@ -167,322 +515,689 @@ public class Cao {
     private int tamanhoRabo;
     private String estadoEspirito;
 
-    public String getNome() {
-        return nome;
+    // Atributo Estático: Compartilhado por todos os objetos Cao
+    private static int numeroDeCaes = 0; // Inicializado com 0
+
+    // Construtores (modificados para incrementar o contador estático)
+    public Cao() {
+        this.nome = "Vira-lata Caramelo";
+        this.cor = "Caramelo";
+        this.estadoEspirito = "curioso";
+        numeroDeCaes++; // Incrementa o contador quando um Cao é criado
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Cao(String nome, String cor) {
+        this(); // Chama o construtor Cao() sem argumentos para inicializar padrões
+        this.setNome(nome); // Usa o setter para aproveitar a validação
+        this.setCor(cor);
     }
-}
-```
-
-```java
-package Animais;
-
-public class Main {
-    public static void main(String[] args) {
-        Cao cachorro1 = new Cao();
-        cachorro1.setNome("dog");
-        System.out.println(cachorro1.getNome());
-    }
-}
-```
-
-### Construtores
-
-```java
-package Animais;
-
-public class Cao {
-    //Atributos
-    private String nome;
-    private String cor;
-    private int altura;
-    private double peso;
-    private int tamanhoRabo;
-    private String estadoEspirito;
-    //Construtor adicionados 
-    public Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito) {
-        this.nome = nome;
-        this.cor = cor;
-        this.altura = altura;
-        this.peso = peso;
-        this.tamanhoRabo = tamanhoRabo;
-        this.estadoEspirito = estadoEspirito;
-    }
-    // Construtor padrão
-    public Cao() {}
-    //métodos
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-}
-```
-
-```java
-package Animais;
-
-public class Main {
-    public static void main(String[] args) {
-        Cao cachorro2 = new Cao("nome", "amarelo", 1, 30, 2, "feliz");
-        System.out.println(cachorro2.getNome());
-    }
-}
-```
-
-### Modelagem orientada a objetos
-
-```java
-package Animais;
-
-public class Cao {
-    private static int numeroCachorros;
-    private String nome;
-    private String cor;
-    private int altura;
-    private double peso;
-    private int tamanhoRabo;
-    private String estadoEspirito;
 
     public Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito) {
-        this.nome = nome;
-        this.cor = cor;
-        this.altura = altura;
-        this.peso = peso;
-        this.tamanhoRabo = tamanhoRabo;
+        this.setNome(nome);
+        this.setCor(cor);
+        this.setAltura(altura);
+        this.setPeso(peso);
+        this.setTamanhoRabo(tamanhoRabo);
         this.estadoEspirito = estadoEspirito;
-        numeroCachorros++;
+        numeroDeCaes++; // Incrementa o contador
     }
 
-    public Cao() {}
+    // Getters e Setters para atributos de instância (como antes)
+    public String getNome() { return this.nome; }
+    public void setNome(String nome) { /* ... com validação ... */ this.nome = nome; }
+    public String getCor() { return this.cor; }
+    public void setCor(String cor) { this.cor = cor; }
+    public int getAltura() { return this.altura; }
+    public void setAltura(int altura) { /* ... com validação ... */ this.altura = altura; }
+    public double getPeso() { return this.peso; }
+    public void setPeso(double peso) { /* ... com validação ... */ this.peso = peso; }
+    public int getTamanhoRabo() { return this.tamanhoRabo; }
+    public void setTamanhoRabo(int tamanhoRabo) { /* ... com validação ... */ this.tamanhoRabo = tamanhoRabo; }
+    public String getEstadoEspirito() { return this.estadoEspirito; }
+    // Não teremos um setter público para numeroDeCaes, pois ele é gerenciado internamente.
 
+    // Método Estático: Para acessar o atributo estático numeroDeCaes
+    public static int getNumeroDeCaes() {
+        return numeroDeCaes;
+    }
+
+    // Métodos de instância (como antes: comer, latir, pegar, interagir)
+    public void comer() { System.out.println(this.nome + " está comendo..."); }
+    public void latir() { System.out.println("AU AU!"); }
+    public String pegar() { return "Bolinha"; }
+    public String interagir(String acao) {
+        // ... (lógica do switch como antes)
+        switch (acao.toLowerCase()) {
+            case "carinho":
+                this.estadoEspirito = "feliz e abanando o rabo";
+                break;
+            case "nao tem comida":
+            case "sem comida":
+                this.estadoEspirito = "triste e com fome";
+                break;
+            case "brincadeira":
+                this.estadoEspirito = "animado e pulando";
+                break;
+            case "bronca":
+                this.estadoEspirito = "cabisbaixo e com orelhas murchas";
+                break;
+            default:
+                this.estadoEspirito = "neutro e observador";
+                break;
+        }
+        return this.estadoEspirito;
+    }
+}
+```
+
+**Utilizando os Construtores na Classe `Main`:**
+
+```java
+// Salve como Main.java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        // Usando o construtor sem argumentos
+        Cao caoPadrao = new Cao();
+        System.out.println("Cão Padrão: " + caoPadrao.getNome() + ", Cor: " + caoPadrao.getCor() + ", Estado: " + caoPadrao.getEstadoEspirito());
+
+        // Usando o construtor com nome e cor
+        Cao cachorro1 = new Cao("Rex", "Marrom");
+        cachorro1.setAltura(50);
+        cachorro1.setPeso(15.5);
+        cachorro1.setTamanhoRabo(10);
+        System.out.println("Cachorro 1: " + cachorro1.getNome() + ", Cor: " + cachorro1.getCor() + ", Altura: " + cachorro1.getAltura());
+
+        // Usando o construtor completo
+        Cao cachorro2 = new Cao("Luna", "Preta", 40, 12.0, 8, "brincalhona");
+        System.out.println("Cachorro 2: " + cachorro2.getNome() + ", Estado: " + cachorro2.getEstadoEspirito());
+
+        cachorro2.interagir("carinho");
+        System.out.println(cachorro2.getNome() + " agora está: " + cachorro2.getEstadoEspirito());
+    }
+}
+```
+
+Com construtores bem definidos, a criação de objetos se torna mais expressiva e segura, garantindo que os objetos sejam inicializados corretamente desde o momento de sua criação.
+
+## Membros de Classe: Atributos e Métodos Estáticos (`static`)
+
+Até agora, os atributos e métodos que vimos pertencem a objetos individuais (instâncias) de uma classe. No entanto, às vezes precisamos de atributos ou métodos que sejam associados à classe em si, e não a uma instância específica. Para isso, usamos a palavra-chave `static`.
+
+> **Analogia:** Pense no conceito de "espécie" no reino animal. O nome científico de uma espécie, como *Canis lupus familiaris* para cães domésticos, é uma característica da "classe" dos cães, não de um cão individual como Rex ou Luna. Da mesma forma, se quiséssemos contar quantos objetos `Cao` foram criados em nosso programa, esse contador seria uma informação pertencente à classe `Cao` como um todo.
+
+**O que são Membros Estáticos?**
+
+*   **Atributos Estáticos (Variáveis de Classe):** São compartilhados por todas as instâncias (objetos) da classe. Existe apenas uma cópia de um atributo estático, independentemente de quantos objetos dessa classe sejam criados (ou mesmo se nenhum objeto for criado).
+    *   São úteis para definir constantes que são relevantes para a classe (ex: `Math.PI`) ou para manter informações globais sobre a classe (ex: um contador de instâncias).
+*   **Métodos Estáticos (Métodos de Classe):** Pertencem à classe e não a um objeto específico. Eles podem ser chamados diretamente usando o nome da classe (ex: `Math.sqrt(25)`), sem a necessidade de criar uma instância da classe.
+    *   Métodos estáticos não podem acessar membros de instância (atributos ou métodos não estáticos) diretamente, pois não estão associados a nenhum objeto particular. Eles só podem acessar outros membros estáticos diretamente.
+    *   São frequentemente usados para criar funções utilitárias ou para operar sobre atributos estáticos.
+
+### Aplicando Membros Estáticos na Classe `Cao`
+
+Vamos adicionar um contador estático à nossa classe `Cao` para rastrear quantos objetos `Cao` foram criados.
+
+```java
+// Dentro da classe Cao.java
+package Animais;
+
+public class Cao {
+    // ... (atributos de instância privados como antes: nome, cor, etc.)
+    private String nome;
+    private String cor;
+    private int altura;
+    private double peso;
+    private int tamanhoRabo;
+    private String estadoEspirito;
+
+    // Atributo Estático: Compartilhado por todos os objetos Cao
+    private static int numeroDeCaes = 0; // Inicializado com 0
+
+    // Construtores (modificados para incrementar o contador estático)
+    public Cao() {
+        this.nome = "Vira-lata Caramelo"; // Um valor padrão divertido
+        this.cor = "Caramelo";
+        this.estadoEspirito = "curioso";
+        numeroDeCaes++; // Incrementa o contador quando um Cao é criado
+    }
+
+    public Cao(String nome, String cor) {
+        this(); // Chama o construtor Cao() sem argumentos para inicializar padrões
+        this.setNome(nome); // Usa o setter para aproveitar a validação
+        this.setCor(cor);
+    }
+
+    public Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito) {
+        this.setNome(nome);
+        this.setCor(cor);
+        this.setAltura(altura);
+        this.setPeso(peso);
+        this.setTamanhoRabo(tamanhoRabo);
+        this.estadoEspirito = estadoEspirito;
+        numeroDeCaes++; // Incrementa o contador
+    }
+
+    // Getters e Setters para atributos de instância (como antes)
+    public String getNome() { return this.nome; }
+    public void setNome(String nome) { /* ... com validação ... */ this.nome = nome; }
+    public String getCor() { return this.cor; }
+    public void setCor(String cor) { this.cor = cor; }
+    public int getAltura() { return this.altura; }
+    public void setAltura(int altura) { /* ... com validação ... */ this.altura = altura; }
+    public double getPeso() { return this.peso; }
+    public void setPeso(double peso) { /* ... com validação ... */ this.peso = peso; }
+    public int getTamanhoRabo() { return this.tamanhoRabo; }
+    public void setTamanhoRabo(int tamanhoRabo) { /* ... com validação ... */ this.tamanhoRabo = tamanhoRabo; }
+    public String getEstadoEspirito() { return this.estadoEspirito; }
+    // Não teremos um setter público para numeroDeCaes, pois ele é gerenciado internamente.
+
+    // Método Estático: Para acessar o atributo estático numeroDeCaes
+    public static int getNumeroDeCaes() {
+        return numeroDeCaes;
+    }
+
+    // Métodos de instância (como antes: comer, latir, pegar, interagir)
+    public void comer() { System.out.println(this.nome + " está comendo..."); }
+    public void latir() { System.out.println("AU AU!"); }
+    public String pegar() { return "Bolinha"; }
+    public String interagir(String acao) {
+        // ... (lógica do switch como antes)
+        switch (acao.toLowerCase()) {
+            case "carinho":
+                this.estadoEspirito = "feliz e abanando o rabo";
+                break;
+            case "nao tem comida":
+            case "sem comida":
+                this.estadoEspirito = "triste e com fome";
+                break;
+            case "brincadeira":
+                this.estadoEspirito = "animado e pulando";
+                break;
+            case "bronca":
+                this.estadoEspirito = "cabisbaixo e com orelhas murchas";
+                break;
+            default:
+                this.estadoEspirito = "neutro e observador";
+                break;
+        }
+        return this.estadoEspirito;
+    }
+}
+```
+
+**Utilizando Membros Estáticos na Classe `Main`:**
+
+```java
+// Salve como Main.java
+package Animais;
+
+public class Main {
+    public static void main(String[] args) {
+        // Acessando o método estático ANTES de criar qualquer objeto
+        System.out.println("Número inicial de cães: " + Cao.getNumeroDeCaes()); // Saída: 0
+
+        Cao cachorro1 = new Cao("Rex", "Marrom");
+        System.out.println("Número de cães após criar Rex: " + Cao.getNumeroDeCaes()); // Saída: 1
+
+        Cao cachorro2 = new Cao("Luna", "Preta", 40, 12.0, 8, "brincalhona");
+        System.out.println("Número de cães após criar Luna: " + Cao.getNumeroDeCaes()); // Saída: 2
+
+        Cao caoPadrao = new Cao();
+        System.out.println("Número de cães após criar cão padrão: " + Cao.getNumeroDeCaes()); // Saída: 3
+
+        // Note que chamamos getNumeroDeCaes() diretamente na classe Cao,
+        // não em uma instância como cachorro1.getNumeroDeCaes() (embora isso também funcione em Java, não é a prática recomendada).
+    }
+}
+```
+
+**Quando Usar `static`?**
+
+*   Para constantes que são propriedades da classe (ex: `Math.PI`, `Integer.MAX_VALUE`).
+*   Para contadores ou outras informações que são compartilhadas entre todas as instâncias de uma classe.
+*   Para métodos utilitários que não dependem do estado de um objeto específico (ex: métodos de conversão, cálculos genéricos).
+
+## Gerenciamento Automático de Memória: Garbage Collector (GC)
+
+Em linguagens como C ou C++, o programador é responsável por alocar e desalocar manualmente a memória para os objetos. Esquecer de desalocar memória que não está mais em uso pode levar a problemas sérios chamados **vazamentos de memória (memory leaks)**, onde o programa consome cada vez mais memória até esgotar os recursos do sistema.
+
+Java simplifica o gerenciamento de memória através de um processo automático chamado **Garbage Collector (GC)**, ou Coletor de Lixo.
+
+> **Analogia:** Imagine uma grande festa onde os convidados usam pratos e copos descartáveis. Em vez de cada convidado ter que se preocupar em encontrar uma lixeira específica para seus itens usados, há uma equipe de limpeza (o Garbage Collector) que periodicamente percorre o local, identifica os pratos e copos que foram claramente descartados e não estão mais em uso por ninguém, e os recolhe para liberar espaço e manter o ambiente organizado. O GC faz algo parecido com os objetos na memória do seu programa Java.
+
+**Como Funciona (De Forma Simplificada):**
+
+1.  **Criação de Objetos:** Quando você usa `new Cao()`, a JVM aloca memória para o novo objeto `Cao` em uma área chamada *Heap*.
+2.  **Referências:** Seu programa mantém referências (variáveis) que apontam para esses objetos na memória.
+3.  **Detecção de "Lixo":** Periodicamente, o Garbage Collector entra em ação. Ele tenta identificar quais objetos na Heap não são mais "alcançáveis", ou seja, não existe nenhuma referência ativa no programa que aponte para eles.
+    *   Um objeto se torna não alcançável se todas as referências a ele são removidas (ex: a variável que o referencia sai de escopo, ou a variável é reatribuída para apontar para outro objeto ou para `null`).
+4.  **Coleta de Lixo:** Os objetos identificados como não alcançáveis são considerados "lixo". O GC libera a memória que esses objetos estavam ocupando, tornando-a disponível para futuras alocações.
+
+**Exemplo Prático:**
+
+```java
+package Sistema;
+
+import Animais.Cao; // Supondo que Cao esteja em outro pacote
+
+public class TesteGC {
+    public static void main(String[] args) {
+        System.out.println("Número inicial de cães (antes de criar no TesteGC): " + Cao.getNumeroDeCaes());
+
+        Cao caoA = new Cao("Objeto Cao A", "Azul");
+        Cao caoB = new Cao("Objeto Cao B", "Verde");
+
+        System.out.println("Referências iniciais:");
+        System.out.println("caoA aponta para: " + caoA.getNome()); // Mostra o nome do objeto
+        System.out.println("caoB aponta para: " + caoB.getNome());
+        System.out.println("Número de cães agora: " + Cao.getNumeroDeCaes());
+
+        // caoA agora aponta para o mesmo objeto que caoB
+        caoA = caoB;
+        System.out.println("\nApós 'caoA = caoB;':");
+        System.out.println("caoA aponta para: " + caoA.getNome());
+        System.out.println("caoB aponta para: " + caoB.getNome());
+
+        // O objeto original "Objeto Cao A" não tem mais nenhuma referência apontando para ele.
+        // Ele se tornou elegível para ser coletado pelo Garbage Collector.
+        // Não podemos prever exatamente QUANDO o GC vai rodar e liberar essa memória.
+
+        Cao caoC = new Cao("Objeto Cao C", "Vermelho");
+        System.out.println("\ncaoC aponta para: " + caoC.getNome());
+        System.out.println("Número de cães agora: " + Cao.getNumeroDeCaes());
+
+        // Tornando caoC elegível para coleta
+        caoC = null;
+        // Agora, o objeto "Objeto Cao C" também está elegível se não houver outras referências.
+
+        // Você pode sugerir ao sistema para executar o GC, mas não há garantia.
+        // System.gc(); 
+
+        System.out.println("\nFim do método main. Objetos podem ser coletados após este ponto se não mais referenciados.");
+    }
+}
+```
+
+**Benefícios do Garbage Collector:**
+
+*   **Prevenção de Vazamentos de Memória:** Ajuda significativamente a evitar que seu programa consuma memória desnecessariamente ao longo do tempo.
+*   **Simplificação para o Desenvolvedor:** Você não precisa escrever código para desalocar memória manualmente, o que reduz a complexidade e a chance de erros (como desalocar memória ainda em uso ou esquecer de desalocar).
+
+**Importante:**
+
+*   Você **não tem controle direto** sobre quando o GC será executado. Ele roda em sua própria thread, em momentos que a JVM considera apropriados.
+*   Chamar `System.gc()` é apenas uma **sugestão** para a JVM, não uma ordem. A JVM pode optar por ignorá-la.
+*   Embora o GC seja muito eficiente, criar e destruir um número excessivo de objetos de curta duração em loops muito apertados ainda pode ter implicações de desempenho. Boas práticas de programação ainda são importantes.
+
+## Reutilizando e Estendendo Código: Herança
+
+A herança é um mecanismo poderoso da POO que permite que uma nova classe (chamada **subclasse** ou classe filha) adquira (herde) os atributos e métodos de uma classe existente (chamada **superclasse** ou classe pai). Isso promove a reutilização de código e a criação de hierarquias de classes que refletem relacionamentos do tipo "é um(a)".
+
+> **Analogia:** Pense em veículos. Um "Carro" é um tipo de "Veículo". Um "Ônibus" também é um tipo de "Veículo". Tanto carros quanto ônibus compartilham características comuns de veículos (como ter um motor, rodas, capacidade de se mover), mas cada um também tem suas próprias características e comportamentos específicos. A herança modela essa relação: `Veiculo` seria a superclasse, e `Carro` e `Onibus` seriam subclasses que herdam de `Veiculo` e adicionam suas especializações.
+
+**Benefícios da Herança:**
+
+*   **Reutilização de Código:** Atributos e métodos comuns são definidos uma vez na superclasse e reutilizados pelas subclasses.
+*   **Organização:** Cria uma estrutura hierárquica lógica entre as classes, tornando o sistema mais fácil de entender.
+*   **Extensibilidade:** Novas classes podem ser facilmente adicionadas à hierarquia, herdando funcionalidades existentes e adicionando novas.
+*   **Polimorfismo:** Permite que objetos de subclasses sejam tratados como objetos da superclasse, levando a um código mais flexível (veremos mais sobre isso em breve).
+
+Em Java, a herança é implementada usando a palavra-chave `extends`.
+
+### Criando uma Hierarquia de Animais
+
+Vamos criar uma hierarquia de classes para representar diferentes tipos de animais. Começaremos com uma classe base `Animal`.
+
+**1. A Superclasse: `Animal.java`**
+
+Esta classe conterá atributos e métodos comuns a todos os animais.
+
+```java
+package Animais;
+
+public class Animal {
+    protected String nome;
+    protected String cor;
+    protected double peso; // em kg
+    protected String somQueFaz;
+    protected String estadoEspirito; // Ex: feliz, com fome, alerta
+
+    // Construtor da superclasse
+    public Animal(String nome, String cor, double peso, String somQueFaz) {
+        this.nome = nome;
+        this.cor = cor;
+        this.peso = peso;
+        this.somQueFaz = somQueFaz;
+        this.estadoEspirito = "neutro"; // Estado inicial padrão
+    }
+
+    // Getters
     public String getNome() {
         return nome;
     }
 
+    public String getCor() {
+        return cor;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public String getSomQueFaz() {
+        return somQueFaz;
+    }
+
+    public String getEstadoEspirito() {
+        return estadoEspirito;
+    }
+
+    // Setters (exemplo para nome e estadoEspirito)
     public void setNome(String nome) {
-        this.nome = nome;
+        if (nome != null && !nome.trim().isEmpty()) {
+            this.nome = nome;
+        } else {
+            System.out.println("Nome de animal inválido!");
+        }
     }
 
-    public static int getNumeroCachorros() {
-        return numeroCachorros;
+    public void setEstadoEspirito(String estadoEspirito) {
+        this.estadoEspirito = estadoEspirito;
     }
 
-    public static void setNumeroCachorros(int numero) {
-        numeroCachorros = numero;
+    // Métodos comuns a todos os animais
+    public void comer() {
+        System.out.println(this.nome + " está comendo.");
+        this.estadoEspirito = "satisfeito";
+    }
+
+    public void dormir() {
+        System.out.println(this.nome + " está dormindo... ZzzZz...");
+        this.estadoEspirito = "descansando";
+    }
+
+    public void emitirSom() {
+        System.out.println(this.nome + " faz: " + this.somQueFaz);
     }
 }
 ```
 
+*   **`protected`:** Os atributos são declarados como `protected`. Isso significa que eles podem ser acessados diretamente pela própria classe `Animal` e por qualquer subclasse que herde de `Animal` (mesmo em pacotes diferentes), além de classes no mesmo pacote. Isso é comum em hierarquias de herança para facilitar o acesso nas subclasses, embora o encapsulamento total com `private` e getters/setters públicos/protegidos também seja uma opção.
+*   **Construtor:** O construtor de `Animal` inicializa os atributos comuns.
+*   **Métodos Comuns:** `comer()`, `dormir()`, `emitirSom()` são comportamentos que a maioria dos animais pode ter.
+
+**2. Subclasses: `Cao.java`, `Gato.java`, `Passaro.java`**
+
+Agora, vamos criar subclasses que herdam de `Animal` e adicionam suas próprias características e comportamentos.
+
+**`Cao.java` (Modificado para Herança)**
+
 ```java
 package Animais;
 
-public class Main {
+public class Cao extends Animal { // Cao HERDA de Animal
+    private int tamanhoRabo; // Atributo específico do cão
+    private static int numeroDeCaes = 0; // Contador específico para cães
+
+    // Construtor da subclasse Cao
+    public Cao(String nome, String cor, double peso, int tamanhoRabo) {
+        // 1. Chama o construtor da superclasse (Animal) OBRIGATORIAMENTE
+        super(nome, cor, peso, "Au Au!"); // "Au Au!" é o som padrão para cães
+        this.tamanhoRabo = tamanhoRabo;
+        numeroDeCaes++;
+    }
+
+    // Getter e Setter para o atributo específico
+    public int getTamanhoRabo() {
+        return tamanhoRabo;
+    }
+
+    public void setTamanhoRabo(int tamanhoRabo) {
+        if (tamanhoRabo >= 0) {
+            this.tamanhoRabo = tamanhoRabo;
+        } else {
+            System.out.println("Tamanho do rabo inválido.");
+        }
+    }
+
+    public static int getNumeroDeCaes() {
+        return numeroDeCaes;
+    }
+
+    // Comportamentos específicos ou modificados do cão
+    public void abanarRabo() {
+        System.out.println(this.nome + " está abanando o rabo alegremente!");
+        this.estadoEspirito = "feliz";
+    }
+
+    public String interagir(String acao) {
+        switch (acao.toLowerCase()) {
+            case "carinho":
+                this.abanarRabo(); // Reutiliza o método específico
+                break;
+            case "buscar bolinha":
+                this.estadoEspirito = "brincalhão e focado";
+                System.out.println(this.nome + " correu para buscar a bolinha!");
+                break;
+            default:
+                this.estadoEspirito = "neutro";
+                break;
+        }
+        return this.estadoEspirito;
+    }
+
+    // Sobrescrevendo um método da superclasse (Polimorfismo)
+    @Override
+    public void emitirSom() {
+        System.out.println(this.nome + " late vigorosamente: AU AU AUUUU!");
+    }
+
+    // Opcional: Sobrescrever comer para adicionar comportamento específico
+    @Override
+    public void comer() {
+        super.comer(); // Chama o método comer() da classe Animal
+        System.out.println(this.nome + " realmente adora sua ração!");
+    }
+}
+```
+
+*   **`extends Animal`**: Indica que `Cao` é uma subclasse de `Animal`.
+*   **`super(...)`**: A primeira linha no construtor de uma subclasse **deve** ser uma chamada ao construtor da superclasse usando `super(...)`. Isso garante que a parte `Animal` do objeto `Cao` seja inicializada corretamente.
+*   **Atributos e Métodos Específicos:** `tamanhoRabo` e `abanarRabo()` são específicos de `Cao`.
+*   **`@Override`**: Esta anotação indica que o método `emitirSom()` e `comer()` pretendem sobrescrever um método da superclasse. Se o método não existir na superclasse com a mesma assinatura, o compilador gerará um erro. Isso ajuda a evitar erros de digitação.
+    *   **Sobrescrita (Override):** A subclasse fornece uma implementação específica para um método que já está definido na sua superclasse. Isso é uma forma de **Polimorfismo** (significa "muitas formas"), onde a mesma chamada de método (`emitirSom()`) pode se comportar de maneira diferente dependendo do tipo real do objeto.
+*   **`super.comer()`**: Dentro de um método sobrescrito, você pode chamar a implementação da superclasse usando `super.nomeDoMetodo()`.
+
+**`Gato.java`**
+
+```java
+package Animais;
+
+public class Gato extends Animal {
+    private boolean gostaDeLaser;
+    private static int numeroDeGatos = 0;
+
+    public Gato(String nome, String cor, double peso, boolean gostaDeLaser) {
+        super(nome, cor, peso, "Miau!");
+        this.gostaDeLaser = gostaDeLaser;
+        numeroDeGatos++;
+    }
+
+    public boolean isGostaDeLaser() { // Getter para boolean é frequentemente "isNomeDoAtributo"
+        return gostaDeLaser;
+    }
+
+    public void setGostaDeLaser(boolean gostaDeLaser) {
+        this.gostaDeLaser = gostaDeLaser;
+    }
+
+    public static int getNumeroDeGatos() {
+        return numeroDeGatos;
+    }
+
+    public void ronronar() {
+        System.out.println(this.nome + " está ronronando suavemente... Purrrr...");
+        this.estadoEspirito = "contente";
+    }
+
+    @Override
+    public void emitirSom() {
+        System.out.println(this.nome + " mia: Miaaauuuu!");
+    }
+
+    // Gatos podem ter uma forma particular de interagir
+    public void interagir(String estimulo) {
+        if (estimulo.equals("laser") && this.gostaDeLaser) {
+            System.out.println(this.nome + " persegue o ponto de laser freneticamente!");
+            this.estadoEspirito = "brincalhão";
+        } else if (estimulo.equals("sache")) {
+            this.comer(); // Reutiliza o método herdado
+            this.ronronar();
+        } else {
+            System.out.println(this.nome + " observa com desdém.");
+            this.estadoEspirito = "indiferente";
+        }
+    }
+}
+```
+
+**`Passaro.java`**
+
+```java
+package Animais;
+
+public class Passaro extends Animal {
+    private double envergaduraAsa; // em cm
+    private static int numeroDePassaros = 0;
+
+    public Passaro(String nome, String cor, double peso, double envergaduraAsa) {
+        super(nome, cor, peso, "Piu Piu!"); // Som padrão para pássaros
+        this.envergaduraAsa = envergaduraAsa;
+        numeroDePassaros++;
+    }
+
+    public double getEnvergaduraAsa() {
+        return envergaduraAsa;
+    }
+
+    public void setEnvergaduraAsa(double envergaduraAsa) {
+        if (envergaduraAsa > 0) {
+            this.envergaduraAsa = envergaduraAsa;
+        } else {
+            System.out.println("Envergadura da asa inválida.");
+        }
+    }
+
+    public static int getNumeroDePassaros() {
+        return numeroDePassaros;
+    }
+
+    public void voar() {
+        System.out.println(this.nome + " está voando alto com suas asas de " + this.envergaduraAsa + "cm!");
+        this.estadoEspirito = "livre";
+    }
+
+    @Override
+    public void emitirSom() {
+        System.out.println(this.nome + " canta melodiosamente: Piu piu piu!");
+    }
+
+    // Pássaros também comem de forma específica
+    @Override
+    public void comer() {
+        System.out.println(this.nome + " está bicando sementes.");
+        this.estadoEspirito = "satisfeito";
+    }
+}
+```
+
+**3. Utilizando a Hierarquia de Animais: `Zoologico.java` (Exemplo de Main)**
+
+```java
+package Main;
+
+import Animais.*; // Importa todas as classes do pacote Animais
+
+public class Zoologico {
     public static void main(String[] args) {
-        Cao cachorro1 = new Cao("Rex", "preto", 30, 10.5, 5, "feliz");
-        Cao cachorro2 = new Cao("Toby", "branco", 28, 9.8, 4, "neutro");
+        // Criando objetos das subclasses
+        Cao rex = new Cao("Rex", "Marrom", 15.5, 10);
+        Gato felix = new Gato("Felix", "Preto e Branco", 4.2, true);
+        Passaro tweety = new Passaro("Tweety", "Amarelo", 0.2, 15.0);
 
-        System.out.println(Cao.getNumeroCachorros());
+        System.out.println("--- Informações e Ações do Rex (Cão) ---");
+        System.out.println("Nome: " + rex.getNome());
+        System.out.println("Cor: " + rex.getCor());
+        System.out.println("Tamanho do Rabo: " + rex.getTamanhoRabo() + "cm");
+        rex.comer();         // Chama o comer() sobrescrito do Cao
+        rex.emitirSom();     // Chama o emitirSom() sobrescrito do Cao
+        rex.abanarRabo();
+        rex.interagir("carinho");
+        System.out.println("Estado do Rex: " + rex.getEstadoEspirito());
+
+        System.out.println("\n--- Informações e Ações do Felix (Gato) ---");
+        System.out.println("Nome: " + felix.getNome());
+        System.out.println("Gosta de laser? " + felix.isGostaDeLaser());
+        felix.comer();       // Chama o comer() herdado de Animal
+        felix.emitirSom();   // Chama o emitirSom() sobrescrito do Gato
+        felix.ronronar();
+        felix.interagir("laser");
+
+        System.out.println("\n--- Informações e Ações do Tweety (Pássaro) ---");
+        System.out.println("Nome: " + tweety.getNome());
+        System.out.println("Envergadura da Asa: " + tweety.getEnvergaduraAsa() + "cm");
+        tweety.comer();      // Chama o comer() sobrescrito do Passaro
+        tweety.emitirSom();  // Chama o emitirSom() sobrescrito do Passaro
+        tweety.voar();
+
+        System.out.println("\n--- Contagem de Animais (Estático) ---");
+        System.out.println("Número total de cães criados: " + Cao.getNumeroDeCaes());
+        System.out.println("Número total de gatos criados: " + Gato.getNumeroDeGatos());
+        System.out.println("Número total de pássaros criados: " + Passaro.getNumeroDePassaros());
+
+        System.out.println("\n--- Polimorfismo em Ação ---");
+        // Criando um array de Animal que pode conter qualquer subclasse de Animal
+        Animal[] meusAnimais = new Animal[3];
+        meusAnimais[0] = rex;    // Cao É UM Animal
+        meusAnimais[1] = felix;  // Gato É UM Animal
+        meusAnimais[2] = tweety; // Passaro É UM Animal
+
+        for (Animal animal : meusAnimais) {
+            System.out.println("\nAnimal: " + animal.getNome());
+            animal.emitirSom(); // Chama o método específico da subclasse!
+            animal.comer();     // Chama o método específico da subclasse (se sobrescrito) ou da superclasse
+            // animal.abanarRabo(); // ERRO! O tipo da referência é Animal, e Animal não tem abanarRabo().
+                                 // Para chamar métodos específicos, precisaríamos de um cast com verificação (instanceof).
+        }
     }
 }
 ```
 
-### Garbage Collector
+**Polimorfismo (via Herança e Sobrescrita):**
+
+No loop final do `Zoologico.java`, temos um array do tipo `Animal`. Mesmo que os objetos reais sejam `Cao`, `Gato` e `Passaro`, podemos tratá-los genericamente como `Animal`. Quando chamamos `animal.emitirSom()`, Java é inteligente o suficiente para executar a versão do método `emitirSom()` que corresponde ao tipo real do objeto (o `emitirSom()` do `Cao` para o objeto `rex`, o do `Gato` para `felix`, etc.). Isso é o polimorfismo em ação: a mesma chamada de método resulta em comportamentos diferentes dependendo do objeto.
+
+**Pontos Chave sobre Herança:**
+
+*   Java **não suporta herança múltipla** de classes (uma classe não pode herdar de várias classes diretamente). No entanto, uma classe pode implementar múltiplas interfaces (veremos interfaces mais tarde).
+*   A classe `Object` é a superclasse raiz de todas as classes em Java. Se uma classe não especifica `extends`, ela herda implicitamente de `Object`.
+*   Use herança para modelar relações "é um(a)". Se a relação não for claramente "é um(a)", outras técnicas como composição podem ser mais apropriadas.
+
+## Construtores
+
+Métodos construtores devem ter o mesmo nome da classe e não precisam ter todos os atributos.
 
 ```java
-package Animais;
-
-public class Main {
-    public static void main(String[] args) {
-        Cao cachorro2 = new Cao("nome", "amarelo", 1, 30, 2, "feliz");
-        Cao cachorro3 = new Cao("nome", "amarelo", 1, 30, 2, "feliz");
-
-        System.out.println(cachorro2.toString());
-        System.out.println(cachorro3.toString());
-
-        cachorro2 = cachorro3;
-
-        System.out.println(cachorro2.toString());
-        System.out.println(cachorro3.toString());
-    }
-}
-```
-
-6 **Heranças**
-
-```java
-package Animais;
-public class main{
-	public class Animal{
-
-			//Atributos
-			protected String nome;
-			protected String cor;
-			protected int altura;
-			protected double peso;
-			protected String estadoEspirito;
-			
-
-		 //methods	
-			protected String getNome(){
-					return nome;
-			}
-
-			protected void setNome(String nome){
-					this.nome= nome;
-			}
-
-			
-	}
-}
-
-```
-
-```java
-package Animais;
-public class main{
-	public class Cao{
-
-			//Atributos
-			static int numeroCachorros;
-			
-			private int tamanhoRabo;
-			
-			//Construtor adicionados 
-			Cao(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
-					this.nome= nome;
-					this.cor= cor;
-					this.altura= altura;
-					this.peso = peso;
-					this.tamanhoRabo = tamanhoRabo;
-					this.estadoEspirito = estadoEspirito;
-			numeroCachorros ++;
-		}
-    // Construtor padrão
-			public Cao(){}
-
-		 //methods	
-		
-
-			public int getNumeroCachorros(){
-					return numeroCachorros;
-			}
-
-			public void setNumeroCachorros(int numeroCachorros){
-					this.numeroCachorros= numeroCachorros;
-			}
-
-			
-}
-}
-
-```
-
-```java
-package Animais;
-public class main{
-	public class Gato{
-
-			//Atributos
-			static int numeroGatos;
-
-			
-			//Construtor adicionados 
-			Gato(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
-					this.nome= nome;
-					this.cor= cor;
-					this.altura= altura;
-					this.peso = peso;
-					this.tamanhoRabo = tamanhoRabo;
-					this.estadoEspirito = estadoEspirito;
-			numeroGatos ++;
-		}
-
-		 //methods
-		public void comer(){
-		}
-
-			public int getNumeroGatos(){
-					return numeroGatos;
-			}
-
-			public void setNumeroGatos(int numeroGatos){
-					this.numeroGatos= numeroGatos;
-			}
-
-			
-}
-}
-
-```
-
-```java
-package Animais;
-public class main{
-	public class Bird extends Animal{
-
-			//Atributos
-			static int numeroBird;
-			
-			
-			//Construtor adicionados 
-			Bird(String nome, String cor, int altura, double peso, int tamanhoRabo, String estadoEspirito){
-					this.nome= nome;
-					this.cor= cor;
-					this.altura= altura;
-					this.peso = peso;
-					this.tamanhoRabo = tamanhoRabo;
-					this.estadoEspirito = estadoEspirito;
-			numeroBird ++;
-		}
-
-		 //methods
-		public void comer(){
-		}
-
-			public int getNumeroBird(){
-					return numeroBird;
-			}
-
-			public void setNumeroCachorros(int numeroBird){
-					this.numeroBird= numeroBird;
-			}
-
-			
-}
-}
-
-```
-
-# Construtores
-
-Methods construtor 
-
-deve ser igual ao nome da classe
-
-o construtor não precisa ter todos os atributos
-
-```csharp
- public Pessoa (String cpf, String name){
-        this.cpf=cpf;
-        this.nome=name;
-    }
-```
-
-```csharp
 public class Pessoa {
     private String nome;
     private String cpf;
-    private String Address;
+    private String endereco;
 
-    public Pessoa (String cpf, String name){
-        this.cpf=cpf;
-        this.nome=name;
+    public Pessoa(String cpf, String nome) {
+        this.cpf = cpf;
+        this.nome = nome;
     }
 
     public String getNome() {
@@ -501,1400 +1216,1930 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getAddress() {
-        return Address;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
 ```
 
-```csharp
-Classe novoObjeto = new Classe();
-
-```
-
-```csharp
-
+```java
 public class Main {
     public static void main(String[] args) {
-        Pessoa clon = new Pessoa("123","clon");
-        clon.setAddress("rua");
-        System.out.println(clon.getNome()+" - " +clon.getAddress() );
-
-    }
-    }
-```
-
-# Enum
-
-tipo especial de classe onde os objetos são previamente criados, imutáveis e disponíveis por toda aplicação.
-
-Exemplo: ao carregar a aplicação teremos objetos pré-estabelecida, que não mudaram muito os valores. (estados, cidades, grau de escolaridade, estado civil).
-
-lista de constantes != enum
-
-lista de constantes = variáveis.
-
-enum = conjunto de objetos.
-
-```csharp
-public enum EstadosBr {
-    SAO_PAULO("SP", "SAO PAULO"),
-    SANTA_CATARINA("SC","SANTA CATARINA"),
-    RONDONIA("RO", "RONDONIA");
-
-    private String nome;
-    private String sigla;
-
-    private EstadosBr(String sigla, String nome){
-        this.sigla=sigla;
-        this.nome=nome;
-    }
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla.toUpperCase();
+        Pessoa pessoa = new Pessoa("123456789", "Clon");
+        pessoa.setEndereco("Rua Exemplo, 123");
+        System.out.println(pessoa.getNome() + " - " + pessoa.getEndereco());
     }
 }
 ```
 
-```csharp
-public class Main {
-    public static void main(String[] args) {
+## Enumerações (Enum): Definindo Conjuntos de Constantes
 
-        for(EstadosBr e: EstadosBr.values()){
-            System.out.println(e.getNome());
+Em programação, frequentemente precisamos trabalhar com conjuntos fixos de valores que representam categorias, estados ou opções predefinidas. Pense em dias da semana, status de pedidos, níveis de acesso a um sistema, ou mesmo naipes de um baralho.
+
+**Analogia: O Cardápio de Restaurante**
+
+Imagine um cardápio de restaurante: ele oferece apenas opções específicas (entradas, pratos principais, sobremesas) e você só pode escolher o que está listado. Não pode pedir algo que não consta no cardápio. De forma similar, enumerações em Java limitam as escolhas possíveis a um conjunto predefinido de valores, evitando erros e inconsistências.
+
+### O que são Enumerações em Java?
+
+Uma **enumeração (enum)** é um tipo especial de classe que representa um grupo de constantes (valores fixos e imutáveis). Diferente de usar strings ou inteiros para representar opções, enums oferecem:
+
+- **Segurança de tipos:** o compilador verifica se você está usando valores válidos
+- **Compreensão imediata:** o código fica mais legível e autoexplicativo
+- **Prevenção de erros:** evita valores inválidos ou digitação incorreta
+
+### Criando e Usando Enums Simples
+
+O exemplo mais básico de enum é uma lista simples de valores constantes:
+
+```java
+// Definição do enum
+public enum DiaDaSemana {
+    SEGUNDA, 
+    TERCA, 
+    QUARTA, 
+    QUINTA, 
+    SEXTA, 
+    SABADO, 
+    DOMINGO
+}
+
+// Uso em outra classe
+public class Agendamento {
+    private DiaDaSemana diaPreferido;
+    
+    public void agendar(DiaDaSemana dia) {
+        this.diaPreferido = dia;
+        System.out.println("Agendado para " + dia);
+    }
+    
+    public static void main(String[] args) {
+        Agendamento consulta = new Agendamento();
+        consulta.agendar(DiaDaSemana.QUINTA);
+        
+        // Isto não compilaria, pois "FERIADO" não é um valor válido:
+        // consulta.agendar("FERIADO"); 
+    }
+}
+```
+
+### Enums com Métodos e Atributos
+
+Enums em Java são extremamente poderosos porque, na verdade, são classes completas. Cada constante enum é uma instância da classe enum. Isso significa que podem ter:
+
+- Atributos (campos)
+- Construtores
+- Métodos
+
+Vamos expandir nosso exemplo de dias da semana:
+
+```java
+public enum DiaSemana {
+    // Constantes com parâmetros para o construtor
+    SEGUNDA("Segunda-feira", false),
+    TERCA("Terça-feira", false),
+    QUARTA("Quarta-feira", false),
+    QUINTA("Quinta-feira", false),
+    SEXTA("Sexta-feira", false),
+    SABADO("Sábado", true),
+    DOMINGO("Domingo", true);
+
+    // Atributos privados
+    private final String nomeAmigavel;
+    private final boolean ehFimDeSemana;
+
+    // Construtor (sempre private em enums)
+    private DiaSemana(String nomeAmigavel, boolean ehFimDeSemana) {
+        this.nomeAmigavel = nomeAmigavel;
+        this.ehFimDeSemana = ehFimDeSemana;
+    }
+
+    // Métodos de acesso (getters)
+    public String getNomeAmigavel() {
+        return nomeAmigavel;
+    }
+
+    public boolean isEhFimDeSemana() {
+        return ehFimDeSemana;
+    }
+    
+    // Método personalizado
+    public String getSaudacao() {
+        if (this == SEGUNDA) {
+            return "Começando a semana com energia!";
+        } else if (this == SEXTA) {
+            return "Sextou! Bom fim de semana!";
+        } else if (ehFimDeSemana) {
+            return "Aproveite seu descanso!";
+        } else {
+            return "Tenha um ótimo dia!";
         }
-            EstadosBr eb = EstadosBr.SANTA_CATARINA;
-
-        System.out.println(eb.getSigla());
-
     }
-    }
-```
-
-Dependência
-
-composição
-
-agregação
-
-multiplicidade
-
-visibilidade → +public, #protected, -private
-
-# Programão orientada a objetos
-
-Paradigma de programação baseado no conceito de “objetos”.
-
-> Trata-se de contextualizar objetos do mundo real para programação ex: Aluno, Veiculo, Transferência…
-> 
-
-# Pilares de POO
-
-**Encapsulamento:** Nem tudo precisa estar visível
-
-```java
-public class Pessoa {
-    private String nome;
-    private String cpf;
-    private String Address;
     
-    private int piscadas;
-    public Pessoa (String cpf, String name){
-        this.cpf=cpf;
-        this.nome=name;
-    }
-
-    public void piscar(){
-        confereOlho();
-        fazerForca();
-        piscando(piscadas);
-        System.out.println("piscou");
-    }
-
-		//encapsulamento escondendo função
-    private void piscando(int piscadas){
-        this.piscadas++;
-    }
-		//encapsulamento escondendo função
-    private void confereOlho(){
-        System.out.println("olho seco!");
-    }
-    //encapsulamento escondendo função
-    private void fazerForca(){
-        System.out.println("piscando");
-    }
-
-    public int getPiscadas() {
-        return piscadas;
-    }
-
-    public void setPiscadas(int piscadas) {
-        this.piscadas = piscadas;
+    // Sobrescrevendo método toString
+    @Override
+    public String toString() {
+        return nomeAmigavel;
     }
 }
 ```
 
-**Herança:** Características comuns podem ser elevados e compartilhados atraves de um hierarquia de objetos, (generalização).
-
-> Não e permitido Herança múltipla
-> 
+Agora podemos fazer um uso mais sofisticado:
 
 ```java
-public class Padeiro extends Pessoa {
-
-    private int paoFrances;
-    
-    //construtor - So e necessario pois a classe pessoa tem um contrutor 
-    public Padeiro(String cpf, String name) {
-        super(cpf, name);
-    }
-
-    public void pao(){
-        this.paoFrances++;
-        System.out.println("fazendo pao: "+ paoFrances);
-    }
-
-}
-```
-
-**Abstração:** Logica de um ou vários comportamento em um objeto: exemplo: o Veiculo **acelera.**
-
-> Todos precisão ter determinador comportamento, mas não preciso saber como funcionam.
-> 
-
-```java
-public abstract class PessoaAbs {
-				//abstração, sem corpo {}
-        public abstract void comer();
-
-        public abstract void dormir();
-
-}
-```
-
-```java
-ppublic class Padeiro extends PessoaAbs {
-
-    private int paoFrances;
-
-    //construtor - So e necessario pois a classe pessoa tem um contrutor
-
-		
-		//abstração
-    @Override
-    public void comer() {
-        System.out.println("fome");
-    }
-		
-		//abstração
-    @Override
-    public void dormir() {
-        System.out.println("sono");
-    }
-
-    public void pao(){
-        this.paoFrances++;
-        System.out.println("fazendo pao: "+ paoFrances);
-    }
-
-}
-
-```
-
-**Polimorfismo:** Inúmeras maneiras de se realizar uma mesma ação.
-
-> Refere à capacidade de objetos de classes diferentes responderem a uma mesma mensagem ou chamada de método de maneira específica para cada classe. Em outras palavras, o polimorfismo permite que objetos de diferentes classes possam ser tratados de forma uniforme, mesmo que suas implementações concretas sejam diferentes.
-> 
-
-### **Capacidade de tratar objetos criados por classes específicas como objetos de uma classe genérica;
-Capacidade de um objeto poder ser referenciado de várias formas;**
-
-```java
-pclass Animal {
-    public void fazerSom() {
-        System.out.println("Animal fazendo som indefinido");
-    }
-}
-
-class Cachorro extends Animal {
-    @Override
-    public void fazerSom() {
-        System.out.println("Cachorro latindo: Au Au!");
-    }
-}
-
-class Gato extends Animal {
-    @Override
-    public void fazerSom() {
-        System.out.println("Gato miando: Miau Miau!");
-    }
-}
-
-public class ExemploPolimorfismo {
+public class ExemploEnum {
     public static void main(String[] args) {
-        Animal animal1 = new Cachorro();
-        Animal animal2 = new Gato();
-
-        animal1.fazerSom(); // Chamará o método fazerSom() de Cachorro
-        animal2.fazerSom(); // Chamará o método fazerSom() de Gato
-    }
-}
-```
-
-# Interface
-
-> Não sendo permitido Herança múltipla, podemos usar interfaces multiplas.
-> 
-
-```java
-public interface Copiadora {
-    public void copia();
-
-}
-
-public interface Digitalizar {
-    public void digitaliza();
-}
-
-```
-
-```java
-public class Xerox implements Copiadora{
-    @Override
-    public void copia() {
-        System.out.println("copiando");
-    }
-}
-
-public class Scanner implements Digitalizar{
-    @Override
-    public void digitaliza() {
-        System.out.println("digitaliza");
-    }
-}
-
-public class EmpressoFazTudo implements Copiadora, Digitalizar{
-    @Override
-    public void digitaliza() {
-        System.out.println("faz tudo, digitaliza");
-    }
-
-    @Override
-    public void copia() {
-        System.out.println("faz tudo, copia");
-    }
-}
-```
-
-herança e acoplamento
-
-# Collection Framework API
-
-https://github.com/cami-la/collections-java-api-2023
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e6290395-898f-4ee3-a462-1d850a8c48a5/Untitled.png)
-
-- Uma coleção (collection) é uma estrutura de dados que serve para agrupar muitos elementos em uma única unidade, estes elementos precisão ser Objetos.
-
-- Uma Collection pode ter coleções homogêneas e heterogêneas, normalmente utilizamos coleções homogêneas de um tipo especifico.
-- O núcleo principal das coleções é formado pelas interfaces da figura a abaixo, essas interfaces permitem manipular a coleção independente do nível de detalhe que elas representam.
-- Temos quatro grandes tipos de coleções: `List` (lista), `Set` (conjunto), `Queue` (fila) e `Map` (mapa), a partir dessas interfaces, temos muitas subclasses concretas que implementam varias formas diferentes de se trabalhar com cada coleção.
-
-# Comparable X Comparator
-
-## Comparable
-
-- `Comparable` fornece uma única sequência de ordenação. Em outras palavras, podemos ordenar a coleção com base em um único elemento, como id, nome e preço.
-- `Comparable` afeta a classe original, ou seja, a classe atual é modificada.
-- `Comparable` fornece o método `compareTo()` para ordenar elementos.
-- `Comparable` está presente no pacote `java.lang`.
-- Podemos ordenar os elementos da lista do tipo `Comparable` usando o método `Collections.sort(List)`.
-
-## Comparator
-
-- O `Comparator` fornece o método `compare()` para ordenar elementos.
-- O `Comparator` fornece múltiplas sequências de ordenação. Em outras palavras, podemos ordenar a coleção com base em múltiplos elementos, como id, nome, preço, etc.
-- O `Comparator` não afeta a classe original, ou seja, a classe atual não é modificada.
-- Um `Comparator` está presente no pacote `java.util`.
-- Podemos ordenar os elementos da lista do tipo `Comparator` usando o método `Collections.sort(List, Comparator)`.
-
-## Collections
-
-- A classe `Collections` é uma classe utilitária do Java para operações comuns em coleções.
-- Ela fornece métodos para ordenação, busca, manipulação e sincronização de coleções.
-- O método `sort()` é usado para ordenar uma lista em ordem ascendente.
-- O método `sort()` em conjunto com `Collections.reverseOrder()` permite ordenar em ordem descendente.
-- Lista: a medida que os elemento são adicionado e a ordem que vai ficar, para mudar a ordem usar o comparable ou caomparator.
-    
-    (arrayList, LinkedList, Vector(threadSafe), stack).
-    
-    Dinamico``<se adpta a quantidades de elementos>``.
-    
-    sort →ordenação
-    
-    shuffle → embaralhamento
-    
-    reverse → Reverção
-    
-    binarySearch → busca binaria
-    
-    # STREAM
-    
-    INTERFACE - CONSUMER ``<T>``, um operação que aceita um argumento do tipo T e não retorna nenhum resultado, realizar ação,  efeitos colaterais nos elementos do Stream sem modicar ou retornar um valor.
-    
-    ```java
-    List <Integer> numeros = Arrays.asList(1,2,3,4,5);
-    
-    Consumer<Integer> nomeComsumer;
-    
-    numeros.stream().forEach(n->{
-    	if(n%2==0){
-    		System.out.println(n)
-    }
-    });
-    ```
-    
-    INTERFACE - Supplier``<T>``, Representa um operação que não aceita nenhum argumento e retorna um resultado do tipo T, Criar ou fornecer novos objetos de um determinado tipo.
-    
-     
-    
-    ```java
-    Supplier<String> nomeSupplier = () -> "Ola!";
-            List<String> letras = Stream.generate(
-                    () -> {
-                                return "Ola3";
-                            }
-                            //ou () -> "ola3"
-                    )
-                    .limit(3)
-                    .collect(Collectors.toList());
-    
-            //methodo Reference ::
-            System.out.println(nomeSupplier);
-            letras.forEach(System.out::println);
-    ```
-    
-    INTERFACE - Function``<T,R>``, Aceita um argumento do tipo T e retorna um resultado do tipo R. Ultizamos para transformar ou mapear os elementos do Stream em outros valores ou tipos.
-    
-    ```java
-    List<Integer> numeros = Arrays.asList(1,2,3,4,5);
-    
-        //Function com expressao lambda
-        Function<Integer, Integer> dobra = numero -> numero*2;
-    
-        List<Integer> numerosDobrados = numeros.stream()
-                .map(n->n*2)
-                .collect(Collectors.toList());
-        //numerosDobrados.forEach(n-> System.out.println(n));
-        numerosDobrados.forEach(System.out::println);
-    ```
-    
-    INTERFACE - Predicate``<T>``, Recebe um argumento de um tipo e retorna um booleano, usado para filtrar os elementos do Stream com base em condições.
-    
-    ```java
-    public static void main(String[] args) {
-        List<String> palavras = Arrays.asList("abc","et","cab","ze");
+        // Acessando constantes do enum
+        DiaSemana hoje = DiaSemana.QUARTA;
         
+        // Usando métodos e propriedades
+        System.out.println("Hoje é: " + hoje.getNomeAmigavel());
+        System.out.println("É fim de semana? " + (hoje.isEhFimDeSemana() ? "Sim" : "Não"));
+        System.out.println("Saudação: " + hoje.getSaudacao());
         
-        //
-        Predicate<String> maisDeDoisCataracters = palavra-> palavra.length()>2;
-        
-        //
-        palavras.stream()
-                .filter(
-                        new Predicate<String>() {
-                            @Override
-                            public boolean test(String p) {
-                                return p.length()>2;
-                            }
-                            //ou p -> p.length()>2
-                        }
-                )
-                .forEach(System.out::println);
+        // Iterando sobre todos os valores possíveis
+        System.out.println("\n--- Todos os dias da semana ---");
+        for (DiaSemana dia : DiaSemana.values()) {
+            System.out.printf("%s - %s%n", 
+                dia.getNomeAmigavel(), 
+                dia.isEhFimDeSemana() ? "Final de semana" : "Dia útil");
         }
-    ```
+        
+        // Usando enum em switch - uma combinação poderosa!
+        System.out.println("\n--- Planejamento semanal ---");
+        planejamentoDoDia(DiaSemana.SEGUNDA);
+        planejamentoDoDia(DiaSemana.SABADO);
+    }
     
-    INTERFACE - Binary Operator``<T>``, Operação combinada de dois elementos do tipo T e retorna um resultado do mesmo tipo T, usado para operações de redução em pares de elementos, como somar numeros ou combinar objetos.
-    
-    ```java
-    public static void main(String[] args) {
-        List<String> palavras = Arrays.asList("abc","et","cab","ze");
+    public static void planejamentoDoDia(DiaSemana dia) {
+        System.out.println("Plano para " + dia + ":");
         
-        
-        //
-        Predicate<String> maisDeDoisCataracters = palavra-> palavra.length()>2;
-        
-        //
-        palavras.stream()
-                .filter(
-                        new Predicate<String>() {
-                            @Override
-                            public boolean test(String p) {
-                                return p.length()>2;
-                            }
-                            //ou p -> p.length()>2
-                        }
-                )
-                .forEach(System.out::println);
+        switch (dia) {
+            case SEGUNDA:
+                System.out.println("- Reunião de planejamento semanal");
+                System.out.println("- Responder emails do fim de semana");
+                break;
+            case TERCA:
+            case QUARTA:
+            case QUINTA:
+                System.out.println("- Dia normal de trabalho");
+                System.out.println("- Desenvolvimento de projetos");
+                break;
+            case SEXTA:
+                System.out.println("- Revisão semanal");
+                System.out.println("- Happy hour com colegas");
+                break;
+            case SABADO:
+            case DOMINGO:
+                System.out.println("- Descanso e lazer");
+                System.out.println("- Tempo com família e amigos");
+                break;
         }
-    ```
+    }
+}
+```
+
+### Exemplo Prático: Enum para Estados de um Pedido
+
+Vamos ver um exemplo real que demonstra como enums ajudam a modelar processos de negócios:
+
+```java
+public enum StatusPedido {
+    AGUARDANDO_PAGAMENTO("Aguardando Pagamento", false),
+    PAGO("Pago", false),
+    EM_SEPARACAO("Em Separação", false),
+    ENVIADO("Enviado", true),
+    ENTREGUE("Entregue", true),
+    CANCELADO("Cancelado", false);
     
-    INTERFACE -Opitional, NullPointerException()NPE), referecia exepcion, fornece um abordagem mais seguras e expressivas para tratar casos de valores nulo, ENCAPSULAR um valor dentro de um objeto Optional, o valor pode ou não ser nulo.
+    private final String descricao;
+    private final boolean foiEnviado;
     
+    private StatusPedido(String descricao, boolean foiEnviado) {
+        this.descricao = descricao;
+        this.foiEnviado = foiEnviado;
+    }
+    
+    public String getDescricao() {
+        return descricao;
+    }
+    
+    public boolean isFoiEnviado() {
+        return foiEnviado;
+    }
+    
+    // Verifica se a transição para o próximo status é válida
+    public boolean podeMudarPara(StatusPedido novoStatus) {
+        switch (this) {
+            case AGUARDANDO_PAGAMENTO:
+                return novoStatus == PAGO || novoStatus == CANCELADO;
+                
+            case PAGO:
+                return novoStatus == EM_SEPARACAO || novoStatus == CANCELADO;
+                
+            case EM_SEPARACAO:
+                return novoStatus == ENVIADO || novoStatus == CANCELADO;
+                
+            case ENVIADO:
+                return novoStatus == ENTREGUE;
+                
+            case ENTREGUE:
+            case CANCELADO:
+                return false; // Estados finais
+                
+            default:
+                return false;
+        }
+    }
+}
+```
 
-# Maven
+Usando o enum de status em uma classe de pedido:
 
-Facilita o build, automaticas testes, compilar as classes.
+```java
+public class Pedido {
+    private long id;
+    private StatusPedido status;
+    private LocalDateTime dataCriacao;
+    private double valorTotal;
+    
+    public Pedido(long id, double valorTotal) {
+        this.id = id;
+        this.valorTotal = valorTotal;
+        this.dataCriacao = LocalDateTime.now();
+        this.status = StatusPedido.AGUARDANDO_PAGAMENTO;
+    }
+    
+    public boolean atualizarStatus(StatusPedido novoStatus) {
+        if (status.podeMudarPara(novoStatus)) {
+            System.out.printf("Pedido #%d: Mudando status de %s para %s%n", 
+                id, status.getDescricao(), novoStatus.getDescricao());
+            this.status = novoStatus;
+            return true;
+        } else {
+            System.out.printf("Erro: Não é possível mudar de %s para %s%n", 
+                status.getDescricao(), novoStatus.getDescricao());
+            return false;
+        }
+    }
+    
+    // Métodos getters e setters omitidos
+}
+```
 
-Fornecer informações de qualidade
+Testando nossa implementação:
 
-Facilita a compreensão do desenvolver
+```java
+public class SistemaPedidos {
+    public static void main(String[] args) {
+        Pedido pedido = new Pedido(12345, 199.90);
+        
+        // Fluxo válido
+        pedido.atualizarStatus(StatusPedido.PAGO);           // OK
+        pedido.atualizarStatus(StatusPedido.EM_SEPARACAO);   // OK
+        pedido.atualizarStatus(StatusPedido.ENVIADO);        // OK
+        pedido.atualizarStatus(StatusPedido.ENTREGUE);       // OK
+        
+        // Tentativa inválida
+        pedido.atualizarStatus(StatusPedido.CANCELADO);      // Erro
+        
+        // Criando outro pedido com cancelamento
+        Pedido pedido2 = new Pedido(12346, 59.90);
+        pedido2.atualizarStatus(StatusPedido.CANCELADO);     // OK
+        pedido2.atualizarStatus(StatusPedido.PAGO);          // Erro
+    }
+}
+```
 
-Endereça como o software foi construido e suas dependencias atraves do POM(Project Object Model)
+### Convertendo Entre Enums e Strings
 
-## Instalação Maven Windowns
+Frequentemente precisamos converter entre enums e strings, especialmente ao trabalhar com entrada do usuário ou APIs externas:
 
-[Maven – Download Apache Maven](https://maven.apache.org/download.cgi)
+```java
+// String para Enum
+String entradaUsuario = "QUINTA";
+try {
+    DiaSemana dia = DiaSemana.valueOf(entradaUsuario.toUpperCase());
+    System.out.println("Dia selecionado: " + dia.getNomeAmigavel());
+} catch (IllegalArgumentException e) {
+    System.out.println("Dia inválido! Os valores permitidos são: " + 
+        Arrays.toString(DiaSemana.values()));
+}
 
-Download → Binary zip archive → desempacotar arquivo → adicionar o pasta /bin do maven nas variaveis de ambiente.
+// Enum para String
+DiaSemana dia = DiaSemana.DOMINGO;
+String nomeTecnico = dia.name();         // "DOMINGO"
+String nomeExibicao = dia.toString();    // "Domingo" (usando nosso toString personalizado)
+int posicao = dia.ordinal();             // 6 (índice baseado em zero)
+```
 
-Testar: `mvn --version`
+### Enums em Interfaces Java
 
-## Criando Projeto
+A partir do Java 8, você pode definir métodos default em interfaces. Isso permite criar enums que implementam interfaces:
+
+```java
+public interface Notificavel {
+    void enviarNotificacao(String mensagem);
+}
+
+public enum TipoNotificacao implements Notificavel {
+    EMAIL {
+        @Override
+        public void enviarNotificacao(String mensagem) {
+            System.out.println("Enviando EMAIL: " + mensagem);
+            // Lógica para enviar email
+        }
+    },
+    SMS {
+        @Override
+        public void enviarNotificacao(String mensagem) {
+            System.out.println("Enviando SMS: " + mensagem);
+            // Lógica para enviar SMS
+        }
+    },
+    PUSH {
+        @Override
+        public void enviarNotificacao(String mensagem) {
+            System.out.println("Enviando PUSH: " + mensagem);
+            // Lógica para enviar notificação push
+        }
+    };
+}
+```
+
+### Quando Usar Enums
+
+Use enumerações quando tiver:
+
+1. Um conjunto fixo e limitado de valores constantes (ex.: dias da semana, estações do ano)
+2. Valores que representam conceitos no domínio do problema (ex.: status de um pedido)
+3. Necessidade de agrupar constantes relacionadas com comportamento específico
+4. Necessidade de garantir que apenas valores predefinidos sejam aceitos 
+
+### Dicas e Melhores Práticas
+
+1. **Nomeie em maiúsculas:** Por convenção, constantes enum são escritas em MAIÚSCULAS_COM_UNDERSCORES.
+2. **Use nomes no singular para o tipo enum:** `StatusPedido` em vez de `StatusPedidos`.
+3. **Aproveite os métodos embutidos:** `values()`, `valueOf()`, `name()`, `ordinal()`.
+4. **Prefira enums a constantes int:** `enum DirecaoCardeal` é melhor que `public static final int NORTE = 0;`.
+5. **Coloque lógica relacionada dentro do enum:** Como fizemos com o método `podeMudarPara()`.
+6. **Evite usar ordinal() para lógica de negócios:** Adicionar uma nova constante no meio quebra o código.
+
+Enums são uma ferramenta poderosa que torna seu código mais seguro, legível e expressivo, representando escolhas limitadas de forma clara e com validação em tempo de compilação.
+
+## Collection Framework API: Organizando e Manipulando Dados
+
+A Collection Framework API do Java é um conjunto poderoso de interfaces, classes e algoritmos que fornece soluções prontas para organizar e manipular coleções de objetos. Dominar essa API é essencial para qualquer programador Java, pois ela ajuda a escrever código mais eficiente, limpo e reutilizável.
+
+**Analogia:**
+
+Imagine uma cozinha bem organizada. Você tem diferentes tipos de recipientes para guardar seus alimentos: potes com tampas para conservar, cestas para frutas, gavetas com divisórias para talheres. Cada recipiente tem um propósito específico e organiza os itens de forma particular. Da mesma forma, a Collection Framework oferece "recipientes" (estruturas de dados) específicos para diferentes necessidades:
+
+- **List** é como uma fila de pessoas: a ordem importa e uma mesma pessoa pode aparecer mais de uma vez
+- **Set** é como um grupo de alunos em uma sala de aula: cada aluno aparece apenas uma vez
+- **Map** é como um armário com gavetas numeradas: cada objeto é guardado em um "compartimento" identificado por uma chave única
+
+### Hierarquia de Coleções
+
+A API é organizada em uma hierarquia de interfaces que definem comportamentos comuns:
+
+```
+           Collection
+          /    |     \
+         /     |      \
+       List   Set    Queue
+     /     \    |       |
+ArrayList LinkedList HashSet  PriorityQueue
+                    |
+                  TreeSet
+                  
+       Map (interface separada)
+       /    \
+  HashMap  TreeMap
+```
+
+### 1. List (Lista): Preservando a Ordem e Aceitando Duplicatas
+
+Uma **List** é uma coleção ordenada que permite elementos duplicados. É como um array dinâmico que cresce conforme necessário.
+
+**Principais Implementações:**
+
+- **ArrayList**: Rápido para acesso por índice, mas lento para inserções/remoções no meio
+- **LinkedList**: Rápido para inserções/remoções em qualquer posição, mas mais lento para acessos aleatórios
+
+**Exemplo de uso:**
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListaDeCompras {
+    public static void main(String[] args) {
+        // Criando uma lista de compras
+        List<String> compras = new ArrayList<>();
+        
+        // Adicionando itens
+        compras.add("Leite");
+        compras.add("Pão");
+        compras.add("Queijo");
+        compras.add("Leite");  // Duplicata permitida!
+        
+        System.out.println("Lista de compras: " + compras);
+        System.out.println("Número de itens: " + compras.size());
+        System.out.println("Segundo item: " + compras.get(1));  // Acesso por índice
+        
+        // Verificando se contém um item
+        if (compras.contains("Pão")) {
+            System.out.println("Pão já está na lista.");
+        }
+        
+        // Removendo um item
+        compras.remove("Queijo");
+        System.out.println("Lista após remoção: " + compras);
+        
+        // Iterando sobre a lista
+        System.out.println("\nItens para comprar:");
+        for (int i = 0; i < compras.size(); i++) {
+            System.out.println((i+1) + ". " + compras.get(i));
+        }
+        
+        // Limpar toda a lista
+        compras.clear();
+        System.out.println("Lista vazia? " + compras.isEmpty());
+    }
+}
+```
+
+### 2. Set (Conjunto): Garantindo Unicidade
+
+Um **Set** não permite elementos duplicados e geralmente não mantém a ordem de inserção (com exceção do LinkedHashSet). Ideal para quando a unicidade é importante.
+
+**Principais Implementações:**
+
+- **HashSet**: Mais rápido, mas não garante ordem
+- **TreeSet**: Mantém elementos ordenados (pela ordem natural ou por um Comparator)
+- **LinkedHashSet**: Mantém a ordem de inserção e também garante unicidade
+
+**Exemplo de uso:**
+
+```java
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class RegistroAlunos {
+    public static void main(String[] args) {
+        // HashSet: Conjunto sem ordem garantida
+        Set<String> alunos = new HashSet<>();
+        
+        // Adicionando alunos
+        alunos.add("Maria");
+        alunos.add("João");
+        alunos.add("Pedro");
+        alunos.add("Maria");  // Não será adicionado novamente!
+        
+        System.out.println("Alunos registrados (HashSet): " + alunos);
+        // Saída pode ser: [Pedro, João, Maria] (ordem não garantida)
+        
+        // TreeSet: Conjunto ordenado
+        Set<String> alunosOrdenados = new TreeSet<>();
+        alunosOrdenados.addAll(alunos);  // Adiciona todos do outro conjunto
+        alunosOrdenados.add("Ana");
+        
+        System.out.println("Alunos em ordem alfabética (TreeSet): " + alunosOrdenados);
+        // Saída será: [Ana, João, Maria, Pedro]
+        
+        // Operações de conjunto
+        System.out.println("Total de alunos: " + alunosOrdenados.size());
+        System.out.println("Contém Maria? " + alunosOrdenados.contains("Maria"));
+        
+        // Iterando com for-each (funciona para qualquer Collection)
+        System.out.println("\nLista de chamada:");
+        for (String aluno : alunosOrdenados) {
+            System.out.println("- " + aluno);
+        }
+    }
+}
+```
+
+### 3. Map (Mapa): Associando Chaves e Valores
+
+Um **Map** armazena pares de chave-valor, onde cada chave deve ser única. É perfeito para dicionários, caches e qualquer situação onde você precisa associar objetos a identificadores.
+
+**Principais Implementações:**
+
+- **HashMap**: Mais rápido, mas não mantém ordem
+- **TreeMap**: Mantém as chaves ordenadas
+- **LinkedHashMap**: Mantém a ordem de inserção
+
+**Exemplo de uso:**
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class NotasAlunos {
+    public static void main(String[] args) {
+        // Mapa de alunos e suas notas
+        Map<String, Double> notas = new HashMap<>();
+        
+        // Adicionando pares chave-valor
+        notas.put("Ana", 9.5);
+        notas.put("Bruno", 7.8);
+        notas.put("Carla", 8.7);
+        notas.put("Ana", 9.8);  // Sobrescreve o valor anterior!
+        
+        System.out.println("Registros de notas: " + notas);
+        System.out.println("Nota de Bruno: " + notas.get("Bruno"));
+        
+        // Verificando existência
+        System.out.println("Contém registro de Danilo? " + notas.containsKey("Danilo"));
+        System.out.println("Alguém tirou 8.7? " + notas.containsValue(8.7));
+        
+        // Iterando sobre o mapa
+        System.out.println("\nRelatório de notas:");
+        for (Map.Entry<String, Double> entrada : notas.entrySet()) {
+            System.out.println(entrada.getKey() + ": " + entrada.getValue());
+        }
+        
+        // Forma mais moderna (Java 8+)
+        System.out.println("\nAlunos com nota acima de 9.0:");
+        notas.forEach((aluno, nota) -> {
+            if (nota > 9.0) {
+                System.out.println(aluno + ": " + nota);
+            }
+        });
+        
+        // Removendo um registro
+        notas.remove("Bruno");
+        System.out.println("\nApós remoção: " + notas);
+    }
+}
+```
+
+### Operações Avançadas e Utilitários
+
+A Collection Framework vem com muitas funcionalidades úteis para manipular coleções, disponíveis principalmente na classe `Collections`:
+
+```java
+import java.util.*;
+
+public class OperacoesAvancadas {
+    public static void main(String[] args) {
+        List<Integer> numeros = new ArrayList<>(Arrays.asList(5, 2, 9, 1, 7, 3));
+        
+        // Ordenação
+        Collections.sort(numeros);
+        System.out.println("Ordenados: " + numeros);  // [1, 2, 3, 5, 7, 9]
+        
+        // Ordem reversa
+        Collections.reverse(numeros);
+        System.out.println("Reverso: " + numeros);    // [9, 7, 5, 3, 2, 1]
+        
+        // Embaralhamento
+        Collections.shuffle(numeros);
+        System.out.println("Embaralhados: " + numeros);  // Ordem aleatória
+        
+        // Valor máximo/mínimo
+        int max = Collections.max(numeros);
+        int min = Collections.min(numeros);
+        System.out.println("Máximo: " + max + ", Mínimo: " + min);
+        
+        // Coleção imutável
+        List<String> naoModificavel = Collections.unmodifiableList(
+            Arrays.asList("Este", "é", "imutável")
+        );
+        System.out.println("Lista imutável: " + naoModificavel);
+        // naoModificavel.add("Erro!"); // Lança UnsupportedOperationException
+        
+        // Preenchimento
+        List<String> repetidos = new ArrayList<>(Collections.nCopies(5, "Repetido"));
+        System.out.println("5 repetições: " + repetidos);
+    }
+}
+```
+
+### Stream API: Processamento Declarativo de Coleções
+
+A partir do Java 8, a Stream API permite trabalhar com coleções de forma declarativa, expressando o que você quer fazer em vez de como fazer:
+
+```java
+import java.util.*;
+import java.util.stream.*;
+
+public class ExemploStream {
+    public static void main(String[] args) {
+        List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        
+        // Sem Stream API (forma imperativa)
+        List<Integer> paresDobrados = new ArrayList<>();
+        for (Integer n : numeros) {
+            if (n % 2 == 0) {
+                paresDobrados.add(n * 2);
+            }
+        }
+        System.out.println("Pares dobrados (imperativo): " + paresDobrados);
+        
+        // Com Stream API (forma declarativa)
+        List<Integer> paresDobradosStream = numeros.stream()
+                                                 .filter(n -> n % 2 == 0)  // Filtra pares
+                                                 .map(n -> n * 2)          // Dobra
+                                                 .collect(Collectors.toList());  // Coleta em lista
+        System.out.println("Pares dobrados (declarativo): " + paresDobradosStream);
+        
+        // Outras operações úteis com Stream
+        // Soma dos números ímpares
+        int somaImpares = numeros.stream()
+                                .filter(n -> n % 2 != 0)
+                                .reduce(0, Integer::sum);
+        System.out.println("Soma dos ímpares: " + somaImpares);
+        
+        // Estatísticas
+        IntSummaryStatistics estatisticas = numeros.stream()
+                                                .mapToInt(Integer::intValue)
+                                                .summaryStatistics();
+        System.out.println("\nEstatísticas dos números:");
+        System.out.println("Contagem: " + estatisticas.getCount());
+        System.out.println("Soma: " + estatisticas.getSum());
+        System.out.println("Mínimo: " + estatisticas.getMin());
+        System.out.println("Máximo: " + estatisticas.getMax());
+        System.out.println("Média: " + estatisticas.getAverage());
+    }
+}
+```
+
+### Quando Usar Cada Tipo de Coleção?
+
+Escolher a coleção certa para cada situação é crucial para o desempenho e legibilidade do seu código:
+
+| Se você precisa... | Use... | Exemplo de caso de uso |
+|------------------|--------|------------------------|
+| Armazenar itens em ordem com acesso rápido por posição | ArrayList | Lista de músicas em um player |
+| Inserir/remover frequentemente no meio | LinkedList | Fila de processamento com prioridades variáveis |
+| Armazenar itens únicos sem ordem específica | HashSet | Registro de IPs únicos que acessaram um site |
+| Armazenar itens únicos em ordem natural | TreeSet | Palavras únicas de um texto em ordem alfabética |
+| Manter itens únicos na ordem de inserção | LinkedHashSet | Histórico de URLs visitadas sem duplicatas |
+| Associar valores a chaves com acesso rápido | HashMap | Cachê de dados, dicionário |
+| Associar valores a chaves mantendo ordem natural | TreeMap | Agenda telefônica ordenada por nome |
+| Associar valores mantendo ordem de inserção | LinkedHashMap | Configurações de um sistema na ordem de carregamento |
+
+Escolhendo a coleção certa para cada necessidade, você não só melhora o desempenho do seu programa, mas também torna seu código mais expressivo e fácil de entender.
+
+## Comparable X Comparator
+
+### Comparable
+
+* `Comparable` fornece uma única sequência de ordenação.
+* `Comparable` afeta a classe original.
+* `Comparable` fornece o método `compareTo()` para ordenar elementos.
+* `Comparable` está presente no pacote `java.lang`.
+* Podemos ordenar os elementos da lista do tipo `Comparable` usando o método `Collections.sort(List)`.
+
+### Comparator
+
+* `Comparator` fornece o método `compare()` para ordenar elementos.
+* `Comparator` fornece múltiplas sequências de ordenação.
+* `Comparator` não afeta a classe original.
+* `Comparator` está presente no pacote `java.util`.
+* Podemos ordenar os elementos da lista do tipo `Comparator` usando o método `Collections.sort(List, Comparator)`.
+
+### Collections
+
+A classe `Collections` é uma classe utilitária do Java para operações comuns em coleções.
+
+Ela fornece métodos para ordenação, busca, manipulação e sincronização de coleções.
+
+O método `sort()` é usado para ordenar uma lista em ordem ascendente.
+
+O método `sort()` em conjunto com `Collections.reverseOrder()` permite ordenar em ordem descendente.
+
+## Stream API
+
+A Stream API introduzida no Java 8 permite processar coleções de forma funcional e paralela.
+
+### Consumer
+
+```java
+List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
+numeros.stream().forEach(n -> {
+    if (n % 2 == 0) {
+        System.out.println(n);
+    }
+});
+```
+
+### Supplier
+
+```java
+Supplier<String> nomeSupplier = () -> "Olá!";
+List<String> letras = Stream.generate(() -> "Olá3")
+                            .limit(3)
+                            .collect(Collectors.toList());
+letras.forEach(System.out::println);
+```
+
+### Function
+
+```java
+List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
+Function<Integer, Integer> dobra = numero -> numero * 2;
+List<Integer> numerosDobrados = numeros.stream()
+                                       .map(dobra)
+                                       .collect(Collectors.toList());
+numerosDobrados.forEach(System.out::println);
+```
+
+### Predicate
+
+```java
+List<String> palavras = Arrays.asList("abc", "et", "cab", "ze");
+Predicate<String> maisDeDoisCaracteres = palavra -> palavra.length() > 2;
+palavras.stream()
+        .filter(maisDeDoisCaracteres)
+        .forEach(System.out::println);
+```
+
+### BinaryOperator
+
+```java
+List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
+BinaryOperator<Integer> soma = (a, b) -> a + b;
+int resultado = numeros.stream()
+                       .reduce(0, soma);
+System.out.println(resultado);
+```
+
+### Optional
+
+```java
+Optional<String> nome = Optional.of("Clon");
+nome.ifPresent(System.out::println);
+```
+
+## Maven
+
+Maven é uma ferramenta de automação de build e gerenciamento de dependências para projetos Java.
+
+### Instalação Maven no Windows
+
+1. Baixe o Maven em https://maven.apache.org/download.cgi.
+2. Descompacte o arquivo.
+3. Adicione a pasta /bin do Maven nas variáveis de ambiente.
+
+### Criando Projeto
 
 ```bash
-mvn --version
-javac -version
 mvn archetype:generate -DgroupId=one.digitalinnovation -DartifactId=quick-start-maven -Darchetype-quickstart -DinteractiveMode=false
 ```
 
-Maven Archetype List → Estruturas de projetos prontas para o maven
+### POM
 
-## Dia-Dia
-
-`mvn compile` //compila as classes || compile
-`mvn test` //Executa todos os teste que existem || testar
-
-`mvn package` Cria o .jar da aplicação || empacotar
-
-`mvn clean` //Apaga a pasta  Target || limpa diretório de trabalho
-
-## POM
-
-Project Object Model
-
-Unidade Fudamental de trabalho
-
-Formato XML
-
-Detalha o projeto
-
-Detalha como construir o proejto
-
-Maven semrep procura pelo pom.xml para realizar sua execução.
-
-POM→ Nome do projeto; Dependencias; Modulos; Configurações de build; Detalhes do projeto(nome, descrição, licença, url); Configuração de ambiente(repositórios, tracking, profiles)
-
-SUPER POM → Modelo basico do pom, o maven faz que o pom extends deste super pom as configurações padrões oque nos fazer e rescrever por cima o que queremos.
+O POM (Project Object Model) é a unidade fundamental de trabalho no Maven. Ele é um arquivo XML que descreve o projeto, suas dependências, módulos e configurações de build.
 
 ```xml
 <project>
-	<modelVersion>1.0.0</modelVersion>
-	<groudId>com.mycompany.app</groupId>
-	<artifactId>my-app</artifactId>
-	<version>1</version>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycompany.app</groupId>
+    <artifactId>my-app</artifactId>
+    <version>1.0</version>
 </project>
 ```
 
-## Repositorios Remoto
-
-o POM por padrão(SUPER POM) usa como repositorio remoto o Maven-Central.
-
-Podemos mudar o Arquivo global settings.xml as configurações.
-
-```xml
-<project>
-	<repositoreis>
-		<repository>
-			<id>my-repo</id>
-			<name>custom name</name>
-			<url> http:url.repo.dk </url>
-		</repository>
-		<repository>
-			<id>my-repo</id>
-			<name>custom name</name>
-			<url> http:url.repo.dk </url>
-		</repository>
-	</repositoreis>	
-	
-</project>
-```
-
-# Repositorios Local
-
-Repositorio na maquina utilizado pelo Maven para buscar os artefatos, Estrategeia de Caching, localização
-
-O mavem faz download das dependencias de repositorios remotos e salva no repositorio local.
-
-## Adicionar Depedenciasa
+### Adicionando Dependências
 
 ```xml
 <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
     </dependency>
-<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
-<!-- Nova Dependicia -->
-		<dependency>
-		  <groupId>org.hibernate.validator</groupId>
-	    <artifactId>hibernate-validator</artifactId>
-	    <version>8.0.1.Final</version>
-		</dependency>
-  </dependencies>
+</dependencies>
 ```
 
-`groudId` → id da organização, seguindo as regas de nomes de pacote Java
+### Plugins
 
-`artifactId` → Nome do projeto
-
- `version` → Numero da versão
-
-Adicionando nova dependencia
-
-Apos adicionar e so compilar o projeto para baixar as dependencias
-
-`mvn compile`
-
-## Tipos de Dependencias
-
-Publicar componentes com Maven
-
-`mvn install`
-
-O seu projeto se torna uma dependencia, 
-
-Para adicionar essa dependencia ao uma novo projeto e so fazer o mesmo projeto
-
-```xml
-<dependency>
-	<groupId>junit</groupId>
-	<artifactId>junit</artifactId>
-	<version>3.8.1</version>
-</dependency>
-```
-
-Dependência diretas →  Declaradas no pom.xml
-
-Dependência Transitivar → Dependencias obrigatorias das dependencias declaras no pom.xml
-
-### ClassPath
-
-Runtime
-
-Test
-
-compile
-
-Escopo `default`→ Padrão; Disponivel em todos os classPaths; Transitivo.
-
-Escopo `provided` → Dependencia sera fornecida em tempo de execução por uma implementação na JDK ou via container exemplos: Servlet API, Java EE APIs; Adicionando no classPath usado para compilação(compile) e teste(test), mas não em runtime; não e transitiva
-
-```xml
-<dependency>
- <groupId>junit</groupId>
- <artifactId>junit</artifactId>
- <version>3.8.1</version>
- <scope>provided</scope>
-</dependency>
-```
-
-Escopo `runtime` → dependencia necessaria para execução e não para compilação; Maven inclui no classPath dos escopos de runtime e test;
-
-```xml
-<dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>runtime</scope>
-    </dependency>
-```
-
-Escopo `test` → Disponivel somente para compilação e execução de testes; não transitivo
-
-```xml
-<dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-```
-
-Escopo `system` → Similar ao escopo provided exceto por necessario prover o JAR explicitamente; Adicionando no classPath usado para compilação(compile) e teste(test), mas não tem runtime; não e transitiva.
-
-```xml
-<dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>system</scope>
-			<systemPath>${project.basedir}/libs/custom-dependency-1.3.2.jar</systemPath>
-    </dependency>
-```
-
-Escopo ``import`` → Disponivel apenas com uma dependecia do tipo e pom e com tag ``<dependencyManagement>``; Indica um processo de reutilizar dependências de um projeto
-
-```xml
-<dependencyManagement>
-	<dependencies>	
-		<dependency>
-	    <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-	</dependencies>
-</dependencyManagement>
-```
-
-## Classpath
-
-Mostra os escopos
-
-`mvn dependency:build-classpath -DincludeScope=compile`
-
-`mvn dependency:build-classpath -DincludeScope=test`
-
-`mvn dependency:build-classpath -DincludeScope=runtime`
-
-## Dependencias Opcionais
-
-Ultilizand quando uma depedencia não e necessaria para os projetos que irão reutilizar seu componente.
-
-```xml
-<dependency>
-    <groupId>org.hibernate.validator</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>8.0.1.Final</version>
-		<optional>true</optional>
-</dependency>
-```
-
-```xml
-<dependency>
-	<exclusions>
-			<exclusion>    
-				<groupId>org.hibernate.validator</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-			</exclusion>
-		</exclusions>
-</dependency>
-```
-
-## Maven Build Lifecycle
-
-Conceito de clico de vida de construção.
-
-Conceitos e comandos da ferramenta
-
-Composto por 3 ciclos de vida
-
-Cada ciclo possui fases(Maven Phases)
-
-Cada fase possui objetivos(Maven Goals)
-
-Default → Clean → Site
-
-Default → Principal ciclo; Responsavel pelo deploy local; Composto por 23 fases(validate;compile;test-compile;test;integration-test;package;install;deploy)
-
-Clean → Ciclo intermediario; Responsavel pela limpeza do projeto; Composto por 3 fases(pre-clean;clean;post-clean)
-
-Site LifeCycle → Ciclo final; Responsavel pela criação do site de documentação do projeto; Composto por 4 fases(pre-site;site;post-site;site-deploy)
-
-## Projetos multi-modulos
-
-Projeto Raiz
-
-```xml
-<project>
-	<modelVersion>1.0.0</modelVersion>
-	<groudId>com.mycompany.app</groupId>
-	<artifactId>my-app</artifactId>
-	<version>1</version>
-	<packaging>pom</packaging>
-</project>
-```
-
-```bash
-mvn archetype:generate -DgroupId=one.digital.innovation -DartifactId=core -Darchetype=maven-quick-start -DinteractiveMode=false
-mvn archetype:generate -DgroupId=one.digital.innovation -DartifactId=service -Darchetype=maven-quick-start -DinteractiveMode=false
-mvn archetype:generate -DgroupId=one.digital.innovation -DartifactId=controller -Darchetype=maven-quick-start -DinteractiveMode=false
-```
-
-```xml
-<modules>
-	<module>core</module>
-	<module>service</module>
-	<module>controller</module>
-</modules>
-```
-
-## Plugins
-
-Maoria das funcionalidades são providas por plugins
-
-Estilo arquitural para extensibilidade (criar seu proprio plugin)
-
-Escrito prioritariamente em Java e disponibilizados comumente como JARs
-
-- Eclipse → integração ao IDE Eclipse
-- jacoco → Cobertura de codigo
-- ear → Customizar um empacotamento no formato ear
-- war → Empocotamento
-- compile → Compilar o projeto.
-- clean → Limpar
-- checkstyle → Verificar os estilos e configurar configurações padronizadas
-- javadoc → Gerar documentação.
-
-`mvn puglin-name:goal-name`
-
-Goal → tarefas espeficas
-
-`mvn dependency:help`
+Plugins são usados para adicionar funcionalidades ao Maven, como compilar código, executar testes, empacotar o projeto, etc.
 
 ```xml
 <build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.8.0</version>
-			<configuration>
-				<release>11</release>
-			</configuration>
-		</plugin>
-	</puglins>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>11</release>
+            </configuration>
+        </plugin>
+    </plugins>
 </build>
 ```
 
-Gerando Javadoc no projeto
+## Testes com JUnit: Garantindo a Qualidade do Código
+
+O JUnit é um framework de teste amplamente utilizado em projetos Java que permite criar testes automatizados para verificar se seu código está funcionando corretamente. Testes bem escritos são fundamentais para garantir a qualidade do software, facilitar refatorações e prevenir regressões.
+
+**Analogia:**
+
+Imagine que você construiu uma bicicleta. Antes de sair pedalando, você naturalmente faria alguns testes: verificaria se os freios funcionam, se as rodas giram adequadamente, se a corrente está bem ajustada. Os testes automatizados com JUnit são como um "checklist" que verifica automaticamente se cada parte do seu "software-bicicleta" está funcionando como esperado, e alerta quando algo está quebrado.
+
+### Por que usar JUnit?
+
+- Permite testar componentes individuais do código de forma isolada
+- Automatiza o processo de verificação, eliminando testes manuais repetitivos
+- Serve como documentação viva de como o código deve funcionar
+- Facilita refatorações seguras, pois você saberá rapidamente se algo quebrou
+- Cria confiança no código, especialmente em alterações futuras
+
+### Configurando o JUnit
+
+Para começar a usar o JUnit em um projeto Maven, adicione esta dependência ao `pom.xml`:
 
 ```xml
-<build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins/groupId>
-			<artifactId>maven-javadoc-plugin</artifactId>
-			<version>3.3.1</version>
-		</plugin>
-	</puglins>
-</build>
+<!-- Para JUnit 5 (versão mais recente) -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>5.10.0</version>
+    <scope>test</scope>
+</dependency>
 ```
 
-`mvn javadoc:javadoc` gerar A documentação do projeto
+### Estrutura Básica de um Teste
 
-# Testes Com JUnit
+Um teste JUnit típico consiste em três partes, seguindo o padrão AAA (Arrange-Act-Assert):
 
-Testes unitários
-
-São chamados de teste de unidade;
-
-Testar a menor unidade de codigo possivel;
-
-Unidade: função, methods, classes;
-
-Testar uma aplicação na sua menor parte;
-
-Geralmente escrito em tempo de desenvolvimento (on going)
-
-**Por que escrever Testes?**
-
-Situação no desenvolvimento de software que mostram a importancia de teste unitarios
-
-Compreender o codigo fonte
-
-Corrigir bugs com segurança
-
-Refatorar codigo sem introduzir bugs
-
-Entregar com segurança um nova feature
-
-Piramide de Testes
-
-Teste Unitarios como metrica de Qualidade(confiabilidade)
-
-Cobertura de testes
-
-Automação na execução de testes
-
-Cultura de agilidade
-
-JUNIT 5 → JUnit plataform(Executa os teste, motor), JUnit Jupiter(classes e interfaces, anotecions), JUnit Vintage(motor de integeração para versões antigas).
-
-## Configurando JUnit
-
-para instalar va em (https://mvnrepository.com/), e pesquisa oor JUnit, e baixe o JUnit engine
-
-```xml
-// https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
-testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
-```
-
-```xml
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
-
-public class PessoaTeste {
-    @Test
-    void deveCalcularIdade(){
-        Pessoa ana = new Pessoa("ana", LocalDateTime.of(2000,1,1,15,0,0));
-        Assertions.assertEquals(23,ana.getIdade());
-    }
-    @Test
-    void deveRetornarSeEhMaiorDeIdade(){
-        Pessoa ana = new Pessoa("ana", LocalDateTime.of(2000,1,1,15,0,0));
-        Assertions.assertTrue(ana.maiorDeIdade());
-     
-        Pessoa bob = new Pessoa("bob", LocalDateTime.of(2023,1,1,1,1,1));
-        Assertions.assertFalse(bob.maiorDeIdade());
-    }
-}
-```
-
-## After e before
+1. **Arrange (Preparação)**: Configurar os objetos e condições necessárias para o teste
+2. **Act (Ação)**: Executar o comportamento que está sendo testado
+3. **Assert (Verificação)**: Verificar se o resultado está conforme o esperado
 
 ```java
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.*;
-
-import java.time.LocalDateTime;
-
-public class ConsultaDadosDePessoasTest {
-
-    @BeforeAll
-    static void configuraConexao(){
-        BancoDeDados.iniciarConexao();
-    }
-    @BeforeEach
-    void insereDadosParaTest(){
-        BancoDeDados.insereDados(new Pessoa("enel", LocalDateTime.of(2000,1,1,1,1,1)));
-    }
-    @AfterEach
-    void removeDadosDoTest(){
-        BancoDeDados.removeDados(new Pessoa("enel", LocalDateTime.of(2000,1,1,1,1,1)));;
-    }
-    @Test
-    void validarDadosDeRetorno(){
-        Assertions.assertTrue(true);
-    }
-    @Test
-    void validarDadosRetornoMais(){
-        Assertions.assertTrue(true);
-    }
-    @AfterAll
-    static void finalizarConexao(){
-        BancoDeDados.finalizarConexao();
-    }
-}
-```
-
-## Assumptions
-
-```java
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.ls.LSOutput;
+import static org.junit.jupiter.api.Assertions.*;
 
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.*;
-
-public class CondicionaisTest {
-    public class AssumptionsTest {
-        @Test
-        //se o usuario for root desative o test
-        //@DisabledIfEnvironmentVariable(named = "USER", matches = "root")
-
-        //Roda so no linux
-        //@EnabledOnOs(OS.LINUX)
-
-        //Roda so no Mac e Linux
-        //@EnabledOnOs({OS.MAC OS.LINUX})
-
-        //Versao do java para rodar
-       // @EnabledOnJre(JRE.JAVA_18)
-
-        //Range de versoes do java
-       // @EnabledForJreRange(min = JRE.JAVA_11, max = JRE.JAVA_18)
+public class CalculadoraTest {
+    
+    @Test
+    void somarDoisNumeros() {
+        // Arrange (Preparação)
+        Calculadora calc = new Calculadora();
+        int a = 5;
+        int b = 3;
         
-        //So faz os teste se o usuario for proqu
-        //@EnabledIfEnvironmentVariable(named = "USER", matches = "proqu")
-        void validarAlgoSomenteNoUsuarioAna(){
-            Assumptions.assumeFalse("ana".equals("ana"));
-            Assertions.assertEquals(10,5+5);
-        }
-		}
+        // Act (Ação)
+        int resultado = calc.somar(a, b);
+        
+        // Assert (Verificação)
+        assertEquals(8, resultado, "5 + 3 deve ser igual a 8");
+    }
 }
 ```
 
-## Exceptions
+A classe sendo testada seria algo como:
 
 ```java
-//pass
-package one.digitalinnovation;
+public class Calculadora {
+    public int somar(int a, int b) {
+        return a + b;
+    }
+    
+    // Outros métodos...
+}
+```
 
-import org.junit.jupiter.api.Assertions;
+### Anotações Essenciais do JUnit 5
+
+As anotações são a forma como o JUnit identifica métodos especiais dentro das classes de teste:
+
+- `@Test`: Marca um método como um método de teste
+- `@BeforeEach`: Executa antes de cada método de teste
+- `@AfterEach`: Executa após cada método de teste
+- `@BeforeAll`: Executa uma única vez antes de todos os testes na classe (deve ser estático)
+- `@AfterAll`: Executa uma única vez após todos os testes na classe (deve ser estático)
+- `@Disabled`: Desativa temporariamente um teste
+- `@DisplayName`: Define um nome personalizado e descritivo para o teste
+
+### Ciclo de Vida dos Testes
+
+O ciclo de vida dos testes permite executar código de preparação e limpeza em diferentes momentos:
+
+```java
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Testes da classe ContaBancária")
+public class ContaBancariaTest {
+    
+    private static final Logger logger = Logger.getLogger(ContaBancariaTest.class.getName());
+    private ContaBancaria conta;
+    
+    @BeforeAll
+    static void configuracaoInicial() {
+        logger.info("Iniciando os testes da classe ContaBancária");
+        // Configuração que só precisa ser feita uma vez, ex: conexão com banco de dados
+    }
+    
+    @BeforeEach
+    void inicializaConta() {
+        logger.info("Iniciando um novo teste");
+        // Cada teste começa com uma conta limpa e com R$100
+        conta = new ContaBancaria("12345-6", 100.0);
+    }
+    
+    @Test
+    @DisplayName("Deve depositar valor positivo com sucesso")
+    void depositoValorPositivo() {
+        // Act
+        boolean resultado = conta.depositar(50.0);
+        
+        // Assert
+        assertTrue(resultado);
+        assertEquals(150.0, conta.getSaldo());
+        logger.info("Teste de depósito concluído");
+    }
+    
+    @Test
+    @DisplayName("Deve rejeitar depósito de valor negativo")
+    void depositoValorNegativo() {
+        // Act
+        boolean resultado = conta.depositar(-10.0);
+        
+        // Assert
+        assertFalse(resultado);
+        assertEquals(100.0, conta.getSaldo(), "O saldo não deve mudar");
+    }
+    
+    @Test
+    @DisplayName("Deve realizar saque quando há saldo suficiente")
+    void saqueComSaldoSuficiente() throws SaldoInsuficienteException {
+        // Act
+        conta.sacar(50.0);
+        
+        // Assert
+        assertEquals(50.0, conta.getSaldo());
+    }
+    
+    @AfterEach
+    void limpezaAposTeste() {
+        logger.info("Teste finalizado. Saldo final: " + conta.getSaldo());
+    }
+    
+    @AfterAll
+    static void finalizacaoGeral() {
+        logger.info("Todos os testes de ContaBancária foram concluídos");
+        // Limpeza geral, ex: fechar conexões com banco de dados
+    }
+}
+```
+
+### Verificações (Assertions)
+
+O JUnit fornece métodos estáticos para verificar diferentes condições:
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+
+@Test
+void exemplosDeAssertions() {
+    // Verificações de igualdade
+    assertEquals(5, 2 + 3);
+    assertEquals(5.0, 5.0, 0.001); // Para doubles/floats, com tolerância
+    assertEquals("texto", "texto");
+    
+    // Verificações booleanas
+    assertTrue(10 > 5);
+    assertFalse(1 > 2);
+    
+    // Verificações de nulidade
+    String texto = "não nulo";
+    assertNotNull(texto);
+    String textoNulo = null;
+    assertNull(textoNulo);
+    
+    // Verificar que duas referências apontam para o mesmo objeto
+    Object obj1 = new Object();
+    Object obj2 = obj1;
+    assertSame(obj1, obj2);
+    
+    // Verificações com arrays
+    assertArrayEquals(new int[]{1, 2, 3}, new int[]{1, 2, 3});
+    
+    // Agrupando assertions (todos são verificados mesmo que falhem)
+    assertAll("Verificação de pessoa",
+        () -> assertEquals("João", pessoa.getNome()),
+        () -> assertEquals(25, pessoa.getIdade()),
+        () -> assertEquals("São Paulo", pessoa.getCidade())
+    );
+}
+```
+
+### Testando Exceções
+
+Muitas vezes precisamos verificar se o código lança as exceções esperadas em condições de erro:
+
+```java
+@Test
+@DisplayName("Deve lançar exceção ao sacar valor maior que o saldo")
+void saqueComSaldoInsuficiente() {
+    ContaBancaria conta = new ContaBancaria("12345-6", 100.0);
+    
+    // Forma 1: verificar que a exceção é lançada
+    assertThrows(SaldoInsuficienteException.class, () -> {
+        conta.sacar(150.0);
+    });
+    
+    // Forma 2: capturar a exceção para verificações adicionais
+    SaldoInsuficienteException exception = assertThrows(
+        SaldoInsuficienteException.class,
+        () -> conta.sacar(200.0)
+    );
+    
+    // Verificar a mensagem de erro
+    assertTrue(exception.getMessage().contains("saldo insuficiente"));
+}
+```
+
+### Testes Parametrizados
+
+Quando precisamos testar um método com diferentes entradas e saídas esperadas:
+
+```java
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+public class CalculadoraParametrizadaTest {
+    
+    private final Calculadora calc = new Calculadora();
+    
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 100, -5, -100})
+    void numeroAoQuadradoDeveSerPositivo(int numero) {
+        int resultado = calc.aoQuadrado(numero);
+        assertTrue(resultado >= 0);
+    }
+    
+    @ParameterizedTest
+    @CsvSource({
+        "1, 1, 2",    // a, b, resultadoEsperado
+        "5, 3, 8",
+        "10, -5, 5",
+        "-5, -5, -10"
+    })
+    void somarDeveRetornarSomaCorreta(int a, int b, int resultadoEsperado) {
+        assertEquals(resultadoEsperado, calc.somar(a, b));
+    }
+}
+```
+
+### Boas Práticas para Testes Eficazes:
+
+1. **Teste uma coisa por vez:** Cada teste deve verificar um único comportamento ou funcionalidade.
+
+2. **Testes independentes:** Um teste não deve depender de outro ou de uma ordem específica de execução.
+
+3. **Use nomes descritivos:** O nome do método de teste deve descrever claramente o que está sendo testado e o resultado esperado.
+
+4. **Siga o padrão AAA:** Arrange (Preparar), Act (Agir), Assert (Verificar) para manter os testes organizados.
+
+5. **Evite lógica complexa:** Os testes devem ser simples e diretos. Lógica complexa no teste aumenta a chance de bugs no próprio teste.
+
+6. **Teste a lógica de negócio, não o framework:** Concentre-se em testar seu código, não as bibliotecas que você está usando.
+
+7. **Mantenha os testes rápidos:** Testes lentos desestimulam a execução frequente.
+
+### Testando com Mocks
+
+Para testar uma classe isoladamente, muitas vezes precisamos simular suas dependências. O Mockito é uma biblioteca popular para isso:
+
+```xml
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>5.3.1</version>
+    <scope>test</scope>
+</dependency>
+```
+
+Exemplo de uso:
+
+```java
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-public class ExceptionsTeste {
-
-    @Test
-    void validarCenarioDeExececaoNaTransferencia(){
-    Conta contaOrigen = new Conta(1234,0);
-    Conta contaDestino = new Conta(7987,100);
-
-    TransferenciaEntreContas transferenciaEntreContas = new TransferenciaEntreContas();
-
-    Assertions.assertThrows(IllegalArgumentException.class, ()->
-        transferenciaEntreContas.transfere(contaOrigen, contaDestino, -1));
-    }
-}
-
-//fail
-
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-public class ExceptionsTeste {
-
-    @Test
-    void validarCenarioDeExececaoNaTransferencia(){
-    Conta contaOrigen = new Conta(1234,0);
-    Conta contaDestino = new Conta(7987,100);
-
-    TransferenciaEntreContas transferenciaEntreContas = new TransferenciaEntreContas();
-
-    Assertions.assertDoesNotThrow(()->
-        transferenciaEntreContas.transfere(contaOrigen, contaDestino, -1));
-    }
-}
-```
-
-```java
-package one.digitalinnovation;
-
-import java.util.function.Consumer;
-
-public class TransferenciaEntreContas {
-    public void transfere(Conta contaOrigem, Conta contaDestino, int valor){
-        if(valor <= 0){
-            throw new IllegalArgumentException("valor deve ser maior que zero");
-        }
-
-    }
-}
-package one.digitalinnovation;
-
-public class Conta {
-    private int numeroConta;
-    private int saldo;
-
-    public Conta(int numeroConta, int saldo) {
-        this.numeroConta = numeroConta;
-        this.saldo = saldo;
-    }
-
-    public int getNumeroConta() {
-        return numeroConta;
-    }
-
-    public void setNumeroConta(int numeroConta) {
-        this.numeroConta = numeroConta;
-    }
-
-    public int getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
-    }
-}
-```
-
-## Order Test
-
-__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-```java
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.*;
-//Roda os testes pelo numero de ordem
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class EscolhendoAOrdemTeste {
-    @Order(4)
-    @Test
-    void validaFluxoA(){
-        Assertions.assertTrue(true);
-    }
-    @Order(3)
-    @Test
-    void validaFluxoB(){
-        Assertions.assertTrue(true);
-    }
-    @Order(2)
-    @Test
-    void validaFluxoC(){
-        Assertions.assertTrue(true);
-    }
-    @Order(1)
-    @Test
-    void validaFluxoD(){
-        Assertions.assertTrue(true);
-    }
-}
-```
-
-```java
-
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.*;
-//Tests Randomicamente
-@TestMethodOrder(MethodOrderer.Random.class)
-public class EscolhendoAOrdemTeste {
-
-    @Test
-    void validaFluxoA(){
-        Assertions.assertTrue(true);
-    }
-
-    @Test
-    void validaFluxoB(){
-        Assertions.assertTrue(true);
-    }
-
-    @Test
-    void validaFluxoC(){
-        Assertions.assertTrue(true);
-    }
-
-    @Test
-    void validaFluxoD(){
-        Assertions.assertTrue(true);
-    }
-}
-```
-
-```java
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.*;
-//Roda Pela ordem alfabetica
-@TestMethodOrder(MethodOrderer.MethodName.class)
-public class EscolhendoAOrdemTeste {
+public class PedidoServiceTest {
     
     @Test
-    void validaFluxoA(){
-        Assertions.assertTrue(true);
-    }
-    
-    @Test
-    void validaFluxoB(){
-        Assertions.assertTrue(true);
-    }
-    
-    @Test
-    void validaFluxoC(){
-        Assertions.assertTrue(true);
-    }
-    
-    @Test
-    void validaFluxoD(){
-        Assertions.assertTrue(true);
-    }
-}
-```
-
-```java
-package one.digitalinnovation;
-
-import org.junit.jupiter.api.*;
-//Roda apartir de uma anotation de display name o qual tambem aparecera no teste (Respeita a ordem Alfabetica)
-@TestMethodOrder(MethodOrderer.DisplayName.class)
-public class EscolhendoAOrdemTeste {
-    @DisplayName("A")
-    @Test
-    void validaFluxoA(){
-        Assertions.assertTrue(true);
-    }
-    @DisplayName("B")
-    @Test
-    void validaFluxoB(){
-        Assertions.assertTrue(true);
-    }
-    @DisplayName("C")
-    @Test
-    void validaFluxoC(){
-        Assertions.assertTrue(true);
-    }
-    @DisplayName("D")
-    @Test
-    void validaFluxoD(){
-        Assertions.assertTrue(true);
+    void deveFinalizarPedidoComSucesso() {
+        // Criando mocks
+        NotificacaoService notificacaoMock = mock(NotificacaoService.class);
+        PagamentoService pagamentoMock = mock(PagamentoService.class);
+        
+        // Configurando comportamento do mock
+        when(pagamentoMock.processarPagamento(anyDouble())).thenReturn(true);
+        
+        // Criando o serviço real com dependências mockadas
+        PedidoService pedidoService = new PedidoService(pagamentoMock, notificacaoMock);
+        
+        // Executando o método que queremos testar
+        Pedido pedido = new Pedido(1L, 150.0);
+        boolean resultado = pedidoService.finalizarPedido(pedido);
+        
+        // Verificações
+        assertTrue(resultado);
+        
+        // Verificando se os métodos mockados foram chamados corretamente
+        verify(pagamentoMock).processarPagamento(150.0);
+        verify(notificacaoMock).enviarConfirmacao(pedido);
+        verify(notificacaoMock, never()).enviarAlertaErro(any());
     }
 }
 ```
 
-# Boas Praticas
+Com JUnit e boas práticas de teste, você não só garante que seu código funciona corretamente, mas também cria uma rede de segurança que facilita a manutenção e evolução do sistema ao longo do tempo.
 
-- Preocupe-se com o nome
-- Facilidade  de leitura
-- Escrever o codigo de teste o mais próximo possivel do codigo de execução(escrever o mais cedo possivel)
-- TDD →
-- 1. escrever um teste que falhe 2. Faça o codigo funcionar 3.Elimine redundancia
-- Padronização(Nomenclatura, methods …)
-- Economize tempo Automatizando - Ferramentas de cobertura de codigo (jococo), Automatize a execuçaõ dos seus testes.
+## SpringBoot: Simplificando o Desenvolvimento Java
 
-# SpringBoot - Framework
+O Spring Boot é um framework que revolucionou o desenvolvimento Java, eliminando a necessidade de configurações extensas e permitindo que os desenvolvedores se concentrem na lógica de negócios em vez de detalhes de infraestrutura. É uma excelente escolha para criar desde microserviços até aplicações empresariais completas.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/28a3e4c6-7d19-413d-a19a-7eb0a040ad40/Untitled.png)
+**Analogia: O Kit de Construção Pronto para Uso**
 
-Inversão  de controle: Ioc()inversion of Control, e o redirecionamento do fluxo de execução de um codigo retirando parcialmente o controle sobre ele e delegando-o para um container.(minizando o acoplamento do codigo).
+Imagine que você quer construir uma casa. A maneira tradicional exigiria adquirir cada material separadamente, seguir plantas detalhadas e coordenar diversos especialistas. O Spring Boot é como um kit de construção modular: vem com componentes pré-fabricados, instruções claras e ferramentas integradas. Você só precisa escolher os módulos necessários e personalizar conforme sua necessidade - a estrutura básica já está pronta e testada.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/08b4e7f9-d887-4109-ad58-6c69325c5e98/Untitled.png)
+### Vantagens do Spring Boot
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/bc2e4d79-5d7a-4e5e-a0f6-2b0fc8bb5acb/Untitled.png)
+1. **Configuração automática:** O Spring Boot adota o princípio "convenção sobre configuração", detectando automaticamente quais componentes estão no classpath e configurando-os com valores sensatos
+2. **Servidor embutido:** Inclui servidores como Tomcat, Jetty ou Undertow embutidos, eliminando a necessidade de implantação em servidores externos
+3. **Starter dependencies:** Pacotes que agrupam várias dependências relacionadas, facilitando o gerenciamento
+4. **Atualizações simplificadas:** Gerencia versões compatíveis entre diferentes componentes
+5. **Monitoramento pronto para produção:** Recursos embutidos como métricas, health checks e configuração externalizada
 
-Injeção de dependencias: padrão de desenvolvimento com a finalidade de manter baixo o nivel de acoplamento entre modulos de um sistema.
+### Conceitos Fundamentais
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/d1702e71-adfb-43a8-b0ba-01e2f88dcbd3/Untitled.png)
+#### Inversão de Controle (IoC) e Injeção de Dependências (DI)
 
-Beans: Objeto que instanciado(criado), montado e gerenciado por um container atraves do principio da inversao de controle.
-
-São instancia de classes em java respeitando o padrão singleton.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/6c8afd55-1b9e-4ce7-a060-0c8003d3f2ea/Untitled.png)
-
-Singeton escopo com um unico objeto sendo compartilhado por toda a aplicação.(Container do Spring Ioc define apenas uma instancia do objeto)
-
-Prototype: Escopo e criado um nova instancia a cada requisão com uma nova referencia.(criado um novo objeto a cada solição ao container)
-
-Http - Request: Um bean sera criado para cada requisição HTTP
-
-Http - Session: Um bean sera criado para a sessão de usuario.
-
-Http - Global: Apllication Scope um bean para o ciclo de vida do contexto da aplicação, objetos compartilhados por toda a aplicação.
-
-Autowired: Anotação(indecição), onde devera ocorrer uma injeção automatica de dependecias.
-
-byName: Buscado um methods set que corresponde ao nome do bean
-
-byTime: Cosiderado o tipo da classe para inclusão do bean.
-
-byConstrutor: Usamos o contrutor para incluir a dependencia.
-
-Springboot → foca na configuração automatica.
-
-Springboot Framework → baseado no padrão de injeção de dependencias. 
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/1a2ae8e5-13c7-4464-bf27-669495549e81/Untitled.png)
-
-Starters → Descritores de dependencias.(coesão, versões compativei, Otimização do tempo, Configuração Simples, Foco no negocio)
-
-Spring-boot-starter-*
-
-data-jpa: integração ao banco de dados via JPA - Hibernate.
-
-data-mongodb: integração com banco de dados MongoDb.
-
-web: inclusão do container Tomcat  para aplicações REST.
-
-web-services: Webservices baseados na arquitetura SOAP.
-
-batch: Implementação de JOBs de processos.
-
-test: Disponibilização de recursos para testes unitarios como JUnit.
-
-openfeign: Client HTPPbaseado em interfaces.
-
-actuator: Gerenciamento de monitoramento da aplicação.
-
-# Inicializando Springboot
-
-https://start.spring.io/
-
-Beans vs Componentes
-
-Componentes → Temos acesso ao codigo fonte.
-
-Beans → Bibliotecas**.
-
-Scopes - singleton ou prototype
-
-Properties Values: application.properties
+Estes conceitos são a base do Spring. Em vez de seu código criar e gerenciar objetos, o Spring assume essa responsabilidade:
 
 ```java
-nome=clon
-email=clon@gmail.com
-telefones=1231412,1230123
+// Abordagem tradicional (sem Spring)
+class ServicoCliente {
+    private RepositorioCliente repositorio;
+    
+    public ServicoCliente() {
+        // O serviço cria e gerencia sua própria dependência
+        this.repositorio = new RepositorioClienteMySQL(); 
+        // Problema: acoplamento forte, difícil de trocar a implementação ou testar
+    }
+}
+
+// Abordagem com Spring (com IoC e DI)
+@Service
+class ServicoCliente {
+    private final RepositorioCliente repositorio;
+    
+    // O Spring injeta a implementação apropriada
+    public ServicoCliente(RepositorioCliente repositorio) {
+        this.repositorio = repositorio;
+        // Vantagem: baixo acoplamento, fácil de testar com mocks
+    }
+}
 ```
 
-```java
-@Value("${name:NoReplay-Clon}")
-private String nome;
-@Value("${email}")
-private String email;
-@Value("${telefones}")
-private List<Long> telefones=new ArrayList<>(Arrays.asList());
+#### O Ecossistema de Starters
+
+Os "starters" são dependências especiais que simplificam a configuração do projeto:
+
+```xml
+<!-- Para criar uma API REST -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+<!-- Para persistência de dados -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<!-- Para testes -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
 ```
 
-configuration Properties:
+Cada starter traz um conjunto de dependências relacionadas e configuração automática.
+
+### Criando uma Aplicação Spring Boot do Zero
+
+#### 1. Estrutura do Projeto
+
+```
+minha-api/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/exemplo/minhaapi/
+│   │   │       ├── controllers/
+│   │   │       ├── models/
+│   │   │       ├── repositories/
+│   │   │       ├── services/
+│   │   │       └── MinhaApiApplication.java
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/
+│       └── java/
+│           └── com/exemplo/minhaapi/
+└── pom.xml
+```
+
+#### 2. A Classe Principal
 
 ```java
-remetente.nome=clon
-remetente.email=clon@gmail.com
-remetente.telefones=1231412,1230123
+package com.exemplo.minhaapi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication  // Esta anotação combina @Configuration, @ComponentScan e @EnableAutoConfiguration
+public class MinhaApiApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MinhaApiApplication.class, args);
+    }
+}
+```
+
+#### 3. Modelo de Dados (Model)
+
+```java
+package com.exemplo.minhaapi.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+
+@Entity  // Marca esta classe como uma entidade JPA
+public class Produto {
+    
+    @Id  // Define o campo como chave primária
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-incremento
+    private Long id;
+    
+    @NotBlank(message = "O nome do produto é obrigatório")
+    private String nome;
+    
+    @NotBlank(message = "A descrição é obrigatória")
+    private String descricao;
+    
+    @Positive(message = "O preço deve ser maior que zero")
+    private double preco;
+    
+    private String categoria;
+    private boolean disponivel = true;
+    
+    // Construtores
+    public Produto() {}  // Construtor vazio necessário para JPA
+    
+    public Produto(String nome, String descricao, double preco, String categoria) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.categoria = categoria;
+    }
+    
+    // Getters e setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    
+    public double getPreco() { return preco; }
+    public void setPreco(double preco) { this.preco = preco; }
+    
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+    
+    public boolean isDisponivel() { return disponivel; }
+    public void setDisponivel(boolean disponivel) { this.disponivel = disponivel; }
+}
+```
+
+#### 4. Repositório (Repository)
+
+```java
+package com.exemplo.minhaapi.repositories;
+
+import com.exemplo.minhaapi.models.Produto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+    // Métodos básicos já são fornecidos pelo JpaRepository:
+    // save(), findById(), findAll(), deleteById(), etc.
+    
+    // Consultas personalizadas
+    List<Produto> findByCategoria(String categoria);
+    
+    List<Produto> findByNomeContainingAndDisponivelTrue(String termo);
+    
+    @Query("SELECT p FROM Produto p WHERE p.preco <= :valorMaximo AND p.disponivel = true")
+    List<Produto> buscarProdutosDisponiveisAtePreco(double valorMaximo);
+}
+```
+
+#### 5. Serviço (Service)
+
+```java
+package com.exemplo.minhaapi.services;
+
+import com.exemplo.minhaapi.models.Produto;
+import com.exemplo.minhaapi.repositories.ProdutoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ProdutoService {
+    
+    private final ProdutoRepository produtoRepository;
+    
+    @Autowired
+    public ProdutoService(ProdutoRepository produtoRepository) {
+        this.produtoRepository = produtoRepository;
+    }
+    
+    public List<Produto> listarTodos() {
+        return produtoRepository.findAll();
+    }
+    
+    public Optional<Produto> buscarPorId(Long id) {
+        return produtoRepository.findById(id);
+    }
+    
+    @Transactional
+    public Produto salvar(Produto produto) {
+        return produtoRepository.save(produto);
+    }
+    
+    @Transactional
+    public void excluir(Long id) {
+        produtoRepository.deleteById(id);
+    }
+    
+    public List<Produto> buscarPorCategoria(String categoria) {
+        return produtoRepository.findByCategoria(categoria);
+    }
+    
+    public List<Produto> buscarPorNomeDisponiveis(String termo) {
+        return produtoRepository.findByNomeContainingAndDisponivelTrue(termo);
+    }
+    
+    public List<Produto> buscarDisponiveisAtePreco(double valorMaximo) {
+        return produtoRepository.buscarProdutosDisponiveisAtePreco(valorMaximo);
+    }
+}
+```
+
+#### 6. Controlador (Controller)
+
+```java
+package com.exemplo.minhaapi.controllers;
+
+import com.exemplo.minhaapi.models.Produto;
+import com.exemplo.minhaapi.services.ProdutoService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/produtos")
+public class ProdutoController {
+    
+    private final ProdutoService produtoService;
+    
+    @Autowired
+    public ProdutoController(ProdutoService produtoService) {
+        this.produtoService = produtoService;
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<Produto>> listarTodos() {
+        return ResponseEntity.ok(produtoService.listarTodos());
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Produto> buscarPorId(@PathVariable Long id) {
+        return produtoService.buscarPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @PostMapping
+    public ResponseEntity<Produto> criar(@Valid @RequestBody Produto produto) {
+        Produto novoProduto = produtoService.salvar(produto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atualizar(@PathVariable Long id, 
+                                           @Valid @RequestBody Produto produto) {
+        return produtoService.buscarPorId(id)
+                .map(produtoExistente -> {
+                    produto.setId(id);
+                    return ResponseEntity.ok(produtoService.salvar(produto));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        return produtoService.buscarPorId(id)
+                .map(produto -> {
+                    produtoService.excluir(id);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<Produto>> buscarPorCategoria(@PathVariable String categoria) {
+        List<Produto> produtos = produtoService.buscarPorCategoria(categoria);
+        return ResponseEntity.ok(produtos);
+    }
+    
+    @GetMapping("/busca")
+    public ResponseEntity<List<Produto>> buscarPorNome(@RequestParam String nome) {
+        List<Produto> produtos = produtoService.buscarPorNomeDisponiveis(nome);
+        return ResponseEntity.ok(produtos);
+    }
+    
+    @GetMapping("/preco")
+    public ResponseEntity<List<Produto>> buscarPorPrecoMaximo(@RequestParam double maximo) {
+        List<Produto> produtos = produtoService.buscarDisponiveisAtePreco(maximo);
+        return ResponseEntity.ok(produtos);
+    }
+}
+```
+
+#### 7. Configuração (application.properties)
+
+```properties
+# Configuração do banco de dados (usando H2 para desenvolvimento)
+spring.datasource.url=jdbc:h2:mem:produtosdb
+spring.datasource.username=sa
+spring.datasource.password=
+spring.datasource.driver-class-name=org.h2.Driver
+
+# Habilitar console H2 para visualização do banco em http://localhost:8080/h2-console
+spring.h2.console.enabled=true
+
+# Configuração JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Porta do servidor
+server.port=8080
+
+# Configurações de logging
+logging.level.org.springframework=INFO
+logging.level.com.exemplo.minhaapi=DEBUG
+
+# Configuração para JSON
+spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+spring.jackson.time-zone=America/Sao_Paulo
+```
+
+### Funcionalidades Avançadas do Spring Boot
+
+#### 1. Validação de Dados
+
+O Spring Boot integra-se facilmente com o Bean Validation:
+
+```java
+// No Model
+@NotNull(message = "O preço não pode ser nulo")
+@Min(value = 0, message = "O preço deve ser maior ou igual a zero")
+private BigDecimal preco;
+
+// No Controller
+@PostMapping
+public ResponseEntity<Produto> criar(@Valid @RequestBody Produto produto, 
+                                    BindingResult result) {
+    if (result.hasErrors()) {
+        // Tratamento de erros de validação
+    }
+    // ...
+}
+```
+
+#### 2. Tratamento Global de Exceções
+
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
+        ErrorResponse error = new ErrorResponse("RECURSO_NAO_ENCONTRADO", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach(error -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        
+        ErrorResponse error = new ErrorResponse("ERRO_VALIDACAO", "Erro de validação nos campos", errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+}
+```
+
+#### 3. Configuração Baseada em Perfis
+
+```properties
+# application.properties (padrão)
+spring.profiles.active=dev
+
+# application-dev.properties
+spring.h2.console.enabled=true
+logging.level.com.exemplo=DEBUG
+
+# application-prod.properties
+spring.datasource.url=jdbc:mysql://production-server:3306/proddb
+logging.level.com.exemplo=INFO
 ```
 
 ```java
 @Configuration
-@ConfigurationProperties(prefix="rementente")
-public class rementente {
-private String nome;
-private String email;
-private List<Long> telefones;
-...
+@Profile("dev")
+public class DevConfig {
+    // Configurações específicas para desenvolvimento
+}
+
+@Configuration
+@Profile("prod")
+public class ProdConfig {
+    // Configurações específicas para produção
+}
 ```
 
-JPA → Java Pesistence API, uma especificação baseada em interfaces, que atraves de um framework realiza operações de persistencias de objetos em java.(Hibernate, eclipseLink, OracleTopLink)
+### Integrações Comuns
 
-ORM → Object-Relational Mapping, mapeamento objeto-relacional, aproxima o paradigma da orientação a objetos ao contexto de banco de dados relacional.(seu uso e realizado ataves do mapeamento de  objeto para uma tabela por uma biblioteca ou framework).
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/a9e910c3-d047-4b4f-8efe-41680ace37a4/Untitled.png)
-
- 
-
-Mapeamento→ Aspectos das anotações de mapeamento do JPA.
-
-- Identificação
-- Definição
-- Relacionamento
-- Herança
-- Persistência
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/72dba1a5-1338-4dbe-ad7b-7519076670c4/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/d66790af-6ec7-49a0-a202-792fc98e059d/Untitled.png)
-
-# Spring Data JPA
-
-Interfaces
-
-- CrudRepository
-- JPARepository
-- PagingAndSortingRepository
-
-Anotações
-
-- @ Query
-- @ Param
-
-https://start.spring.io/
-
-add dependencies→**PostgreSQL Driver, Spring Data JPA.**
+#### 1. Spring Security para Autenticação e Autorização
 
 ```java
-#Opcional
-spring.jpa.show-sql=true
-spring.jpa.hibernate.ddl-auto=update
-
-#Obrigatorio de acordo com os seu banco de dados
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://localhost:5432/spring_db
-spring.datasource.username=postgres
-spring.datasource.password=root
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/public/**").permitAll()
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/login").permitAll()
+            )
+            .oauth2Login(oauth2 -> oauth2
+                .loginPage("/login")
+            )
+            .csrf(csrf -> csrf.disable());
+            
+        return http.build();
+    }
+}
 ```
 
-Repository Pattern
+#### 2. Spring Data JPA para Repositórios com Código Mínimo
 
-Repository e um padrao de projeto similar ao DAO(Data Acess Object) no sentido de que seu objetivo e abstrair o acesso a dados de forma generica a partir do seu modelo.
+```java
+// Apenas com esta interface você já tem CRUD completo!
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+    // Consultas dinâmicas baseadas em convenção de nomes
+    List<Cliente> findByNomeContainingIgnoreCase(String nome);
+    
+    Optional<Cliente> findByEmail(String email);
+    
+    @Query("SELECT c FROM Cliente c WHERE c.dataCadastro > :data AND c.ativo = true")
+    List<Cliente> buscarClientesNovosAtivos(LocalDate data);
+}
+```
 
-Spring Data Jpa
+#### 3. Spring Boot Actuator para Monitoramento
 
-Facilita a implementação com o padrão Repository atraves de AOP(Aspect Oriented Programming - programação orientada a aspectos), apenas estendendo uma interface.
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
 
-Consulta Customizadas
+```properties
+# Expor endpoints de monitoramento
+management.endpoints.web.exposure.include=health,info,metrics,prometheus
+management.endpoint.health.show-details=always
+```
 
-- QueryMethod → jpql
+### Testes em Aplicações Spring Boot
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/90d786a7-ee4d-42d1-8dc6-eb28dec9a637/Untitled.png)
+```java
+@SpringBootTest
+class ProdutoServiceTest {
+    
+    @Autowired
+    private ProdutoService produtoService;
+    
+    @MockBean
+    private ProdutoRepository produtoRepository;
+    
+    @Test
+    void deveRetornarProdutoPorId() {
+        // Arrange
+        Produto produto = new Produto("Notebook", "Dell XPS", 5000.0, "Eletrônicos");
+        produto.setId(1L);
+        when(produtoRepository.findById(1L)).thenReturn(Optional.of(produto));
+        
+        // Act
+        Optional<Produto> resultado = produtoService.buscarPorId(1L);
+        
+        // Assert
+        assertTrue(resultado.isPresent());
+        assertEquals("Notebook", resultado.get().getNome());
+    }
+}
 
-- QueryOverride
+@WebMvcTest(ProdutoController.class)
+class ProdutoControllerTest {
+    
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private ProdutoService produtoService;
+    
+    @Test
+    void deveRetornarListaDeProdutos() throws Exception {
+        List<Produto> produtos = Arrays.asList(
+            new Produto("Produto 1", "Descrição 1", 10.0, "Categoria 1"),
+            new Produto("Produto 2", "Descrição 2", 20.0, "Categoria 2")
+        );
+        
+        when(produtoService.listarTodos()).thenReturn(produtos);
+        
+        mockMvc.perform(get("/api/produtos"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", hasSize(2)))
+            .andExpect(jsonPath("$[0].nome", is("Produto 1")))
+            .andExpect(jsonPath("$[1].nome", is("Produto 2")));
+    }
+}
+```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/028ca46e-a1b6-473d-9398-9282acb790ec/Untitled.png)
+### Benefícios Práticos do Spring Boot
 
-# Web Rest Api
+1. **Desenvolvimento Rápido:** Protótipos funcionais em minutos, não horas
+2. **Foco no Negócio:** Dedique seu tempo à lógica de negócios, não à configuração
+3. **Aplicações Prontas para Produção:** Métricas, saúde e monitoramento integrados
+4. **Ecossistema Conectado:** Integrações prontas para tudo: segurança, cloud, mensageria, etc.
+5. **Suporte para Microserviços:** Ferramentas dedicadas para arquiteturas distribuídas
+6. **Comunidade Vibrante:** Vasta documentação, tutoriais e suporte da comunidade
 
-projeto web
+O Spring Boot transformou o desenvolvimento Java, tornando-o mais acessível e produtivo sem sacrificar a robustez que fez do Java uma linguagem de escolha para sistemas empresariais.
 
-springboot web(mvc ou rest api)
+## Padrões de Projeto: Soluções Elegantes para Problemas Recorrentes
 
-REST APIs→ recebe um tomcat na porta 8080; Para incializar, para iniciar o Spring boot basta usar o start Spring start web,
+Padrões de projeto são soluções testadas e comprovadas para problemas comuns em design de software. Eles ajudam a criar código mais manutenível, flexível e reutilizável.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/7d27e9b9-72bd-4894-98e0-6abc580f73e0/3bddeae4-608b-4e4d-bf0d-799f00674636/Untitled.png)
+**Analogia:** 
+Ao construir casas, arquitetos não reinventam como fazer portas, janelas ou escadas - eles seguem modelos que funcionam bem. Na programação, padrões de projeto são como esses modelos de arquitetura.
 
-Configurar controllers
+### 1. Padrão Singleton
 
-Documentar a api com swagger
+**Problema:** Às vezes, precisamos garantir que uma classe tenha apenas uma instância em todo o sistema.
 
-Tratamento de e execeções com handlers
+**Solução:** O padrão Singleton controla a instanciação da classe, garantindo que exista apenas uma instância e fornecendo um ponto global de acesso a ela.
 
-# Rest Controller
+**Código:**
 
-[Primeiro Controller](https://glysns.gitbook.io/spring-framework/spring-web/primeiro-controller)
+```java
+public class ConfiguracaoSistema {
+    // Instância única estática
+    private static ConfiguracaoSistema instancia;
+    
+    // Dados da configuração
+    private String urlBancoDados;
+    private int numeroMaximoConexoes;
+    
+    // Construtor privado evita instanciação externa
+    private ConfiguracaoSistema() {
+        // Inicialização dos dados
+        this.urlBancoDados = "jdbc:mysql://localhost:3306/meudb";
+        this.numeroMaximoConexoes = 10;
+    }
+    
+    // Método para obter a instância única
+    public static synchronized ConfiguracaoSistema getInstancia() {
+        if (instancia == null) {
+            instancia = new ConfiguracaoSistema();
+        }
+        return instancia;
+    }
+    
+    // Métodos de acesso aos dados
+    public String getUrlBancoDados() {
+        return urlBancoDados;
+    }
+    
+    public int getNumeroMaximoConexoes() {
+        return numeroMaximoConexoes;
+    }
+}
+```
 
-# Spring security
+**Uso:**
+```java
+// De qualquer parte do código
+ConfiguracaoSistema config = ConfiguracaoSistema.getInstancia();
+String url = config.getUrlBancoDados();
+```
 
-[Introdução](https://glysns.gitbook.io/spring-framework/spring-security/untitled)
+**Quando usar:** Para classes de configuração, conexões com banco de dados, ou qualquer recurso que deve ser único no sistema.
 
-# Padrões de projeto
+### 2. Padrão Strategy
 
-Singleton →
+**Problema:** Como definir uma família de algoritmos, encapsular cada um deles e torná-los intercambiáveis?
 
-Strategy → 
+**Solução:** O padrão Strategy define uma interface comum para todos os algoritmos, permitindo que eles sejam selecionados em tempo de execução.
 
-Facade → Prover uma interface que reduza a complexidade nas integrações com subsistemas.
+**Código:**
+
+```java
+// Interface Strategy
+interface EstrategiaDeCalculo {
+    double calcular(double valor);
+}
+
+// Implementações concretas
+class CalculoImpostoA implements EstrategiaDeCalculo {
+    @Override
+    public double calcular(double valor) {
+        return valor * 0.1; // 10% de imposto
+    }
+}
+
+class CalculoImpostoB implements EstrategiaDeCalculo {
+    @Override
+    public double calcular(double valor) {
+        return valor * 0.15; // 15% de imposto
+    }
+}
+
+// Contexto que usa a estratégia
+class CalculadoraImposto {
+    private EstrategiaDeCalculo estrategia;
+    
+    public void setEstrategia(EstrategiaDeCalculo estrategia) {
+        this.estrategia = estrategia;
+    }
+    
+    public double calcularImposto(double valor) {
+        if (estrategia == null) {
+            throw new IllegalStateException("Estratégia de cálculo não definida");
+        }
+        return estrategia.calcular(valor);
+    }
+}
+```
+
+**Uso:**
+```java
+CalculadoraImposto calculadora = new CalculadoraImposto();
+
+// Configurando para usar o imposto A
+calculadora.setEstrategia(new CalculoImpostoA());
+double impostoA = calculadora.calcularImposto(1000); // Retorna 100 (10%)
+
+// Mudando para usar o imposto B
+calculadora.setEstrategia(new CalculoImpostoB());
+double impostoB = calculadora.calcularImposto(1000); // Retorna 150 (15%)
+```
+
+### 3. Padrão Facade
+
+**Problema:** Como simplificar o acesso a um conjunto complexo de classes?
+
+**Solução:** O padrão Facade fornece uma interface unificada e simplificada para um conjunto de interfaces em um subsistema.
+
+**Código:**
+
+```java
+// Classes do subsistema complexo
+class SistemaDeAudio {
+    public void configurarFrequencia(int frequencia) { /* ... */ }
+    public void configurarVolume(int volume) { /* ... */ }
+    public void ligar() { /* ... */ }
+}
+
+class SistemaDeVideo {
+    public void configurarResolucao(String resolucao) { /* ... */ }
+    public void configurarBrilho(int brilho) { /* ... */ }
+    public void ligar() { /* ... */ }
+}
+
+class SistemaDeLuzes {
+    public void configurarIntensidade(int intensidade) { /* ... */ }
+    public void ligar() { /* ... */ }
+}
+
+// Fachada que simplifica o uso
+class HomeTheaterFacade {
+    private SistemaDeAudio audio;
+    private SistemaDeVideo video;
+    private SistemaDeLuzes luzes;
+    
+    public HomeTheaterFacade() {
+        this.audio = new SistemaDeAudio();
+        this.video = new SistemaDeVideo();
+        this.luzes = new SistemaDeLuzes();
+    }
+    
+    // Método simples para "assistir filme"
+    public void assistirFilme() {
+        luzes.configurarIntensidade(30);
+        luzes.ligar();
+        
+        audio.configurarVolume(20);
+        audio.ligar();
+        
+        video.configurarResolucao("4K");
+        video.ligar();
+        
+        System.out.println("Tudo pronto! Bom filme!");
+    }
+}
+```
+
+**Uso:**
+```java
+// Sem a fachada, seria necessário configurar cada sistema separadamente
+// Com a fachada, tudo se torna simples:
+HomeTheaterFacade homeTheater = new HomeTheaterFacade();
+homeTheater.assistirFilme();
+```
+
+**Quando usar:** Quando você tem um subsistema complexo e quer fornecer uma interface simplificada para os clientes mais comuns.
+
+---
+
+## Resumo do que você aprendeu nesta Parte 1
+
+- O que é Programação Orientada a Objetos (POO) e seus 4 pilares fundamentais: Encapsulamento, Herança, Abstração e Polimorfismo.
+- Como criar e utilizar classes e objetos em Java.
+- Como proteger dados com encapsulamento (getters/setters).
+- Como inicializar objetos com construtores.
+- Como usar membros estáticos e entender o papel do Garbage Collector.
+- Como reutilizar código e criar hierarquias com herança.
+
+> **Continue aprendendo!**
+> Na [Parte 2 deste guia](/blog/java-abstraction-interfaces), você vai aprofundar em temas como Classes Abstratas, Interfaces, Enumerações, Collections, Testes com JUnit, Spring Boot e Padrões de Projeto.
+
+---
+
+**Próxima leitura recomendada:** [Java Avançado: Abstração, Interfaces e Boas Práticas](/blog/java-abstraction-interfaces)
