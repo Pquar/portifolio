@@ -1,412 +1,741 @@
 ---
-title: '4 - Javascript'
+title: '4 - JavaScript: A Linguagem da Web Interativa'
 date: '2024-05-8'
 lastmod: '2024-05-18'
-tags: ['javascript', 'aula', 'fundamentos', 'avancado', 'assincrono']
-summary: 'Tudo sobre JavaScript: dos fundamentos à programação assíncrona'
+tags: ['javascript', 'fundamentos', 'avançado', 'assincrono']
+summary: 'Aprenda JavaScript: dos conceitos fundamentais à programação assíncrona moderna'
 images: ['/static/images/banners/full-stack.png']
 authors: ['default']
 ---
 
-# 4. JavaScript Fundamentos
+# JavaScript: Dando Vida às Páginas Web
+   
 
-#### **Setup: Instalação, Entrada e Saída de Dados**
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="/static/images/js.png" alt="Logo JavaScript" className="max-w-full px-12 w-64"/>
+  <figcaption className='text-center'>JavaScript <a href="https://commons.wikimedia.org/wiki/File:Unofficial_JavaScript_logo_2.svg" target="_blank">Fonte: Wikimedia Commons</a></figcaption>
+</figure>
 
-```js
-console.clear()
+## Configurando seu Ambiente JavaScript
+
+Antes de mergulharmos no mundo do JavaScript, vamos configurar um ambiente para praticar e executar nosso código.
+
+### Opções para Executar JavaScript
+
+1. **No navegador:**
+   - Abra o console do navegador (F12 ou Ctrl+Shift+I)
+   - Vá para a aba "Console"
+   - Digite seu código JavaScript diretamente
+
+2. **No VS Code com Node.js:**
+   - [Baixe e instale o Node.js](https://nodejs.org/)
+   - Crie um arquivo com extensão `.js` (exemplo: `script.js`)
+   - Execute via terminal com `node script.js`
+
+3. **Ambientes online:**
+   - [JSFiddle](https://jsfiddle.net/)
+   - [CodePen](https://codepen.io/)
+   - [Replit](https://replit.com/)
+
+> **Dica para iniciantes:** Comece pelo console do navegador para testes rápidos.
+
+## 1. Fundamentos do JavaScript
+
+### O que é JavaScript e Por Que Aprender?
+
+JavaScript é a linguagem que adiciona interatividade às páginas web. Enquanto HTML define a estrutura e CSS cuida da aparência, JavaScript é responsável pelo comportamento. Com ele, você pode:
+
+- Responder às ações do usuário (cliques, digitação)
+- Alterar o conteúdo da página dinamicamente
+- Comunicar-se com servidores para buscar dados
+- Criar animações e efeitos visuais
+
+> **Analogia:** Se um site fosse uma casa, o HTML seria a estrutura (paredes, telhado), o CSS seria a decoração e pintura, e o JavaScript seria a eletricidade, encanamento e tudo que faz a casa "funcionar".
+
+### Primeiros Passos: Variáveis e Tipos de Dados
+
+JavaScript trabalha com tipagem dinâmica, o que significa que as variáveis podem ser atribuídas a diferentes tipos de dados ao longo do tempo:
+
+```javascript
+// Números (inteiros ou decimais)
+let idade = 25;
+let altura = 1.75;
+
+// Strings (texto)
+let nome = "Ana";
+let sobrenome = 'Silva';
+let frase = `Meu nome é ${nome}`; // Template string
+
+// Booleanos (verdadeiro/falso)
+let estaChovendo = false;
+let temSol = true;
+
+// Arrays (listas)
+let frutas = ["maçã", "banana", "laranja"];
+
+// Objetos (coleções de dados relacionados)
+let pessoa = {
+  nome: "Carlos",
+  idade: 30,
+  profissao: "desenvolvedor"
+};
+
+// Tipos especiais
+let semValor = null;
+let indefinido = undefined;
 ```
 
-**Variáveis**
+#### Declarando Variáveis
 
-`NUMBER`
+JavaScript oferece três formas de declarar variáveis:
 
-`STRING`
-
-`BOOLEAN ****`
-
-### **Operadores Aritméticos**
-
-| Adição | + |
-| --- | --- |
-| Subtração | - |
-| Multiplicação | * |
-| Divisão | / |
-| Exponenciação | ** |
-| Resto da divisão | % |
-| mais operações | Math(biblioteca) |
-
-> Biblioteca Math (nativa)
-> 
-
-```jsx
-Math.PI
-Math.cos(30) 
+```javascript
+var nome = "João";    // Forma antiga (evite usar)
+let idade = 25;       // Recomendado para valores que mudam
+const PI = 3.14159;   // Para valores que nunca mudam
 ```
 
-### **Operadores Booleanos**
+> **Boa prática:** Prefira usar `const` sempre que possível, e `let` quando precisar alterar o valor da variável. Evite usar `var` em código novo.
 
-| Igual | ``==``|
-| --- | --- |
-| Igual e do mesmo tipo | ``===`` |
-| Diferente de | ``!=`` |
-| Diferente de & tipo | ``!==``|
-| Maior que | ``>`` |
-| Maior ou igual | ``>=`` |
-| Menor que | ``<`` |
-| Menor ou igual | ``<=`` |
+**Atividade prática:** 
+Declare diferentes variáveis no console do seu navegador e verifique seu tipo usando o operador `typeof`, como em `typeof nome`.
 
-### Conjunção Logicas
+### Operadores Aritméticos
 
-| AND | E | && |
-| --- | --- | --- |
-| OR | OU | || |
-| NOT | NÃO | ! |
+Os operadores aritméticos permitem realizar operações matemáticas com números:
 
-### **Coerção de Tipos**
+```javascript
+let a = 10;
+let b = 5;
 
-conversão dos tipos de números
+// Operações básicas
+let soma = a + b;         // 15
+let subtracao = a - b;    // 5
+let multiplicacao = a * b; // 50
+let divisao = a / b;      // 2
+
+// Operações adicionais
+let exponenciacao = a ** b; // 10^5 = 100000
+let resto = a % b;        // 0 (resto da divisão)
+
+// Incremento e decremento
+let c = 1;
+c++; // c agora é 2
+c--; // c volta a ser 1
+```
+
+#### Biblioteca Math
+
+JavaScript possui uma biblioteca embutida com funções matemáticas:
+
+```javascript
+Math.PI;           // 3.141592653589793
+Math.sqrt(16);     // 4 (raiz quadrada)
+Math.abs(-10);     // 10 (valor absoluto)
+Math.round(4.7);   // 5 (arredondamento)
+Math.floor(4.7);   // 4 (arredonda para baixo)
+Math.ceil(4.3);    // 5 (arredonda para cima)
+Math.random();     // número aleatório entre 0 e 1
+```
+
+**Atividade prática:**
+1. Calcule a área de um círculo com raio 5 (dica: área = π × r²)
+2. Gere um número aleatório entre 1 e 10: 
+
+### Operadores de Comparação e Lógicos
+
+Os operadores de comparação verificam relações entre valores:
+
+```javascript
+// Comparações (retornam true ou false)
+5 > 3;        // true (maior que)
+5 >= 5;       // true (maior ou igual a)
+5 < 10;       // true (menor que)
+5 <= 4;       // false (menor ou igual a)
+5 == "5";     // true (igualdade, converte tipos)
+5 === "5";    // false (igualdade estrita, não converte tipos)
+5 != "6";     // true (diferente)
+5 !== "5";    // true (diferente estrito)
+```
+
+Os operadores lógicos combinam expressões booleanas:
+
+```javascript
+// AND lógico (&&) - ambos os lados precisam ser true
+true && true;   // true
+true && false;  // false
+
+// OR lógico (||) - pelo menos um lado precisa ser true
+true || false;  // true
+false || false; // false
+
+// NOT lógico (!) - inverte o valor
+!true;          // false
+!false;         // true
+```
+
+> **Analogia:** Pense nos operadores lógicos como decisões do dia a dia:
+> - `&&` (AND): Para ir à praia você precisa ter tempo livre **E** o tempo precisar estar bom
+> - `||` (OR): Para ficar feliz você precisa ganhar na loteria **OU** receber uma boa notícia
+> - `!` (NOT): Se não está chovendo (`!chovendo`), então posso sair sem guarda-chuva
 
 ### Estruturas Condicionais
 
-```jsx
-//Se for atendido a minha condição vai ser executada o seguinte bloco de codigo
-if(30>10){
-	//execução do bloco
+As estruturas condicionais permitem executar diferentes blocos de código dependendo de condições:
+
+```javascript
+// if simples
+if (idade >= 18) {
+  console.log("Você é maior de idade");
 }
 
-if(10==9){
-	//execução do bloco IF
-}else{
-		//execução do bloco else
+// if/else
+if (temperatura > 30) {
+  console.log("Está quente!");
+} else {
+  console.log("Não está tão quente.");
 }
 
-if(10==9){
-	//execução do bloco IF
-}else if(9==8){
-		//execução do bloco else if
-}else{
-	//execução do bloco else
+// if/else if/else
+if (hora < 12) {
+  console.log("Bom dia!");
+} else if (hora < 18) {
+  console.log("Boa tarde!");
+} else {
+  console.log("Boa noite!");
+}
+
+// Operador ternário (forma compacta de if/else)
+let mensagem = idade >= 18 ? "Pode entrar" : "Acesso negado";
+```
+
+**Atividade prática:**
+Crie um programa que verifica se um número é positivo, negativo ou zero e exibe uma mensagem correspondente.
+
+### Estruturas de Repetição (Loops)
+
+Os loops permitem executar um bloco de código múltiplas vezes:
+
+```javascript
+// Loop while (enquanto)
+let contador = 1;
+while (contador <= 5) {
+  console.log(`Contador: ${contador}`);
+  contador++;
+}
+
+// Loop for (para)
+for (let i = 1; i <= 5; i++) {
+  console.log(`Número: ${i}`);
+}
+
+// Loop for...of (para elementos de uma coleção)
+const frutas = ["maçã", "banana", "laranja"];
+for (let fruta of frutas) {
+  console.log(`Fruta: ${fruta}`);
+}
+
+// Loop for...in (para propriedades de um objeto)
+const pessoa = { nome: "Ana", idade: 25, cidade: "Rio" };
+for (let propriedade in pessoa) {
+  console.log(`${propriedade}: ${pessoa[propriedade]}`);
 }
 ```
 
-### **Estruturas de Repetição | Laços Condicionais**
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*Wal8vgWVHiYnM0ImnYl62w.jpeg" alt="Diferentes tipos de loops em JavaScript" className="max-w-full px-12"/>
+  <figcaption className='text-center'>Diferentes tipos de loops em JavaScript. <a href="https://medium.com/@ashfaqueahsan61/javascript-loops-explained-c7675c9bed89" target="_blank">Fonte: Medium/Ashfaque</a></figcaption>
+</figure>
 
-```jsx
-let variavel = 0
-//While Enquanto a condição for verdadeira vai ser executada o bloco de codigo.
-while(variavel<10){
-		variavel++
-}
+**Atividade prática:**
+1. Use um loop para imprimir os números pares de 2 a 20
+2. Calcule a soma dos números de 1 a 10 usando um loop
+
+### Arrays (Listas)
+
+Arrays são coleções ordenadas de valores que podem ser de qualquer tipo:
+
+```javascript
+// Criando arrays
+const numeros = [1, 2, 3, 4, 5];
+const misto = [42, "texto", true, [1, 2], {nome: "João"}];
+
+// Acessando elementos (índices começam em 0)
+console.log(numeros[0]); // 1
+console.log(numeros[2]); // 3
+
+// Modificando elementos
+numeros[1] = 20; // agora é [1, 20, 3, 4, 5]
+
+// Propriedades e métodos comuns
+numeros.length;               // 5 (tamanho do array)
+numeros.push(6);              // Adiciona 6 no final: [1, 20, 3, 4, 5, 6]
+numeros.unshift(0);           // Adiciona 0 no início: [0, 1, 20, 3, 4, 5, 6]
+numeros.pop();                // Remove e retorna o último elemento: 6
+numeros.shift();              // Remove e retorna o primeiro elemento: 0
+numeros.includes(3);          // true (verifica se contém o valor)
+numeros.indexOf(20);          // 1 (posição do elemento)
+numeros.slice(1, 3);          // [20, 3] (cria subarray do índice 1 até o 3 (exclusivo))
+numeros.concat([7, 8]);       // Cria novo array combinando os dois
+
+// Métodos avançados
+numeros.forEach(num => console.log(num * 2));  // Executa função para cada elemento
+numeros.map(num => num * 2);                   // Cria novo array com elementos transformados
+numeros.filter(num => num > 3);                // Cria novo array com elementos filtrados
+numeros.reduce((soma, atual) => soma + atual, 0); // Reduz o array a um único valor
 ```
 
-Para praticar pode usar a seguinte biblioteca.
-`npm install readline-sync`
-Para “utilizar a biblioteca” utilize os seguinte trechos de código no seu arquivo javascript.
+**Atividade prática:**
+1. Crie um array com seus hobbies favoritos
+2. Use um loop para imprimi-los na tela
+3. Adicione um novo hobby ao final da lista
+4. Remova o primeiro hobby da lista
 
-`const input = require(”readline-sync”)
+### Funções - Blocos de Código Reutilizáveis
 
-const entrada = input.question(”texto”) ****`
+Funções são blocos de código que podem ser chamados múltiplas vezes:
 
-### **Laços Numéricos**
-
-| Atribuir e diminuir | -= |
-| --- | --- |
-| Atribuir e somar | += |
-| Incremento | ++ |
-| Decremento | - - |
-| Atribuir positivo e transformar em positivo(jogo de sinal) | + |
-| Atribuir negativo e transformar em negativo(jogo de sinal) | - |
-
-> obs: `++ --` a ordem vai alterar se vai ser atribuído antes ou depois. (`++i != i++`)
-> 
-
-```jsx
-for(let i=0; i >10 ; i++){ 
-		//codigo sera executado 10vezes
- }
-let variavel = texto;
-for(let j=0; j>variavel.length; j++){
-			//codigo sera executado dependendo do tamanho da variavel
+```javascript
+// Declaração de função
+function saudacao(nome) {
+  return `Olá, ${nome}!`;
 }
 
+// Chamando a função
+console.log(saudacao("Maria")); // "Olá, Maria!"
+
+// Função com múltiplos parâmetros
+function soma(a, b) {
+  return a + b;
+}
+
+// Parâmetros com valores padrão
+function cumprimento(nome, hora = "dia") {
+  return `Bom ${hora}, ${nome}!`;
+}
+console.log(cumprimento("João"));        // "Bom dia, João!"
+console.log(cumprimento("Ana", "noite")); // "Bom noite, Ana!"
+
+// Funções de seta (arrow functions) - forma moderna
+const quadrado = (n) => n * n;
+const somar = (a, b) => a + b;
+const saudar = nome => `Olá, ${nome}!`;
 ```
 
-exemplos:
+**Atividade prática:**
+1. Crie uma função que receba a idade e retorne se a pessoa é maior de idade
+2. Crie uma função que converta temperatura de Celsius para Fahrenheit
 
-[Decrement (--) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Decrement)
+### Objetos
 
-[Increment (++) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment)
+Objetos são coleções de pares chave-valor que representam entidades:
 
-[Unary negation (-) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_negation)
-
-[Unary plus (+) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_plus)
-
-### Arrays
-
-```jsx
-//Criar um Array= Lista
-let minhaArray = [];
-
-//Enviando elemento para o Array
-minhaArray.push(1)
-minhaArray.push(2)
-
-// Percorendo o array
-//for of - pegando os elementos a cada intereção
-for(let elemento of arr) {
-		minhaArray[elemento]
-}
-//for in - percore os indices do elementos= 0,1,2,3
-
-for(let elemento in minhaArray){
-			minhaArray[elemento]
-}
-//
-```
-
-```jsx
-//Transformar em texto
-STRING()
-//Transformar em numero
-NUMBER()
-
-CONST ARR = [ 1 , 2, 3]
-
-arr.slice(0,2) //não inclui o 3 pois e onde termina
-
-arr.slice(0)
-
-arr.push(4, 5, 6) //Enviar no final
-arr.unshift(0) //enviar para o começo
-arr.pop() // remove o ultimo elemento do array
-arr.shift() // remove o primeiro elemento
-
-const arr2 = [10, 20, 30]
-
-arr.concat(arr2)
-arr.indexOf(3) // retorna o numero do onde o elemento pode ser incontrado(indice), pela primira vez
-arr.lastIndexOf(3) // retorna o indice da ultima vez que o elemento apareceu.
-arr.includes(10) // retorn se tem um elementro em true ou false
-arr.reverse() //inverse o array
-```
-
-# Function
-
-```jsx
-//Definindo uma função
-function nomeFuncao() {
-		console.log('voce esta dentro da funcao')
-}
-
-//chama a fução
-nomeFuncao()
-
-//Definindo uma função com parametro
-function nomeFuncaoParametro(nome) {
-		console.log(nome +' esta dentro da funcao')
-}
-function parametros(nome, idade, altura='1.7') {
-		console.log(nome + idade +  altura' esta dentro da funcao')
-}
-
-//chama a fução
-nomeFuncaoParametro('nome')
-nomeFuncaoParametro() // undefined
-
-//retorno de função 
-
-function soma(numero1, numero2) {
-			return numero1 + numero1 // a função acaba quando chega no return
-}
-const result = soma(1,2)
-console.log(result)
-```
-
-# Objetos
-
-```jsx
-let pessoa = {
-		nome: 'nome pessoa',
-		'idade-da-pessoa': 23, 
-}
-
-pessoa.nome
-pessoa.['nome']
-pessoa.["idade-da-pessoa"]
-
-//adicionar
-pessoa.altura = 1.7
-
-console.log(pessoa.altura)
-
-//remover
-
-delete pessoa.altura
-
-//percorer o objeto
-//for in
-
-for (let chave in pessoa){
-		console.log(chave)
-}
-```
-
-
-
-### Tipos, variáveis e operadores
-
-
-### Funções, escopo e DOM
-
-- **Escopo de variáveis**
-  - `var`, `let`, `const`
-  - Escopo de bloco vs escopo de função
-
-```js
-function teste() {
-  if (true) {
-    var x = 1; // escopo da função
-    let y = 2; // escopo de bloco
-    const z = 3; // escopo de bloco
+```javascript
+// Criando um objeto
+const pessoa = {
+  nome: "Carlos",
+  idade: 30,
+  profissao: "Desenvolvedor",
+  hobbies: ["música", "esportes", "leitura"],
+  endereco: {
+    rua: "Rua Principal",
+    cidade: "São Paulo"
+  },
+  apresentar: function() {
+    return `Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`;
   }
-  console.log(x); // 1
-  // console.log(y); // erro
+};
+
+// Acessando propriedades
+console.log(pessoa.nome);            // "Carlos"
+console.log(pessoa["profissao"]);    // "Desenvolvedor"
+console.log(pessoa.hobbies[0]);      // "música"
+console.log(pessoa.endereco.cidade); // "São Paulo"
+console.log(pessoa.apresentar());    // "Olá, meu nome é Carlos e tenho 30 anos."
+
+// Adicionando/modificando propriedades
+pessoa.email = "carlos@exemplo.com";
+pessoa.idade = 31;
+
+// Removendo propriedades
+delete pessoa.email;
+
+// Verificando se propriedade existe
+"nome" in pessoa; // true
+pessoa.hasOwnProperty("telefone"); // false
+```
+
+**Atividade prática:**
+1. Crie um objeto representando um filme com propriedades como título, diretor, ano e gênero
+2. Adicione um método que retorne uma descrição do filme
+3. Adicione um array de atores ao objeto
+
+## 2. JavaScript no Navegador
+
+### Manipulando o DOM (Document Object Model)
+
+O DOM é a representação em árvore de uma página HTML, que permite ao JavaScript acessar e modificar os elementos:
+
+```javascript
+// Selecionando elementos
+const titulo = document.getElementById("titulo");
+const paragrafos = document.getElementsByTagName("p");
+const botoes = document.getElementsByClassName("botao");
+const primeiroLink = document.querySelector("a");
+const todosLinks = document.querySelectorAll("a");
+
+// Modificando conteúdo
+titulo.textContent = "Novo título";  // Só texto
+titulo.innerHTML = "Título com <em>ênfase</em>";  // Com HTML
+
+// Manipulando estilos
+titulo.style.color = "blue";
+titulo.style.fontSize = "24px";
+
+// Manipulando classes
+titulo.classList.add("destaque");
+titulo.classList.remove("antigo");
+titulo.classList.toggle("visivel");
+titulo.classList.contains("destaque"); // true
+
+// Criando e adicionando elementos
+const novoParagrafo = document.createElement("p");
+novoParagrafo.textContent = "Texto do novo parágrafo";
+document.body.appendChild(novoParagrafo);
+
+// Removendo elementos
+const elementoAntigo = document.getElementById("obsoleto");
+elementoAntigo.parentNode.removeChild(elementoAntigo);
+```
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://www.w3schools.com/js/pic_htmltree.gif" alt="Estrutura do DOM" className="max-w-full px-12"/>
+  <figcaption className='text-center'>Estrutura de árvore do DOM. <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">Fonte: W3Schools</a></figcaption>
+</figure>
+
+### Eventos
+
+Eventos permitem criar interações com o usuário:
+
+```javascript
+// Adicionando listeners de eventos
+const botao = document.getElementById("meuBotao");
+
+// Forma moderna (recomendada)
+botao.addEventListener("click", function(event) {
+  console.log("Botão clicado!");
+});
+
+// Eventos comuns:
+// click, dblclick, mouseover, mouseout, keydown, keyup, submit, load, change
+
+// Removendo um listener (precisa guardar referência à função)
+function minhaFuncao() {
+  console.log("Botão clicado!");
 }
+botao.addEventListener("click", minhaFuncao);
+botao.removeEventListener("click", minhaFuncao);
+
+// Prevenindo o comportamento padrão
+const formulario = document.getElementById("meuForm");
+formulario.addEventListener("submit", function(event) {
+  event.preventDefault(); // Impede o envio padrão do formulário
+  console.log("Formulário enviado via JavaScript!");
+});
 ```
 
-- **DOM Básico**
+**Atividade prática:**
+1. Crie uma página HTML simples com um botão e um parágrafo
+2. Use JavaScript para mudar o texto do parágrafo quando o botão for clicado
 
-```js
-document.getElementById('meuElemento')
-document.querySelector('.classe')
-document.querySelectorAll('div')
+## 3. JavaScript Avançado
+
+### Escopo e Closure
+
+```javascript
+// Escopo global vs local
+let global = "Sou global";
+
+function teste() {
+  let local = "Sou local";
+  console.log(global); // Acessível
+  console.log(local);  // Acessível
+}
+
+console.log(global); // Acessível
+// console.log(local); // Erro: local não está definido
+
+// Closures - funções que "lembram" seu escopo
+function criarContador() {
+  let contador = 0;
+  return function() {
+    contador++;
+    return contador;
+  };
+}
+
+const meuContador = criarContador();
+console.log(meuContador()); // 1
+console.log(meuContador()); // 2
 ```
 
-### Eventos e manipulação de elementos
+### Desestruturação e Spread/Rest
 
-```js
-document.getElementById("btn").addEventListener("click", function() {
-  alert("Botão clicado!");
-})
+Recursos modernos para trabalhar com arrays e objetos:
+
+```javascript
+// Desestruturação de arrays
+const [primeiro, segundo, ...resto] = [1, 2, 3, 4, 5];
+console.log(primeiro); // 1
+console.log(segundo);  // 2
+console.log(resto);    // [3, 4, 5]
+
+// Desestruturação de objetos
+const {nome, idade, cidade = "Desconhecida"} = {nome: "Ana", idade: 25};
+console.log(nome);   // "Ana"
+console.log(idade);  // 25
+console.log(cidade); // "Desconhecida" (valor padrão)
+
+// Operador spread
+const array1 = [1, 2, 3];
+const array2 = [...array1, 4, 5]; // [1, 2, 3, 4, 5]
+
+const obj1 = {a: 1, b: 2};
+const obj2 = {...obj1, c: 3}; // {a: 1, b: 2, c: 3}
+
+// Parâmetro rest
+function soma(...numeros) {
+  return numeros.reduce((total, n) => total + n, 0);
+}
+console.log(soma(1, 2, 3, 4)); // 10
 ```
 
-## 7. JavaScript Avançado
+### Classes
 
-### Arrays, objetos, classes e módulos
+JavaScript moderno oferece sintaxe de classes para trabalhar com programação orientada a objetos:
 
-- Já abordado com exemplos práticos acima (Arrays e Objetos)
-- **Classes**
-
-```js
+```javascript
 class Pessoa {
   constructor(nome, idade) {
     this.nome = nome;
     this.idade = idade;
   }
+  
   apresentar() {
-    console.log(`Olá, sou ${this.nome} e tenho ${this.idade} anos.`);
+    return `Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`;
+  }
+  
+  // Getter
+  get nomeCompleto() {
+    return this.nome + " Silva";
+  }
+  
+  // Método estático
+  static criarPessoa(nome) {
+    return new Pessoa(nome, 0);
   }
 }
-```
 
-### Destructuring, spread/rest
-
-```js
-const pessoa = { nome: 'João', idade: 30 };
-const { nome, idade } = pessoa;
-
-const numeros = [1, 2, 3];
-const [a, b, c] = numeros;
-
-const outros = [...numeros, 4, 5];
-function soma(...args) {
-  return args.reduce((a, b) => a + b);
-}
-```
-
-### Módulos ES6
-
-- **Export/Import**
-
-```js
-// arquivo1.js
-export function saudacao() {
-  return "Olá!";
+// Herança
+class Funcionario extends Pessoa {
+  constructor(nome, idade, cargo) {
+    super(nome, idade); // Chama o construtor da classe pai
+    this.cargo = cargo;
+  }
+  
+  apresentar() {
+    return `${super.apresentar()} Trabalho como ${this.cargo}.`;
+  }
 }
 
-// arquivo2.js
-import { saudacao } from './arquivo1.js';
+const joao = new Pessoa("João", 30);
+console.log(joao.apresentar());
+
+const maria = new Funcionario("Maria", 28, "desenvolvedora");
+console.log(maria.apresentar());
 ```
 
-## 8. JavaScript Assíncrono
+**Atividade prática:**
+1. Crie uma classe `Produto` com propriedades como nome, preço e quantidade
+2. Adicione métodos para calcular o valor total e verificar estoque
+3. Crie uma subclasse `ProdutoPerecivel` que também tenha data de validade
 
-### Callbacks e Promises
+## 4. JavaScript Assíncrono
 
-```js
-function tarefa(callback) {
-  setTimeout(() => {
-    console.log("Tarefa concluída");
-    callback();
-  }, 1000);
-}
-```
+JavaScript permite operações assíncronas, essenciais para interações com servidores, operações demoradas ou temporizadas.
 
-```js
-const promessa = new Promise((resolve, reject) => {
-  let sucesso = true;
-  if (sucesso) resolve("Tudo certo!");
-  else reject("Algo deu errado.");
+### Callbacks
+
+```javascript
+// Exemplo com setTimeout
+console.log("Início");
+setTimeout(function() {
+  console.log("Depois de 2 segundos");
+}, 2000);
+console.log("Fim");
+
+// Problema do "callback hell"
+buscarUsuario(id, function(usuario) {
+  buscarPedidos(usuario.id, function(pedidos) {
+    buscarProdutos(pedidos[0].id, function(produtos) {
+      // Código aninhado difícil de ler e manter
+    });
+  });
 });
 ```
 
+### Promises
+
+Promises são objetos que representam a eventual conclusão ou falha de uma operação assíncrona:
+
+```javascript
+// Criando uma Promise
+const minhaPromise = new Promise((resolve, reject) => {
+  // Operação assíncrona
+  const sucesso = true;
+  
+  if (sucesso) {
+    resolve("Operação bem-sucedida!");
+  } else {
+    reject("Ocorreu um erro!");
+  }
+});
+
+// Usando a Promise
+minhaPromise
+  .then(resultado => {
+    console.log(`Sucesso: ${resultado}`);
+    return "Processado";
+  })
+  .then(novoResultado => {
+    console.log(`Próximo passo: ${novoResultado}`);
+  })
+  .catch(erro => {
+    console.error(`Erro: ${erro}`);
+  })
+  .finally(() => {
+    console.log("Operação concluída (sucesso ou erro)");
+  });
+```
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png" alt="Ciclo de vida de uma Promise" className="max-w-full px-12"/>
+  <figcaption className='text-center'>Ciclo de vida de uma Promise. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Fonte: MDN Web Docs</a></figcaption>
+</figure>
+
 ### Async/Await
 
-```js
-async function executar() {
+Sintaxe mais moderna para trabalhar com Promises:
+
+```javascript
+// Função assíncrona
+async function buscarDados() {
   try {
-    const resultado = await promessa;
-    console.log(resultado);
+    // await "espera" a Promise ser resolvida
+    const resposta = await fetch('https://api.exemplo.com/dados');
+    const dados = await resposta.json();
+    console.log(dados);
+    return dados;
   } catch (erro) {
-    console.error(erro);
+    console.error("Erro ao buscar dados:", erro);
   }
 }
+
+// Chamando a função assíncrona
+buscarDados().then(dados => {
+  console.log("Dados processados:", dados);
+});
 ```
 
-### Fetch API, debounce, throttle
+### Fetch API
 
-```js
-fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
+API moderna para fazer requisições HTTP:
 
-```js
-// debounce
-function debounce(fn, delay) {
-  let timer;
-  return function(...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn.apply(this, args), delay);
-  };
-}
-
-// throttle
-function throttle(fn, limit) {
-  let lastFunc;
-  let lastRan;
-  return function(...args) {
-    if (!lastRan) {
-      fn.apply(this, args);
-      lastRan = Date.now();
-    } else {
-      clearTimeout(lastFunc);
-      lastFunc = setTimeout(() => {
-        if ((Date.now() - lastRan) >= limit) {
-          fn.apply(this, args);
-          lastRan = Date.now();
-        }
-      }, limit - (Date.now() - lastRan));
+```javascript
+// Requisição GET básica
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
     }
-  };
-}
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Erro na requisição:', error);
+  });
+
+// Requisição POST
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'Novo post',
+    body: 'Conteúdo do post',
+    userId: 1
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
 ```
+
+**Atividade prática:**
+1. Use a Fetch API para buscar dados de uma API pública (como JSONPlaceholder)
+2. Exiba os resultados em uma página HTML
+3. Adicione tratamento de erros para quando a requisição falhar
+
+## 5. Recursos e Próximos Passos
+
+### Ferramentas para Aprendizado
+
+- **Consoles online:**
+  - [JSFiddle](https://jsfiddle.net/)
+  - [CodePen](https://codepen.io/)
+  - [Replit](https://replit.com/)
+
+- **Documentação:**
+  - [MDN Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+  - [JavaScript.info](https://javascript.info/)
+
+### Para Aprofundar seu Conhecimento
+
+- JavaScript moderno (ES6+)
+- Frameworks (React, Vue, Angular)
+- Node.js para aplicações backend
+- TypeScript para tipagem estática
+- Testes automatizados
+
+## Glossário
+
+- **DOM:** Document Object Model - representação dos elementos HTML em formato de árvore
+- **Callback:** Função passada como argumento para outra função, para ser executada posteriormente
+- **Promise:** Objeto que representa o resultado futuro de uma operação assíncrona
+- **API:** Application Programming Interface - conjunto de regras para interação entre softwares
+- **JSON:** JavaScript Object Notation - formato leve de intercâmbio de dados
+- **Escopo:** Define a visibilidade e acessibilidade de variáveis
+- **Hoisting:** Comportamento do JavaScript de mover declarações para o topo do escopo
+
+---
+
+## Desafio Final
+
+Agora que você conhece os fundamentos do JavaScript, tente criar uma aplicação simples que combine os conceitos aprendidos:
+
+**Criar uma lista de tarefas (Todo List)**
+- Um campo para adicionar novas tarefas
+- Botão para adicionar
+- Lista das tarefas com funcionalidades para:
+  - Marcar como concluídas
+  - Excluir tarefas
+  - Filtrar tarefas (todas, concluídas, pendentes)
+- Armazenar as tarefas no localStorage para persistência
+
+Este projeto utilizará manipulação do DOM, eventos, funções, arrays, objetos e armazenamento local!
+
+---
+
+> **Lembre-se:** JavaScript é melhor aprendido na prática. Experimente, erre, corrija e repita. Cada erro contém uma lição valiosa.

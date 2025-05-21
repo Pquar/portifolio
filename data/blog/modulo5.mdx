@@ -1,107 +1,426 @@
 ---
-title: '4 - Algoritmos & Estrutura de Dados'
+title: '4 - Fundamentos de Algoritmos e Estruturas de Dados'
 date: '2024-05-18'
 lastmod: '2024-05-18'
 tags: ['Algoritmos']
-draft: true
 summary: 'Algoritmos e a matemática do computador'
 images: ['/static/images/banners/full-stack.png']
 authors: ['default']
 ---
 
-# Algoritmos
-Vetores. Matrizes. Manipulação de cadeias de caracteres. Registros. Alocação dinâmica de
-memória. Listas: lineares, pilhas e filas. Manipulação de arquivos.
-**Conteúdo do Módulo**
+# Fundamentos de Algoritmos e Estruturas de Dados
 
-**O que é Algoritmos**
+## Introdução
 
-**Fluxos Simples, Sequencial**
+Se você está começando a programar, entender algoritmos e estruturas de dados é como aprender o alfabeto antes de escrever textos. Eles são a base para criar programas eficientes, organizados e que realmente resolvem problemas do mundo real.
 
-flowgorithm
+---
 
-**Tipos de Dados**
+## 1. O que é um Algoritmo?
 
-TEXTO
+Um **algoritmo** é uma sequência de passos para resolver um problema ou realizar uma tarefa. Pense em uma receita de bolo: cada instrução é executada em ordem para chegar ao resultado final. Da mesma forma, algoritmos orientam o computador sobre o que fazer.
 
-NUMERO
+**Exemplo prático – Somar dois números:**
 
-BOLEANO
+```javascript
+function somar(a, b) {
+  return a + b;
+}
 
-**Decisão**
+console.log(somar(3, 5)); // Saída: 8
+```
 
-**Repetição**
+**Passo a passo:**
 
-**Listas/Arrays**
+* A função `somar` recebe dois números.
+* Retorna o resultado da soma.
+* O `console.log` exibe o resultado.
 
-**Funções**
+**Importância:** Algoritmos estão por trás de tudo na programação, desde simples cálculos até inteligência artificial.
 
-**Exercício Completo (Pseudocódigo)**
+---
 
-**Desempenho de Algoritmos**
+## 2. Como analisar um algoritmo?
 
-NOTAÇÃO BIG 0
+Ao criar um algoritmo, é importante saber se ele é rápido e usa pouca memória, principalmente quando lidamos com muitos dados. Para isso, usamos a **notação Big O**.
 
-**Dicas para Montar Algoritmos**
+### O que é Big O?
 
-Referencias
+A notação **Big O** descreve como o tempo de execução ou o uso de memória de um algoritmo cresce conforme aumentamos a quantidade de dados. Ela mostra o "pior caso" e ajuda a comparar diferentes soluções.
 
-Notação Big O
+**Exemplos comuns:**
 
--Busca binaria
+* **O(1):** tempo constante – não importa o tamanho da entrada, o tempo não muda.
+* **O(n):** tempo linear – cresce proporcionalmente ao tamanho da entrada.
+* **O(n²):** tempo quadrático – cresce muito mais rápido à medida que a entrada aumenta.
 
--Arvore binaria
+### Analogia do dia a dia
 
-Feøffeeb
+Imagine procurar uma palavra em:
 
-Arrays
+* **O(1):** Um dicionário aberto na página certa.
+* **O(n):** Folhear página por página até encontrar.
+* **O(n²):** Para cada página, comparar com todas as outras (bem ineficiente!).
 
-LISTA encadeada
+### Exemplo prático – Procurar um número em uma lista
 
-Acesso aleatória e sequencial 
+```javascript
+function contemNumero(lista, alvo) {
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i] === alvo) return true;
+  }
+  return false;
+}
+```
 
--Algoritmo  por seleção 
+**Análise:** No pior caso, percorre toda a lista. Isso é **O(n)**, onde `n` é o tamanho da lista.
 
-O
+**Boa prática:** Sempre que possível, prefira algoritmos mais eficientes. Por exemplo, usando um `Set`:
 
-Livros:
+```javascript
+const conjunto = new Set([1, 2, 3]);
+console.log(conjunto.has(2)); // O(1)
+```
 
-**Entendendo Algoritmos: Um Guia Ilustrado Para Programadores e Outros Curiosos**
+---
 
-# Matemática Básica
+## 3. Estratégias para criar algoritmos
 
-Não tem como fugir de matemática quando se fala em programação.
+Resolver problemas de programação é como organizar um armário bagunçado: existem várias estratégias para facilitar o trabalho.
 
-Analise dimencional → Passar de uma medida para outra exemplo: horas para centimentros.
+Você pode começar separando as roupas por tipo (camisas, calças, etc.) e depois dobrar cada pilha. Isso é dividir para conquistar.
 
-Pontenciação: 
+Se toda vez que dobrar uma camisa você lembrar que já fez esse trabalho antes com outra igual, pode guardar o resultado e reusar. Isso é programação dinâmica.
 
-## Exercícios
+Se você simplesmente pegar o item maior que couber no espaço disponível, esperando que no fim tudo caiba, está usando um algoritmo guloso.
 
-Potenciação:
+E se tentar colocar as roupas de todas as formas possíveis até encontrar a arrumação ideal, está usando backtracking.
 
-(integrado Medicina - 2022) Qunatos algorismos resultam da expressão numérica:
+### 3.1 Dividir para conquistar
 
-$$
-N = 5^{23}* 2^{30}?
-$$
+Divida o problema em partes menores, resolva cada uma e junte os resultados.
 
-a) 23
+**Exemplo – Fatorial com recursão:**
 
-b)24
+```javascript
+function fatorial(n) {
+  if (n <= 1) return 1;
+  return n * fatorial(n - 1);
+}
+```
 
-c)25
+**Analogia:** Cortar uma pizza gigante em pedaços menores para servir mais rápido.
 
-d)26
+---
 
-e)27
+### 3.2 Programação dinâmica
 
-$$
-N = 5^{23}* 2^{30} \\  N=5^{23}*2^{23}*2^7 \\ N= (5*2)^{23} * 2^7 \\  N= 10^{23} * 2^7 \\   N= 10^{23} * 128 \\ N= 12.800.000.000.000.000.000.000.000 \\ d) 26
-$$
+Evite repetir cálculos guardando resultados já encontrados.
 
-MMC:
+**Exemplo – Fibonacci com memorização:**
 
-(PUCPR - 2021) Coincidentemente,  no dia doze de feveiro do ano passado, Luiz e Laura foram, pela primaira vez, ao mesmo shopping e desde então eles passaram a visitar esse shopping com certa frequência. Se Luiz passou a frequentá-lo a cada doze dias e Laura, a cada nove dias, regularmente, em exetamente quantas datas daquele ano coincidiu de ambos erem ido áquele shopping?
+```typescript
+type Memo = { [key: number]: number };
 
-# Referencias
+function fibonacci(n: number, memo: Memo = {}): number {
+  if (n <= 1) return n;
+  if (memo[n]) return memo[n];
+  memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
+  return memo[n];
+}
+```
+
+**Analogia:** Anotar o telefone de alguém para não precisar perguntar de novo.
+
+---
+
+### 3.3 Algoritmos gulosos
+
+Sempre escolha a melhor opção local, esperando que o resultado final seja bom.
+
+**Exemplo – Troco com menor número de moedas:**
+
+```javascript
+function trocoGuloso(valor, moedas) {
+  let resultado = [];
+  for (let moeda of moedas.sort((a, b) => b - a)) {
+    while (valor >= moeda) {
+      valor -= moeda;
+      resultado.push(moeda);
+    }
+  }
+  return resultado;
+}
+
+console.log(trocoGuloso(18, [10, 5, 1])); // [10, 5, 1, 1, 1]
+```
+
+**Analogia:** Escolher sempre a fila do mercado com menos pessoas, sem avaliar quem tem mais itens.
+
+---
+
+### 3.4 Backtracking
+
+Tente todas as possibilidades e volte atrás se necessário.
+
+**Exemplo – Resolver labirinto (conceito):**
+
+```javascript
+function resolverLabirinto(posicao, caminho) {
+  if (chegouAoFim(posicao)) return caminho;
+  for (let direcao of direcoesValidas(posicao)) {
+    if (!jaVisitado(direcao)) {
+      let resultado = resolverLabirinto(direcao, [...caminho, direcao]);
+      if (resultado) return resultado;
+    }
+  }
+  return null;
+}
+```
+
+**Analogia:** Tentar todas as chaves de um molho até encontrar a que abre a porta.
+
+---
+
+## 4. Estruturas de Dados Fundamentais
+
+Estruturas de dados são formas de organizar informações para facilitar o acesso e a manipulação.
+
+### 4.1 Listas, pilhas e filas
+
+```javascript
+let lista = [1, 2, 3];      // Lista comum
+let pilha = []; pilha.push(1); pilha.pop();  // LIFO (último a entrar, primeiro a sair)
+let fila = []; fila.push(1); fila.shift();   // FIFO (primeiro a entrar, primeiro a sair)
+```
+
+---
+
+### 4.2 Listas ligadas
+
+Permitem inserções e remoções dinâmicas.
+
+```typescript
+class No {
+  constructor(public valor: number, public proximo: No | null = null) {}
+}
+
+const lista = new No(1, new No(2, new No(3)));
+```
+
+---
+
+### 4.3 Árvores
+
+Representam hierarquias, como pastas e arquivos no computador.
+
+```typescript
+class Nodo {
+  constructor(public valor: string, public filhos: Nodo[] = []) {}
+}
+const raiz = new Nodo("Raiz", [new Nodo("Filho1"), new Nodo("Filho2")]);
+```
+
+---
+
+### 4.4 Tabelas hash
+
+Permitem acesso rápido a dados usando chaves.
+
+```javascript
+const tabela = new Map();
+tabela.set("nome", "João");
+console.log(tabela.get("nome")); // João
+```
+
+---
+
+### 4.5 Grafos
+
+Representam redes, como mapas de cidades ou conexões sociais.
+
+```javascript
+const grafo = {
+  A: ["B", "C"],
+  B: ["D"],
+  C: ["D"],
+  D: []
+};
+```
+
+---
+
+## 5. Técnicas Avançadas (Introdução)
+
+### 5.1 Heaps e filas de prioridade
+
+**Heaps** são árvores usadas para acessar rapidamente o menor ou maior valor.
+
+```javascript
+class MinHeap {
+  constructor() {
+    this.dados = [];
+  }
+
+  inserir(valor) {
+    this.dados.push(valor);
+    this.subir(this.dados.length - 1);
+  }
+
+  subir(i) {
+    while (i > 0) {
+      let pai = Math.floor((i - 1) / 2);
+      if (this.dados[i] >= this.dados[pai]) break;
+      [this.dados[i], this.dados[pai]] = [this.dados[pai], this.dados[i]];
+      i = pai;
+    }
+  }
+}
+
+const heap = new MinHeap();
+heap.inserir(5);
+heap.inserir(3);
+heap.inserir(8);
+console.log(heap.dados); // [3, 5, 8]
+```
+
+**Uso real:** Algoritmos de rotas, como Dijkstra.
+
+---
+
+### 5.2 Árvores balanceadas
+
+Mantêm a eficiência em buscas e inserções, mesmo com muitos dados.
+
+* Se uma árvore ficar "torta", ela se reorganiza para manter o equilíbrio.
+* Bancos de dados e sistemas de arquivos usam esse conceito.
+
+---
+
+### 5.3 Programação dinâmica e algoritmos probabilísticos
+
+**Programação dinâmica** resolve problemas grandes aproveitando soluções de partes menores.
+
+**Exemplo – Subsequência comum mais longa (LCS):**
+
+```javascript
+function lcs(a, b) {
+  const dp = Array(a.length + 1).fill(null).map(() => Array(b.length + 1).fill(0));
+
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      if (a[i - 1] === b[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  return dp[a.length][b.length];
+}
+
+console.log(lcs("abcde", "ace")); // Saída: 3
+```
+
+**Algoritmos probabilísticos** usam aleatoriedade para ganhar eficiência, como em quicksort aleatório.
+
+---
+
+### 5.4 Problemas NP-completos
+
+São problemas para os quais não conhecemos soluções rápidas para todos os casos, como o famoso "caixeiro viajante".
+
+* Saber que um problema é NP-completo evita perder tempo buscando soluções perfeitas.
+* Usamos aproximações ou heurísticas.
+
+---
+
+## 6. Por que tudo isso importa?
+
+* Usar o algoritmo certo pode **economizar recursos** e **acelerar programas**.
+* Entender estruturas de dados ajuda a **escolher a melhor forma de armazenar e acessar informações**.
+* É o conhecimento que separa o "codificador" do verdadeiro **programador**.
+
+### Exemplos do cotidiano
+
+* **Buscas em apps de entrega:** Algoritmos de busca e estruturas otimizadas exibem resultados rapidamente.
+* **Rotas no Google Maps:** Algoritmos de grafos calculam o caminho mais rápido.
+* **Recomendações na Netflix:** Algoritmos analisam seu histórico para sugerir conteúdos.
+* **Redes sociais:** Algoritmos decidem o que mostrar primeiro no seu feed.
+* **Jogos:** IA, movimentação e física usam algoritmos e estruturas de dados.
+
+**Conclusão:** Dominar algoritmos e estruturas de dados é essencial para criar programas eficientes, seguros e escaláveis. Esse conhecimento faz diferença em qualquer área da programação!
+
+---
+
+## Exercícios Práticos
+
+Coloque em prática o que aprendeu! Tente resolver os exercícios abaixo antes de conferir as respostas.
+
+1. **Soma de elementos de um array**
+
+   Escreva uma função que recebe um array de números e retorna a soma de todos os elementos.
+
+   - **Input:** `[2, 4, 6]`
+   - **Output:** `12`
+
+2. **Busca linear**
+
+   Implemente uma função que verifica se um determinado valor existe em um array. Retorne `true` se encontrar, `false` caso contrário.
+
+   - **Input:** `[1, 3, 5, 7], 5`
+   - **Output:** `true`
+
+3. **Fatorial recursivo**
+
+   Crie uma função recursiva que calcula o fatorial de um número.
+
+   - **Input:** `5`
+   - **Output:** `120`
+
+4. **Inverter uma string**
+
+   Escreva uma função que recebe uma string e retorna ela invertida (ex: "algoritmo" → "otmirgola").
+
+   - **Input:** `"algoritmo"`
+   - **Output:** `"otmirgola"`
+
+5. **Fila simples**
+
+   Implemente uma fila usando um array, com funções para adicionar (enqueue) e remover (dequeue) elementos.
+
+   - **Input:** Enqueue `1`, Enqueue `2`, Dequeue, Enqueue `3`, Dequeue
+   - **Output:** Elementos removidos: `1`, `2`
+
+6. **Encontrar o maior número**
+
+   Escreva uma função que recebe um array de números e retorna o maior valor.
+
+   - **Input:** `[10, 5, 8, 20, 3]`
+   - **Output:** `20`
+
+7. **Sequência de Fibonacci**
+
+   Implemente uma função que retorna o n-ésimo termo da sequência de Fibonacci usando programação dinâmica (memorização).
+
+   - **Input:** `7`
+   - **Output:** `13`
+
+8. **Verificar palíndromo**
+
+   Crie uma função que verifica se uma palavra é um palíndromo (lê igual de trás para frente).
+
+   - **Input:** `"arara"`
+   - **Output:** `true`
+
+---
+
+Se quiser, compartilhe suas soluções ou tente explicar seu raciocínio para outra pessoa. Praticar é a melhor forma de aprender!
+
+---
+
+## Referências
+
+- **Entendendo Algoritmos: Um Guia Ilustrado Para Programadores e Outros Curiosos**
+- Documentação oficial do JavaScript e TypeScript

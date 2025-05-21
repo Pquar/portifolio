@@ -1,12 +1,789 @@
 ---
-title: '2 - HTML'
+title: '2 - HTML: Fundamentos da Web'
 date: '2024-05-15'
 lastmod: '2024-05-15'
-tags: ['HTML']
+tags: ['HTML', 'Web Development', 'Frontend']
 draft: true
-summary: 'Talvez tenha tudo sobre HTML se nao inventaram mais'
+summary: 'Aprenda os fundamentos do HTML para construir as bases do seu desenvolvimento web'
 images: ['/static/images/banners/full-stack.png']
 authors: ['default']
 ---
 
-# Introdução ao Desenvolvimento Web
+# HTML: A Base do Desenvolvimento Web
+
+## Configurando seu Primeiro Projeto HTML
+
+Antes de aprofundarmos no HTML, vamos configurar um ambiente de desenvolvimento adequado para praticar o que aprenderemos.
+
+### Criando um Projeto do Zero
+
+1. **Crie uma pasta para seu projeto HTML:**
+   - Abra o Explorador de Arquivos (Windows) ou Finder (Mac)
+   - Navegue até sua área de trabalho ou pasta de documentos
+   - Crie uma nova pasta chamada "MeuPrimeiroSite"
+
+2. **Abra o Visual Studio Code:**
+   - Inicie o VS Code
+   - Selecione `Arquivo > Abrir Pasta` (ou `File > Open Folder`)
+   - Navegue até a pasta "MeuPrimeiroSite" e selecione-a
+
+3. **Criando seu primeiro arquivo HTML:**
+   - No VS Code, clique no ícone "Novo Arquivo" (uma folha com símbolo "+") ao lado do nome da pasta no explorador
+   - Digite `index.html` e pressione Enter
+   
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="/static/images/modulo/vscode.png" alt="Explorador de arquivos do VS Code" className="max-w-full px-12"/>
+  <img src="/static/images/modulo/vscode-src.png" alt="Explorador de arquivos do VS Code" className="max-w-full px-12"/>
+  <figcaption className='text-center'>Explorador de arquivos do VS Code. <a href="#" target="_blank">Fonte: Autor</a></figcaption>
+</figure>
+
+### Organizando Arquivos HTML e Recursos
+
+Para um projeto HTML bem organizado:
+
+- **Arquivo `index.html`:** Sempre na raiz do projeto (diretório principal)
+- **Arquivo HTML adicional:** Também na raiz, com nomes descritivos (ex: `contato.html`, `sobre.html`)
+- **Recursos:** Organize em pastas específicas:
+
+```
+MeuPrimeiroSite/           # Raiz do projeto
+├── index.html             # Página inicial
+├── sobre.html             # Página "Sobre nós"
+├── contato.html           # Página de contato
+├── css/                   # Pasta para arquivos CSS
+│   └── style.css          # Folha de estilo principal
+├── images/                # Pasta para imagens
+│   ├── logo.png
+│   └── banner.jpg
+└── js/                    # Pasta para JavaScript
+    └── main.js
+```
+
+> **O que é a "raiz" do projeto?** É o diretório principal do seu projeto, que contém todos os arquivos e subpastas. No nosso exemplo, é a pasta "MeuPrimeiroSite".
+
+### Vinculando Recursos aos Arquivos HTML
+
+Ao vincular arquivos dentro da estrutura de pastas, use caminhos relativos:
+
+```html
+<!-- Vinculando uma folha de estilo CSS -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Inserindo uma imagem -->
+<img src="images/logo.png" alt="Logo da empresa">
+
+<!-- Vinculando um script JavaScript -->
+<script src="js/main.js"></script>
+
+<!-- Link para outra página HTML -->
+<a href="contato.html">Contato</a>
+```
+
+**Atividade prática:** 
+1. Crie a estrutura de pastas mostrada acima
+2. Crie o arquivo index.html com a estrutura básica do HTML
+3. Adicione um arquivo style.css na pasta css
+4. Vincule o arquivo CSS ao seu HTML
+
+Com essa estrutura básica, você está pronto para começar a desenvolver seu primeiro site HTML!
+
+## 1. A Internet e a Web: Fundamentos
+
+### O que é a Internet?
+
+A **Internet** é a rede global de computadores interconectados que permite a troca de informações em todo o mundo. 
+
+> **Analogia:** Imagine a internet como um sistema rodoviário gigante, conectando cidades (computadores) por meio de estradas (cabos e conexões sem fio).
+
+### A Web e seus Conceitos
+
+- **WWW (World Wide Web):** Sistema de documentos interligados acessados via internet.
+- **Web:** O ambiente virtual onde navegamos e interagimos com conteúdo online.
+- **Hipertexto:** Texto que contém links para outros textos, permitindo a navegação não-linear.
+- **Links (Hyperlinks):** Conexões clicáveis que levam de uma página a outra.
+- **Site:** Conjunto de páginas web relacionadas, identificadas por um domínio comum.
+- **Home Page:** A página principal de um site, geralmente acessada primeiro.
+- **Browser (Navegador):** Programa que interpreta o código HTML e exibe as páginas web (Ex: Chrome, Firefox, Safari).
+
+### Protocolos: As Regras de Comunicação
+
+- **Protocolo:** Conjunto de regras que define como as informações são transmitidas na internet.
+- **HTTP/HTTPS:** Protocolo para transferência de páginas web (HTTPS é a versão segura).
+- **FTP:** Protocolo para transferência de arquivos entre computadores.
+
+> **Exemplo prático:** Quando você digita "https://www.exemplo.com" no navegador, está usando o protocolo HTTPS para acessar um site.
+
+### URLs: Endereços da Web
+
+Uma **URL (Uniform Resource Locator)** é o endereço de um recurso na web. Exemplo:
+
+```
+https://www.exemplo.com/produtos/item.html
+```
+
+Partes de uma URL:
+- **Protocolo:** `https://`
+- **Domínio:** `www.exemplo.com`
+- **Caminho:** `/produtos/item.html`
+
+**URL Absoluto:** Endereço completo (como acima).
+**URL Relativo:** Endereço em relação à página atual (ex: `produtos/item.html`).
+
+> **Analogia:** Se a internet fosse uma cidade, as URLs seriam os endereços completos das casas, e o navegador seria seu GPS.
+
+**Atividade:** Veja a URL de um site que você frequenta e identifique suas partes (protocolo, domínio e caminho).
+
+---
+
+## 2. HTML: A Linguagem da Web
+
+**HTML** (HyperText Markup Language) é a linguagem fundamental para criar páginas web. Ela usa tags para marcar diferentes tipos de conteúdo.
+
+### O que são Tags?
+
+Tags são marcadores que indicam ao navegador como exibir o conteúdo. Geralmente vêm em pares:
+
+```html
+<tag>Conteúdo</tag>
+```
+
+> **Analogia:** Tags são como instruções para montar um móvel: dizem ao navegador "este é um título", "isto é um parágrafo", etc.
+
+### Estrutura Básica de um Documento HTML
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Primeiro Site</title>
+  </head>
+  <body>
+    <h1>Bem-vindo ao meu site</h1>
+    <p>Este é um parágrafo de exemplo.</p>
+  </body>
+</html>
+```
+
+**Explicação:**
+- `<!DOCTYPE html>`: Declara o tipo de documento como HTML5.
+- `<html>`: Tag raiz que envolve todo o conteúdo.
+- `<head>`: Contém metadados (informações sobre o documento).
+- `<body>`: Contém o conteúdo visível da página.
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="/static/images/modulo/dom.jpg" alt="Camadas do modelo TCP/IP" className="max-w-full px-12 bg-white"/>
+  <figcaption className='text-center'>Document Object Model. <a href="https://www.hostinger.com.br/tutoriais/dom-o-que-e">Fonte: Hostinger</a></figcaption>
+</figure>
+
+### Atributos em Tags
+
+Atributos fornecem informações adicionais sobre as tags:
+
+```html
+<a href="https://www.exemplo.com" target="_blank">Visite o site</a>
+```
+
+Aqui, `href` e `target` são atributos da tag `<a>`.
+
+**Atividade:** Crie um documento HTML simples com a estrutura básica mostrada acima e observe como ele aparece no navegador.
+
+---
+
+## 3. Construindo a Estrutura da Página
+
+### O Cabeçalho (HEAD)
+
+A seção `<head>` contém informações sobre a página, mas não é visível para o usuário:
+
+```html
+<head>
+  <title>Título da Página</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Descrição da minha página">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilo.css">
+  <script src="script.js"></script>
+</head>
+```
+
+**Elementos importantes:**
+- `<title>`: Define o título exibido na aba do navegador.
+- `<meta>`: Fornece metadados como codificação (charset), descrição, etc.
+- `<link>`: Conecta a página a recursos externos como CSS.
+- `<script>`: Inclui código JavaScript na página.
+
+### Meta Tags: Informações Essenciais
+
+As `<meta>` tags são fundamentais para SEO e comportamento da página:
+
+- **SEO**: Melhoram a visibilidade nos motores de busca.(ex: Google, Bing)
+
+```html
+<!-- Define a codificação de caracteres -->
+<meta charset="UTF-8">
+
+<!-- Descrição para motores de busca -->
+<meta name="description" content="Minha loja online de produtos artesanais">
+
+<!-- Controle de viewport para dispositivos móveis -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Autor da página -->
+<meta name="author" content="Seu Nome">
+```
+
+> **Dica:** Meta tags bem configuradas melhoram o SEO e como sua página aparece nos resultados de busca.
+
+### O Corpo da Página (BODY)
+
+O `<body>` contém todo o conteúdo visível:
+
+```html
+<body>
+  <header>
+    <h1>Meu Site Incrível</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Início</a></li>
+        <li><a href="/sobre">Sobre</a></li>
+        <li><a href="/contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Seção Principal</h2>
+      <p>Conteúdo da minha página...</p>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Meu Site</p>
+  </footer>
+</body>
+```
+
+**Atividade:** Analise um site que você frequenta e tente identificar as diferentes seções (cabeçalho, conteúdo principal, rodapé).
+
+---
+
+## 4. Texto e Formatação em HTML
+
+### Títulos e Subtítulos
+
+HTML oferece seis níveis de títulos:
+
+```html
+<h1>Título Principal</h1>
+<h2>Subtítulo</h2>
+<h3>Subtítulo menor</h3>
+<h4>Subtítulo ainda menor</h4>
+<h5>Subtítulo pequeno</h5>
+<h6>Subtítulo menor possível</h6>
+```
+
+> **Boa prática:** Use apenas um `<h1>` por página e mantenha uma hierarquia lógica de títulos.
+
+### Parágrafos e Quebras de Linha
+
+```html
+<p>Este é um parágrafo. O HTML ignora quebras de linha e espaços extras no código.</p>
+
+<p>Este é outro parágrafo.</p>
+
+<p>Para forçar uma quebra<br>de linha, use a tag br.</p>
+```
+
+### Formatação de Texto
+
+```html
+<p><strong>Texto em negrito</strong> e <em>texto em itálico</em>.</p>
+<p><mark>Texto destacado</mark> e <del>texto riscado</del>.</p>
+<p>H<sub>2</sub>O é água e 10<sup>2</sup> é 100.</p>
+```
+
+> **Nota:** Tags como `<b>` (bold) e `<i>` (italic) ainda funcionam, mas `<strong>` e `<em>` são preferidas por terem significado semântico.
+
+### Elementos de Bloco e em Linha
+
+- **Elementos de bloco:** Ocupam toda a largura disponível (ex: `<div>`, `<p>`, `<h1>`)
+- **Elementos em linha:** Ocupam apenas o espaço necessário (ex: `<span>`, `<a>`, `<strong>`)
+
+```html
+<div>Este é um elemento de bloco.</div>
+<span>Este é um elemento em linha.</span>
+```
+
+**Atividade:** Crie um pequeno artigo usando diferentes títulos, parágrafos e formatações de texto.
+
+---
+
+## 5. Listas: Organizando a Informação
+
+### Listas Ordenadas
+
+```html
+<ol>
+  <li>Primeiro item</li>
+  <li>Segundo item</li>
+  <li>Terceiro item</li>
+</ol>
+```
+
+Resultado:
+1. Primeiro item
+2. Segundo item
+3. Terceiro item
+
+Você pode personalizar o tipo de numeração:
+
+```html
+<ol type="A"> <!-- A, B, C, ... -->
+  <li>Item A</li>
+  <li>Item B</li>
+</ol>
+
+<ol type="i" start="5"> <!-- v, vi, vii, ... -->
+  <li>Item v</li>
+  <li>Item vi</li>
+</ol>
+```
+
+### Listas Não Ordenadas
+
+```html
+<ul>
+  <li>Item com bullet</li>
+  <li>Outro item</li>
+  <li>Mais um item</li>
+</ul>
+```
+
+### Listas de Definição
+
+Úteis para termos e suas definições:
+
+```html
+<dl>
+  <dt>HTML</dt>
+  <dd>Linguagem de marcação usada para criar páginas web.</dd>
+  
+  <dt>CSS</dt>
+  <dd>Linguagem de estilo que controla a aparência das páginas web.</dd>
+</dl>
+```
+
+### Listas Aninhadas
+
+```html
+<ul>
+  <li>Frutas
+    <ul>
+      <li>Maçã</li>
+      <li>Banana</li>
+      <li>Laranja</li>
+    </ul>
+  </li>
+  <li>Vegetais
+    <ul>
+      <li>Cenoura</li>
+      <li>Brócolis</li>
+    </ul>
+  </li>
+</ul>
+```
+
+**Atividade:** Crie uma lista de compras usando HTML, com categorias e itens.
+
+---
+
+## 6. Links: Conectando Conteúdos
+
+### Links Básicos
+
+```html
+<!-- Link para outra página do mesmo site -->
+<a href="pagina.html">Ir para outra página</a>
+
+<!-- Link para outro site -->
+<a href="https://www.exemplo.com">Visitar exemplo.com</a>
+
+<!-- Link que abre em nova aba -->
+<a href="https://www.exemplo.com" target="_blank">Abrir em nova aba</a>
+```
+
+### Links para E-mail
+
+```html
+<a href="mailto:contato@exemplo.com">Entre em contato</a>
+```
+
+### Links para Seções da Mesma Página
+
+```html
+<!-- Link para a seção -->
+<a href="#secao1">Ir para Seção 1</a>
+
+<!-- Mais abaixo na página -->
+<h2 id="secao1">Seção 1</h2>
+```
+
+### Links com Imagens
+
+```html
+<a href="https://www.exemplo.com">
+  <img src="botao.png" alt="Clique aqui">
+</a>
+```
+
+> **Aplicação prática:** Navegação interna, menu de sites, links de referência em artigos.
+
+**Atividade:** Crie uma pequena página com um menu de navegação que leva a diferentes seções da mesma página.
+
+---
+
+## 7. Imagens e Multimídia
+
+### Inserindo Imagens Básicas
+
+```html
+<img src="foto.jpg" alt="Descrição da imagem" width="300" height="200">
+```
+
+> **Boa prática:** Sempre inclua o atributo `alt` para acessibilidade e SEO.
+
+### Formatos de Imagem para Web
+
+- **JPEG (.jpg):** Melhor para fotos e imagens com muitas cores.
+- **PNG (.png):** Ideal para imagens que precisam de transparência.
+- **SVG (.svg):** Perfeito para ícones e gráficos (escala sem perder qualidade).
+- **WebP (.webp):** Formato moderno com melhor compressão.
+- **GIF (.gif):** Para animações simples.
+
+> **Dica:** Otimize suas imagens antes de usá-las em sites para melhorar o desempenho.
+
+### Figura com Legenda
+
+```html
+<figure>
+  <img src="grafico.png" alt="Gráfico de vendas">
+  <figcaption>Figura 1: Vendas no primeiro trimestre</figcaption>
+</figure>
+```
+
+### Vídeo e Áudio
+
+```html
+<!-- Vídeo -->
+<video controls width="320" height="240">
+  <source src="video.mp4" type="video/mp4">
+  Seu navegador não suporta vídeos HTML5.
+</video>
+
+<!-- Áudio -->
+<audio controls>
+  <source src="musica.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio HTML5.
+</audio>
+```
+
+**Atividade:** Encontre uma imagem na internet e insira em uma página HTML com descrição e legenda apropriadas.
+
+---
+
+## 8. Tabelas: Organizando Dados
+
+### Estrutura Básica de Tabela
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Profissão</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>João</td>
+      <td>28</td>
+      <td>Desenvolvedor</td>
+    </tr>
+    <tr>
+      <td>Maria</td>
+      <td>34</td>
+      <td>Designer</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Mesclando Células
+
+```html
+<table border="1">
+  <tr>
+    <td>Célula 1</td>
+    <td colspan="2">Célula 2 (ocupa 2 colunas)</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Célula 3 (ocupa 2 linhas)</td>
+    <td>Célula 4</td>
+    <td>Célula 5</td>
+  </tr>
+  <tr>
+    <td>Célula 6</td>
+    <td>Célula 7</td>
+  </tr>
+</table>
+```
+
+> **Aplicação real:** Tabelas são úteis para relatórios, dados comparativos, horários e planilhas simples.
+
+> **Importante:** Evite usar tabelas para layout de página. Use CSS para isso.
+
+**Atividade:** Crie uma tabela com informações sobre seus filmes ou livros favoritos, incluindo título, ano e gênero.
+
+---
+
+## 9. Formulários: Interagindo com o Usuário
+
+Os formulários são essenciais para coletar dados dos usuários.
+
+### Estrutura Básica de um Formulário
+
+```html
+<form action="/processar" method="post">
+  <div>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+  </div>
+  
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  
+  <div>
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+  </div>
+  
+  <button type="submit">Enviar</button>
+</form>
+```
+
+### Tipos de Campos de Entrada
+
+```html
+<!-- Texto simples -->
+<input type="text" name="usuario">
+
+<!-- Senha -->
+<input type="password" name="senha">
+
+<!-- Email -->
+<input type="email" name="email">
+
+<!-- Número -->
+<input type="number" name="idade" min="18" max="100">
+
+<!-- Data -->
+<input type="date" name="nascimento">
+
+<!-- Checkbox -->
+<input type="checkbox" name="aceito" id="aceito">
+<label for="aceito">Aceito os termos</label>
+
+<!-- Radio buttons -->
+<input type="radio" name="genero" id="masculino" value="M">
+<label for="masculino">Masculino</label>
+<input type="radio" name="genero" id="feminino" value="F">
+<label for="feminino">Feminino</label>
+
+<!-- Menu suspenso -->
+<select name="pais">
+  <option value="br">Brasil</option>
+  <option value="us">Estados Unidos</option>
+  <option value="pt">Portugal</option>
+</select>
+
+<!-- Campo de upload -->
+<input type="file" name="documento">
+```
+
+### Validação de Formulário
+
+```html
+<input type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+```
+
+> **Aplicação prática:** Formulários de contato, cadastros, pesquisas, login, busca.
+
+**Atividade:** Crie um formulário de contato com campos para nome, email, assunto e mensagem.
+
+---
+
+## 10. HTML Semântico: Significado para sua Estrutura
+
+O HTML semântico usa tags que descrevem o significado do conteúdo, não apenas sua aparência.
+
+### Tags Semânticas Principais
+
+```html
+<header>Cabeçalho da página ou seção</header>
+<nav>Menu de navegação</nav>
+<main>Conteúdo principal</main>
+<section>Seção de conteúdo relacionado</section>
+<article>Conteúdo independente e completo</article>
+<aside>Conteúdo relacionado, mas separado</aside>
+<footer>Rodapé da página ou seção</footer>
+```
+
+### Exemplo de Página Semântica
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog de Tecnologia</title>
+</head>
+<body>
+  <header>
+    <h1>Blog de Tecnologia</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Início</a></li>
+        <li><a href="/artigos">Artigos</a></li>
+        <li><a href="/sobre">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <article>
+      <header>
+        <h2>Inteligência Artificial em 2024</h2>
+        <p>Publicado em: <time datetime="2024-05-15">15 de maio de 2024</time></p>
+      </header>
+      
+      <section>
+        <h3>Avanços Recentes</h3>
+        <p>Conteúdo sobre avanços em IA...</p>
+      </section>
+      
+      <section>
+        <h3>Aplicações Práticas</h3>
+        <p>Como a IA está sendo aplicada...</p>
+      </section>
+      
+      <footer>
+        <p>Tags: <a href="/tag/ia">IA</a>, <a href="/tag/tecnologia">Tecnologia</a></p>
+      </footer>
+    </article>
+    
+    <aside>
+      <h3>Artigos Relacionados</h3>
+      <ul>
+        <li><a href="/artigo1">Machine Learning Básico</a></li>
+        <li><a href="/artigo2">Ética em IA</a></li>
+      </ul>
+    </aside>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Blog de Tecnologia</p>
+  </footer>
+</body>
+</html>
+```
+
+> **Benefícios do HTML semântico:**
+> - Melhora a acessibilidade para leitores de tela
+> - Facilita o SEO (otimização para mecanismos de busca)
+> - Torna o código mais organizado e fácil de manter
+> - Ajuda navegadores e dispositivos a interpretar o conteúdo corretamente
+
+**Atividade:** Pegue uma página HTML simples e reescreva-a usando tags semânticas.
+
+---
+
+## 11. Planejamento e Boas Práticas para Sites
+
+### Etapas para Criação de um Site
+
+1. **Planejamento:** Defina objetivos, público-alvo e funcionalidades.
+2. **Arquitetura de Informação:** Organize o conteúdo e estrutura do site.
+3. **Design:** Crie wireframes e layouts visuais.
+4. **Desenvolvimento:** Codifique o site em HTML, CSS e JavaScript.
+5. **Teste:** Verifique funcionalidades, responsividade e compatibilidade.
+6. **Lançamento:** Publique o site em um servidor.
+7. **Manutenção:** Atualize conteúdo e funcionalidades periodicamente.
+
+### Boas Práticas de HTML
+
+- Use DOCTYPE e codificação de caracteres adequados
+- Mantenha uma estrutura hierárquica clara com headings (h1-h6)
+- Prefira tags semânticas a divs genéricas
+- Garanta que seus formulários sejam usáveis e acessíveis
+- Inclua texto alternativo (alt) para todas as imagens
+- Use atributos de idioma (lang)
+- Teste em diferentes navegadores e dispositivos
+
+> **Dica:** Use ferramentas como o [HTML Validator](https://validator.w3.org/) para verificar seu código.
+
+---
+
+## 12. Exercícios Práticos
+
+### Projeto Final do Capítulo
+
+Crie um pequeno site pessoal com:
+
+1. Uma página inicial com sua foto e breve apresentação
+2. Uma página "Sobre" com mais detalhes sobre você
+3. Uma página "Contato" com um formulário
+4. Um menu de navegação em todas as páginas
+5. Links para suas redes sociais no rodapé
+
+**Bônus:** Adicione uma galeria de imagens ou um blog simples.
+
+### Desafios Extras
+
+- Crie uma tabela com seu horário semanal
+- Faça uma lista de seus livros ou filmes favoritos
+- Implemente um formulário de feedback com diversos tipos de campos
+- Adicione um mapa de imagem com links para diferentes seções
+
+---
+
+## Glossário
+
+- **HTML:** Linguagem de marcação que estrutura o conteúdo da web
+- **Tag:** Elemento que marca diferentes partes do conteúdo
+- **Atributo:** Informação adicional aplicada a uma tag
+- **DOM:** Document Object Model, representação em árvore da estrutura HTML
+- **Responsividade:** Capacidade de um site se adaptar a diferentes tamanhos de tela
+- **SEO:** Search Engine Optimization, técnicas para melhorar a visibilidade nos buscadores
+- **Acessibilidade:** Práticas que tornam o conteúdo acessível a todos os usuários
+
+---
+
+## Referências e Recursos
+
+- [MDN Web Docs - HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [W3Schools - HTML Tutorial](https://www.w3schools.com/html/)
+- [HTML Living Standard](https://html.spec.whatwg.org/)
+- [Can I Use](https://caniuse.com/) - Compatibilidade de recursos
+- [HTML Validator](https://validator.w3.org/)
+
+**Próximo Capítulo:** Estilizando páginas com CSS
+
+---
+
+> **Lembre-se:** HTML é a fundação da web. Dominar essa linguagem é essencial para qualquer desenvolvedor, mesmo que você queira se especializar em frameworks ou backend no futuro.

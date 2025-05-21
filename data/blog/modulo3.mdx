@@ -1,26 +1,768 @@
 ---
-title: '3 - CSS'
+title: '3 - CSS: Estilização e Layout para Web'
 date: '2024-05-15'
 lastmod: '2024-05-15'
-tags: ['CSS']
+tags: ['CSS', 'Front-end', 'Web Design']
 draft: true
-summary: 'Quase tudo oque precisa saber sobre CSS'
+summary: 'Dominando CSS: da sintaxe básica às técnicas avançadas de estilização'
 images: ['/static/images/banners/full-stack.png']
 authors: ['default']
 ---
 
-# CSS
-# Prioridade !important
+# CSS: A Arte de Estilizar a Web
 
-[Especificidade](https://web.dev/i18n/pt/learn/css/specificity/)
+## Organizando seus Arquivos CSS
 
-# PseudoElemento
+Antes de mergulharmos no CSS, é importante entender como organizar seus arquivos de estilo em um projeto web.
 
-`:Before`
+### Estrutura de Arquivos para Projetos CSS
 
-# Eventos
+Um projeto bem organizado facilita a manutenção e expansão do seu site. Aqui está uma forma recomendada de organizar seus arquivos CSS:
 
-<figure>
-<img src="/static/images/modulo/dns-ex.png" alt="Modelo client-server" className="max-w-full px-12"/>
-<figcaption className='text-center'><a href="#"> Fonte:  Imagem Retirada da Internet</a></figcaption>
+```
+MeuProjeto/                # Raiz do projeto
+├── index.html             # Página principal HTML (na raiz)
+├── pages/                 # Outras páginas HTML (opcional)
+│   ├── sobre.html
+│   └── contato.html
+├── css/                   # Pasta para arquivos CSS
+│   ├── style.css          # CSS principal
+│   ├── reset.css          # Reset/normalização de estilos
+│   └── componentes/       # Subpasta para componentes específicos (opcional)
+│       ├── botoes.css
+│       └── formularios.css
+├── js/                    # JavaScript
+└── images/                # Imagens do projeto
+```
+
+   
+
+### Como Criar e Vincular Arquivos CSS
+
+1. **Criando arquivos CSS:**
+   - Abra o Visual Studio Code e seu projeto
+   - No explorador de arquivos à esquerda, clique com o botão direito na pasta `css`
+   - Selecione "Novo Arquivo" e nomeie-o como `style.css`
+
+2. **Vinculando CSS ao HTML:**
+   Abra seu arquivo HTML e adicione o link para o CSS no `<head>`:
+   
+   ```html
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Meu Site</title>
+     
+     <!-- Link para o arquivo CSS -->
+     <link rel="stylesheet" href="css/style.css">
+   </head>
+   ```
+
+### Organizando o Código CSS em Múltiplos Arquivos
+
+Para projetos maiores, é útil dividir o CSS em vários arquivos:
+
+1. **Crie arquivos CSS separados por função:**
+   - `reset.css` - Normaliza estilos entre navegadores
+   - `base.css` - Estilos básicos (tipografia, cores)
+   - `layout.css` - Estrutura da página
+   - `componentes.css` - Estilos para componentes reutilizáveis
+
+2. **Vincule todos no HTML:**
+   ```html
+   <head>
+     <link rel="stylesheet" href="css/reset.css">
+     <link rel="stylesheet" href="css/base.css">
+     <link rel="stylesheet" href="css/layout.css">
+     <link rel="stylesheet" href="css/componentes.css">
+   </head>
+   ```
+
+   OU importe todos dentro do arquivo principal:
+   
+   ```css
+   /* Em style.css */
+   @import 'reset.css';
+   @import 'base.css';
+   @import 'layout.css';
+   @import 'componentes.css';
+   ```
+
+**Atividade prática:**
+1. Crie um novo projeto com a estrutura de pastas recomendada
+2. Adicione um arquivo HTML básico na raiz
+3. Crie a pasta `css` e adicione um arquivo `style.css` dentro dela
+4. Vincule o CSS ao HTML e teste uma propriedade simples como mudar a cor de fundo
+
+> **Dica:** O VS Code tem recursos de autocompletar para CSS. Experimente digitar uma propriedade como "background" e veja as sugestões!
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_1280.png" alt="Logo CSS" className="max-w-full px-12 w-64"/>
+  <figcaption className='text-center'><a href="https://pixabay.com/vectors/logo-css-3-2582747/" target="_blank">Fonte: Pixabay</a></figcaption>
 </figure>
+
+## O Que Você Aprenderá
+
+Neste capítulo, você descobrirá como transformar páginas HTML básicas em designs atraentes e profissionais usando CSS. Vamos explorar desde os conceitos fundamentais até técnicas avançadas de layout e estilização.
+
+## 1. Introdução ao CSS
+
+### O que é CSS?
+
+**CSS** (Cascading Style Sheets ou Folhas de Estilo em Cascata) é uma linguagem que define o **estilo visual e a apresentação** de documentos HTML. Se o HTML é o esqueleto de uma página web, o CSS é a pele, as roupas e a maquiagem.
+
+> **Analogia:** Se o HTML fosse uma casa, seria apenas a estrutura básica - paredes, portas e janelas. O CSS seria responsável pela pintura, decoração, móveis e todo o visual que torna a casa bonita e acolhedora.
+
+### Por que o CSS foi criado?
+
+Antes do CSS, os desenvolvedores tinham que incluir formatações dentro do próprio HTML, usando tags como `<font>` e atributos de cores. Isso causava diversos problemas:
+
+- Páginas ficavam com código repetitivo e difícil de manter
+- Alterações de design exigiam modificar cada página individualmente
+- HTML misturava estrutura e apresentação, prejudicando a clareza do código
+
+Para resolver estes problemas, o **World Wide Web Consortium (W3C)** criou o CSS, permitindo separar a estrutura (HTML) da apresentação (CSS).
+
+### Como o CSS funciona?
+
+O CSS funciona selecionando elementos HTML e aplicando estilos a eles:
+
+```css
+/* Seleciona todos os parágrafos e aplica os estilos dentro das chaves */
+p {
+  color: blue;         /* Cor do texto */
+  font-size: 16px;     /* Tamanho da fonte */
+  margin-bottom: 20px; /* Espaço abaixo do parágrafo */
+}
+```
+
+**Três formas de incluir CSS:**
+
+1. **CSS Inline:** Direto no elemento HTML usando o atributo `style`
+   ```html
+   <p style="color: blue; font-size: 16px;">Este é um parágrafo azul.</p>
+   ```
+
+2. **CSS Interno:** Dentro da tag `<head>` usando a tag `<style>`
+   ```html
+   <head>
+     <style>
+       p { color: blue; font-size: 16px; }
+     </style>
+   </head>
+   ```
+
+3. **CSS Externo (recomendado):** Em um arquivo separado com extensão `.css`
+   ```html
+   <head>
+     <link rel="stylesheet" href="estilos.css">
+   </head>
+   ```
+
+> **Boa prática:** Sempre que possível, use CSS externo. Isso permite reutilizar estilos em várias páginas e mantém seu código mais organizado.
+
+**Atividade prática:**
+1. Crie três arquivos HTML diferentes e um único arquivo CSS.
+2. Vincule o mesmo arquivo CSS às três páginas HTML.
+3. Faça uma alteração no arquivo CSS e observe como ela afeta todas as páginas simultaneamente.
+
+---
+
+## 2. Seletores CSS: Encontrando os Elementos
+
+Os seletores são como "endereços" que indicam quais elementos HTML devem receber determinados estilos. Dominar seletores é fundamental para usar o CSS efetivamente.
+
+### Tipos principais de seletores
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/selector-diagram.png" alt="Anatomia de uma regra CSS" className="max-w-full px-12"/>
+  <figcaption className='text-center'><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors" target="_blank">Fonte: MDN Web Docs</a></figcaption>
+</figure>
+
+1. **Seletor de elemento:** Seleciona todos os elementos daquele tipo
+   ```css
+   p { color: blue; } /* Seleciona todos os parágrafos */
+   ```
+
+2. **Seletor de ID:** Seleciona um elemento com o ID específico (único na página)
+   ```css
+   #titulo-principal { font-size: 32px; } /* Elemento com id="titulo-principal" */
+   ```
+
+3. **Seletor de classe:** Seleciona todos os elementos com a classe especificada
+   ```css
+   .destaque { background-color: yellow; } /* Elementos com class="destaque" */
+   ```
+
+4. **Seletores combinados:**
+   ```css
+   /* Todos os parágrafos dentro de elementos com classe "artigo" */
+   .artigo p { line-height: 1.5; }
+   
+   /* Elementos que têm ambas as classes "botao" e "primario" */
+   .botao.primario { background-color: blue; }
+   ```
+
+5. **Pseudo-classes:** Selecionam estados especiais dos elementos
+   ```css
+   a:hover { text-decoration: underline; } /* Links quando o mouse está sobre eles */
+   li:first-child { font-weight: bold; } /* Primeiro item de uma lista */
+   ```
+
+### Especificidade: Quando regras conflitam
+
+Quando várias regras CSS tentam aplicar estilos diferentes ao mesmo elemento, a **especificidade** determina qual regra "vence":
+
+1. Estilos inline (mais específico)
+2. IDs
+3. Classes, atributos e pseudo-classes
+4. Elementos e pseudo-elementos (menos específico)
+
+> **Analogia:** Pense na especificidade como uma hierarquia militar. Um general (estilo inline) dá ordens que superam as de um coronel (ID), que por sua vez superam as de um capitão (classe) e assim por diante.
+
+```css
+/* Este estilo tem menos peso (especificidade 1) */
+p { color: blue; }
+
+/* Este estilo tem mais peso (especificidade 10) */
+.texto { color: red; }
+
+/* Este tem peso ainda maior (especificidade 100) */
+#paragrafo-principal { color: green; }
+```
+
+No exemplo acima, se um elemento tiver todas essas características (`<p id="paragrafo-principal" class="texto">`), o texto será verde.
+
+**Atividade prática:**
+Crie um documento HTML com vários parágrafos e aplique diferentes seletores para estilizá-los. Experimente criar situações de conflito entre seletores e observe qual estilo prevalece.
+
+---
+
+## 3. Formatação de Texto
+
+O CSS oferece um controle refinado sobre a aparência do texto, permitindo criar tipografias elegantes e legíveis.
+
+### Propriedades fundamentais de texto
+
+```css
+p {
+  color: #333;                /* Cor do texto */
+  font-family: Arial, sans-serif; /* Família da fonte */
+  font-size: 16px;           /* Tamanho da fonte */
+  font-weight: bold;         /* Peso da fonte: normal, bold, 100-900 */
+  font-style: italic;        /* Estilo: normal, italic, oblique */
+  text-align: center;        /* Alinhamento: left, right, center, justify */
+  line-height: 1.5;          /* Altura da linha (espaçamento) */
+  letter-spacing: 1px;       /* Espaçamento entre letras */
+  text-decoration: underline; /* Decoração: underline, overline, line-through */
+  text-transform: uppercase; /* Transformação: capitalize, uppercase, lowercase */
+}
+```
+
+### Usando fontes web com @font-face
+
+```css
+/* Importando uma fonte personalizada */
+@font-face {
+  font-family: 'MinhaFonte';
+  src: url('minhafonte.woff2') format('woff2'),
+       url('minhafonte.woff') format('woff');
+}
+
+/* Usando a fonte importada */
+h1 {
+  font-family: 'MinhaFonte', Arial, sans-serif;
+}
+```
+
+### Usando Google Fonts (forma mais fácil)
+
+```html
+<!-- No HTML, dentro da tag head -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+```
+
+```css
+/* No CSS */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+```
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--xDLlG97L--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7o0oimvhg77vg74jsous.png" alt="Exemplo de formatação de texto com CSS" className="max-w-full px-12"/>
+  <figcaption className='text-center'><a href="https://dev.to/dawnind/css-basics-formatting-text-with-css-1g55" target="_blank">Fonte: DEV Community</a></figcaption>
+</figure>
+
+### Efeitos de texto modernos
+
+```css
+.titulo-destaque {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+  background: linear-gradient(45deg, #ff0000, #0000ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; /* Texto com gradiente */
+}
+```
+
+**Atividade prática:**
+Crie uma página com vários títulos e parágrafos. Estilize-os de maneiras diferentes, experimentando com fontes, cores e efeitos de texto. Tente criar um sistema de tipografia consistente com títulos distintos dos parágrafos.
+
+---
+
+## 4. Cores e Unidades de Medida
+
+### Representação de cores no CSS
+
+CSS oferece várias maneiras de especificar cores:
+
+1. **Nomes de cores:**
+   ```css
+   h1 { color: red; }
+   ```
+
+2. **Valores hexadecimais:**
+   ```css
+   h1 { color: #ff0000; } /* Mesmo que "red" */
+   h2 { color: #f00; }    /* Forma abreviada */
+   ```
+
+3. **RGB e RGBA (com transparência):**
+   ```css
+   p { color: rgb(255, 0, 0); }        /* Mesmo que "red" */
+   div { background-color: rgba(255, 0, 0, 0.5); } /* Vermelho 50% transparente */
+   ```
+
+4. **HSL e HSLA (matiz, saturação, luminosidade):**
+   ```css
+   button { background-color: hsl(0, 100%, 50%); } /* Vermelho puro */
+   ```
+
+### Unidades de medida
+
+CSS usa diferentes unidades para especificar tamanhos, margens, preenchimentos, etc.
+
+**Unidades absolutas:**
+- `px` (pixels): Tamanho fixo na tela
+- `pt` (pontos): Usado principalmente para impressão (1pt = 1/72 polegada)
+- `cm`, `mm`, `in`: Centímetros, milímetros, polegadas
+
+**Unidades relativas (recomendadas para sites responsivos):**
+- `%`: Porcentagem em relação ao elemento pai
+- `em`: Relativa ao tamanho da fonte do elemento
+- `rem`: Relativa ao tamanho da fonte do elemento raiz (html)
+- `vw`, `vh`: Porcentagem da largura e altura da viewport (área visível)
+
+```css
+:root {
+  font-size: 16px; /* Define o tamanho base para rem */
+}
+
+h1 {
+  font-size: 2rem;      /* 2 × o tamanho base = 32px */
+  margin-bottom: 5%;    /* 5% da largura do contêiner */
+  padding: 0.5em;       /* 0.5 × o tamanho da fonte de h1 */
+  width: 80vw;          /* 80% da largura da viewport */
+}
+```
+
+> **Boa prática:** Para criar sites responsivos (que se adaptam a diferentes tamanhos de tela), prefira unidades relativas como `rem`, `em` e porcentagens em vez de pixels.
+
+**Atividade prática:**
+Crie uma paleta de cores para um site imaginário e aplique-a a diferentes elementos. Experimente com transparências e gradientes. Teste também diferentes unidades de medida e observe como elas se comportam quando você redimensiona a janela do navegador.
+
+---
+
+## 5. Bordas e Espaçamentos
+
+### Controlando bordas
+
+```css
+.caixa {
+  /* Sintaxe completa */
+  border-width: 2px;
+  border-style: solid;
+  border-color: #333;
+  
+  /* Forma abreviada */
+  border: 2px solid #333;
+  
+  /* Bordas específicas */
+  border-top: 1px dashed red;
+  border-right: 2px dotted green;
+  
+  /* Bordas arredondadas */
+  border-radius: 10px;
+  border-top-left-radius: 20px;
+}
+```
+
+### O modelo de caixa (Box Model)
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/box-model.png" alt="CSS Box Model" className="max-w-full px-12"/>
+  <figcaption className='text-center'><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model" target="_blank">Fonte: MDN Web Docs</a></figcaption>
+</figure>
+
+O modelo de caixa define como cada elemento HTML é representado como uma caixa retangular:
+
+```css
+.elemento {
+  width: 300px;       /* Largura do conteúdo */
+  height: 200px;      /* Altura do conteúdo */
+  
+  padding: 20px;      /* Espaço interno (entre conteúdo e borda) */
+  border: 5px solid black; /* Borda */
+  margin: 30px;       /* Espaço externo (entre a borda e outros elementos) */
+}
+```
+
+Por padrão, `width` e `height` definem apenas o tamanho do conteúdo. O tamanho total da caixa será:
+- Largura total = width + padding-left + padding-right + border-left + border-right
+- Altura total = height + padding-top + padding-bottom + border-top + border-bottom
+
+Para mudar esse comportamento:
+
+```css
+.elemento {
+  box-sizing: border-box; /* Faz width e height incluírem padding e border */
+}
+
+/* Aplicar a todos os elementos (recomendado) */
+* {
+  box-sizing: border-box;
+}
+```
+
+**Atividade prática:**
+Crie várias "caixas" com diferentes combinações de margens, preenchimentos e bordas. Tente replicar um card de produto ou um componente de interface simples, como um botão personalizado.
+
+---
+
+## 6. Backgrounds e Imagens
+
+### Propriedades de background
+
+```css
+.elemento {
+  /* Cor de fundo simples */
+  background-color: #f0f0f0;
+  
+  /* Imagem de fundo */
+  background-image: url('imagem.jpg');
+  
+  /* Controle de repetição */
+  background-repeat: no-repeat; /* no-repeat, repeat, repeat-x, repeat-y */
+  
+  /* Posicionamento */
+  background-position: center top;
+  
+  /* Tamanho */
+  background-size: cover; /* cover, contain, ou valores específicos */
+  
+  /* Comportamento de rolagem */
+  background-attachment: fixed; /* fixed, scroll, local */
+  
+  /* Shorthand (forma abreviada) */
+  background: #f0f0f0 url('imagem.jpg') no-repeat center/cover;
+}
+```
+
+### Gradientes
+
+```css
+.gradiente-linear {
+  background: linear-gradient(to right, red, blue);
+  /* ou usando ângulos */
+  background: linear-gradient(45deg, red, blue);
+  /* com múltiplas cores e paradas */
+  background: linear-gradient(to bottom, red 0%, yellow 50%, blue 100%);
+}
+
+.gradiente-radial {
+  background: radial-gradient(circle, white, black);
+}
+```
+
+### Múltiplos backgrounds
+
+```css
+.multiplos-backgrounds {
+  background: 
+    url('textura.png'),
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('foto.jpg');
+  background-size: 100px 100px, cover, cover;
+}
+```
+
+**Atividade prática:**
+Crie uma seção de herói (hero section) para um site com uma imagem de fundo, um gradiente sobreposto para melhorar a legibilidade do texto, e texto centralizado. Tente fazer com que o background fique fixo durante a rolagem.
+
+---
+
+## 7. Posicionamento e Layout
+
+### Tipos de posicionamento
+
+```css
+.elemento {
+  /* Valores possíveis: static, relative, absolute, fixed, sticky */
+  position: relative;
+  top: 10px;
+  left: 20px;
+  z-index: 2; /* Controla a sobreposição (maior fica na frente) */
+}
+```
+
+1. **Static (padrão):** Fluxo normal do documento
+2. **Relative:** Posicionado em relação à sua posição normal
+3. **Absolute:** Posicionado em relação ao ancestral posicionado mais próximo
+4. **Fixed:** Posicionado em relação à viewport (permanece no mesmo lugar mesmo com rolagem)
+5. **Sticky:** Híbrido entre relative e fixed
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://css-tricks.com/wp-content/uploads/2020/07/positions.png" alt="Tipos de posicionamento CSS" className="max-w-full px-12"/>
+  <figcaption className='text-center'><a href="https://css-tricks.com/almanac/properties/p/position/" target="_blank">Fonte: CSS-Tricks</a></figcaption>
+</figure>
+
+### Flexbox: Layout unidimensional
+
+Flexbox é um método de layout moderno para alinhar e distribuir espaço entre itens em um contêiner.
+
+```css
+.container {
+  display: flex;
+  flex-direction: row; /* row, column, row-reverse, column-reverse */
+  justify-content: space-between; /* alinhamento no eixo principal */
+  align-items: center; /* alinhamento no eixo cruzado */
+  flex-wrap: wrap; /* permite quebra de linha */
+  gap: 20px; /* espaço entre os items */
+}
+
+.item {
+  flex: 1; /* crescimento proporcional */
+}
+```
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://css-tricks.com/wp-content/uploads/2018/11/00-basic-terminology.svg" alt="Terminologia do Flexbox" className="max-w-full px-12"/>
+  <figcaption className='text-center'><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">Fonte: CSS-Tricks</a></figcaption>
+</figure>
+
+### CSS Grid: Layout bidimensional
+
+Grid é um sistema de layout bidimensional perfeito para criar estruturas complexas.
+
+```css
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas de tamanho igual */
+  grid-template-rows: 100px auto 50px; /* tamanhos de linha específicos */
+  gap: 10px; /* espaçamento entre células */
+}
+
+.header {
+  grid-column: 1 / -1; /* ocupa todas as colunas */
+}
+
+.sidebar {
+  grid-row: 2 / 4; /* ocupa da linha 2 até a linha 4 */
+}
+```
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://css-tricks.com/wp-content/uploads/2018/11/grid-column.svg" alt="CSS Grid" className="max-w-full px-12"/>
+  <figcaption className='text-center'><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">Fonte: CSS-Tricks</a></figcaption>
+</figure>
+
+**Atividade prática:**
+Crie um layout usando CSS Grid para uma página de blog com cabeçalho, barra lateral, área de conteúdo principal e rodapé. Em seguida, use Flexbox para organizar um menu de navegação horizontal dentro do cabeçalho e cards de artigos na área principal.
+
+---
+
+## 8. Pseudo-classes e Pseudo-elementos
+
+### Pseudo-classes
+
+As pseudo-classes selecionam elementos em estados específicos:
+
+```css
+/* Links */
+a:link { color: blue; }         /* link não visitado */
+a:visited { color: purple; }    /* link visitado */
+a:hover { text-decoration: underline; } /* mouse sobre o link */
+a:active { color: red; }        /* link sendo clicado */
+
+/* Formulários */
+input:focus { border-color: blue; }    /* campo com foco */
+input:disabled { background: #eee; }   /* campo desabilitado */
+input:checked { box-shadow: 0 0 0 3px orange; } /* checkbox/radio marcado */
+
+/* Baseadas em posição */
+li:first-child { font-weight: bold; }  /* primeiro filho */
+li:last-child { border-bottom: none; } /* último filho */
+li:nth-child(odd) { background: #f9f9f9; } /* filhos ímpares */
+```
+
+### Pseudo-elementos
+
+Os pseudo-elementos criam "elementos virtuais" que não existem no HTML:
+
+```css
+/* Primeira letra e primeira linha */
+p::first-letter { font-size: 2em; }
+p::first-line { font-style: italic; }
+
+/* Conteúdo antes e depois */
+.item::before {
+  content: "→ ";
+  color: red;
+}
+
+.item::after {
+  content: " ✓";
+  color: green;
+}
+
+/* Seleção de texto */
+::selection {
+  background-color: yellow;
+  color: black;
+}
+```
+
+**Atividade prática:**
+Crie um componente de citação que use pseudo-elementos para adicionar aspas decorativas antes e depois do texto. Também crie um menu de navegação com efeitos visuais diferentes para os estados hover, active e focus.
+
+---
+
+## 9. Responsividade e Media Queries
+
+### O que é design responsivo?
+
+Design responsivo é uma abordagem que faz com que as páginas web se adaptem a diferentes tamanhos de tela e dispositivos, proporcionando uma boa experiência de uso tanto em desktops quanto em celulares.
+
+### Media Queries
+
+Media queries permitem aplicar estilos diferentes baseados em características do dispositivo:
+
+```css
+/* Estilos base (para todos os dispositivos) */
+body {
+  font-size: 16px;
+}
+
+/* Para telas menores que 600px (smartphones) */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .sidebar {
+    display: none; /* Esconde a barra lateral */
+  }
+}
+
+/* Para telas médias (tablets) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr; /* Muda para duas colunas */
+  }
+}
+
+/* Para impressão */
+@media print {
+  .nav, .footer, .ads {
+    display: none; /* Remove elementos desnecessários na versão impressa */
+  }
+}
+```
+
+### Viewport Meta Tag
+
+Para garantir que sites responsivos funcionem corretamente em dispositivos móveis:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+<figure className='flex flex-col items-center mx-auto max-w-full'>
+  <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--PUK-TSpr--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/96wdiloz0i67dtom9pzl.png" alt="Design responsivo em diferentes dispositivos" className="max-w-full px-12"/>
+  <figcaption className='text-center'><a href="https://dev.to/pavelkeyzik/css-responsive-design-media-queries-and-breakpoints-4m98" target="_blank">Fonte: DEV Community</a></figcaption>
+</figure>
+
+**Atividade prática:**
+Adapte o layout que você criou anteriormente para ser responsivo. Certifique-se de que ele funcione bem em smartphones (até 600px), tablets (601px-900px) e desktops (acima de 900px). Teste redimensionando a janela do navegador ou usando o modo de inspeção do navegador.
+
+---
+
+## 10. Exercícios e Projeto Final
+
+### Exercício 1: Crie um card de produto
+
+Desenvolva um card de produto com:
+- Imagem
+- Título
+- Descrição curta
+- Preço
+- Botão "Comprar"
+- Efeitos visuais ao passar o mouse
+
+### Exercício 2: Formulário de contato estilizado
+
+Crie um formulário de contato com:
+- Campos para nome, email, assunto e mensagem
+- Estilização para os estados normal, focus e invalid
+- Layout responsivo
+- Botão de envio com efeito hover
+
+### Projeto final: Mini-site responsivo
+
+Desenvolva um mini-site de página única com:
+
+1. Menu de navegação fixo no topo
+2. Seção Hero com imagem de fundo e texto sobreposto
+3. Seção "Sobre" com duas colunas (texto e imagem)
+4. Seção "Serviços" com cards usando flexbox
+5. Seção "Contato" com formulário
+6. Rodapé com links para redes sociais
+7. Design totalmente responsivo
+
+---
+
+## Glossário
+
+- **CSS:** Cascading Style Sheets (Folhas de Estilo em Cascata)
+- **Seletor:** Define quais elementos HTML serão estilizados
+- **Propriedade:** Característica que você deseja alterar (como color, font-size)
+- **Valor:** Configuração específica para uma propriedade
+- **Declaração:** Conjunto de propriedade e valor
+- **Regra CSS:** Conjunto de seletor e declarações
+- **Especificidade:** Mecanismo que determina qual regra tem precedência
+- **Box Model:** Modelo que define como elementos HTML são representados como caixas
+- **Responsividade:** Capacidade de adaptação a diferentes tamanhos de tela
+- **Media Query:** Regra CSS que aplica estilos com base em características do dispositivo
+
+---
+
+## Próximos Passos
+
+Depois de dominar os fundamentos do CSS, você pode aprofundar seus conhecimentos com:
+
+1. **CSS Frameworks** como Bootstrap, Tailwind CSS ou Bulma
+2. **Pré-processadores CSS** como SASS, LESS ou Stylus
+3. **CSS-in-JS** para desenvolvimento com React ou outras bibliotecas
+4. **Animações avançadas** com CSS e JavaScript
+5. **Metodologias de organização CSS** como BEM, SMACSS ou ITCSS
+
+## Referências e Recursos
+
+- [MDN Web Docs - CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [CSS-Tricks](https://css-tricks.com/)
+- [Can I Use](https://caniuse.com/) - Verificar suporte de recursos nos navegadores
+- [CSS Zen Garden](http://www.csszengarden.com/) - Demonstração do poder do CSS
+- [Flexbox Froggy](https://flexboxfroggy.com/) - Jogo para aprender Flexbox
+- [Grid Garden](https://cssgridgarden.com/) - Jogo para aprender CSS Grid
+
