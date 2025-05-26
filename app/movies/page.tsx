@@ -1,13 +1,10 @@
 import { Suspense } from 'react'
 import { genPageMetadata } from '~/app/seo'
 import { Container } from '~/components/ui/container'
-import { GrowingUnderline } from '~/components/ui/growing-underline'
-import { Link } from '~/components/ui/link'
 import { PageHeader } from '~/components/ui/page-header'
-import { SITE_METADATA } from '~/data/site-metadata'
 import movies from '~/json/movies.json' assert { type: 'json' }
 import { MoviesList } from './movies-list'
-import type { ImdbMovie } from '~/types/data'
+import type { Movie } from '~/types/data'
 
 export let metadata = genPageMetadata({ title: 'My movies list' })
 
@@ -27,7 +24,7 @@ export default async function MoviesPage() {
       />
       <div className="py-5 md:py-10">
         <Suspense>
-          <MoviesList movies={movies as unknown as ImdbMovie[]} />
+          <MoviesList movies={movies as unknown as Movie[]} />
         </Suspense>
       </div>
     </Container>

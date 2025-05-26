@@ -1,114 +1,84 @@
 import csv from 'csv-parser'
 import fs, { writeFileSync } from 'fs'
 import path from 'path'
-import Parser from 'rss-parser'
-import { SITE_METADATA } from '~/data/site-metadata'
-import type { GoodreadsBook, ImdbMovie, OmdbMovie } from '~/types/data'
+import type { Movie } from '~/types/data'
 
-let parser = new Parser<{ [key: string]: any }, GoodreadsBook>({
-  customFields: {
-    item: [
-      'guid',
-      'pubDate',
-      'title',
-      'link',
-      'book_id',
-      'book_image_url',
-      'book_small_image_url',
-      'book_medium_image_url',
-      'book_large_image_url',
-      'book_description',
-      'author_name',
-      'isbn',
-      'user_name',
-      'user_rating',
-      'user_read_at',
-      'user_date_added',
-      'user_date_created',
-      'user_shelves',
-      'user_review',
-      'average_rating',
-      'book_published',
-    ],
-  },
-})
+/**
+ * Script para processar arquivo CSV de filmes do IMDB
+ * Extrai apenas os campos necessários e exporta para JSON
+ */
 
+// Define o caminho para o arquivo CSV. Por default, usa 'movies.csv' na pasta scripts
+const MOVIES_CSV_FILE_PATH = path.join(process.cwd(), 'scripts', 'movies.csv')
 
-const IMDB_CSV_FILE_PATH = path.join(process.cwd(), 'scripts', 'imdb-movies.csv')
-async function fetchImdbMovies() {
-  if (!fs.existsSync(IMDB_CSV_FILE_PATH)) {
-    console.log('🎬 IMDB CSV file not found.')
+/**
+ * Processa o arquivo CSV e extrai apenas os campos necessários
+ * Campos mantidos: const, your_rating, date_rated, title, title_type, runtime, year, genres, total_seasons, poster
+ */
+async function processMovies() {
+  if (!fs.existsSync(MOVIES_CSV_FILE_PATH)) {
+    console.log('🎬 CSV file not found:', MOVIES_CSV_FILE_PATH)
     return
   }
-  if (!process.env.OMDB_API_KEY) {
-    console.log('🎬 No OMDB API key provided.')
-    console.log(
-      '💡 Try re-running the `seed` script with `OMDB_API_KEY=<your-api-key> npm run seed`.'
-    )
-    return
-  }
+
+  console.log('🎬 Processando arquivo CSV de filmes...')
+  
   try {
-    let imdbMovies: ImdbMovie[] = []
-    fs.createReadStream(IMDB_CSV_FILE_PATH)
-      .pipe(
-        csv({
-          mapHeaders: ({ header }) =>
-            header
-              .replace(/(\(.*\))/g, '')
-              .trim()
-              .toLowerCase()
-              .replace(/\s/g, '_'),
-        })
-      )
-      .on('data', async (mv: ImdbMovie) => {
-        imdbMovies.push(mv)
-      })
-      .on('error', (error) => {
-        console.error(`Error parsing IMDB CSV file: ${error.message}`)
-      })
-      .on('end', async () => {
-        let movies: ImdbMovie[] = []
-        await Promise.all(
-          imdbMovies.map(async (mv) => {
-            let res = await fetch(
-              `https://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&i=${mv.const}&plot=full`,
-              {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-              }
-            )
-            let omdbMovie: OmdbMovie = await res.json()
-            movies.push({
-              ...mv,
-              total_seasons: omdbMovie.totalSeasons,
-              year: omdbMovie.Year,
-              actors: omdbMovie.Actors,
-              plot: omdbMovie.Plot,
-              poster: omdbMovie.Poster,
-              language: omdbMovie.Language,
-              country: omdbMovie.Country,
-              awards: omdbMovie.Awards,
-              box_office: omdbMovie.BoxOffice,
-              ratings: omdbMovie.Ratings.map((r) => ({
-                source: r.Source,
-                value: r.Value,
-              })),
-            })
+    const movies: Movie[] = []
+    
+    // Cria uma promise para lidar com o processamento do CSV
+    const processComplete = new Promise<void>((resolve, reject) => {
+      fs.createReadStream(MOVIES_CSV_FILE_PATH)
+        .pipe(
+          csv({
+            mapHeaders: ({ header }) =>
+              header
+                .replace(/(\(.*\))/g, '')
+                .trim()
+                .toLowerCase()
+                .replace(/\s/g, '_'),
           })
         )
-        writeFileSync(`./json/movies.json`, JSON.stringify(movies))
-        console.log('🎬 IMDB movies seeded.')
-      })
+        .on('data', (movieData: any) => {
+          // Extrai apenas os campos específicos
+          movies.push({
+            const: movieData.const,
+            your_rating: movieData.your_rating,
+            date_rated: movieData.date_rated,
+            title: movieData.title,
+            title_type: movieData.title_type,
+            runtime: movieData.runtime,
+            year: movieData.year,
+            genres: movieData.genres,
+            total_seasons: movieData.total_seasons || null,
+            poster: movieData.poster || null
+          })
+        })
+        .on('error', (error) => {
+          console.error(`❌ Erro ao processar o arquivo CSV: ${error.message}`)
+          reject(error)
+        })
+        .on('end', () => {
+          // Salva o resultado no arquivo JSON
+          const outputPath = path.join(process.cwd(), 'json', 'movies.json')
+          writeFileSync(outputPath, JSON.stringify(movies, null, 2))
+          console.log(`✅ ${movies.length} filmes processados e salvos em json/movies.json`)
+          resolve()
+        })
+    })
+
+    await processComplete
   } catch (error) {
-    console.error(`Error parsing IMDB CSV file: ${error.message}`)
+    console.error(`❌ Erro ao processar filmes: ${error.message}`)
   }
 }
 
+/**
+ * Função principal para execução do script
+ */
 export async function seed() {
-  await fetchImdbMovies()
-  
+  await processMovies()
 }
 
+// Executa o script
 seed()

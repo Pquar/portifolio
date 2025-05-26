@@ -9,7 +9,7 @@ export const HEADER_NAV_LINKS = [
 
 export const MORE_NAV_LINKS = [
   { href: '/books', title: 'Livros', emoji: 'books' },
-  { href: '/movies', title: 'Filmes Series Anime', emoji: 'film-frames' },
+  { href: '/movies', title: 'Series & Filmes', emoji: 'film-frames' },
   { href: '/tags', title: 'Tags', emoji: 'label' },
 ]
 
@@ -25,5 +25,5 @@ export const FOOTER_PERSONAL_STUFF = [
   { href: '/about', title: 'Sobre' },
   { href: '/static/resume.pdf', title: 'Resume' },
   { href: '/books', title: 'Livros' },
-  { href: '/movies', title: 'Series/Anime/Filme' },
+  { href: '/movies', title: 'Series & Filmes' },
 ]

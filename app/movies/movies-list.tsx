@@ -3,17 +3,18 @@
 import { useSearchParams } from 'next/navigation'
 import { MovieCard } from '~/components/cards/movie'
 import { Twemoji } from '~/components/ui/twemoji'
-import type { ImdbMovie } from '~/types/data'
+import type { Movie } from '~/types/data'
 import { RateFilter, RATES, type RateType } from './rate-filter'
 import { TitleTypeFilter, type TitleType } from './title-type-filter'
 
 const MOVIES_TITLE_TYPES: Record<TitleType, string> = {
   all: 'All',
   movie: 'Movie',
+  anime: 'Anime',
   'tv-series': 'TV Series',
 }
 
-export function MoviesList({ movies }: { movies: ImdbMovie[] }) {
+export function MoviesList({ movies }: { movies: Movie[] }) {
   let searchParams = useSearchParams()
   let rate = (searchParams.get('rate') as RateType) || '10'
   let type = (searchParams.get('type') as TitleType) || 'all'
@@ -26,11 +27,9 @@ export function MoviesList({ movies }: { movies: ImdbMovie[] }) {
         }
         return movie.your_rating === rate
       }
+      return false; // Garante que a função filter retorne undefined ou false quando não há correspondência
     })
     .sort((m1, m2) => {
-      if (m1.your_rating === m2.your_rating) {
-        return Number(m2.imdb_rating) - Number(m1.imdb_rating)
-      }
       return Number(m2.your_rating) - Number(m1.your_rating)
     })
   let { description, emoji } = RATES.find(({ value }) => value === rate) || RATES[0]
@@ -61,7 +60,7 @@ export function MoviesList({ movies }: { movies: ImdbMovie[] }) {
             return <MovieCard movie={movie} key={movie.const} />
           })
         ) : (
-          <div className="text-base">No movies found</div>
+          <div className="text-base">Nenhum filme encontrado</div>
         )}
       </div>
     </div>

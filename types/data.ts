@@ -45,31 +45,17 @@ export type GoodreadsBook = {
   content: string
 }
 
-export type ImdbMovie = {
+export type Movie = {
   const: string
   your_rating: string
   date_rated: string
   title: string
-  original_title: string
-  url: string
   title_type: string
-  imdb_rating: string
   runtime: string
   year: string
   genres: string
-  num_votes: string
-  release_date: string
-  directors: string
-  // Additional fields from the OMDB API
-  actors: string
-  plot: string
-  poster: string
-  language: string
-  country: string
-  awards: string
-  box_office: string
-  total_seasons: string
-  ratings: Array<{ source: string; value: string }>
+  total_seasons?: string | null
+  poster: string | null
 }
 
 export type OmdbMovie = {

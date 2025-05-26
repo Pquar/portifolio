@@ -1,0 +1,198 @@
+---
+title: 'Machine Learning: Algoritmos Explicados de Forma Simples'
+date: '2025-05-24'
+tags: ['material', 'aula']
+summary: 'Material para o Programa de estudos de Programação '
+images:
+  [
+    '/static/images/banners/study__samir-malek__fLVEijXXhJM.jpg',
+  ]
+authors: ['default']
+---
+
+# Introdução
+
+# Machine Learning: Algoritmos Explicados de Forma Simples
+
+## Introdução: O que é Machine Learning?
+Machine Learning (Aprendizado de Máquina) é uma área da inteligência artificial que ensina computadores a aprenderem com dados, sem serem explicitamente programados para cada tarefa. Imagine ensinar um computador a reconhecer fotos de gatos mostrando várias imagens, em vez de explicar "gato tem orelha, bigode, etc".
+
+---
+
+## Aprendizado Supervisionado (Supervised Learning)
+O computador aprende a partir de exemplos já rotulados (com resposta certa). Exemplo: ensinar um sistema a prever o preço de casas mostrando várias casas com seus preços.
+
+- **Exemplo do dia a dia:** Prever se um e-mail é spam ou não, baseado em exemplos anteriores.
+
+---
+
+## Aprendizado Não Supervisionado (Unsupervised Learning)
+Aqui, o computador recebe dados sem resposta certa e tenta encontrar padrões sozinho.
+
+- **Exemplo do dia a dia:** Agrupar clientes de uma loja por comportamento de compra, sem saber antes quem é quem.
+
+---
+
+## Regressão Linear (Linear Regression)
+Usada para prever valores contínuos (números). A ideia é traçar uma linha que melhor se ajusta aos dados.
+
+- **Exemplo:** Prever o preço de um carro baseado na quilometragem.
+- **Fórmula:** y = a * x + b
+- **JavaScript:**
+```js
+// Prevendo preço de carro pela quilometragem
+function preverPreco(km) {
+  const a = -0.05; // cada km reduz 5 centavos
+  const b = 30000; // preço base
+  return a * km + b;
+}
+console.log(preverPreco(100000)); // 25000
+```
+
+---
+
+## Regressão Logística (Logistic Regression)
+Usada para prever categorias (sim/não, 0/1). A saída é uma probabilidade.
+
+- **Exemplo:** Prever se um aluno vai passar ou não baseado nas horas de estudo.
+- **Fórmula:** p = 1 / (1 + e^-(a*x + b))
+- **JavaScript:**
+```js
+function sigmoid(z) {
+  return 1 / (1 + Math.exp(-z));
+}
+function probabilidadePassar(horas) {
+  const a = 1.2;
+  const b = -4;
+  return sigmoid(a * horas + b);
+}
+console.log(probabilidadePassar(5)); // Ex: 0.88 (88% de chance)
+```
+
+---
+
+## K Nearest Neighbors (KNN)
+Classifica um novo dado olhando para os "K vizinhos" mais próximos.
+
+- **Exemplo:** Para saber se uma fruta é maçã ou laranja, veja as 3 frutas mais próximas (em cor, peso, etc) e escolha a maioria.
+- **JavaScript:**
+```js
+function distancia(a, b) {
+  return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+}
+function knn(dados, novo, k) {
+  const ordenado = dados.sort((a, b) => distancia(a, novo) - distancia(b, novo));
+  const vizinhos = ordenado.slice(0, k);
+  const classes = vizinhos.map(v => v.classe);
+  return classes.sort((a,b) => classes.filter(v=>v===a).length - classes.filter(v=>v===b).length).pop();
+}
+// Exemplo de uso:
+const frutas = [
+  {x: 1, y: 1, classe: 'maçã'},
+  {x: 2, y: 2, classe: 'maçã'},
+  {x: 9, y: 9, classe: 'laranja'}
+];
+console.log(knn(frutas, {x: 1.5, y: 1.5}, 2)); // maçã
+```
+
+---
+
+## Support Vector Machine (SVM)
+Encontra a melhor linha (ou plano) que separa duas classes.
+
+- **Exemplo:** Separar emails em "spam" e "não spam".
+- **Resumo fácil:** Imagine uma cerca separando dois grupos de bolas no chão.
+
+---
+
+## Naive Bayes Classifier
+Classifica usando probabilidade baseada em frequência dos dados.
+
+- **Exemplo:** Detectar se um texto é positivo ou negativo contando palavras boas/ruins.
+- **Fórmula:** P(classe|dados) = P(dados|classe) * P(classe) / P(dados)
+- **JavaScript:**
+```js
+// Exemplo simplificado: classificar se um email é spam
+function naiveBayes(palavras, frequencias) {
+  let probSpam = 1, probNaoSpam = 1;
+  palavras.forEach(p => {
+    probSpam *= frequencias.spam[p] || 0.01;
+    probNaoSpam *= frequencias.naoSpam[p] || 0.01;
+  });
+  return probSpam > probNaoSpam ? 'spam' : 'não spam';
+}
+const freq = {
+  spam: {promo: 0.8, oferta: 0.7},
+  naoSpam: {oi: 0.6, trabalho: 0.5}
+};
+console.log(naiveBayes(['promo', 'oferta'], freq)); // spam
+```
+
+---
+
+## Decision Trees (Árvores de Decisão)
+Cria perguntas "sim/não" para classificar dados.
+
+- **Exemplo:** Para decidir se leva guarda-chuva: Está chovendo? Sim → Leva. Não → Não leva.
+- **Resumo fácil:** Como um fluxograma de decisões.
+
+---
+
+## Ensemble Algorithms (Algoritmos de Conjunto)
+Combina vários modelos para melhorar o resultado.
+
+- **Exemplo:** Votar em grupo: cada modelo dá um palpite, vence a maioria.
+
+### Bagging & Random Forests
+- **Bagging:** Treina vários modelos em subconjuntos diferentes dos dados.
+- **Random Forest:** Usa várias árvores de decisão e faz votação.
+
+### Boosting & Strong Learners
+- **Boosting:** Treina modelos em sequência, cada um tentando corrigir os erros do anterior.
+
+---
+
+## Redes Neurais / Deep Learning
+Inspiradas no cérebro humano, resolvem problemas complexos (imagens, voz, etc).
+
+- **Exemplo:** Reconhecer rostos em fotos.
+- **Resumo fácil:** Vários "neurônios" (pequenas funções matemáticas) conectados em camadas.
+
+---
+
+## Clustering / K-means
+Agrupa dados parecidos sem saber as categorias antes.
+
+- **Exemplo:** Separar clientes em grupos de acordo com hábitos de compra.
+- **JavaScript:**
+```js
+// Exemplo simplificado de 1D
+function kmeans(dados, k) {
+  let centros = dados.slice(0, k);
+  for (let i = 0; i < 10; i++) {
+    let grupos = Array.from({length: k}, () => []);
+    dados.forEach(d => {
+      let idx = centros.map(c => Math.abs(d - c)).indexOf(Math.min(...centros.map(c => Math.abs(d - c))));
+      grupos[idx].push(d);
+    });
+    centros = grupos.map(g => g.reduce((a, b) => a + b, 0) / g.length);
+  }
+  return centros;
+}
+console.log(kmeans([1,2,3,10,11,12], 2)); // [2, 11]
+```
+
+---
+
+## Redução de Dimensionalidade & PCA
+Reduz o número de variáveis mantendo o máximo de informação.
+
+- **Exemplo:** Resumir um questionário de 100 perguntas em 2 fatores principais.
+- **Resumo fácil:** Como transformar várias notas de matérias em uma nota geral.
+
+---
+
+## Resumo Final
+- Machine Learning é ensinar o computador a aprender com exemplos.
+- Cada algoritmo tem um uso prático no dia a dia.
+- Com poucos conceitos e exemplos, você já pode entender o básico e até experimentar em JavaScript!

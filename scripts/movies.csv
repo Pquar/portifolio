@@ -1,0 +1,35 @@
+const,your_rating,date_rated,title,title_type,runtime,year,genres,total_seasons,poster
+tt0898266,8,2024-09-27,The Big Bang Theory,TV Series,22,2020,"Comedy, Romance",,https://m.media-amazon.com/images/M/MV5BZjgzY2QyNzItNDhhYi00ZWIwLWFjN2UtZDJkN2MxYWNjMmJjXkEyXkFqcGc@._V1_SX300.jpg
+tt0458339,7,2024-09-27,Captain America: The First Avenger,Movie,124,2011,"Action, Adventure, Sci-Fi",,https://m.media-amazon.com/images/M/MV5BNzUyM2YyY2MtNzNlMS00MWU5LTgxNjAtNzZlNmI2NjU2NDZlXkEyXkFqcGc@._V1_SX300.jpg
+tt1285016,10,2024-09-27,The Social Network,Movie,120,2010,"Drama, Biography",,https://m.media-amazon.com/images/M/MV5BMjlkNTE5ZTUtNGEwNy00MGVhLThmZjMtZjU1NDE5Zjk1NDZkXkEyXkFqcGc@._V1_SX300.jpg
+tt4154796,10,2024-09-27,Avengers: Endgame,Movie,181,2019,"Action, Sci-Fi, Adventure, Drama",,https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg
+tt1475582,10,2024-09-27,Sherlock,TV Series,90,2010–2017,"Crime, Mystery, Drama, Thriller",,https://m.media-amazon.com/images/M/MV5BNTQzNGZjNDEtOTMwYi00MzFjLWE2ZTYtYzYxYzMwMjZkZDc5XkEyXkFqcGc@._V1_SX300.jpg
+tt1843866,7,2024-09-27,Captain America: The Winter Soldier,Movie,136,2014,"Action, Adventure, Sci-Fi, Thriller",,https://m.media-amazon.com/images/M/MV5BNWY1NjFmNDItZDhmOC00NjI1LWE0ZDItMTM0MjBjZThiOTQ2XkEyXkFqcGc@._V1_SX300.jpg
+tt1515091,10,2024-09-27,Sherlock Holmes: A Game of Shadows,Movie,129,2011,"Mystery, Action, Adventure",,https://m.media-amazon.com/images/M/MV5BMTQwMzQ5Njk1MF5BMl5BanBnXkFtZTcwNjIxNzIxNw@@._V1_SX300.jpg
+tt0903747,10,2024-09-27,Breaking Bad,TV Series,45,2008–2013,"Drama, Crime, Thriller",,https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_SX300.jpg
+tt0499549,7,2024-03-04,Avatar,Movie,162,2009,"Sci-Fi, Action, Adventure, Fantasy",,https://m.media-amazon.com/images/M/MV5BMDEzMmQwZjctZWU2My00MWNlLWE0NjItMDJlYTRlNGJiZjcyXkEyXkFqcGc@._V1_SX300.jpg
+tt1375670,10,2024-03-04,Gente Grande,Movie,102,2010,Comedy,,https://m.media-amazon.com/images/M/MV5BMjA0ODYwNzU5Nl5BMl5BanBnXkFtZTcwNTI1MTgxMw@@._V1_SX300.jpg
+tt0266543,10,2022-09-08,Procurando nemo,Movie,100,2003,"Animation, Family, Comedy, Adventure",,https://m.media-amazon.com/images/M/MV5BMTc5NjExNTA5OV5BMl5BanBnXkFtZTYwMTQ0ODY2._V1_SX300.jpg
+tt7286456,10,2022-07-22,Joker,Movie,122,2019,"Crime, Drama, Thriller",,https://m.media-amazon.com/images/M/MV5BNzY3OWQ5NDktNWQ2OC00ZjdlLThkMmItMDhhNDk3NTFiZGU4XkEyXkFqcGc@._V1_SX300.jpg
+tt1345836,10,2022-09-08,The Dark Knight Rises,Movie,164,2012,"Action, Drama, Thriller",,https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_SX300.jpg
+tt0816711,9,2024-03-01,World War Z,Movie,116,2013,"Action, Adventure, Horror, Sci-Fi",,https://m.media-amazon.com/images/M/MV5BODg3ZTM2YWQtZDE5Ny00NGNiLTkzYjgtYWVlYjNkOTg5NDI1XkEyXkFqcGc@._V1_SX300.jpg
+tt0892769,10,2022-09-08,How to Train Your Dragon,Movie,98,2010,"Animation, Adventure, Fantasy, Family, Action",,https://m.media-amazon.com/images/M/MV5BMjA5NDQyMjc2NF5BMl5BanBnXkFtZTcwMjg5ODcyMw@@._V1_SX300.jpg
+tt0137523,9,2022-07-30,Fight Club,Movie,139,1999,Drama,,https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_SX300.jpg
+tt0848228,7,2024-09-27,The Avengers,Movie,143,2012,"Action, Sci-Fi",,https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg
+tt2442560,9,2024-09-27,Peaky Blinders,TV Series,60,2013–2022,"Drama, Crime",,https://m.media-amazon.com/images/M/MV5BM2ZiNThlNzItNmY3Ny00NjA2LWJlMjItNTk1NDI3MDMyMTk4XkEyXkFqcGc@._V1_SX300.jpg
+tt3498820,7,2024-09-27,Captain America: Civil War,Movie,147,2016,"Action, Sci-Fi",,https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg
+tt0988045,10,2024-09-27,Sherlock Holmes,Movie,128,2009,"Adventure, Mystery, Action",,https://m.media-amazon.com/images/M/MV5BMTg0NjEwNjUxM15BMl5BanBnXkFtZTcwMzk0MjQ5Mg@@._V1_SX300.jpg
+tt0110912,10,2024-09-25,Pulp Fiction,Movie,154,1994,"Crime, Drama",,https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg
+tt0120338,8,2022-09-23,Titanic,Movie,194,1997,"Romance, Drama",,https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_SX300.jpg
+tt0460649,10,2024-09-27,How I Met Your Mother,TV Series,23,2005–2014,"Comedy, Romance, Drama",,https://m.media-amazon.com/images/M/MV5BNjg1MDQ5MjQ2N15BMl5BanBnXkFtZTYwNjI5NjA3._V1_SX300.jpg
+tt1049413,10,2024-09-27,Up,Movie,96,2009,"Animation, Family, Adventure, Comedy, Drama",,https://m.media-amazon.com/images/M/MV5BNmI1ZTc5MWMtMDYyOS00ZDc2LTkzOTAtNjQ4NWIxNjYyNDgzXkEyXkFqcGc@._V1_SX300.jpg
+tt3315342,10,2024-09-27,Logan,Movie,137,2017,"Action, Sci-Fi, Drama, Thriller",,https://m.media-amazon.com/images/M/MV5BM2JjODdkMGMtNmY2YS00OGM2LThiY2YtZGYyNzE4Nzc2ODA0XkEyXkFqcGc@._V1_SX300.jpg
+tt3032476,10,2024-09-27,Better Call Saul,TV Series,45,2015–2022,"Crime, Drama",,https://m.media-amazon.com/images/M/MV5BNDdjNTEzMjMtYjM3Mi00NzQ3LWFlNWMtZjdmYWU3ZDkzMjk1XkEyXkFqcGc@._V1_SX300.jpg
+tt2084970,10,2024-03-01,The Imitation Game,Movie,114,2014,"Drama, Biography, Thriller, War",,https://m.media-amazon.com/images/M/MV5BNjI3NjY1Mjg3MV5BMl5BanBnXkFtZTgwMzk5MDQ3MjE@._V1_SX300.jpg
+tt0372784,10,2022-09-08,Batman Begins,Movie,140,2005,"Action, Drama",,https://m.media-amazon.com/images/M/MV5BODIyMDdhNTgtNDlmOC00MjUxLWE2NDItODA5MTdkNzY3ZTdhXkEyXkFqcGc@._V1_SX300.jpg
+tt4154756,10,2024-09-27,Avengers: Infinity War,Movie,149,2018,"Action, Sci-Fi, Adventure",,https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg
+tt10872600,9,2022-07-22,Spider-Man: No Way Home,Movie,148,2021,"Action, Adventure, Sci-Fi, Fantasy",,https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_SX300.jpg
+tt0816692,10,2022-09-23,Interstellar,Movie,169,2014,"Sci-Fi, Adventure, Drama",,https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_SX300.jpg
+tt0389860,10,2024-03-01,Click,Movie,107,2006,"Comedy, Drama, Romance, Fantasy",,https://m.media-amazon.com/images/M/MV5BMTA1MTUxNDY4NzReQTJeQWpwZ15BbWU2MDE3ODAxNw@@._V1_SX300.jpg
+tt0993846,10,2022-09-08,The Wolf of Wall Street,Movie,180,2013,"Crime, Drama, Biography, Comedy",,https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg
+tt6751668,10,2022-09-08,Parasite,Movie,132,2019,"Drama, Thriller",,https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_SX300.jpg

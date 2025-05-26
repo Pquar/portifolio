@@ -14,18 +14,18 @@ export const RATES: {
   value: RateType
   emoji: string
 }[] = [
-  { label: '10', description: 'must watch', value: '10', emoji: 'hundred-points' },
+  { label: '10', description: 'Vale a pena', value: '10', emoji: 'hundred-points' },
   {
     label: '9',
-    description: 'recommended',
+    description: 'Recomendo',
     value: '9',
     emoji: 'sports-medal',
   },
-  { label: '8', description: 'good', value: '8', emoji: 'popcorn' },
-  { label: '7', description: 'okay / not bad', value: '7', emoji: 'thumbs-up' },
+  { label: '8', description: 'Bom', value: '8', emoji: 'popcorn' },
+  { label: '7', description: 'Ok / Não é ruim', value: '7', emoji: 'thumbs-up' },
   {
     label: '6-',
-    description: 'i don’t like',
+    description: 'Não gostei',
     value: '<=6',
     emoji: 'man-gesturing-no',
   },
@@ -41,7 +41,6 @@ export function RateFilter({ rate, type }: { rate: RateType; type: TitleType }) 
         <MenuButton
           aria-label="More links"
           className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-1.5 font-medium dark:border-gray-700"
-          data-umami-event="movies-rate-filter"
         >
           <span>
             {label}/10 <span className="hidden md:inline">stars</span>

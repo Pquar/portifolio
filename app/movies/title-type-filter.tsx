@@ -28,9 +28,14 @@ export const TITLE_TYPES: {
     value: 'tv-series',
     emoji: 'television',
   },
+  {
+    label: 'Anime',
+    value: 'anime',
+    emoji: 'clapper-board',
+  },
 ]
 
-export type TitleType = 'movie' | 'tv-series' | 'all'
+export type TitleType = 'movie' | 'tv-series' | 'anime' | 'all'
 
 export function TitleTypeFilter({ type, rate }: { type: TitleType; rate: RateType }) {
   let { label, value: selectedValue } =
@@ -41,7 +46,6 @@ export function TitleTypeFilter({ type, rate }: { type: TitleType; rate: RateTyp
         <MenuButton
           aria-label="More links"
           className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-1.5 font-medium dark:border-gray-700"
-          data-umami-event="movies-rate-filter"
         >
           <span>{label}</span>
           <ChevronDown strokeWidth={1.5} size={20} />
