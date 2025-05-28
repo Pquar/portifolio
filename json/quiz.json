@@ -1,0 +1,602 @@
+[
+  {
+    "pergunta": "Qual é a sequência correta de etapas que acontece quando você digita um endereço web no navegador e pressiona Enter?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "HTTP(S)", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "a1",
+        "option_text": "Renderização → Resolução de DNS → Requisição HTTP → Processamento no Servidor → Resposta do Servidor → Estabelecimento de Conexão"
+      },
+      {
+        "option_id": "a2",
+        "option_text": "Resolução de DNS → Estabelecimento de Conexão → Requisição HTTP → Processamento no Servidor → Resposta do Servidor → Renderização"
+      },
+      {
+        "option_id": "a3",
+        "option_text": "Estabelecimento de Conexão → Resolução de DNS → Resposta do Servidor → Requisição HTTP → Processamento no Servidor → Renderização"
+      },
+      {
+        "option_id": "a4",
+        "option_text": "Requisição HTTP → Resolução de DNS → Estabelecimento de Conexão → Renderização → Processamento no Servidor → Resposta do Servidor"
+      }
+    ],
+    "awser": "a2"
+  },
+  {
+    "pergunta": "O que significa DNS e qual é sua principal função?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "b1",
+        "option_text": "Domain Name System - Sistema que criptografa dados na internet"
+      },
+      {
+        "option_id": "b2",
+        "option_text": "Data Network Service - Serviço que comprime arquivos para transferência"
+      },
+      {
+        "option_id": "b3",
+        "option_text": "Domain Name System - Sistema que traduz nomes de domínio em endereços IP"
+      },
+      {
+        "option_id": "b4",
+        "option_text": "Digital Network Security - Sistema de segurança para redes digitais"
+      }
+    ],
+    "awser": "b3"
+  },
+  {
+    "pergunta": "Qual é a diferença entre HTTP e HTTPS?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "c1",
+        "option_text": "HTTP usa porta 443 e HTTPS usa porta 80"
+      },
+      {
+        "option_id": "c2",
+        "option_text": "HTTP é seguro com criptografia e HTTPS não tem criptografia"
+      },
+      {
+        "option_id": "c3",
+        "option_text": "HTTP usa porta 80 sem criptografia e HTTPS usa porta 443 com criptografia TLS/SSL"
+      },
+      {
+        "option_id": "c4",
+        "option_text": "Não há diferença, são apenas nomes diferentes para o mesmo protocolo"
+      }
+    ],
+    "awser": "c3"
+  },
+  {
+    "pergunta": "Quais são os dois tipos principais de endereços IP mencionados no módulo?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "d1",
+        "option_text": "IP dinâmico e IP estático"
+      },
+      {
+        "option_id": "d2",
+        "option_text": "IPv4 e IPv6"
+      },
+      {
+        "option_id": "d3",
+        "option_text": "IP público e IP privado"
+      },
+      {
+        "option_id": "d4",
+        "option_text": "Todas as alternativas acima estão corretas"
+      }
+    ],
+    "awser": "d4"
+  },
+  {
+    "pergunta": "Qual código de status HTTP indica que a requisição foi bem-sucedida?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "e1",
+        "option_text": "404"
+      },
+      {
+        "option_id": "e2",
+        "option_text": "500"
+      },
+      {
+        "option_id": "e3",
+        "option_text": "200"
+      },
+      {
+        "option_id": "e4",
+        "option_text": "301"
+      }
+    ],
+    "awser": "e3"
+  },
+  {
+    "pergunta": "Qual método HTTP é usado para buscar dados de um servidor?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "f1",
+        "option_text": "POST"
+      },
+      {
+        "option_id": "f2",
+        "option_text": "GET"
+      },
+      {
+        "option_id": "f3",
+        "option_text": "PUT"
+      },
+      {
+        "option_id": "f4",
+        "option_text": "DELETE"
+      }
+    ],
+    "awser": "f2"
+  },
+  {
+    "pergunta": "O que significa 'localhost' e qual é seu endereço IP?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "g1",
+        "option_text": "Refere-se ao servidor remoto - 192.168.1.1"
+      },
+      {
+        "option_id": "g2",
+        "option_text": "Refere-se ao próprio computador - 127.0.0.1"
+      },
+      {
+        "option_id": "g3",
+        "option_text": "Refere-se à rede local - 10.0.0.1"
+      },
+      {
+        "option_id": "g4",
+        "option_text": "Refere-se ao roteador - 192.168.0.1"
+      }
+    ],
+    "awser": "g2"
+  },
+  {
+    "pergunta": "Quais são as 4 camadas do modelo TCP/IP mencionadas no módulo?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "h1",
+        "option_text": "Física, Enlace, Rede, Transporte"
+      },
+      {
+        "option_id": "h2",
+        "option_text": "Aplicação, Transporte, Internet, Acesso à Rede"
+      },
+      {
+        "option_id": "h3",
+        "option_text": "Apresentação, Sessão, Transporte, Rede"
+      },
+      {
+        "option_id": "h4",
+        "option_text": "Cliente, Servidor, Protocolo, Dados"
+      }
+    ],
+    "awser": "h2"
+  },
+  {
+    "pergunta": "O que é uma API segundo o módulo?",
+    "modulo": "modulo1",
+    "tags": ["API", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "i1",
+        "option_text": "Um tipo especial de banco de dados"
+      },
+      {
+        "option_id": "i2",
+        "option_text": "Uma linguagem de programação"
+      },
+      {
+        "option_id": "i3",
+        "option_text": "Conjunto de regras e protocolos que permitem a comunicação entre diferentes sistemas"
+      },
+      {
+        "option_id": "i4",
+        "option_text": "Um navegador web especializado"
+      }
+    ],
+    "awser": "i3"
+  },
+  {
+    "pergunta": "Qual registro DNS liga um domínio a um endereço IPv4?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "Modulo-1"],
+    "options": [
+      {
+        "option_id": "j1",
+        "option_text": "CNAME"
+      },
+      {
+        "option_id": "j2",
+        "option_text": "MX"
+      },
+      {
+        "option_id": "j3",
+        "option_text": "A"
+      },
+      {
+        "option_id": "j4",
+        "option_text": "TXT"
+      }
+    ],
+    "awser": "j3"
+  },
+  {
+    "pergunta": "O que representa a porta 443 na comunicação web?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "k1", "option_text": "Porta padrão para conexões HTTP" },
+      { "option_id": "k2", "option_text": "Porta utilizada por servidores de email" },
+      { "option_id": "k3", "option_text": "Porta padrão para conexões HTTPS seguras" },
+      { "option_id": "k4", "option_text": "Porta utilizada para FTP" }
+    ],
+    "awser": "k3"
+  },
+  {
+    "pergunta": "Qual camada do modelo TCP/IP é responsável por protocolos como HTTP e FTP?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "l1", "option_text": "Camada de Transporte" },
+      { "option_id": "l2", "option_text": "Camada de Aplicação" },
+      { "option_id": "l3", "option_text": "Camada de Acesso à Rede" },
+      { "option_id": "l4", "option_text": "Camada de Internet" }
+    ],
+    "awser": "l2"
+  },
+  {
+    "pergunta": "O que o navegador faz após receber a resposta do servidor?",
+    "modulo": "modulo1",
+    "tags": ["Ferramentas", "Modulo-1"],
+    "options": [
+      { "option_id": "m1", "option_text": "Fecha a conexão TCP" },
+      { "option_id": "m2", "option_text": "Renderiza o conteúdo na tela" },
+      { "option_id": "m3", "option_text": "Solicita novamente o recurso" },
+      { "option_id": "m4", "option_text": "Apaga os cookies" }
+    ],
+    "awser": "m2"
+  },
+  {
+    "pergunta": "O que significa o código de status HTTP 404?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "n1", "option_text": "Recurso encontrado com sucesso" },
+      { "option_id": "n2", "option_text": "Erro interno no servidor" },
+      { "option_id": "n3", "option_text": "Recurso não encontrado" },
+      { "option_id": "n4", "option_text": "Redirecionamento permanente" }
+    ],
+    "awser": "n3"
+  },
+  {
+    "pergunta": "Qual método HTTP deve ser usado para atualizar totalmente um recurso existente?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "o1", "option_text": "POST" },
+      { "option_id": "o2", "option_text": "GET" },
+      { "option_id": "o3", "option_text": "PUT" },
+      { "option_id": "o4", "option_text": "PATCH" }
+    ],
+    "awser": "o3"
+  },
+  {
+    "pergunta": "O que é TTL no contexto de DNS?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "Modulo-1"],
+    "options": [
+      { "option_id": "p1", "option_text": "Tipo de criptografia DNS" },
+      { "option_id": "p2", "option_text": "Tempo que um registro DNS permanece em cache" },
+      { "option_id": "p3", "option_text": "Número máximo de conexões simultâneas" },
+      { "option_id": "p4", "option_text": "Tempo de expiração de um site" }
+    ],
+    "awser": "p2"
+  },
+  {
+    "pergunta": "Qual registro DNS é utilizado para e-mails?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "Modulo-1"],
+    "options": [
+      { "option_id": "q1", "option_text": "A" },
+      { "option_id": "q2", "option_text": "MX" },
+      { "option_id": "q3", "option_text": "TXT" },
+      { "option_id": "q4", "option_text": "CNAME" }
+    ],
+    "awser": "q2"
+  },
+  {
+    "pergunta": "Qual comando pode ser usado no terminal para verificar o IP da sua máquina no Windows?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Ferramentas", "Modulo-1"],
+    "options": [
+      { "option_id": "r1", "option_text": "ping" },
+      { "option_id": "r2", "option_text": "traceroute" },
+      { "option_id": "r3", "option_text": "ipconfig" },
+      { "option_id": "r4", "option_text": "netstat" }
+    ],
+    "awser": "r3"
+  },
+  {
+    "pergunta": "O que significa o método PATCH em uma API RESTful?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "s1", "option_text": "Remove completamente um recurso" },
+      { "option_id": "s2", "option_text": "Cria um novo recurso" },
+      { "option_id": "s3", "option_text": "Modifica parcialmente um recurso existente" },
+      { "option_id": "s4", "option_text": "Atualiza totalmente um recurso" }
+    ],
+    "awser": "s3"
+  },
+  {
+    "pergunta": "Qual das opções representa corretamente a função do TCP no modelo TCP/IP?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "t1", "option_text": "Envia dados diretamente sem verificar integridade" },
+      { "option_id": "t2", "option_text": "Garante a entrega completa e ordenada dos dados" },
+      { "option_id": "t3", "option_text": "Controla o endereço IP de origem e destino" },
+      { "option_id": "t4", "option_text": "Gerencia o cache de DNS local" }
+    ],
+    "awser": "t2"
+  },
+  {
+    "pergunta": "Na analogia da pizza usada no módulo, o que representa o entregador da pizza?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "u1", "option_text": "A requisição HTTP" },
+      { "option_id": "u2", "option_text": "O navegador" },
+      { "option_id": "u3", "option_text": "A resposta do servidor" },
+      { "option_id": "u4", "option_text": "O DNS" }
+    ],
+    "awser": "u3"
+  },
+  {
+    "pergunta": "Qual comando no Linux exibe o endereço IP da máquina?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Ferramentas", "Modulo-1"],
+    "options": [
+      { "option_id": "v1", "option_text": "ipconfig" },
+      { "option_id": "v2", "option_text": "ifconfig" },
+      { "option_id": "v3", "option_text": "netstat" },
+      { "option_id": "v4", "option_text": "host" }
+    ],
+    "awser": "v2"
+  },
+  {
+    "pergunta": "No modelo de camadas TCP/IP, qual camada é responsável por entregar pacotes fisicamente?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "w1", "option_text": "Aplicação" },
+      { "option_id": "w2", "option_text": "Transporte" },
+      { "option_id": "w3", "option_text": "Internet" },
+      { "option_id": "w4", "option_text": "Acesso à Rede" }
+    ],
+    "awser": "w4"
+  },
+  {
+    "pergunta": "Qual dessas portas é comumente usada para FTP?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "x1", "option_text": "25" },
+      { "option_id": "x2", "option_text": "21" },
+      { "option_id": "x3", "option_text": "443" },
+      { "option_id": "x4", "option_text": "80" }
+    ],
+    "awser": "x2"
+  },
+  {
+    "pergunta": "Qual é o objetivo do cabeçalho 'Authorization' em uma requisição HTTP?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "y1", "option_text": "Indicar o tipo de conteúdo" },
+      { "option_id": "y2", "option_text": "Informar a versão do protocolo" },
+      { "option_id": "y3", "option_text": "Identificar o navegador utilizado" },
+      { "option_id": "y4", "option_text": "Enviar credenciais para autenticação" }
+    ],
+    "awser": "y4"
+  },
+  {
+    "pergunta": "O que o Postman permite testar durante o desenvolvimento?",
+    "modulo": "modulo1",
+    "tags": ["Ferramentas", "API", "Modulo-1"],
+    "options": [
+      { "option_id": "z1", "option_text": "Estilização com CSS" },
+      { "option_id": "z2", "option_text": "Design de UI" },
+      { "option_id": "z3", "option_text": "Endpoints e métodos HTTP de uma API" },
+      { "option_id": "z4", "option_text": "Criação de imagens SVG" }
+    ],
+    "awser": "z3"
+  },
+  {
+    "pergunta": "O que é um recurso em uma URL como /api/users?",
+    "modulo": "modulo1",
+    "tags": ["API", "HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "aa1", "option_text": "Um arquivo físico no servidor" },
+      { "option_id": "aa2", "option_text": "Um tipo de navegador" },
+      {
+        "option_id": "aa3",
+        "option_text": "Um caminho que representa dados ou funcionalidades acessadas pela API"
+      },
+      { "option_id": "aa4", "option_text": "Um comando para o terminal" }
+    ],
+    "awser": "aa3"
+  },
+  {
+    "pergunta": "Qual dessas opções NÃO é um tipo de método HTTP?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "ab1", "option_text": "POST" },
+      { "option_id": "ab2", "option_text": "GET" },
+      { "option_id": "ab3", "option_text": "SEND" },
+      { "option_id": "ab4", "option_text": "PATCH" }
+    ],
+    "awser": "ab3"
+  },
+  {
+    "pergunta": "Qual das alternativas representa um endereço IPv6?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "ac1", "option_text": "192.168.0.1" },
+      { "option_id": "ac2", "option_text": "127.0.0.1" },
+      { "option_id": "ac3", "option_text": "2001:0db8:85a3:0000:0000:8a2e:0370:7334" },
+      { "option_id": "ac4", "option_text": "10.0.0.1" }
+    ],
+    "awser": "ac3"
+  },
+  {
+    "pergunta": "O que um navegador faz ao encontrar o código HTML recebido do servidor?",
+    "modulo": "modulo1",
+    "tags": ["Modulo-1", "HTML"],
+    "options": [
+      { "option_id": "ad1", "option_text": "Ignora o código" },
+      { "option_id": "ad2", "option_text": "Compila e converte para PDF" },
+      {
+        "option_id": "ad3",
+        "option_text": "Renderiza para exibir visualmente a página ao usuário"
+      },
+      {
+        "option_id": "ad4",
+        "option_text": "Criptografa o conteúdo e envia de volta ao servidor"
+      }
+    ],
+    "awser": "ad3"
+  },
+  {
+    "pergunta": "O que representa o cabeçalho 'User-Agent' em uma requisição HTTP?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "ae1", "option_text": "Define o tipo de servidor" },
+      { "option_id": "ae2", "option_text": "Indica o navegador e sistema do cliente" },
+      { "option_id": "ae3", "option_text": "Envia a senha do usuário" },
+      { "option_id": "ae4", "option_text": "Verifica a conexão do roteador" }
+    ],
+    "awser": "ae2"
+  },
+  {
+    "pergunta": "O que a camada de transporte do modelo TCP/IP garante?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "af1", "option_text": "Codificação de imagens" },
+      { "option_id": "af2", "option_text": "Estilo visual de páginas HTML" },
+      { "option_id": "af3", "option_text": "Entrega ordenada e confiável dos pacotes" },
+      { "option_id": "af4", "option_text": "Criação de tabelas no banco de dados" }
+    ],
+    "awser": "af3"
+  },
+  {
+    "pergunta": "Qual método HTTP é ideal para deletar um recurso?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "ag1", "option_text": "GET" },
+      { "option_id": "ag2", "option_text": "DELETE" },
+      { "option_id": "ag3", "option_text": "POST" },
+      { "option_id": "ag4", "option_text": "PUT" }
+    ],
+    "awser": "ag2"
+  },
+  {
+    "pergunta": "O que significa 'URL'?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "Modulo-1"],
+    "options": [
+      { "option_id": "ah1", "option_text": "User Routing Layer" },
+      { "option_id": "ah2", "option_text": "Universal Routing Link" },
+      { "option_id": "ah3", "option_text": "Uniform Resource Locator" },
+      { "option_id": "ah4", "option_text": "Unique Resource List" }
+    ],
+    "awser": "ah3"
+  },
+  {
+    "pergunta": "Qual tipo de registro DNS serve para indicar o servidor de e-mail de um domínio?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "Modulo-1"],
+    "options": [
+      { "option_id": "ai1", "option_text": "A" },
+      { "option_id": "ai2", "option_text": "TXT" },
+      { "option_id": "ai3", "option_text": "CNAME" },
+      { "option_id": "ai4", "option_text": "MX" }
+    ],
+    "awser": "ai4"
+  },
+  {
+    "pergunta": "Para que serve a ferramenta 'ping' no terminal?",
+    "modulo": "modulo1",
+    "tags": ["Ferramentas", "DNS", "Modulo-1"],
+    "options": [
+      { "option_id": "aj1", "option_text": "Configurar o roteador" },
+      {
+        "option_id": "aj2",
+        "option_text": "Medir o tempo de resposta de uma conexão com outro host"
+      },
+      { "option_id": "aj3", "option_text": "Buscar imagens na web" },
+      { "option_id": "aj4", "option_text": "Criar APIs REST" }
+    ],
+    "awser": "aj2"
+  },
+  {
+    "pergunta": "O que a sigla DNS representa?",
+    "modulo": "modulo1",
+    "tags": ["DNS", "Modulo-1"],
+    "options": [
+      { "option_id": "ak1", "option_text": "Domain Name Server" },
+      { "option_id": "ak2", "option_text": "Domain Name System" },
+      { "option_id": "ak3", "option_text": "Digital Network Service" },
+      { "option_id": "ak4", "option_text": "Data Name Signal" }
+    ],
+    "awser": "ak2"
+  },
+  {
+    "pergunta": "Qual é a principal função do protocolo TCP?",
+    "modulo": "modulo1",
+    "tags": ["TCP/IP", "Modulo-1"],
+    "options": [
+      { "option_id": "al1", "option_text": "Enviar dados sem verificação" },
+      { "option_id": "al2", "option_text": "Garantir entrega confiável e ordenada de dados" },
+      { "option_id": "al3", "option_text": "Gerenciar conexões de rede" },
+      { "option_id": "al4", "option_text": "Criptografar dados transmitidos" }
+    ],
+    "awser": "al2"
+  },
+  {
+    "pergunta": "Qual é a função do cabeçalho 'Content-Type' em uma requisição HTTP?",
+    "modulo": "modulo1",
+    "tags": ["HTTP(S)", "Modulo-1"],
+    "options": [
+      { "option_id": "am1", "option_text": "Indicar o tipo de conteúdo enviado" },
+      { "option_id": "am2", "option_text": "Definir o tamanho do arquivo" },
+      { "option_id": "am3", "option_text": "Autenticar o usuário" },
+      { "option_id": "am4", "option_text": "Especificar a versão do protocolo" }
+    ],
+    "awser": "am1"
+  }
+]

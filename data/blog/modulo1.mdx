@@ -14,32 +14,35 @@ authors: ['default']
 
 ## O Que Você Vai Aprender Neste Capítulo
 
-Bem-vindo ao mundo do desenvolvimento web! Neste capítulo, você vai entender como a internet funciona nos bastidores e descobrir os fundamentos que todo desenvolvedor Full Stack precisa conhecer para criar aplicações web modernas.
+Bem-vindo ao mundo do desenvolvimento web! Neste capítulo, você vai entender como a internet funciona nos bastidores e descobrir os fundamentos que todo desenvolvedor **Full Stack** precisa conhecer para criar aplicações web modernas.
+
+## O que é Web?
+
+A Web, ou World Wide Web, é um sistema de informações interligadas que pode ser acessado pela Internet. Ela permite que pessoas em todo o mundo compartilhem e acessem informações de forma rápida e eficiente.
+
 
 ## A Magia Por Trás dos Cliques
 
 Você já parou para pensar como uma página aparece no seu navegador em segundos? Ou como é possível comprar online com apenas alguns cliques? Esses "milagres digitais" acontecem graças a um sofisticado sistema de comunicação entre computadores.
 
-O navegador (cliente) e o servidor trabalham juntos como uma equipe bem coordenada. O navegador pede informações e o servidor responde, enviando páginas, imagens e outros recursos. Esta comunicação é o coração da web.
+A Web opera em um modelo baseado em cliente-servidor, como uma conversa entre um cliente em um restaurante e o garçom: o cliente faz um pedido (requisição), o garçom anota e leva até a cozinha (servidor), que prepara e envia o prato de volta. Na Web, o navegador pede uma página e o servidor responde com o conteúdo. O cliente, geralmente um navegador, solicita recursos como HTML, CSS, imagens e scripts. O servidor, por sua vez, processa essas requisições e retorna os recursos ao cliente.
 
 No universo do **Desenvolvimento Full Stack**, você se torna um especialista nos dois lados dessa conversa:
 - **Frontend**: A parte visual e interativa que os usuários veem e usam
 - **Backend**: Os processos invisíveis que acontecem no servidor
 
-> **Nota para iniciantes**: Não se preocupe se alguns termos parecerem complexos agora. Ao final deste capítulo, você terá uma compreensão clara dos conceitos fundamentais!
-
 ---
 
 ## Como a Web Realmente Funciona: A Jornada de um Clique
 
-Quando você digita um endereço web e pressiona Enter, inicia-se uma extraordinária sequência de eventos que acontece em milissegundos. Vamos explorar essa jornada:
+Quando você digita um endereço web e pressiona Enter, inicia-se uma sequência de eventos que acontece em milissegundos. Vamos explorar essa jornada:
 
 <img src="/static/images/modulo/dns.png" alt="Modelo dns" className='max-w-full px-12'/>
 
 ### A Jornada de uma Requisição Web
 
 1. **Resolução de DNS:** 
-   O navegador precisa descobrir onde está o site que você quer visitar. O DNS (Sistema de Nomes de Domínio) é como uma gigantesca agenda de contatos da internet que traduz nomes amigáveis como "google.com" em endereços IP que os computadores entendem.
+   O navegador precisa descobrir onde está o site que você quer visitar. O DNS (Sistema de Nomes de Domínio ou Domain Name System) é como uma gigantesca agenda de contatos da internet que traduz nomes amigáveis como ``google.com`` para ``142.250.190.78`` em endereços IP que os computadores entendem.
 
 2. **Estabelecimento de Conexão:** 
    Uma vez que seu navegador sabe para onde ir, ele estabelece uma conexão com o servidor usando protocolos como TCP/IP (veremos mais sobre isso adiante).
@@ -56,7 +59,7 @@ Quando você digita um endereço web e pressiona Enter, inicia-se uma extraordin
 6. **Renderização:** 
    Seu navegador interpreta todo esse código e monta a página visualmente na sua tela.
 
-> **Analogia do dia a dia:** Imagine todo esse processo como pedir uma pizza: você liga para a pizzaria (requisição), fornece seu endereço (como o DNS fornece o IP), faz o pedido específico (HTTP GET), a pizzaria prepara sua pizza (processamento no servidor), entrega o pedido (resposta) e finalmente você desfruta da pizza (renderização na tela).
+> Imagine todo esse processo como pedir uma pizza delivery: você liga para a pizzaria (requisição), informa seu endereço (como o DNS traduz o domínio para um IP), escolhe o sabor da pizza (HTTP GET especifica o recurso desejado), a pizzaria prepara a pizza (processamento no servidor), o entregador leva a pizza até sua casa (resposta do servidor) e, finalmente, você abre a caixa e aproveita a pizza (renderização no navegador).
 
 ### O Que Acontece em Cada Etapa?
 
@@ -85,7 +88,7 @@ const acessarSite = async (url) => {
 };
 ```
 
-**Atividades práticas:**
+**Atividades Práticas:**
 
 1. Experimente abrir o console do desenvolvedor no seu navegador (F12 ou Ctrl+Shift+I) enquanto acessa um site. Na aba "Network", você poderá ver todas as requisições acontecendo em tempo real!
 
@@ -106,9 +109,21 @@ O **IP (Internet Protocol)** é como o endereço da sua casa, mas na internet. E
 - **IPv4:** Exemplo: `192.168.0.1` (endereços mais comuns, mas estão acabando).
 - **IPv6:** Exemplo: `2001:0db8:85a3:0000:0000:8a2e:0370:7334` (criado para suportar mais dispositivos).
 
+> Existem IPs públicos e privados: públicos são acessíveis pela internet, enquanto privados são usados em redes internas (como sua casa ou empresa).
+
+> Existem também IPs dinâmicos (mudam com o tempo) e estáticos (permanecem os mesmos).
+
+> Redes locais (LAN) geralmente usam IPs privados, enquanto servidores na internet usam IPs públicos.
+
+> A sua internet por exemplo e um rede local, onde o roteador atribui IPs privados aos dispositivos conectados, e nao e acessível diretamente pela internet mesmo sabendo o IP público do roteador. Para liberar o acesso teria que liberar as portas no roteador para que o IP privado fosse acessível externamente.
+
+> Quem fala esse numero? e o provedor de internet, que atribui um IP público ao seu roteador, permitindo que você acesse a internet e o seu roteador então distribui IPs privados para os dispositivos conectados na sua rede local.
+
 ### O que é TCP/IP?
 
 O **TCP/IP** é um conjunto de regras (protocolos) que define como os dados são enviados e recebidos na internet.
+
+Imagine que você está enviando uma carta: o TCP é como o processo de escrever a carta e garantir que todas as páginas estejam na ordem correta, enquanto o IP é o responsável por endereçá-la corretamente e garantir que ela chegue ao destino certo. Ele é dividido em quatro camadas
 
 <figure className='flex flex-col items-center mx-auto max-w-full'>
   <img src="/static/images/modulo/osi-model-7-layers.svg" alt="Camadas do modelo TCP/IP" className="max-w-full px-12 bg-white"/>
@@ -127,21 +142,23 @@ O **TCP/IP** é um conjunto de regras (protocolos) que define como os dados são
 
 > **Analogia:** Enviar uma carta: você escreve (aplicação), coloca no envelope (transporte), coloca o endereço (internet) e entrega nos Correios (acesso à rede).
 
-**Pergunta:** Você consegue identificar o endereço IP do seu computador? (Dica: pesquise "qual é o meu IP" no Google.)
+**Pergunta:** Você consegue identificar o endereço IP do seu computador? (Dica: pesquise "qual é o meu IP" no Google.). No Windows, você pode usar o comando `ipconfig` no terminal. No macOS ou Linux, use `ifconfig` ou `ip a`.
 
 ---
 
 ## Portas: Canais de Comunicação
 
-Quando você executa uma aplicação web localmente, usa o endereço `localhost` e uma porta, como `localhost:3000`. A porta é como uma "porta de entrada" específica para cada serviço no seu computador.
+Quando você executa uma aplicação web localmente, usa o endereço `localhost` que significa `127.0.0.1` seria o seu próprio endereço e uma porta, como `localhost:3000`. A porta é como uma "porta de entrada" específica para cada serviço no seu computador.
 
 - **Portas comuns:**
   - 80: HTTP (web padrão)
   - 443: HTTPS (web segura)
   - 25: SMTP (e-mail)
-- **Portas acima de 1023:** Usadas por aplicações em desenvolvimento (ex: 3000, 8000).
+  - 21: FTP (transferência de arquivos)
 
-> **Dica:** Use portas altas para evitar conflitos com serviços essenciais do sistema.
+- **Portas reservadas:** 0 a 1023 são usadas por serviços essenciais do sistema (ex: HTTP, FTP, SSH).
+
+> **Dica:** Use portas altas para evitar conflitos com serviços essenciais do sistema (ex: 3000, 8000).
 
 ---
 
@@ -149,14 +166,22 @@ Quando você executa uma aplicação web localmente, usa o endereço `localhost`
 
 ### O que é HTTP?
 
-O **HTTP (Hypertext Transfer Protocol)** é o protocolo que define como navegadores e servidores trocam informações.
+HTTP (Hypertext Transfer Protocol): Protocolo padrão para comunicação entre cliente e servidor. Utiliza a porta 80.
 
-- **HTTPS:** É o HTTP com segurança (usa criptografia para proteger seus dados).
+HTTPS (HTTP Secure): Versão segura do HTTP, usando criptografia TLS/SSL. Utiliza a porta 443 — é por isso que você vê o ícone de cadeado 🔒 ao lado da URL no navegador, indicando uma conexão segura.
 
 <figure className='flex flex-col items-center mx-auto max-w-full'>
   <img src="/static/images/modulo/http-request.svg" alt="Camadas HTTP" className="max-w-full px-12"/>
   <figcaption className='text-center'>Funcionamento das camadas HTTP na comunicação cliente-servidor. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">Fonte: MDN Web Docs</a></figcaption>
 </figure>
+
+Method: Significa o tipo de ação que o cliente está solicitando ao servidor(GET, POST, PUT, DELETE) daqui a pouco vemos mais sobre eles.
+
+Path: O caminho do recurso que está sendo solicitado (ex: `/index.html`, `/api/users`).
+
+Protocol Version: A versão do protocolo HTTP (ex: `HTTP/1.1`).
+
+Headers: Informações adicionais sobre a requisição, aqui seria onde voce pode adicionar informações como (ex: `User-Agent`: Mozilla/5.0, `Accept`: text/html, `Authorization`: Bearer token, etc.).
 
 ### Códigos de Status HTTP
 
@@ -164,8 +189,23 @@ Quando você faz uma requisição, o servidor responde com um código que indica
 
 <figure className='flex flex-col items-center mx-auto max-w-full'>
   <img src="/static/images/modulo/200.jpg" alt="HTTP Status Cat 200 OK" className="max-w-full px-12 max-h-80"/>
-  <figcaption className='text-center'>Exemplo divertido de código de status HTTP 200 (OK). <a href="https://http.cat/">Fonte: HTTP Status Cats</a></figcaption>
+  <figcaption className='text-center'>Exemplo de status HTTP 200 (OK). <a href="https://http.cat/">Fonte: HTTP Status Cats</a></figcaption>
 </figure>
+
+📡 Exemplos de requisição HTTP (quando você acessa uma página de blog):
+```http
+Requisição
+GET /index.html HTTP/1.1
+Host: exemplo.com
+User-Agent: Mozilla/5.0
+```
+
+```http
+Resposta
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+```
+
 
 - `200 OK`: Deu tudo certo!
 - `301 Moved Permanently`: O endereço mudou.
@@ -194,9 +234,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
   .then(resposta => resposta.json())
   .then(dados => console.log(dados));
 ```
-*Esse código faz uma requisição GET e exibe o resultado no console.*
-
-**Atividade:** Use o navegador para acessar uma página inexistente (ex: `/pagina-que-nao-existe`) e veja o código de status retornado.
+*Esse código faz uma requisição GET, depois converte a resposta em JSON(seria um objeto o qual o JavaScript pode manipular) e exibe o resultado no console.*
 
 ---
 
@@ -216,13 +254,31 @@ Além do GET e POST, existem outros métodos importantes:
 - **PATCH:** Modifica parcialmente um recurso.
 - **HEAD/OPTIONS:** Para operações específicas.
 
-> **Boas práticas:** Use o método correto para cada tipo de operação na sua API.
+**GET:** ```GET /index.html HTTP/1.1 User-Agent: Chrome/58.0.3029.110``` significa que o cliente está pedindo o arquivo `index.html` usando o método GET diretamente do navegador Chrome (versão 58.0.3029.110).
+
+**POST:** ```POST /api/users HTTP/1.1``` significa que o cliente está enviando dados para criar um novo usuário na rota `/api/users`.
+
+**PUT:** ```PUT /api/users/123 HTTP/1.1``` significa que o cliente está atualizando os dados do usuário com ID 123 na rota `/api/users/123`.
+
+**DELETE:** ```DELETE /api/users/123 HTTP/1.1``` significa que o cliente está solicitando a remoção do usuário com ID 123 na rota `/api/users/123`.
+
+**Importante:** Os métodos HTTP (GET, POST, PUT, DELETE) são convenções que indicam a intenção do cliente, mas o servidor pode tratá-los de forma diferente dependendo da implementação. Por exemplo, um servidor pode aceitar um GET para deletar um algo, mas isso não é recomendado. Seguir essas recomendação se Chama de **RESTful APIs**, que é uma prática comum no desenvolvimento de APIs.
 
 ---
 
 ## Ferramentas para Testar Requisições
 
-Durante o desenvolvimento, é comum usar ferramentas como o **Postman** para testar APIs e entender como as requisições funcionam.
+Durante o desenvolvimento, é comum usar ferramentas como o [**Postman**](https://www.postman.com/) para entender como as requisições funcionam, o postman seria um ferramenta para testar os endpoints das requisições que acabamos de ver, como GET, POST, PUT e DELETE.
+
+Quando temos vários endpoints, podemos dizer que temos uma API. APIs (Application Programming Interfaces) são conjuntos de regras e protocolos que permitem a comunicação entre diferentes sistemas. Elas definem como os dados podem ser solicitados, enviados e recebidos entre o cliente e o servidor, facilitando a integração e o funcionamento de aplicações.
+
+ex: 
+```plaintext
+GET /api/users EndPoint para obter todos os usuários
+POST /api/users EndPoint para criar um novo usuário
+PUT /api/users/123 EndPoint para atualizar o usuário com ID 123
+DELETE /api/users/123 EndPoint para remover o usuário com ID 123
+```
 
 ---
 
@@ -244,6 +300,19 @@ Durante o desenvolvimento, é comum usar ferramentas como o **Postman** para tes
 - **TTL (Time To Live):** Tempo que um registro DNS pode ficar em cache.
 - **Registros DNS:** Instruções sobre como um domínio deve ser resolvido.
 
+Outro Exemplo: DNS na Prática
+```plaintext
+Usuário digita: www.exemplo.com
+└ Navegador consulta DNS local
+   └ DNS raiz ➔ .com ➔ servidor autoritativo ➔ retorna IP
+└ IP recebido ➔ conexão estabelecida ➔ site carregado
+```
+
+<figure>
+<img src="/static/images/modulo/dns-registro.png" alt="Modelo client-server" className="max-w-full px-12"/>
+<figcaption className='text-center'><a href="https://www.dialhost.com.br/ajuda/como-criar-registro-dns-meu-dominio/"> Fonte: DialHost</a></figcaption>
+</figure>
+
 ### Tipos de Registros DNS
 
 - **A:** Liga um domínio a um endereço IPv4.
@@ -251,6 +320,7 @@ Durante o desenvolvimento, é comum usar ferramentas como o **Postman** para tes
 - **CNAME:** Cria um apelido para outro domínio.
 - **MX:** Define os servidores de e-mail.
 - **TXT:** Armazena textos, usado para validação e segurança.
+- **AAAA:** Liga um domínio a um endereço IPv6.
 
 > **Analogia:** O DNS é como uma lista telefônica: você procura o nome (domínio) e encontra o número (IP).
 
@@ -264,7 +334,11 @@ Durante o desenvolvimento, é comum usar ferramentas como o **Postman** para tes
 
 **DNS:** Sistema que traduz nomes de sites para endereços IP.
 
-**HTTP/HTTPS:** Protocolos para comunicação entre cliente e servidor (HTTPS é seguro).
+**URL:** Endereço completo de um recurso na Web, incluindo protocolo, domínio e caminho.
+
+**Pacote de dados:** Unidade de informação transmitida na rede, contendo cabeçalho e conteúdo.
+
+**HTTP/HTTPS:** Protocolos para comunicação entre cliente e servidor  (HTTPS é a versão segura).
 
 **TCP/IP:** Conjunto de regras para comunicação na internet.
 

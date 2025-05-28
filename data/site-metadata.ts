@@ -7,7 +7,7 @@ export const SITE_METADATA = {
   headerTitle: `Clon dev blog`,
   description: 'Espaço para compartilhar ideias, projetos e aprendizados.',
   language: 'pt-br',
-  theme: 'system', // system, dark or light
+  theme: 'dark', // system, dark or light
   siteUrl: 'https://www.clon.com',
   siteRepo: 'https://github.com/pquar/portifolio',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
