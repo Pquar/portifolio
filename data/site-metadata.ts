@@ -1,20 +1,23 @@
 export const SITE_METADATA = {
   city: 'Balneário Camboriú',
   instagram: 'https://instagram.com/proquar',
-  x: "https://x.com/fkquar",
-  title: `Cleiton Moura dev blog – stories, insights, and ideias`,
-  author: 'Cleiton Moura',
-  headerTitle: `Clon dev blog`,
-  description: 'Espaço para compartilhar ideias, projetos e aprendizados.',
+  x: 'https://x.com/fkquar',
+  title: 'ACLONM Software – Tecnologia que impulsiona sua empresa',
+  author: 'ACLONM Software',
+  headerTitle: 'ACLONM',
+  description:
+    'Desenvolvimento de software, consultoria em tecnologia e soluções digitais sob medida. Atrix Gestão ERP, sites, apps e sistemas personalizados.',
+  tagline: 'Criamos o software. Você lidera o mercado.',
   language: 'pt-br',
-  theme: 'dark', // system, dark or light
-  siteUrl: 'https://www.clon.com',
+  theme: 'dark',
+  siteUrl: 'https://www.aclonm.com',
   siteRepo: 'https://github.com/pquar/portifolio',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo_aclonm.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.jpeg`,
   email: 'clon.moura@gmail.com',
   github: 'https://github.com/pquar',
   linkedin: 'https://www.linkedin.com/in/cleiton-araujo-moura',
+  whatsapp: 'https://wa.me/5569993743315',
   locale: 'pt-BR',
   stickyNav: true,
   comments: {
@@ -23,8 +26,8 @@ export const SITE_METADATA = {
       repositoryId: process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID!,
       category: process.env.NEXT_PUBLIC_GISCUS_CATEGORY!,
       categoryId: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID!,
-      mapping: 'title', // supported options: pathname, url, title
-      reactions: '1', // Emoji reactions: 1 = enable / 0 = disable
+      mapping: 'title',
+      reactions: '1',
       metadata: '0',
       theme: 'light',
       darkTheme: 'transparent_dark',
@@ -34,8 +37,7 @@ export const SITE_METADATA = {
   },
   search: {
     kbarConfigs: {
-      // path to load documents to search
       searchDocumentsPath: `${process.env.BASE_PATH || ''}/search.json`,
     },
-  }
+  },
 }

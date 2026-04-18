@@ -78,7 +78,7 @@ module.exports = {
       },
       colors: {
         primary: colors.indigo,
-        dark: '#1f1f1f',
+        dark: '#0f172a',
         spotify: '#1DB954',
         goodreads: '#372213',
         facebook: '#1877f2',

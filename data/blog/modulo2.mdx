@@ -17,11 +17,13 @@ Antes de aprofundarmos no HTML, vamos configurar um ambiente de desenvolvimento 
 ### Criando um Projeto do Zero
 
 1. **Crie uma pasta para seu projeto HTML:**
+
    - Abra o Explorador de Arquivos (Windows) ou Finder (Mac)
    - Navegue até sua área de trabalho ou pasta de documentos
    - Crie uma nova pasta chamada "MeuPrimeiroSite"
 
 2. **Abra o Visual Studio Code:**
+
    - Inicie o VS Code
    - Selecione `Arquivo > Abrir Pasta` (ou `File > Open Folder`)
    - Navegue até a pasta "MeuPrimeiroSite" e selecione-a
@@ -29,11 +31,24 @@ Antes de aprofundarmos no HTML, vamos configurar um ambiente de desenvolvimento 
 3. **Criando seu primeiro arquivo HTML:**
    - No VS Code, clique no ícone "Novo Arquivo" (uma folha com símbolo "+") ao lado do nome da pasta no explorador
    - Digite `index.html` e pressione Enter
-   
-<figure className='flex flex-col items-center mx-auto max-w-full'>
-  <img src="/static/images/modulo/vscode.png" alt="Explorador de arquivos do VS Code" className="max-w-full px-12"/>
-  <img src="/static/images/modulo/vscode-src.png" alt="Explorador de arquivos do VS Code" className="max-w-full px-12"/>
-  <figcaption className='text-center'>Explorador de arquivos do VS Code. <a href="#" target="_blank">Fonte: Autor</a></figcaption>
+
+<figure className="mx-auto flex max-w-full flex-col items-center">
+  <img
+    src="/static/images/modulo/vscode.png"
+    alt="Explorador de arquivos do VS Code"
+    className="max-w-full px-12"
+  />
+  <img
+    src="/static/images/modulo/vscode-src.png"
+    alt="Explorador de arquivos do VS Code"
+    className="max-w-full px-12"
+  />
+  <figcaption className="text-center">
+    Explorador de arquivos do VS Code.{' '}
+    <a href="#" target="_blank">
+      Fonte: Autor
+    </a>
+  </figcaption>
 </figure>
 
 ### Organizando Arquivos HTML e Recursos
@@ -52,7 +67,7 @@ MeuPrimeiroSite/           # Raiz do projeto
 ├── css/                   # Pasta para arquivos CSS
 │   └── style.css          # Folha de estilo principal
 ├── images/                # Pasta para imagens
-│   ├── logo.png
+│   ├── logo-aclonm.png
 │   └── banner.jpg
 └── js/                    # Pasta para JavaScript
     └── main.js
@@ -66,10 +81,10 @@ Ao vincular arquivos dentro da estrutura de pastas, use caminhos relativos:
 
 ```html
 <!-- Vinculando uma folha de estilo CSS -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css" />
 
 <!-- Inserindo uma imagem -->
-<img src="images/logo.png" alt="Logo da empresa">
+<img src="images/logo-aclonm.png" alt="Logo da empresa" />
 
 <!-- Vinculando um script JavaScript -->
 <script src="js/main.js"></script>
@@ -78,7 +93,8 @@ Ao vincular arquivos dentro da estrutura de pastas, use caminhos relativos:
 <a href="contato.html">Contato</a>
 ```
 
-**Atividade prática:** 
+**Atividade prática:**
+
 1. Crie a estrutura de pastas mostrada acima
 2. Crie o arquivo index.html com a estrutura básica do HTML
 3. Adicione um arquivo style.css na pasta css
@@ -90,7 +106,7 @@ Com essa estrutura básica, você está pronto para começar a desenvolver seu p
 
 ### O que é a Internet?
 
-A **Internet** é a rede global de computadores interconectados que permite a troca de informações em todo o mundo. 
+A **Internet** é a rede global de computadores interconectados que permite a troca de informações em todo o mundo.
 
 > **Analogia:** Imagine a internet como um sistema rodoviário gigante, conectando cidades (computadores) por meio de estradas (cabos e conexões sem fio).
 
@@ -121,6 +137,7 @@ https://www.exemplo.com/produtos/item.html
 ```
 
 Partes de uma URL:
+
 - **Protocolo:** `https://`
 - **Domínio:** `www.exemplo.com`
 - **Caminho:** `/produtos/item.html`
@@ -154,8 +171,8 @@ Tags são marcadores que indicam ao navegador como exibir o conteúdo. Geralment
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meu Primeiro Site</title>
   </head>
   <body>
@@ -166,14 +183,22 @@ Tags são marcadores que indicam ao navegador como exibir o conteúdo. Geralment
 ```
 
 **Explicação:**
+
 - `<!DOCTYPE html>`: Declara o tipo de documento como HTML5.
 - `<html>`: Tag raiz que envolve todo o conteúdo.
 - `<head>`: Contém metadados (informações sobre o documento).
 - `<body>`: Contém o conteúdo visível da página.
 
-<figure className='flex flex-col items-center mx-auto max-w-full'>
-  <img src="/static/images/modulo/dom.jpg" alt="Camadas do modelo TCP/IP" className="max-w-full px-12 bg-white"/>
-  <figcaption className='text-center'>Document Object Model. <a href="https://www.hostinger.com.br/tutoriais/dom-o-que-e">Fonte: Hostinger</a></figcaption>
+<figure className="mx-auto flex max-w-full flex-col items-center">
+  <img
+    src="/static/images/modulo/dom.jpg"
+    alt="Camadas do modelo TCP/IP"
+    className="max-w-full bg-white px-12"
+  />
+  <figcaption className="text-center">
+    Document Object Model.{' '}
+    <a href="https://www.hostinger.com.br/tutoriais/dom-o-que-e">Fonte: Hostinger</a>
+  </figcaption>
 </figure>
 
 ### Atributos em Tags
@@ -199,15 +224,16 @@ A seção `<head>` contém informações sobre a página, mas não é visível p
 ```html
 <head>
   <title>Título da Página</title>
-  <meta charset="UTF-8">
-  <meta name="description" content="Descrição da minha página">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilo.css">
+  <meta charset="UTF-8" />
+  <meta name="description" content="Descrição da minha página" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="estilo.css" />
   <script src="script.js"></script>
 </head>
 ```
 
 **Elementos importantes:**
+
 - `<title>`: Define o título exibido na aba do navegador.
 - `<meta>`: Fornece metadados como codificação (charset), descrição, etc.
 - `<link>`: Conecta a página a recursos externos como CSS.
@@ -221,16 +247,16 @@ As `<meta>` tags são fundamentais para SEO e comportamento da página:
 
 ```html
 <!-- Define a codificação de caracteres -->
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 
 <!-- Descrição para motores de busca -->
-<meta name="description" content="Minha loja online de produtos artesanais">
+<meta name="description" content="Minha loja online de produtos artesanais" />
 
 <!-- Controle de viewport para dispositivos móveis -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Autor da página -->
-<meta name="author" content="Seu Nome">
+<meta name="author" content="Seu Nome" />
 ```
 
 > **Dica:** Meta tags bem configuradas melhoram o SEO e como sua página aparece nos resultados de busca.
@@ -251,14 +277,14 @@ O `<body>` contém todo o conteúdo visível:
       </ul>
     </nav>
   </header>
-  
+
   <main>
     <section>
       <h2>Seção Principal</h2>
       <p>Conteúdo da minha página...</p>
     </section>
   </main>
-  
+
   <footer>
     <p>&copy; 2024 Meu Site</p>
   </footer>
@@ -293,7 +319,7 @@ HTML oferece seis níveis de títulos:
 
 <p>Este é outro parágrafo.</p>
 
-<p>Para forçar uma quebra<br>de linha, use a tag br.</p>
+<p>Para forçar uma quebra<br />de linha, use a tag br.</p>
 ```
 
 ### Formatação de Texto
@@ -333,6 +359,7 @@ HTML oferece seis níveis de títulos:
 ```
 
 Resultado:
+
 1. Primeiro item
 2. Segundo item
 3. Terceiro item
@@ -340,12 +367,14 @@ Resultado:
 Você pode personalizar o tipo de numeração:
 
 ```html
-<ol type="A"> <!-- A, B, C, ... -->
+<ol type="A">
+  <!-- A, B, C, ... -->
   <li>Item A</li>
   <li>Item B</li>
 </ol>
 
-<ol type="i" start="5"> <!-- v, vi, vii, ... -->
+<ol type="i" start="5">
+  <!-- v, vi, vii, ... -->
   <li>Item v</li>
   <li>Item vi</li>
 </ol>
@@ -369,7 +398,7 @@ Você pode personalizar o tipo de numeração:
 <dl>
   <dt>HTML</dt>
   <dd>Linguagem de marcação usada para criar páginas web.</dd>
-  
+
   <dt>CSS</dt>
   <dd>Linguagem de estilo que controla a aparência das páginas web.</dd>
 </dl>
@@ -379,14 +408,16 @@ Você pode personalizar o tipo de numeração:
 
 ```html
 <ul>
-  <li>Frutas
+  <li>
+    Frutas
     <ul>
       <li>Maçã</li>
       <li>Banana</li>
       <li>Laranja</li>
     </ul>
   </li>
-  <li>Vegetais
+  <li>
+    Vegetais
     <ul>
       <li>Cenoura</li>
       <li>Brócolis</li>
@@ -434,7 +465,7 @@ Você pode personalizar o tipo de numeração:
 
 ```html
 <a href="https://www.exemplo.com">
-  <img src="botao.png" alt="Clique aqui">
+  <img src="botao.png" alt="Clique aqui" />
 </a>
 ```
 
@@ -449,7 +480,7 @@ Você pode personalizar o tipo de numeração:
 ### Inserindo Imagens Básicas
 
 ```html
-<img src="foto.jpg" alt="Descrição da imagem" width="300" height="200">
+<img src="foto.jpg" alt="Descrição da imagem" width="300" height="200" />
 ```
 
 > **Boa prática:** Sempre inclua o atributo `alt` para acessibilidade e SEO.
@@ -468,7 +499,7 @@ Você pode personalizar o tipo de numeração:
 
 ```html
 <figure>
-  <img src="grafico.png" alt="Gráfico de vendas">
+  <img src="grafico.png" alt="Gráfico de vendas" />
   <figcaption>Figura 1: Vendas no primeiro trimestre</figcaption>
 </figure>
 ```
@@ -478,13 +509,13 @@ Você pode personalizar o tipo de numeração:
 ```html
 <!-- Vídeo -->
 <video controls width="320" height="240">
-  <source src="video.mp4" type="video/mp4">
+  <source src="video.mp4" type="video/mp4" />
   Seu navegador não suporta vídeos HTML5.
 </video>
 
 <!-- Áudio -->
 <audio controls>
-  <source src="musica.mp3" type="audio/mpeg">
+  <source src="musica.mp3" type="audio/mpeg" />
   Seu navegador não suporta áudio HTML5.
 </audio>
 ```
@@ -559,19 +590,19 @@ Os formulários são essenciais para coletar dados dos usuários.
 <form action="/processar" method="post">
   <div>
     <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required>
+    <input type="text" id="nome" name="nome" required />
   </div>
-  
+
   <div>
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" required />
   </div>
-  
+
   <div>
     <label for="mensagem">Mensagem:</label>
     <textarea id="mensagem" name="mensagem" rows="4"></textarea>
   </div>
-  
+
   <button type="submit">Enviar</button>
 </form>
 ```
@@ -580,28 +611,28 @@ Os formulários são essenciais para coletar dados dos usuários.
 
 ```html
 <!-- Texto simples -->
-<input type="text" name="usuario">
+<input type="text" name="usuario" />
 
 <!-- Senha -->
-<input type="password" name="senha">
+<input type="password" name="senha" />
 
 <!-- Email -->
-<input type="email" name="email">
+<input type="email" name="email" />
 
 <!-- Número -->
-<input type="number" name="idade" min="18" max="100">
+<input type="number" name="idade" min="18" max="100" />
 
 <!-- Data -->
-<input type="date" name="nascimento">
+<input type="date" name="nascimento" />
 
 <!-- Checkbox -->
-<input type="checkbox" name="aceito" id="aceito">
+<input type="checkbox" name="aceito" id="aceito" />
 <label for="aceito">Aceito os termos</label>
 
 <!-- Radio buttons -->
-<input type="radio" name="genero" id="masculino" value="M">
+<input type="radio" name="genero" id="masculino" value="M" />
 <label for="masculino">Masculino</label>
-<input type="radio" name="genero" id="feminino" value="F">
+<input type="radio" name="genero" id="feminino" value="F" />
 <label for="feminino">Feminino</label>
 
 <!-- Menu suspenso -->
@@ -612,13 +643,13 @@ Os formulários são essenciais para coletar dados dos usuários.
 </select>
 
 <!-- Campo de upload -->
-<input type="file" name="documento">
+<input type="file" name="documento" />
 ```
 
 ### Validação de Formulário
 
 ```html
-<input type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+<input type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
 ```
 
 > **Aplicação prática:** Formulários de contato, cadastros, pesquisas, login, busca.
@@ -648,61 +679,62 @@ O HTML semântico usa tags que descrevem o significado do conteúdo, não apenas
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Blog de Tecnologia</title>
-</head>
-<body>
-  <header>
-    <h1>Blog de Tecnologia</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="/artigos">Artigos</a></li>
-        <li><a href="/sobre">Sobre</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main>
-    <article>
-      <header>
-        <h2>Inteligência Artificial em 2024</h2>
-        <p>Publicado em: <time datetime="2024-05-15">15 de maio de 2024</time></p>
-      </header>
-      
-      <section>
-        <h3>Avanços Recentes</h3>
-        <p>Conteúdo sobre avanços em IA...</p>
-      </section>
-      
-      <section>
-        <h3>Aplicações Práticas</h3>
-        <p>Como a IA está sendo aplicada...</p>
-      </section>
-      
-      <footer>
-        <p>Tags: <a href="/tag/ia">IA</a>, <a href="/tag/tecnologia">Tecnologia</a></p>
-      </footer>
-    </article>
-    
-    <aside>
-      <h3>Artigos Relacionados</h3>
-      <ul>
-        <li><a href="/artigo1">Machine Learning Básico</a></li>
-        <li><a href="/artigo2">Ética em IA</a></li>
-      </ul>
-    </aside>
-  </main>
-  
-  <footer>
-    <p>&copy; 2024 Blog de Tecnologia</p>
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog de Tecnologia</title>
+  </head>
+  <body>
+    <header>
+      <h1>Blog de Tecnologia</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Início</a></li>
+          <li><a href="/artigos">Artigos</a></li>
+          <li><a href="/sobre">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <header>
+          <h2>Inteligência Artificial em 2024</h2>
+          <p>Publicado em: <time datetime="2024-05-15">15 de maio de 2024</time></p>
+        </header>
+
+        <section>
+          <h3>Avanços Recentes</h3>
+          <p>Conteúdo sobre avanços em IA...</p>
+        </section>
+
+        <section>
+          <h3>Aplicações Práticas</h3>
+          <p>Como a IA está sendo aplicada...</p>
+        </section>
+
+        <footer>
+          <p>Tags: <a href="/tag/ia">IA</a>, <a href="/tag/tecnologia">Tecnologia</a></p>
+        </footer>
+      </article>
+
+      <aside>
+        <h3>Artigos Relacionados</h3>
+        <ul>
+          <li><a href="/artigo1">Machine Learning Básico</a></li>
+          <li><a href="/artigo2">Ética em IA</a></li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Blog de Tecnologia</p>
+    </footer>
+  </body>
 </html>
 ```
 
 > **Benefícios do HTML semântico:**
+>
 > - Melhora a acessibilidade para leitores de tela
 > - Facilita o SEO (otimização para mecanismos de busca)
 > - Torna o código mais organizado e fácil de manter

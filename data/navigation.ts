@@ -1,30 +1,24 @@
-import { SITE_METADATA } from './site-metadata'
-
 export const HEADER_NAV_LINKS = [
+  { href: '/#solucoes', title: 'Soluções', emoji: 'rocket' },
+  { href: '/projects', title: 'Clientes', emoji: 'handshake' },
+  { href: '/#planos', title: 'Planos', emoji: 'gem-stone' },
   { href: '/blog', title: 'Blog', emoji: 'writing-hand' },
-  { href: '/snippets', title: 'Snippets', emoji: 'dna' },
-  { href: '/projects', title: 'Projects', emoji: 'man-technologist' },
-  { href: '/quiz', title: 'Quiz', emoji: 'open-book' },
-  { href: '/about', title: 'About', emoji: 'billed-cap' },
 ]
 
 export const MORE_NAV_LINKS = [
-  { href: '/books', title: 'Livros', emoji: 'books' },
-  { href: '/movies', title: 'Series & Filmes', emoji: 'film-frames' },
-  { href: '/tags', title: 'Tags', emoji: 'label' },
+  { href: '/#sobre', title: 'Sobre', emoji: 'office-building' },
+  { href: '/#contato', title: 'Contato', emoji: 'telephone-receiver' },
 ]
 
 export const FOOTER_NAV_LINKS = [
+  { href: '/#solucoes', title: 'Soluções' },
+  { href: '/projects', title: 'Clientes' },
+  { href: '/#planos', title: 'Planos' },
   { href: '/blog', title: 'Blog' },
-  { href: '/snippets', title: 'Snippets' },
-  { href: '/projects', title: 'Projects' },
-  { href: '/tags', title: 'Tags' },
-  { href: '/feed.xml', title: 'RSS Feed' },
 ]
 
 export const FOOTER_PERSONAL_STUFF = [
-  { href: '/about', title: 'Sobre' },
-  { href: '/static/resume.pdf', title: 'Resume' },
-  { href: '/books', title: 'Livros' },
-  { href: '/movies', title: 'Series & Filmes' },
+  { href: '/#sobre', title: 'Sobre' },
+  { href: '/#contato', title: 'Contato' },
+  { href: '/blog', title: 'Artigos' },
 ]

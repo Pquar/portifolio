@@ -20,6 +20,15 @@ export type Project = {
   links?: { title: string; url: string }[]
 }
 
+export type Client = {
+  name: string
+  description: string
+  logoSrc?: string
+  siteUrl: string
+  screenshotSrc?: string
+  category: 'site' | 'sistema' | 'consultoria'
+}
+
 export type GoodreadsBook = {
   guid: string
   pubDate: string

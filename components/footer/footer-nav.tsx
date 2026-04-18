@@ -9,7 +9,7 @@ export function FooterNav() {
     <div className="flex flex-col gap-4 px-1 md:flex-row md:justify-end md:gap-24 md:px-0 md:text-right">
       <div className="space-y-1 md:space-y-4">
         <div className="flex h-11 items-center font-semibold md:justify-end">
-          <span>Sitemap</span>
+          <span>Navegação</span>
         </div>
         <ul className="flex flex-wrap gap-4 md:flex-col md:gap-3">
           {FOOTER_NAV_LINKS.map((link, idx) => (
@@ -26,7 +26,7 @@ export function FooterNav() {
       </div>
       <div className="space-y-1 md:space-y-4">
         <div className="flex h-11 items-center font-semibold md:justify-end">
-          <span>Pessoal</span>
+          <span>Empresa</span>
         </div>
         <ul className="flex flex-wrap gap-4 md:flex-col md:gap-3">
           {FOOTER_PERSONAL_STUFF.map((link, idx) => (
@@ -34,7 +34,7 @@ export function FooterNav() {
               <li>
                 <FooterLink link={link} />
               </li>
-              {idx !== FOOTER_NAV_LINKS.length - 1 && (
+              {idx !== FOOTER_PERSONAL_STUFF.length - 1 && (
                 <span className="text-gray-400 md:hidden">/</span>
               )}
             </Fragment>

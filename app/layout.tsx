@@ -49,7 +49,7 @@ export let metadata: Metadata = {
     url: './',
     siteName: SITE_METADATA.title,
     images: [SITE_METADATA.socialBanner],
-    locale: 'en_US',
+    locale: 'pt_BR',
     type: 'website',
   },
   alternates: {
@@ -116,7 +116,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={clsx([
           'antialiased',
-          'relative min-h-screen pl-[calc(100vw-100%)]',
+          'relative min-h-screen',
           'flex flex-col',
           'bg-white text-neutral-900',
           'dark:bg-dark dark:text-gray-100',
